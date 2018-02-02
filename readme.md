@@ -8,7 +8,7 @@ It was created to assist in my own personal education of The MajorBBS (MBBS) Bul
 
 For more information on The Major BBS, check out the Wikipedia article [[here](https://en.wikipedia.org/wiki/The_Major_BBS)].
 
-While **MBBSDASM** targets Major BBS files for analysis, any 16-bit NE EXE/DLL file is support and should disassemble without issue.
+While **MBBSDASM** targets Major BBS files for analysis, any 16-bit NE EXE/DLL file is supported and should disassemble without issue. I've tested this with both Solitaire and Calculator from Windows 3.1 to verify.
 
 # Current Features
 **MBBSDASM** offers several disassembly/code analysis options that are configurable through the command line.
@@ -59,7 +59,7 @@ Normal will output the disassembled x86 code segments labeled with SEGMENT:OFFSE
 MBBS Analysis mode enables **MBBSDASM** to provide additional detailed analysis of Major BBS Modules/DLL's with information provided from the Major BBS 6.25 Software Development Kit as well as GALACTICOMM's Developer's Guide for The Major BBS 6.2 [[link](http://software.bbsdocumentary.com/IBM/WINDOWS/MAJORBBS/devguide.pdf)]
 
 Additional disassembly analysis includes:
-* Automatic Documentation on a large portion of the most commonly used MAJORBBS functions
+* Automatic Documentation on a large portion of the most commonly used MAJORBBS & GALGSBL functions
 * Provide Method Signatures in place of the External module calls
 * Reverse Engineer and rebuild method signatures with the actual input values built from the x86 Assembly
 ```asm
@@ -83,7 +83,6 @@ Additional disassembly analysis includes:
 000019EDh:0002.13EDh jz 0x1404
 ```
 # What's Next
-
 * Enhance MBBS Analysis
     * Variable Labeling and Tracking
     * Add additional auto-documentation of GALGSBL and MAJORBBS imported function
@@ -108,6 +107,8 @@ The project makes use of [SharpDiasm](https://github.com/spazzarama/SharpDisasm)
 A big shoutout to the grey beards keeping this archaic software alive and still available 25+ years later, folks I've interacted with related to MBBS/WG over the years (you know who you are), and the people involved with The BBS Documentary [[link](http://www.bbsdocumentary.com/)]
 
 # License
+
+MBBSDASM is Copyright (c) 2017 Eric Nusbaum and is distributed under the 2-clause "Simplified BSD License". 
 
 SharpDisam is Copyright (c) 2015 Justin Stenning and is distributed under the 2-clause "Simplified BSD License". 
 
