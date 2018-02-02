@@ -1,0 +1,560 @@
+﻿{
+  "Name" : "GALGSBL",
+  "Exports": [
+    {
+      "name": "_BTUBSE",
+      "ord": 1,
+      "Comments": []
+    },
+    {
+      "name": "_BTUBSZ",
+      "ord": 2,
+      "Comments": []
+    },
+    {
+      "name": "_BTUCHE",
+      "ord": 3,
+      "Signature": "int err=btuche(int chan, int onoff);",
+      "Comments": [
+        "Enables calling of btuchi() when echo buffer becomes empty",
+        "onoff 1 == enables calls, 0 == disables"
+      ]
+    },
+    {
+      "name": "_BTUCHI",
+      "ord": 4,
+      "Signature": "int err=btuchi(int chan, char (*rouadr)());",
+      "Comments": [
+        "Sets Input Character Interceptor"
+      ]
+    },
+    {
+      "name": "_BTUCLC",
+      "ord": 5,
+      "Signature": "int err=btuclc(int chan);",
+      "Comments": [
+        "Clear command output buffer"
+      ]
+    },
+    {
+      "name": "_BTUCLI",
+      "ord": 6,
+      "Comments": []
+    },
+    {
+      "name": "_BTUCLO",
+      "ord": 7,
+      "Comments": []
+    },
+    {
+      "name": "_BTUCLS",
+      "ord": 8,
+      "Comments": []
+    },
+    {
+      "name": "_BTUCMD",
+      "ord": 9,
+      "Comments": []
+    },
+    {
+      "name": "_BTUDEF",
+      "ord": 10,
+      "Comments": []
+    },
+    {
+      "name": "_BTECH",
+      "ord": 11,
+      "Comments": []
+    },
+    {
+      "name": "_BTUEND",
+      "ord": 12,
+      "Comments": []
+    },
+    {
+      "name": "_BTUERP",
+      "ord": 13,
+      "Comments": []
+    },
+    {
+      "name": "_BTUFFO",
+      "ord": 14,
+      "Comments": []
+    },
+    {
+      "name": "_BTUHCR",
+      "ord": 15,
+      "Comments": []
+    },
+    {
+      "name": "_BTUHDR",
+      "ord": 16,
+      "Comments": []
+    },
+    {
+      "name": "_BTUHPK",
+      "ord": 17,
+      "Comments": []
+    },
+    {
+      "name": "_BTUHWH",
+      "ord": 18,
+      "Comments": []
+    },
+    {
+      "name": "_BTUIBW",
+      "ord": 19,
+      "Comments": []
+    },
+    {
+      "name": "_BTUICT",
+      "ord": 20,
+      "Comments": []
+    },
+    {
+      "name": "_BTUINJ",
+      "ord": 21,
+      "Comments": []
+    },
+    {
+      "name": "_BTUINP",
+      "ord": 22,
+      "Comments": []
+    },
+    {
+      "name": "_BTUIRP",
+      "ord": 23,
+      "Comments": []
+    },
+    {
+      "name": "_BTUITZ",
+      "ord": 24,
+      "Comments": []
+    },
+    {
+      "name": "_BTULFD",
+      "ord": 25,
+      "Comments": []
+    },
+    {
+      "name": "_BTULOK",
+      "ord": 26,
+      "Comments": []
+    },
+    {
+      "name": "_BTULSZ",
+      "ord": 27,
+      "Comments": []
+    },
+    {
+      "name": "_BTUMDS",
+      "ord": 28,
+      "Comments": []
+    },
+    {
+      "name": "_BTUMDS2",
+      "ord": 29,
+      "Comments": []
+    },
+    {
+      "name": "_BTUMIL",
+      "ord": 30,
+      "Signature": "int err=btumil(int chan, int maxinl);",
+      "Comments": [
+        "Sets maximum input line length, sets word wrap on/off",
+        "maxinl > 0 word wrap disabled and maxinl is max input line length",
+        "maxinl == 0 word wrap is disabled and there is no limit to length of input",
+        "maxinl < 0 input word wrap is enabled and abs(maxinl) is the max input line length"
+      ]
+    },
+    {
+      "name": "_BTUMKS",
+      "ord": 31,
+      "Comments": []
+    },
+    {
+      "name": "_BTMKS2",
+      "ord": 32,
+      "Comments": []
+    },
+    {
+      "name": "_BTUMON",
+      "ord": 33,
+      "Comments": []
+    },
+    {
+      "name": "_BTUMON2",
+      "ord": 34,
+      "Comments": []
+    },
+    {
+      "name": "_BTUMXS",
+      "ord": 35,
+      "Comments": []
+    },
+    {
+      "name": "_BTUOBA",
+      "ord": 36,
+      "Comments": []
+    },
+    {
+      "name": "_BTUOES",
+      "ord": 37,
+      "Comments": []
+    },
+    {
+      "name": "_BTUOLK",
+      "ord": 38,
+      "Comments": []
+    },
+    {
+      "name": "_BTUPBC",
+      "ord": 39,
+      "Signature": "int err=btupbc(int chan, char pausch);",
+      "Comments": [
+        "Set screen-pause character",
+        "Pauses the screen when in the output stream"
+      ]
+    },
+    {
+      "name": "_BTUPMT",
+      "ord": 40,
+      "Comments": []
+    },
+    {
+      "name": "_BTURST",
+      "ord": 41,
+      "Comments": []
+    },
+    {
+      "name": "_BTURTI",
+      "ord": 42,
+      "Comments": []
+    },
+    {
+      "name": "_BTUSCN",
+      "ord": 43,
+      "Comments": []
+    },
+    {
+      "name": "_BTUSCR",
+      "ord": 44,
+      "Comments": []
+    },
+    {
+      "name": "_BTUSDF",
+      "ord": 45,
+      "Comments": []
+    },
+    {
+      "name": "_BTUSET",
+      "ord": 46,
+      "Comments": []
+    },
+    {
+      "name": "_BTUSIZ",
+      "ord": 47,
+      "Comments": []
+    },
+    {
+      "name": "_BTUSTS",
+      "ord": 48,
+      "Comments": []
+    },
+    {
+      "name": "_BTUTRG",
+      "ord": 49,
+      "Comments": []
+    },
+    {
+      "name": "_BTUTRM",
+      "ord": 50,
+      "Comments": []
+    },
+    {
+      "name": "_BTUTRS",
+      "ord": 51,
+      "Comments": []
+    },
+    {
+      "name": "_BTUTRU",
+      "ord": 52,
+      "Signature": "int err=btupbc(int chan, char trunch);",
+      "Comments": [
+        "Sets output-abort character",
+        "Truncates current output block"
+      ]
+    },
+    {
+      "name": "_BTUTSW",
+      "ord": 53,
+      "Comments": []
+    },
+    {
+      "name": "_BTUTSW",
+      "ord": 53,
+      "Signature": "int err=btutsw(int chan, int width);",
+      "Comments": [
+        "Sets terminal screen width and select output word wrap"
+      ]
+    },
+    {
+      "name": "_BTUUDF",
+      "ord": 54,
+      "Comments": []
+    },
+    {
+      "name": "_BTUX29",
+      "ord": 55,
+      "Comments": []
+    },
+    {
+      "name": "_BTUXCT",
+      "ord": 56,
+      "Comments": []
+    },
+    {
+      "name": "_BTUXLT",
+      "ord": 57,
+      "Comments": []
+    },
+    {
+      "name": "_BTUXMN",
+      "ord": 58,
+      "Comments": []
+    },
+    {
+      "name": "_BTUXMT",
+      "ord": 59,
+      "Comments": []
+    },
+    {
+      "name": "_BTUXNF",
+      "ord": 60,
+      "Comments": []
+    },
+    {
+      "name": "_CHIINJ",
+      "ord": 61,
+      "Comments": []
+    },
+    {
+      "name": "_CHIINP",
+      "ord": 62,
+      "Comments": []
+    },
+    {
+      "name": "_CHIOUS",
+      "ord": 63,
+      "Comments": []
+    },
+    {
+      "name": "_CHIOUT",
+      "ord": 64,
+      "Comments": []
+    },
+    {
+      "name": "_TICKER",
+      "ord": 65,
+      "Comments": []
+    },
+    {
+      "name": "_BTRHRT",
+      "ord": 66,
+      "Signature": "unsigned long btuhrt;",
+      "Comments": [
+        "32-bit integer increments at approximatley 65536hz"
+      ]
+    },
+    {
+      "name": "_BTULAN",
+      "ord": 67,
+      "Signature": "int btulan;;",
+      "Comments": [
+        "LAN Capability Status Flags",
+        "0x0001 IPX Direct circuits supported",
+        "0x0002 IPX Virtual circuits supported",
+        "0x0004 SPX circuits supported",
+        "0x0100 IPX driver is loaded",
+        "0x0200 SPX is loaded"
+      ]
+    },
+    {
+      "name": "_BTUSRS",
+      "ord": 68,
+      "Signature": "int btusrs;",
+      "Comments": [
+        "The number of users licensed for this copy of GSBL"
+      ]
+    },
+    {
+      "name": "_BTUX25",
+      "ord": 69,
+      "Signature": "int btux25;",
+      "Comments": [
+        "Whether or not GSBL supports X.25"
+      ]
+    },
+    {
+      "name": "_BTUBRT",
+      "ord": 70,
+      "Comments": []
+    },
+    {
+      "name": "_SUSLCK",
+      "ord": 71,
+      "Comments": []
+    },
+    {
+      "name": "_BTURNO",
+      "ord": 72,
+      "Signature": "char btruno[];",
+      "Comments": [
+        "8 digit + NULL GSBL Registration Number"
+      ]
+    },
+    {
+      "name": "_BTUDTR",
+      "ord": 73,
+      "Comments": []
+    },
+    {
+      "name": "_X25UDT",
+      "ord": 74,
+      "Comments": []
+    },
+    {
+      "name": "_X25HEAP",
+      "ord": 75,
+      "Comments": []
+    },
+    {
+      "name": "_X25IGN",
+      "ord": 76,
+      "Comments": []
+    },
+    {
+      "name": "_LANREV",
+      "ord": 77,
+      "Comments": []
+    },
+    {
+      "name": "_LANSOP",
+      "ord": 78,
+      "Comments": []
+    },
+    {
+      "name": "_LANSCA",
+      "ord": 79,
+      "Comments": []
+    },
+    {
+      "name": "_PLORTI",
+      "ord": 80,
+      "Comments": []
+    },
+    {
+      "name": "_BTUVER",
+      "ord": 81,
+      "Signature": "char btuver[];",
+      "Comments": [
+        "Software revision for the GSBL"
+      ]
+    },
+    {
+      "name": "_ICTACT",
+      "ord": 82,
+      "Comments": []
+    },
+    {
+      "name": "_BTUEBA",
+      "ord": 83,
+      "Comments": []
+    },
+    {
+      "name": "_BTUHIT",
+      "ord": 84,
+      "Comments": []
+    },
+    {
+      "name": "_BTUITM",
+      "ord": 85,
+      "Comments": []
+    },
+    {
+      "name": "_BTUCPC",
+      "ord": 86,
+      "Comments": []
+    },
+    {
+      "name": "_BTUICA",
+      "ord": 87,
+      "Comments": []
+    },
+    {
+      "name": "_BTUPFL",
+      "ord": 88,
+      "Comments": []
+    },
+    {
+      "name": "_PPFLREAL",
+      "ord": 89,
+      "Comments": []
+    },
+    {
+      "name": "_PFLGSLB",
+      "ord": 90,
+      "Comments": []
+    },
+    {
+      "name": "_PFLRNG3",
+      "ord": 91,
+      "Comments": []
+    },
+    {
+      "name": "_PFLPLAP",
+      "ord": 92,
+      "Comments": []
+    },
+    {
+      "name": "_PFN",
+      "ord": 93,
+      "Comments": []
+    },
+    {
+      "name": "_BTUUSP",
+      "ord": 94,
+      "Comments": []
+    },
+    {
+      "name": "_BTUREP",
+      "ord": 95,
+      "Comments": []
+    },
+    {
+      "name": "_PFLMYS3",
+      "ord": 96,
+      "Comments": []
+    },
+    {
+      "name": "_BTUCDI",
+      "ord": 97,
+      "Comments": []
+    },
+    {
+      "name": "_BTUOPL",
+      "ord": 98,
+      "Comments": []
+    },
+    {
+      "name": "_BTUPCC",
+      "ord": 99,
+      "Comments": []
+    },
+    {
+      "name": "_BTUBBR",
+      "ord": 56,
+      "Comments": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="SharpDisasm" Version="1.1.9" />
+    <PackageReference Include="System.Memory" Version="4.4.0-preview1-25305-02" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Analysis\Assets\MajorBBS_def.json" />
+    <Content Remove="Analysis\Assets\GALGSBL_def.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Analysis\Assets\MajorBBS_def.json" />
+    <EmbeddedResource Include="Analysis\Assets\GALGSBL_def.json" />
+  </ItemGroup>
+</Project>

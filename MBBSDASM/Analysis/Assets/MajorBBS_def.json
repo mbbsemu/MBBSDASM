@@ -1,0 +1,7317 @@
+﻿{
+  "Name" : "MAJORBBS",
+  "Exports": [
+    {
+      "name": "READ",
+      "ord": 1,
+      "Comments": []
+    },
+    {
+      "name": "SIGNALPTR",
+      "ord": 2,
+      "Comments": []
+    },
+    {
+      "name": "WRITE",
+      "ord": 3,
+      "Comments": []
+    },
+    {
+      "name": "EXIT",
+      "ord": 4,
+      "Signature": "void exit (int status);",
+      "Comments": [
+        "Terminates the process normally, performing the regular cleanup for terminating programs."
+      ]
+    },
+    {
+      "name": "CEXIT",
+      "ord": 5,
+      "Comments": []
+    },
+    {
+      "name": "CHECKNULL",
+      "ord": 6,
+      "Comments": []
+    },
+    {
+      "name": "CHMOD",
+      "ord": 7,
+      "Comments": []
+    },
+    {
+      "name": "CLEANUP",
+      "ord": 8,
+      "Comments": []
+    },
+    {
+      "name": "CLOSE",
+      "ord": 9,
+      "Comments": []
+    },
+    {
+      "name": "CREAT",
+      "ord": 10,
+      "Comments": []
+    },
+    {
+      "name": "CTYPE",
+      "ord": 11,
+      "Comments": []
+    },
+    {
+      "name": "DOS_GETFILEATTR",
+      "ord": 12,
+      "Comments": []
+    },
+    {
+      "name": "DOS_SETFILEATTR",
+      "ord": 13,
+      "Comments": []
+    },
+    {
+      "name": "DOSERROR",
+      "ord": 14,
+      "Comments": []
+    },
+    {
+      "name": "EXIT",
+      "ord": 15,
+      "Comments": []
+    },
+    {
+      "name": "EXITBUF",
+      "ord": 16,
+      "Comments": []
+    },
+    {
+      "name": "EXITFOPEN",
+      "ord": 17,
+      "Comments": []
+    },
+    {
+      "name": "EXITOPEN",
+      "ord": 18,
+      "Comments": []
+    },
+    {
+      "name": "__FGETC",
+      "ord": 19,
+      "Signature": "int fgetc(FILE *stream );",
+      "Comments": [
+        "Gets a character from the stream"
+      ]
+    },
+    {
+      "name": "FPUTC",
+      "ord": 20,
+      "Comments": []
+    },
+    {
+      "name": "FPUTN",
+      "ord": 21,
+      "Comments": []
+    },
+    {
+      "name": "GETFP",
+      "ord": 22,
+      "Comments": []
+    },
+    {
+      "name": "IOERROR",
+      "ord": 24,
+      "Comments": []
+    },
+    {
+      "name": "ISDST",
+      "ord": 25,
+      "Comments": []
+    },
+    {
+      "name": "LONGTOA",
+      "ord": 26,
+      "Comments": []
+    },
+    {
+      "name": "MKNAME",
+      "ord": 27,
+      "Comments": []
+    },
+    {
+      "name": "MMODEL",
+      "ord": 28,
+      "Comments": []
+    },
+    {
+      "name": "NFGETC",
+      "ord": 29,
+      "Comments": []
+    },
+    {
+      "name": "NUNGETC",
+      "ord": 30,
+      "Comments": []
+    },
+    {
+      "name": "OPEN",
+      "ord": 31,
+      "Comments": []
+    },
+    {
+      "name": "OPENFP",
+      "ord": 32,
+      "Comments": []
+    },
+    {
+      "name": "READ",
+      "ord": 33,
+      "Comments": []
+    },
+    {
+      "name": "REALCVT",
+      "ord": 34,
+      "Comments": []
+    },
+    {
+      "name": "RESTOREZERO",
+      "ord": 35,
+      "Comments": []
+    },
+    {
+      "name": "SCANNER",
+      "ord": 36,
+      "Comments": []
+    },
+    {
+      "name": "SCANPOP",
+      "ord": 37,
+      "Comments": []
+    },
+    {
+      "name": "SCANRSLT",
+      "ord": 38,
+      "Comments": []
+    },
+    {
+      "name": "SCANTOL",
+      "ord": 40,
+      "Comments": []
+    },
+    {
+      "name": "SETUPIO",
+      "ord": 41,
+      "Comments": []
+    },
+    {
+      "name": "STPCPY",
+      "ord": 42,
+      "Comments": []
+    },
+    {
+      "name": "STREAMS",
+      "ord": 43,
+      "Comments": []
+    },
+    {
+      "name": "TERMINATE",
+      "ord": 44,
+      "Comments": []
+    },
+    {
+      "name": "TMPNAM",
+      "ord": 45,
+      "Comments": []
+    },
+    {
+      "name": "UTOA",
+      "ord": 46,
+      "Comments": []
+    },
+    {
+      "name": "VPRINTER",
+      "ord": 47,
+      "Comments": []
+    },
+    {
+      "name": "WRITE",
+      "ord": 48,
+      "Comments": []
+    },
+    {
+      "name": "XFCLOSE",
+      "ord": 49,
+      "Comments": []
+    },
+    {
+      "name": "XFFLUSH",
+      "ord": 50,
+      "Comments": []
+    },
+    {
+      "name": "AABBTV",
+      "ord": 51,
+      "Signature": "int is=aabbtv(void *recptr, long abspos, int keynum);",
+      "Comments": [
+        "'Acquire' a Btrieve record from a file position"
+      ]
+    },
+    {
+      "name": "ABORT",
+      "ord": 52,
+      "Comments": []
+    },
+    {
+      "name": "ABSBTV",
+      "ord": 53,
+      "Signature": "long abspos=absbtv();",
+      "Comments": [
+        "Find current 'absolute' position"
+      ]
+    },
+    {
+      "name": "ACCACCT",
+      "ord": 54,
+      "Comments": []
+    },
+    {
+      "name": "ACCBB",
+      "ord": 55,
+      "Signature": "BTVFILE *accbb;",
+      "Comments": [
+        "User Account Database BTRIEVE file pointer"
+      ]
+    },
+    {
+      "name": "ACCTMP",
+      "ord": 56,
+      "Comments": []
+    },
+    {
+      "name": "ACTVSCN",
+      "ord": 57,
+      "Comments": []
+    },
+    {
+      "name": "ACTVSCNSP",
+      "ord": 58,
+      "Comments": []
+    },
+    {
+      "name": "ADDCRD",
+      "ord": 59,
+      "Signature": "int addcrd(char *keyuid,char *tckstg,int real);",
+      "Comments": [
+        "Utility for pasting credits to an account"
+      ]
+    },
+    {
+      "name": "ADDKYU",
+      "ord": 60,
+      "Comments": []
+    },
+    {
+      "name": "ADDRES1",
+      "ord": 61,
+      "Signature": "char *addres1;",
+      "Comments": [
+        "Mailing Address Line 1 of the MajorBBS System"
+      ]
+    },
+    {
+      "name": "ADDRES2",
+      "ord": 62,
+      "Signature": "char *addres2;",
+      "Comments": [
+        "Mailing Address Line 2 of the MajorBBS System"
+      ]
+    },
+    {
+      "name": "ADDXRF",
+      "ord": 63,
+      "Comments": []
+    },
+    {
+      "name": "ALCDUP",
+      "ord": 64,
+      "Signature": "char *newspace=alcdup(string);",
+      "Comments": [
+        "Allocate new space for a string"
+      ]
+    },
+    {
+      "name": "ALCMEM",
+      "ord": 65,
+      "Signature": "char *region=alcmem(nbytes);",
+      "Comments": [
+        "Dynamically allocate some memory"
+      ]
+    },
+    {
+      "name": "ALCRSZ",
+      "ord": 66,
+      "Signature": "char *newspace=alcrsz(char *oldspace, unsigned oldsize, unsigned newsize);",
+      "Comments": [
+        "Reallocate space to a different size"
+      ]
+    },
+    {
+      "name": "ALCVDA",
+      "ord": 67,
+      "Comments": []
+    },
+    {
+      "name": "ALCZER",
+      "ord": 68,
+      "Signature": "char *zregion=alczer(nbytes)",
+      "Comments": [
+        "Allocate new memory and zero it out"
+      ]
+    },
+    {
+      "name": "ALLDGS",
+      "ord": 69,
+      "Signature": "int yes=alldgs(char *string);",
+      "Comments": [
+        "Determines if a string is all decimal (numeric) digits"
+      ]
+    },
+    {
+      "name": "ANPBTV",
+      "ord": 70,
+      "Signature": "int anpbtv (void *recptr, int anpopt);",
+      "Comments": []
+    },
+    {
+      "name": "ANSION",
+      "ord": 71,
+      "Comments": []
+    },
+    {
+      "name": "ANSSTG",
+      "ord": 72,
+      "Comments": []
+    },
+    {
+      "name": "APPLYEM",
+      "ord": 73,
+      "Comments": []
+    },
+    {
+      "name": "ASKTBL",
+      "ord": 74,
+      "Comments": []
+    },
+    {
+      "name": "ATEXIT",
+      "ord": 75,
+      "Comments": []
+    },
+    {
+      "name": "ATOI",
+      "ord": 76,
+      "Comments": []
+    },
+    {
+      "name": "ATOL",
+      "ord": 77,
+      "Signature": "long int atol(const char *str);",
+      "Comments": [
+        "Concerts string to a long integer"
+      ]
+    },
+    {
+      "name": "AUDBB",
+      "ord": 78,
+      "Comments": []
+    },
+    {
+      "name": "AUXCRT",
+      "ord": 79,
+      "Comments": []
+    },
+    {
+      "name": "AUXHDL",
+      "ord": 80,
+      "Comments": []
+    },
+    {
+      "name": "BACKHDL",
+      "ord": 81,
+      "Comments": []
+    },
+    {
+      "name": "BAUDAT",
+      "ord": 82,
+      "Signature": "int baudat(unsigned baud,int blink);",
+      "Comments": [
+        "Set color attribute based on baud"
+      ]
+    },
+    {
+      "name": "BBSTTL",
+      "ord": 83,
+      "Signature": "char *bbsttl;",
+      "Comments": [
+        "Title of the MajorBBS System"
+      ]
+    },
+    {
+      "name": "BDSPEC",
+      "ord": 84,
+      "Comments": []
+    },
+    {
+      "name": "BEGIN_POLLING",
+      "ord": 85,
+      "Comments": []
+    },
+    {
+      "name": "BELPER",
+      "ord": 86,
+      "Comments": []
+    },
+    {
+      "name": "BGNCNC",
+      "ord": 87,
+      "Signature": "void bgncnc();",
+      "Comments": [
+        "Begins command concatenation"
+      ]
+    },
+    {
+      "name": "OLDBGNEDT",
+      "ord": 88,
+      "Comments": []
+    },
+    {
+      "name": "BGNLOF",
+      "ord": 89,
+      "Comments": []
+    },
+    {
+      "name": "BOOTEM",
+      "ord": 90,
+      "Signature": "void bootem(char *who);",
+      "Comments": [
+        "Boot User-ID about to be killed"
+      ]
+    },
+    {
+      "name": "BYENOW",
+      "ord": 91,
+      "Signature": "void byenow(int msgnum, TYPE p1, TYPE p2,...,pn);",
+      "Comments": [
+        "Say good-bye to a user and disconnect (hang up)"
+      ]
+    },
+    {
+      "name": "CALCRC",
+      "ord": 92,
+      "Signature": "int newcrc=calcrc(int oldcrc, char ch);",
+      "Comments": [
+        "Iteratively calcuate a 16-bit CRC"
+      ]
+    },
+    {
+      "name": "CATAEXIT",
+      "ord": 93,
+      "Comments": []
+    },
+    {
+      "name": "CATASTRO",
+      "ord": 94,
+      "Signature": "catastro(char * ctlstg, TYPE pl, TYPE p2,...,pn)",
+      "Comments": [
+        "Catastrophic Error, exit to DOS"
+      ]
+    },
+    {
+      "name": "CATFIX1",
+      "ord": 95,
+      "Comments": []
+    },
+    {
+      "name": "CATFIX2",
+      "ord": 96,
+      "Comments": []
+    },
+    {
+      "name": "CHANNEL",
+      "ord": 97,
+      "Signature": "int *channel;",
+      "Comments": [
+        "Array of chanel codes (as displayed)"
+      ]
+    },
+    {
+      "name": "CHGHOUR",
+      "ord": 98,
+      "Signature": "char *chghour;",
+      "Comments": [
+        "Connect time charge per hour"
+      ]
+    },
+    {
+      "name": "CHGMIN",
+      "ord": 99,
+      "Signature": "char *chgmin;",
+      "Comments": [
+        "Minimum charge"
+      ]
+    },
+    {
+      "name": "CHIMOVE",
+      "ord": 100,
+      "Signature": "void chimove(char *src,char *dst,register int cnt);",
+      "Comments": [
+        "Reentrant version of movemem()"
+      ]
+    },
+    {
+      "name": "CHISET",
+      "ord": 101,
+      "Comments": []
+    },
+    {
+      "name": "CHKDFT",
+      "ord": 102,
+      "Comments": []
+    },
+    {
+      "name": "CHNEMD",
+      "ord": 103,
+      "Comments": []
+    },
+    {
+      "name": "CHOOSE",
+      "ord": 104,
+      "Comments": []
+    },
+    {
+      "name": "CHOOUT",
+      "ord": 105,
+      "Comments": []
+    },
+    {
+      "name": "CHOOWD",
+      "ord": 106,
+      "Comments": []
+    },
+    {
+      "name": "CHROPT",
+      "ord": 107,
+      "Signature": "char ch=chropt(int msgnum);",
+      "Comments": [
+        "Get a single character from an MCV file"
+      ]
+    },
+    {
+      "name": "CLFILE",
+      "ord": 108,
+      "Comments": []
+    },
+    {
+      "name": "CLOCK",
+      "ord": 109,
+      "Comments": []
+    },
+    {
+      "name": "CLOSE",
+      "ord": 110,
+      "Comments": []
+    },
+    {
+      "name": "CLREOL",
+      "ord": 111,
+      "Comments": []
+    },
+    {
+      "name": "CLRINP",
+      "ord": 112,
+      "Comments": []
+    },
+    {
+      "name": "CLRPRF",
+      "ord": 113,
+      "Signature": "clrprf()",
+      "Comments": [
+        "This function resets the 'prfptr' to point to the beginning of prfbuf and stores a \\0 there."
+      ]
+    },
+    {
+      "name": "CLRXRF",
+      "ord": 114,
+      "Comments": []
+    },
+    {
+      "name": "CLS",
+      "ord": 115,
+      "Comments": []
+    },
+    {
+      "name": "CLSBB",
+      "ord": 116,
+      "Comments": []
+    },
+    {
+      "name": "CLSBTV",
+      "ord": 117,
+      "Signature": "void clsbtv(BTVFILE *bbptr);",
+      "Comments": [
+        "Closes a Btrieve file when finished"
+      ]
+    },
+    {
+      "name": "CLSHEAD",
+      "ord": 118,
+      "Comments": []
+    },
+    {
+      "name": "CLSMSG",
+      "ord": 119,
+      "Signature": "void clsmsg(FILE *mbkprt);",
+      "Comments": [
+        "Closes an MCV file"
+      ]
+    },
+    {
+      "name": "CLSPTR",
+      "ord": 120,
+      "Comments": []
+    },
+    {
+      "name": "CNCALL",
+      "ord": 121,
+      "Signature": "void cncall();",
+      "Comments": [
+        "Expect a variable-length word sequance (consume all remaining input)"
+      ]
+    },
+    {
+      "name": "CNCCHR",
+      "ord": 122,
+      "Signature": "char ch=cncchr();",
+      "Comments": [
+        "Expect a character from the user (converted to upper case)",
+        "NULL if none"
+      ]
+    },
+    {
+      "name": "CNCHEX",
+      "ord": 124,
+      "Signature": "int n=cnchex();",
+      "Comments": [
+        "Expect a hexadecimal number from the user",
+        "0 if none"
+      ]
+    },
+    {
+      "name": "CNCINT",
+      "ord": 125,
+      "Signautre": "int n=cncint();",
+      "Comments": [
+        "Expect an integer from the user",
+        "0 if none"
+      ]
+    },
+    {
+      "name": "CNCLON",
+      "ord": 126,
+      "Signature": "long ln=cnclon();",
+      "Comments": [
+        "Expect a long integer from the user",
+        "0L if none"
+      ]
+    },
+    {
+      "name": "CNCNUM",
+      "ord": 127,
+      "Signature": "char *ptr=cncnum();",
+      "Comments": [
+        "Expect a decimal number with option '0' followed by decimal digits from the user",
+        "No conversion takes place -- returns the ASCII string"
+      ]
+    },
+    {
+      "name": "CNCSIG",
+      "ord": 128,
+      "Signature": "char *signam=cncsig();",
+      "Comments": [
+        "Expect a forum name, with or without '/' prefix",
+        "Always returns name with the '/' prefix"
+      ]
+    },
+    {
+      "name": "CNCUID",
+      "ord": 129,
+      "Signature": "char *uid=cncuid();",
+      "Comments": [
+        "Expect a User-ID or Forum name"
+      ]
+    },
+    {
+      "name": "CNCWRD",
+      "ord": 130,
+      "Signature": "char *wrd=cncwrd();",
+      "Comments": [
+        "Expect a space-delimited word",
+        "Truncated if over 29 characters"
+      ]
+    },
+    {
+      "name": "CNCYESNO",
+      "ord": 131,
+      "Signature": "int yesno=cncyesno();",
+      "Comments": [
+        "Expect yes or no from the user",
+        "'Y' == yes, 'N' == no"
+      ]
+    },
+    {
+      "name": "CNTDIR",
+      "ord": 132,
+      "Comments": []
+    },
+    {
+      "name": "CNTRBTV",
+      "ord": 133,
+      "Signature": "long cntrbtv (void);",
+      "Comments": []
+    },
+    {
+      "name": "COFDAT",
+      "ord": 134,
+      "Signature": "int count=cofdat(int date);",
+      "Comments": [
+        "Counts the number of days since 1/1/80",
+        "Input formatted as YYYYYYYMMMMDDDDD"
+      ]
+    },
+    {
+      "name": "COLOR",
+      "ord": 135,
+      "Comments": []
+    },
+    {
+      "name": "COMPANY",
+      "ord": 136,
+      "Signature": "char *company;",
+      "Comments": [
+        "The Company name of the MajorBBS system"
+      ]
+    },
+    {
+      "name": "CONDEX",
+      "ord": 137,
+      "Signature": "void condex();",
+      "Comments": [
+        "Conditional exit to parent menu for afte rhandling concatenated commands"
+      ]
+    },
+    {
+      "name": "CORELEFT",
+      "ord": 138,
+      "Comments": []
+    },
+    {
+      "name": "CPUTYPE",
+      "ord": 139,
+      "Signature": "int cpu=cputype();",
+      "Comments": [
+        "Returns the CPU type as 88, 186, 286, 386 (486 returns 386)"
+      ]
+    },
+    {
+      "name": "CPYKEY",
+      "ord": 140,
+      "Comments": []
+    },
+    {
+      "name": "CRDUSR",
+      "ord": 141,
+      "Signature": "int crdusr(char *keyuid,char *tckstg,int real,int affall);",
+      "Comments": []
+    },
+    {
+      "name": "CREATNEW",
+      "ord": 142,
+      "Comments": []
+    },
+    {
+      "name": "CREATTEMP",
+      "ord": 143,
+      "Comments": []
+    },
+    {
+      "name": "CRTBTV",
+      "ord": 144,
+      "Signature": "void crtbtv (char *filnam, void *databuf, int lendbuf, int keyno);",
+      "Comments": []
+    },
+    {
+      "name": "CRTCLASS",
+      "ord": 145,
+      "Comments": []
+    },
+    {
+      "name": "CURCURS",
+      "ord": 146,
+      "Comments": []
+    },
+    {
+      "name": "CURCURX",
+      "ord": 147,
+      "Comments": []
+    },
+    {
+      "name": "CURCURY",
+      "ord": 148,
+      "Comments": []
+    },
+    {
+      "name": "CURSACT",
+      "ord": 149,
+      "Comments": []
+    },
+    {
+      "name": "CURSIZ",
+      "ord": 150,
+      "Comments": []
+    },
+    {
+      "name": "CURUSR",
+      "ord": 151,
+      "Signature": "void curusr(int newunum);",
+      "Comments": [
+        "Change to a different user number"
+      ]
+    },
+    {
+      "name": "CVTSCN",
+      "ord": 152,
+      "Comments": []
+    },
+    {
+      "name": "DATAPH",
+      "ord": 153,
+      "Signature": "char *dataph;",
+      "Comments": [
+        "The first phone line connected to the MajorBBS system"
+      ]
+    },
+    {
+      "name": "DATOFC",
+      "ord": 154,
+      "Signature": "int date=datofc(int count);",
+      "Comments": [
+        "Compute DOS date",
+        "Return formatted as YYYYYYYMMMMDDDDD"
+      ]
+    },
+    {
+      "name": "DAYTODAY",
+      "ord": 155,
+      "Signature": "int daytoday(void);",
+      "Comments": [
+        "Returns the day of the week 0->6 Sunday->Saturday"
+      ]
+    },
+    {
+      "name": "DBYTES",
+      "ord": 156,
+      "Comments": []
+    },
+    {
+      "name": "DCDATE",
+      "ord": 157,
+      "Signature": "int date=dcdate(char *ascdat);",
+      "Comments": [
+        "Decode string date formatted 'MM/DD/YY' to int format YYYYYYYMMMMDDDDD"
+      ]
+    },
+    {
+      "name": "DCLVDA",
+      "ord": 158,
+      "Signature": "void dclvda(int nbytes);",
+      "Comments": [
+        "Declare size of the Volatile Data Area (Maximum size the modeule will require)"
+      ]
+    },
+    {
+      "name": "DCTIME",
+      "ord": 159,
+      "Comments": []
+    },
+    {
+      "name": "DEDCRD",
+      "ord": 160,
+      "Signature": "int enuf=dedcrd(long amount, int asmuch);",
+      "Comments": [
+        "Deduct credits from current user's account",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "DELACCT",
+      "ord": 161,
+      "Comments": []
+    },
+    {
+      "name": "DELBTV",
+      "ord": 162,
+      "Signature": "void delbtv();",
+      "Comments": [
+        "Delete current Btrieve record"
+      ]
+    },
+    {
+      "name": "DELXRF",
+      "ord": 163,
+      "Comments": []
+    },
+    {
+      "name": "DEPAD",
+      "ord": 164,
+      "Signature": "int nremoved=depad(char *string);",
+      "Comments": [
+        "Removes trailing blank spaces from string"
+      ]
+    },
+    {
+      "name": "DFLTASCN",
+      "ord": 165,
+      "Comments": []
+    },
+    {
+      "name": "DFLTMSCN",
+      "ord": 166,
+      "Comments": []
+    },
+    {
+      "name": "DFSTHN",
+      "ord": 167,
+      "Signature": "void dfsthn();",
+      "Comments": [
+        "Default Status Handler for status conditions this module is not specifically expecting"
+      ]
+    },
+    {
+      "name": "DFTBEL",
+      "ord": 168,
+      "Comments": []
+    },
+    {
+      "name": "DIGALW",
+      "ord": 169,
+      "Comments": []
+    },
+    {
+      "name": "DINSBTV",
+      "ord": 170,
+      "Signature": "int ok=dinsbtv(char *recptr);",
+      "Comments": [
+        "(more tolerant) Insert a new Btrieve record"
+      ]
+    },
+    {
+      "name": "DISPAG",
+      "ord": 171,
+      "Comments": []
+    },
+    {
+      "name": "DLTCLS",
+      "ord": 172,
+      "Comments": []
+    },
+    {
+      "name": "DOSTOUNIX",
+      "ord": 173,
+      "Comments": []
+    },
+    {
+      "name": "DSAIRP",
+      "ord": 174,
+      "Signature": "dsairp()",
+      "Comments": [
+        "Disable Interrupts"
+      ]
+    },
+    {
+      "name": "DSKFRE",
+      "ord": 175,
+      "Comments": []
+    },
+    {
+      "name": "DSPCHC",
+      "ord": 176,
+      "Comments": []
+    },
+    {
+      "name": "DSPMNU",
+      "ord": 177,
+      "Comments": []
+    },
+    {
+      "name": "DSPMSG",
+      "ord": 178,
+      "Comments": []
+    },
+    {
+      "name": "DTRACK",
+      "ord": 179,
+      "Comments": []
+    },
+    {
+      "name": "DUPDBTV",
+      "ord": 180,
+      "Signature": "int ok=dupdbtv(char *recptr);",
+      "Comments": [
+        "(more tolerant) update current record",
+        "1 == updated, 0 == duplicate collision"
+      ]
+    },
+    {
+      "name": "ECHON",
+      "ord": 181,
+      "Signature": "echon();",
+      "Comments": [
+        "Turns echo on for this channel"
+      ]
+    },
+    {
+      "name": "ECHONU",
+      "ord": 182,
+      "Signature" : "void echonu(int usrnum);",
+      "Comments": [ "Turns on echo utility for the specified user"]
+    },
+    {
+      "name": "EDTCHC",
+      "ord": 183,
+      "Comments": []
+    },
+    {
+      "name": "OLDEDTIMR",
+      "ord": 184,
+      "Comments": []
+    },
+    {
+      "name": "EDTVAL",
+      "ord": 185,
+      "Comments": []
+    },
+    {
+      "name": "EMLSDROU",
+      "ord": 186,
+      "Comments": []
+    },
+    {
+      "name": "EMUBEL",
+      "ord": 187,
+      "Comments": []
+    },
+    {
+      "name": "EMUCHN",
+      "ord": 188,
+      "Comments": []
+    },
+    {
+      "name": "ENAIRP",
+      "ord": 189,
+      "Signature": "void enairp()",
+      "Comments": [
+        "Enable Interrupts"
+      ]
+    },
+    {
+      "name": "ENAPAG",
+      "ord": 190,
+      "Comments": []
+    },
+    {
+      "name": "ENDCNC",
+      "ord": 191,
+      "Signature": "int done=endcnc();",
+      "Comments": [
+        "Checks if the user has completed their command (started by bgncnc())",
+        "1 == done, 2 == there's more"
+      ]
+    },
+    {
+      "name": "EOF",
+      "ord": 192,
+      "Comments": []
+    },
+    {
+      "name": "ERRCOD",
+      "ord": 193,
+      "Signature": "int errcod;",
+      "Comments": [
+        "MS-DOS exit code (for batch files)"
+      ]
+    },
+    {
+      "name": "EURMSK",
+      "ord": 194,
+      "Signature": "char eurmsk;",
+      "Comments": [
+        "0x7F if U.S.A. only, 0xFF if European"
+      ]
+    },
+    {
+      "name": "EXIMOD",
+      "ord": 195,
+      "Comments": []
+    },
+    {
+      "name": "EXIT",
+      "ord": 196,
+      "Comments": []
+    },
+    {
+      "name": "EXPAND",
+      "ord": 197,
+      "Comments": []
+    },
+    {
+      "name": "EXPLODE",
+      "ord": 198,
+      "Comments": []
+    },
+    {
+      "name": "EXPLODELL",
+      "ord": 199,
+      "Comments": []
+    },
+    {
+      "name": "EXPLODETO",
+      "ord": 200,
+      "Comments": []
+    },
+    {
+      "name": "FARCORELEFT",
+      "ord": 201,
+      "Comments": []
+    },
+    {
+      "name": "FARFREE",
+      "ord": 202,
+      "Comments": []
+    },
+    {
+      "name": "FARMALLOC",
+      "ord": 203,
+      "Comments": []
+    },
+    {
+      "name": "FARREALLOC",
+      "ord": 204,
+      "Comments": []
+    },
+    {
+      "name": "FCLOSE",
+      "ord": 205,
+      "Signature": "int fclose(FILE* stream );",
+      "Comments": [
+        "Closes the file associated with the stream and disassociates it."
+      ]
+    },
+    {
+      "name": "FDOPEN",
+      "ord": 206,
+      "Comments": []
+    },
+    {
+      "name": "FFLUSH",
+      "ord": 207,
+      "Comments": []
+    },
+    {
+      "name": "_FGETC",
+      "ord": 208,
+      "Signature": "int fgetc (FILE *stream );",
+      "Comments": [
+        "Returns the character currently pointed by the internal file position indicator of the specified stream"
+      ]
+    },
+    {
+      "name": "FGETCHAR",
+      "ord": 209,
+      "Comments": []
+    },
+    {
+      "name": "FGETS",
+      "ord": 210,
+      "Signature": "char* fgets(char* str, int num, FILE* stream );",
+      "Comments": [
+        "Reads characters from stream as a C string into str until (num-1) characters have been read or either a newline or the end-of-file is reached"
+      ]
+    },
+    {
+      "name": "FILELENGTH",
+      "ord": 211,
+      "Comments": []
+    },
+    {
+      "name": "FILEUP",
+      "ord": 212,
+      "Comments": []
+    },
+    {
+      "name": "FINDMOD",
+      "ord": 213,
+      "Comments": []
+    },
+    {
+      "name": "FINDSTG",
+      "ord": 214,
+      "Comments": []
+    },
+    {
+      "name": "FINDTVAR",
+      "ord": 215,
+      "Signature": "int findtvar(char *name);",
+      "Comments": [
+        "Find text variable & return number"
+      ]
+    },
+    {
+      "name": "FLDNMI",
+      "ord": 216,
+      "Comments": []
+    },
+    {
+      "name": "FLL1ST",
+      "ord": 217,
+      "Comments": []
+    },
+    {
+      "name": "FLLNXT",
+      "ord": 218,
+      "Comments": []
+    },
+    {
+      "name": "FLLSPC",
+      "ord": 219,
+      "Comments": []
+    },
+    {
+      "name": "FLUSHALL",
+      "ord": 220,
+      "Comments": []
+    },
+    {
+      "name": "FMTX3",
+      "ord": 221,
+      "Comments": []
+    },
+    {
+      "name": "FNDCLS",
+      "ord": 222,
+      "Comments": []
+    },
+    {
+      "name": "FNDKEY",
+      "ord": 224,
+      "Comments": []
+    },
+    {
+      "name": "F_OPEN",
+      "ord": 225,
+      "Signature": "file* fopen(const char* filename, USE);",
+      "Comments": [
+        "Opens a file for reading, but differs from C++ standard fopen() by taking 2nd parameter",
+        "2nd Parameter determines how the file will be used"
+      ]
+    },
+    {
+      "name": "F_PRINTF",
+      "ord": 226,
+      "Signature": "int fprintf ( FILE * stream, const char * format, ... );",
+      "Comments": [
+        "Writes the C string pointed by format to the stream."
+      ]
+    },
+    {
+      "name": "F_PUTC",
+      "ord": 227,
+      "Signature": "int fputc(int character, FILE *stream );",
+      "Comments": [
+        "Write the input character to the specified stream"
+      ]
+    },
+    {
+      "name": "F_PUTCHAR",
+      "ord": 228,
+      "Signature": "int putchar ( int character );",
+      "Comments": [
+        "Writes a character to the standard output (stdout)."
+      ]
+    },
+    {
+      "name": "F_READ",
+      "ord": 229,
+      "Signature": "size_t fread(void* ptr, size_t size, size_t count, FILE* stream );",
+      "Comments": [
+        "Reads an array of count elements, each one with a size of size bytes, from the stream and stores them in the block of memory specified by ptr."
+      ]
+    },
+    {
+      "name": "GALFREE",
+      "ord": 230,
+      "Comments": []
+    },
+    {
+      "name": "FRZSEG",
+      "ord": 231,
+      "Comments": []
+    },
+    {
+      "name": "FSCANF",
+      "ord": 232,
+      "Comments": []
+    },
+    {
+      "name": "FSDANS",
+      "ord": 233,
+      "Signature": "void fsdans(char *oldans);",
+      "Comments": [
+        "Install answer string & compute ansoff,anslen fields (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDAPR",
+      "ord": 234,
+      "Signature": "void fsdapr(char *sesbuf, int sbleng, char *answers)",
+      "Comments": [
+        "Prepare answers (call after fsdroom()) (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDBD1",
+      "ord": 235,
+      "Signature": "void fsdbd1(char *answers);",
+      "Comments": [
+        "1st step to building an answer string (Full Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDBDF",
+      "ord": 236,
+      "Signature": "void fsdbdf(int fldno);",
+      "Comments": [
+        "Build answer string from field # from recent session (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDBDN",
+      "ord": 237,
+      "Signature": "void fsdbdn(char *name, char *value);",
+      "Comments": [
+        "Next step to building an answer string (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDBKG",
+      "ord": 238,
+      "Signature": "void fsdbkg(char *templt);",
+      "Comments": [
+        "Display background for Full-Screen entry mode (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDDAN",
+      "ord": 239,
+      "Signature": "void fsddan();",
+      "Comments": [
+        "Delete answer just found by fsdxan() from its answer string (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDDSP",
+      "ord": 240,
+      "Signature": "void fsddsp(char *templt);",
+      "Comments": [
+        "Display screen & filled-in fields (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDEGO",
+      "ord": 241,
+      "Signature": "void fsdego(int (*fldvfy)(int fldno, char *answer), void (*whndun)(int save));",
+      "Comments": [
+        "Begin Full-Screen Data Entry session (call after fsdroom(), fsdapr())"
+      ]
+    },
+    {
+      "name": "FSDEMG",
+      "ord": 242,
+      "Signature": "char fsdemg[];",
+      "Comments": [
+        "Error message for fsdppc(), fsdprc(), etc. (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDENT",
+      "ord": 243,
+      "Signature": "void fsdent(int inifld);",
+      "Comments": [
+        "Begin Full-Screen Data Entry session (ANSI-only)"
+      ]
+    },
+    {
+      "name": "FSDFXT",
+      "ord": 244,
+      "Signature": "char *stg=fsdfxt(int fldno, char *buffer, int maxlen);",
+      "Comments": [
+        "Store answer for field into buffer (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDINC",
+      "ord": 245,
+      "Signature": "void fsdinc(int c);",
+      "Comments": [
+        "Handle incoming character (ANSI-only) (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDINI",
+      "ord": 246,
+      "Signature": "void fsdini();",
+      "Comments": [
+        "Power-up init for Full Scren Data Entry software"
+      ]
+    },
+    {
+      "name": "FSDLIN",
+      "ord": 247,
+      "Signature": "void fsdlin();",
+      "Comments": [
+        "Begin data entry for non-ANSI (ASCII-only) users (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDMAN",
+      "ord": 248,
+      "Signature": "void fsdman(char *ansstg);",
+      "Comments": [
+        "Stuff more answers into current session (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDNAN",
+      "ord": 249,
+      "Signature": "char *stg=fsdnan(int fldno);",
+      "Comments": [
+        "Get a field's answer (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDNFY",
+      "ord": 250,
+      "Signature": "void fsdnfy();",
+      "Comments": [
+        "Notify system to call fsdprc() when it can (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDOBA",
+      "ord": 251,
+      "Signature": "int fsdoba();",
+      "Comments": [
+        "Number of output buffer bytes available"
+      ]
+    },
+    {
+      "name": "FSDORD",
+      "ord": 252,
+      "Signature": "int fsdord(int fldi);",
+      "Comments": [
+        "Returns ordinal value of multiple-choice answer, per field spec (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDOUC",
+      "ord": 253,
+      "Signature": "void fsdouc(char c);",
+      "Comments": [
+        "Display a Character (Full-Screen Data Entry"
+      ]
+    },
+    {
+      "name": "FSDOUS",
+      "ord": 254,
+      "Signature": "void fsddous(char *str);",
+      "Comments": [
+        "Display String (Full-Screen Data Entry)"
+      ]
+    },
+    {
+      "name": "FSDPAN",
+      "ord": 255,
+      "Comments": []
+    },
+    {
+      "name": "FSDPPC",
+      "ord": 256,
+      "Comments": []
+    },
+    {
+      "name": "FSDPRC",
+      "ord": 257,
+      "Comments": []
+    },
+    {
+      "name": "FSDQDP",
+      "ord": 258,
+      "Comments": []
+    },
+    {
+      "name": "FSDQOE",
+      "ord": 259,
+      "Comments": []
+    },
+    {
+      "name": "FSDRFT",
+      "ord": 260,
+      "Comments": []
+    },
+    {
+      "name": "FSDROOM",
+      "ord": 261,
+      "Signature": "int fsdroom(int tmpmsg, char *fldspc, int amode);",
+      "Comments": [
+        "Returns number of bytes session will need, or -1=error in data"
+      ]
+    },
+    {
+      "name": "FSDSAN",
+      "ord": 262,
+      "Comments": []
+    },
+    {
+      "name": "FSDSCB",
+      "ord": 263,
+      "Comments": []
+    },
+    {
+      "name": "FSDUSR",
+      "ord": 264,
+      "Comments": []
+    },
+    {
+      "name": "FSDXAN",
+      "ord": 265,
+      "Comments": []
+    },
+    {
+      "name": "FSEEK",
+      "ord": 266,
+      "Signature": "int fseek ( FILE * stream, long int offset, int origin );",
+      "Comments": [
+        "Sets the position indicator associated with the stream to a new position."
+      ]
+    },
+    {
+      "name": "FTELL",
+      "ord": 267,
+      "Signature": "long int ftell(FILE *stream );",
+      "Comments": [
+        "Gets the current position in the stream"
+      ]
+    },
+    {
+      "name": "FTFABT",
+      "ord": 268,
+      "Comments": []
+    },
+    {
+      "name": "FTFAHD",
+      "ord": 269,
+      "Comments": []
+    },
+    {
+      "name": "FTFBUF",
+      "ord": 270,
+      "Comments": []
+    },
+    {
+      "name": "FTFCAN",
+      "ord": 271,
+      "Comments": []
+    },
+    {
+      "name": "FTFCLI",
+      "ord": 272,
+      "Comments": []
+    },
+    {
+      "name": "FTFCLO",
+      "ord": 273,
+      "Comments": []
+    },
+    {
+      "name": "FTFNEW",
+      "ord": 274,
+      "Comments": []
+    },
+    {
+      "name": "FTFNWP",
+      "ord": 275,
+      "Comments": []
+    },
+    {
+      "name": "FTFOBA",
+      "ord": 276,
+      "Comments": []
+    },
+    {
+      "name": "FTFOUS",
+      "ord": 277,
+      "Comments": []
+    },
+    {
+      "name": "FTFOUT",
+      "ord": 278,
+      "Comments": []
+    },
+    {
+      "name": "FTFRCA",
+      "ord": 279,
+      "Comments": []
+    },
+    {
+      "name": "FTFRCL",
+      "ord": 280,
+      "Comments": []
+    },
+    {
+      "name": "FTFREX",
+      "ord": 281,
+      "Comments": []
+    },
+    {
+      "name": "FTFROP",
+      "ord": 282,
+      "Comments": []
+    },
+    {
+      "name": "FTFRRD",
+      "ord": 283,
+      "Comments": []
+    },
+    {
+      "name": "FTFRSK",
+      "ord": 284,
+      "Comments": []
+    },
+    {
+      "name": "FTFRSQ",
+      "ord": 285,
+      "Comments": []
+    },
+    {
+      "name": "FTFRWB",
+      "ord": 286,
+      "Comments": []
+    },
+    {
+      "name": "FTFRWR",
+      "ord": 287,
+      "Comments": []
+    },
+    {
+      "name": "FTFSCB",
+      "ord": 288,
+      "Comments": []
+    },
+    {
+      "name": "FTFSRT",
+      "ord": 289,
+      "Comments": []
+    },
+    {
+      "name": "FTFSTF",
+      "ord": 290,
+      "Comments": []
+    },
+    {
+      "name": "FTFXCA",
+      "ord": 291,
+      "Comments": []
+    },
+    {
+      "name": "FTFXCL",
+      "ord": 292,
+      "Comments": []
+    },
+    {
+      "name": "FTFXLK",
+      "ord": 293,
+      "Comments": []
+    },
+    {
+      "name": "FTFXOP",
+      "ord": 294,
+      "Comments": []
+    },
+    {
+      "name": "FTFXRB",
+      "ord": 295,
+      "Comments": []
+    },
+    {
+      "name": "FTFXRD",
+      "ord": 296,
+      "Comments": []
+    },
+    {
+      "name": "FTFXRL",
+      "ord": 297,
+      "Comments": []
+    },
+    {
+      "name": "FTFXSK",
+      "ord": 298,
+      "Comments": []
+    },
+    {
+      "name": "FTFXSQ",
+      "ord": 299,
+      "Comments": []
+    },
+    {
+      "name": "FTFZAD",
+      "ord": 300,
+      "Comments": []
+    },
+    {
+      "name": "FTGDNL",
+      "ord": 301,
+      "Comments": []
+    },
+    {
+      "name": "FTGNEW",
+      "ord": 302,
+      "Comments": []
+    },
+    {
+      "name": "FTGNUM",
+      "ord": 303,
+      "Comments": []
+    },
+    {
+      "name": "FTGPTR",
+      "ord": 304,
+      "Comments": []
+    },
+    {
+      "name": "FTGSBM",
+      "ord": 305,
+      "Comments": []
+    },
+    {
+      "name": "FTGSHO",
+      "ord": 306,
+      "Comments": []
+    },
+    {
+      "name": "FTGUSR",
+      "ord": 307,
+      "Comments": []
+    },
+    {
+      "name": "FTPLOG",
+      "ord": 308,
+      "Comments": []
+    },
+    {
+      "name": "FTPLOGH",
+      "ord": 309,
+      "Comments": []
+    },
+    {
+      "name": "FTUPTR",
+      "ord": 310,
+      "Comments": []
+    },
+    {
+      "name": "FUPKIL",
+      "ord": 311,
+      "Comments": []
+    },
+    {
+      "name": "FWRITE",
+      "ord": 312,
+      "Signature": "size_t fwrite ( const void * ptr, size_t size, size_t count, FILE * stream );",
+      "Comments": [
+        "Writes an array of count elements, each one with a size of size bytes, from the block of memory pointed by ptr to the current position in the stream."
+      ]
+    },
+    {
+      "name": "GABBTV",
+      "ord": 313,
+      "Signature": "void garbbtv(char *recptr, long abspos, intkeynum);",
+      "Comments": [
+        "Get a Btrieve record by 'absolute' position"
+      ]
+    },
+    {
+      "name": "GEN_HASKEY",
+      "ord": 314,
+      "Signature": "int ok=gen_haskey(char *lock, int unum, struct user *uptr);",
+      "Comments": [
+        "Does this user have the key to this lock?"
+      ]
+    },
+    {
+      "name": "GENRDN",
+      "ord": 315,
+      "Signature" : "int genrdn(int min,int max);",
+      "Comments": [ "Generates a random number between min and max"]
+    },
+    {
+      "name": "GETASC",
+      "ord": 316,
+      "Signature": "char *bufadr=getasc(int msgnum);",
+      "Comments": [
+        "Read value of CNF option (text blocks with ASCII compatible line terminators)"
+      ]
+    },
+    {
+      "name": "GETBTV",
+      "ord": 317,
+      "Signature": "void getbtv(char *recptr, char *key, int keynum, int getopt);",
+      "Comments": [
+        "Get a Btrieve record (bomb if not there)"
+      ]
+    },
+    {
+      "name": "GETCH",
+      "ord": 318,
+      "Comments": []
+    },
+    {
+      "name": "GETCHC",
+      "ord": 319,
+      "Comments": []
+    },
+    {
+      "name": "GETDATE",
+      "ord": 320,
+      "Comments": []
+    },
+    {
+      "name": "GETDTD",
+      "ord": 321,
+      "Signature": "long timendate=getdtd(int handle);",
+      "Comments": [
+        "Returns a file date and time",
+        "handle from a fopen()'d file"
+      ]
+    },
+    {
+      "name": "GETENV",
+      "ord": 322,
+      "Signature": "char* getenv(const char* name);",
+      "Comments": [
+        "Retrieves a C-string containing the value of the environment variable whose name is specified in the argument"
+      ]
+    },
+    {
+      "name": "GETIN",
+      "ord": 324,
+      "Comments": []
+    },
+    {
+      "name": "GETLST",
+      "ord": 325,
+      "Comments": []
+    },
+    {
+      "name": "GETMSG",
+      "ord": 326,
+      "Signature": "char *bufard=getmsg(msgnum);",
+      "Comments": [
+        "Read value of CNF option"
+      ]
+    },
+    {
+      "name": "GETTIME",
+      "ord": 327,
+      "Comments": []
+    },
+    {
+      "name": "GETTND",
+      "ord": 328,
+      "Signature": "long gmt70=gettnd(int handle);",
+      "Comments": [
+        "Returns a file's date and time (GMT)"
+      ]
+    },
+    {
+      "name": "GIVKEY",
+      "ord": 329,
+      "Comments": []
+    },
+    {
+      "name": "GLOBALCMD",
+      "ord": 330,
+      "Signature": "void globalcmd(ing (*rouptr)());",
+      "Comments": [
+        "Defines a global command handler routine"
+      ]
+    },
+    {
+      "name": "GMDNAM",
+      "ord": 331,
+      "Signature": "char *gmdnam(char *mdfnam);",
+      "Comments": [
+        "Get's a module's name from the specified .MDF file"
+      ]
+    },
+    {
+      "name": "GOPAGE",
+      "ord": 332,
+      "Signature": "int gopage(char *pagnam,int lngmnu,int reting);",
+      "Comments": [
+        "Jump to a specific page (or file)"
+      ]
+    },
+    {
+      "name": "GRBTXV",
+      "ord": 333,
+      "Comments": []
+    },
+    {
+      "name": "HASKEY",
+      "ord": 334,
+      "Signature": "int haskey(lock);",
+      "Comments": [
+        "Does the user have the specified key"
+      ],
+      "SignatureFormat": "int haskey({0});",
+      "PrecedingInstructions": [
+        {
+          "Offset": -1,
+          "Op": "PUSH",
+          "Type": "int",
+          "Name": "Lock"
+        }
+      ]
+    },
+    {
+      "name": "HASMKEY",
+      "ord": 335,
+      "Signature": "int ok=hasmkey(int msgnum);",
+      "Comments": [
+        "Returns if the user has the key specified in an offline Security and Accounting option",
+        "1 == yes, 0 == no"
+      ]
+    },
+    {
+      "name": "HDLCHC",
+      "ord": 336,
+      "Comments": []
+    },
+    {
+      "name": "HDLINP",
+      "ord": 337,
+      "Comments": []
+    },
+    {
+      "name": "HDLUID",
+      "ord": 338,
+      "Signature": "int hdluid(char *stg);",
+      "Comments": [
+        "Handle the entering of a User-Id"
+      ]
+    },
+    {
+      "name": "HEXOPT",
+      "ord": 339,
+      "Signature": "unsigned hval=hexopt(int msgnum, unsigned floor, unsigned ceil);",
+      "Comments": [
+        "Get hex option from an MCV file"
+      ]
+    },
+    {
+      "name": "HOWBUY",
+      "ord": 340,
+      "Comments": []
+    },
+    {
+      "name": "HPKROU",
+      "ord": 341,
+      "Comments": []
+    },
+    {
+      "name": "HUPALL",
+      "ord": 342,
+      "Comments": []
+    },
+    {
+      "name": "IBM2ANS",
+      "ord": 343,
+      "Comments": []
+    },
+    {
+      "name": "INIMSG",
+      "ord": 344,
+      "Signature": "void inimsg(unsigned maxsiz);",
+      "Comments": [
+        "Initializes the message buffer"
+      ]
+    },
+    {
+      "name": "INIPRF",
+      "ord": 345,
+      "Comments": []
+    },
+    {
+      "name": "INISCN",
+      "ord": 346,
+      "Comments": []
+    },
+    {
+      "name": "INJACR",
+      "ord": 347,
+      "Signature": "void injacr();",
+      "Comments": [
+        "Injects a <CR> into the current channel"
+      ]
+    },
+    {
+      "name": "INJOTH",
+      "ord": 348,
+      "Signature": "int gotIt=injoth()",
+      "Comments": [
+        "Inject a message to another user (implicit inputs othusn, prfbuf).",
+        "1 = User got it, 0 = User was busy"
+      ]
+    },
+    {
+      "name": "INPLEN",
+      "ord": 349,
+      "Signature": "int inplen;",
+      "Comments": [
+        "Total length us the user input in bytes"
+      ]
+    },
+    {
+      "name": "INPUT",
+      "ord": 350,
+      "Signature": "char input[];",
+      "Comments": [
+        "User Input lines"
+      ]
+    },
+    {
+      "name": "INSBTV",
+      "ord": 351,
+      "Signature": "void insbtv(char *recptr);",
+      "Comments": [
+        "Insert new fixed-length Btrieve record"
+      ]
+    },
+    {
+      "name": "INSTAT",
+      "ord": 352,
+      "Signature": "int isin=instat(char *usrid, int qstate);",
+      "Comments": [
+        "Determines if a user is using a specific module"
+      ]
+    },
+    {
+      "name": "INT86",
+      "ord": 353,
+      "Comments": []
+    },
+    {
+      "name": "INT86X",
+      "ord": 354,
+      "Comments": []
+    },
+    {
+      "name": "INTDOS",
+      "ord": 355,
+      "Comments": []
+    },
+    {
+      "name": "INTDOSX",
+      "ord": 356,
+      "Comments": []
+    },
+    {
+      "name": "INVBTV",
+      "ord": 357,
+      "Signature": "void invbtv(char *recptr, int length);",
+      "Comments": [
+        "Insert variable length Btrieve record"
+      ]
+    },
+    {
+      "name": "IOCTL",
+      "ord": 358,
+      "Comments": []
+    },
+    {
+      "name": "ISATTY",
+      "ord": 359,
+      "Comments": []
+    },
+    {
+      "name": "ISFILN",
+      "ord": 360,
+      "Comments": []
+    },
+    {
+      "name": "ISSELC",
+      "ord": 361,
+      "Signature": "int valid=isselc(int c);",
+      "Comments": [
+        "Checks if the input is a valid menu-select character",
+        "1 == yes, 0 == no"
+      ]
+    },
+    {
+      "name": "ISSUPC",
+      "ord": 362,
+      "Comments": []
+    },
+    {
+      "name": "ISTXVC",
+      "ord": 363,
+      "Signature": "int valid=istxvc(int c);",
+      "Comments": [
+        "Checks if the input is a valid text-variable character",
+        "1 == yes, 0 == no"
+      ]
+    },
+    {
+      "name": "ISUIDC",
+      "ord": 364,
+      "Signature": "int valid=isuidc(int c);",
+      "Comments": [
+        "Checks if the input is a valid user-id character",
+        "1 == yes, 0 == no"
+      ]
+    },
+    {
+      "name": "ISUPLO",
+      "ord": 365,
+      "Comments": []
+    },
+    {
+      "name": "ITOA",
+      "ord": 366,
+      "Signature": "char *  itoa ( int value, char * str, int base );",
+      "Comments": [
+        "Converts an integer value to a null-terminated string using the specified base and stores the result in the array given by str"
+      ]
+    },
+    {
+      "name": "KBHIT",
+      "ord": 367,
+      "Comments": []
+    },
+    {
+      "name": "KEYHIT",
+      "ord": 368,
+      "Comments": []
+    },
+    {
+      "name": "KEYNAM",
+      "ord": 369,
+      "Comments": []
+    },
+    {
+      "name": "KILCHN",
+      "ord": 370,
+      "Comments": []
+    },
+    {
+      "name": "KILCTR",
+      "ord": 371,
+      "Comments": []
+    },
+    {
+      "name": "KILETC",
+      "ord": 372,
+      "Comments": []
+    },
+    {
+      "name": "KILIPG",
+      "ord": 373,
+      "Signature": "int killpg;",
+      "Comments": [
+        "Kill-system command in progress"
+      ]
+    },
+    {
+      "name": "KILOOP",
+      "ord": 374,
+      "Comments": []
+    },
+    {
+      "name": "KILSRC",
+      "ord": 375,
+      "Comments": []
+    },
+    {
+      "name": "KILUID",
+      "ord": 376,
+      "Comments": []
+    },
+    {
+      "name": "L2AS",
+      "ord": 377,
+      "Signature": "stg=12as(lnurn);",
+      "Comments": [
+        "Converts a long to an ASCII string"
+      ]
+    },
+    {
+      "name": "LASAHDL",
+      "ord": 378,
+      "Comments": []
+    },
+    {
+      "name": "LASCAN",
+      "ord": 379,
+      "Comments": []
+    },
+    {
+      "name": "LASMHDL",
+      "ord": 380,
+      "Comments": []
+    },
+    {
+      "name": "LASTWD",
+      "ord": 381,
+      "Signature": "char *ptr=lastwd(char *stg);",
+      "Comments": [
+        "Get the last word of a string"
+      ]
+    },
+    {
+      "name": "LBLHUE",
+      "ord": 382,
+      "Comments": []
+    },
+    {
+      "name": "LDEDCRD",
+      "ord": 383,
+      "Signature": "int enuf=ldedcrd(struct useracc *uptr, long amount, int real, int asmuch);",
+      "Comments": [
+        "Deduct credits from an 'active' user account structure residing in memory",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "LINCST",
+      "ord": 384,
+      "Comments": []
+    },
+    {
+      "name": "LINSUSD",
+      "ord": 385,
+      "Comments": []
+    },
+    {
+      "name": "LISTING",
+      "ord": 386,
+      "Comments": []
+    },
+    {
+      "name": "LIVEPH",
+      "ord": 387,
+      "Signature": "char *liveph;",
+      "Comments": [
+        "The first phone lie reserved for live users"
+      ]
+    },
+    {
+      "name": "LLNBTV",
+      "ord": 388,
+      "Signature": "int reclen=llnbtv();",
+      "Comments": [
+        "Find the record length of the most recently read record"
+      ]
+    },
+    {
+      "name": "LNGOPT",
+      "ord": 389,
+      "Signature": "long lngopt(int msgnum,long floor,long ceiling);",
+      "SignatureFormat": "long lngopt({0},{1},{2});",
+      "Comments": [
+        "Gets a large numeric option from the MCV File"
+      ],
+      "PrecedingInstructions": [
+        {
+          "Offset": -1,
+          "Op": "PUSH",
+          "Type": "int",
+          "Name": "Message Number"
+        },
+        {
+          "Offset": -2,
+          "Op": "PUSH",
+          "Type": "longl",
+          "Name": "Floor (Low Byte)"
+        },
+        {
+          "Offset": -3,
+          "Op": "PUSH",
+          "Type": "longh",
+          "Name": "Floor (High Byte)"
+        },
+        {
+          "Offset": -4,
+          "Op": "PUSH",
+          "Type": "longl",
+          "Name": "Ceiling (Low Byte)"
+        },
+        {
+          "Offset": -5,
+          "Op": "PUSH",
+          "Type": "longh",
+          "Name": "Ceiling (High Byte)"
+        }
+      ]
+    },
+    {
+      "name": "LNGRND",
+      "ord": 390,
+      "Comments": []
+    },
+    {
+      "name": "LOADKEYS",
+      "ord": 391,
+      "Comments": []
+    },
+    {
+      "name": "LOCATE",
+      "ord": 392,
+      "Comments": []
+    },
+    {
+      "name": "LONGJMP",
+      "ord": 393,
+      "Comments": []
+    },
+    {
+      "name": "LONSTF",
+      "ord": 394,
+      "Signature": "int lonstf()",
+      "Comments": [
+        "Supplemental log-on 'stuff'"
+      ]
+    },
+    {
+      "name": "LOSCAR",
+      "ord": 395,
+      "Comments": []
+    },
+    {
+      "name": "LSEEK",
+      "ord": 396,
+      "Comments": []
+    },
+    {
+      "name": "LTOA",
+      "ord": 397,
+      "Comments": []
+    },
+    {
+      "name": "MAINHDL",
+      "ord": 398,
+      "Comments": []
+    },
+    {
+      "name": "MAKHDL",
+      "ord": 399,
+      "Signature": "void makhdl(char *stg);",
+      "Comments": [
+        "'Make Handle' for use with Btrieve"
+      ]
+    },
+    {
+      "name": "GALMALLOC",
+      "ord": 400,
+      "Comments": []
+    },
+    {
+      "name": "MARGC",
+      "ord": 401,
+      "Signature": "int margc;",
+      "Comments": [
+        "Number of words in the user input line",
+        "Value initalized by parsin()"
+      ]
+    },
+    {
+      "name": "MARGN",
+      "ord": 402,
+      "Signature": "char *margn[];",
+      "Comments": [
+        "An Array of pointers to the ENDS of the words in the user's input line",
+        "Value initalized by parsin()"
+      ]
+    },
+    {
+      "name": "MARGV",
+      "ord": 403,
+      "Signature": "char *margv[];",
+      "Comments": [
+        "An array of pointers to the words in user's input line",
+        "Value initalized by parsin()"
+      ]
+    },
+    {
+      "name": "MAXTAGS",
+      "ord": 404,
+      "Comments": []
+    },
+    {
+      "name": "MDFGETS",
+      "ord": 405,
+      "Signature": "char *bufprt=mdfgets(char *buffer, int size, FILE *fp);",
+      "Comments": [
+        "Read a line of text from a file"
+      ]
+    },
+    {
+      "name": "MDSTATS",
+      "ord": 406,
+      "Comments": []
+    },
+    {
+      "name": "MEMCATA",
+      "ord": 407,
+      "Comments": []
+    },
+    {
+      "name": "MEMCMP",
+      "ord": 408,
+      "Signature": "int memcmp ( const void * ptr1, const void * ptr2, size_t num );",
+      "Comments": [
+        "Compares the first num bytes of the block of memory pointed by ptr1 to the first num bytes pointed by ptr2, returning zero if they all match or a value different from zero representing which is greater if they do not."
+      ]
+    },
+    {
+      "name": "MEMCPY",
+      "ord": 409,
+      "Signature": "void* memcpy (void* destination, const void* source,size_t num );",
+      "Comments": [
+        "Copies the values of num bytes from the location pointed to by source directly to the memory block pointed to by destination."
+      ]
+    },
+    {
+      "name": "MEMMOVE",
+      "ord": 410,
+      "Comments": []
+    },
+    {
+      "name": "MEMSET",
+      "ord": 411,
+      "Signature": "void memset(void *ptr, int value, size_t num);",
+      "Comments": [
+        "Sets the first num bytes of the block of memory with the specified value"
+      ]
+    },
+    {
+      "name": "MJRMB",
+      "ord": 412,
+      "Signature": "FILE *mjrmb;",
+      "Comments": [
+        "Executive named-message file block prt"
+      ]
+    },
+    {
+      "name": "MKDIR",
+      "ord": 413,
+      "Comments": []
+    },
+    {
+      "name": "MMUCRR",
+      "ord": 414,
+      "Signature": "int mmucrr;",
+      "Comments": [
+        "Main menu credit consumption rate per minute"
+      ]
+    },
+    {
+      "name": "MNUBB",
+      "ord": 415,
+      "Comments": []
+    },
+    {
+      "name": "MNUOFF",
+      "ord": 416,
+      "Signature": "struct usrmnu *mnuoff(int unum);",
+      "Comments": [
+        "Returns the pointer of the User's menu info"
+      ]
+    },
+    {
+      "name": "MODULE",
+      "ord": 417,
+      "Signature": "struct module{...} **module;",
+      "Comments": [
+        "Module Interface Block that contains method references for system events (logoff supplemental, login supplemental, etc.)"
+      ]
+    },
+    {
+      "name": "MONORCOL",
+      "ord": 418,
+      "Comments": []
+    },
+    {
+      "name": "MORCNC",
+      "ord": 419,
+      "Signature": "char ch=morcnc();",
+      "Comments": [
+        "Checks to see if there's any more command to parse",
+        "NULL if none "
+      ]
+    },
+    {
+      "name": "MOVMEM",
+      "ord": 420,
+      "Signature": "void movmem(char *source, char *destination, unsigned nbytes);",
+      "Comments": [
+        "Move a block of memory",
+        "Translates in .H file to either memmove(d,s,n) or memcpy(d,s,n) depending on MS version"
+      ]
+    },
+    {
+      "name": "MSGSCAN",
+      "ord": 421,
+      "Signature": "char *msgscan(char *msgfile,char *vblname);",
+      "SignatureFormat": "char *msgscan({0},{1});",
+      "Comments": [
+        "Read a CNF option from a .MSG file"
+      ],
+      "PrecedingInstructions": [
+        {
+          "Offset": -1,
+          "Op": "PUSH",
+          "Type": "string",
+          "Name": "MSG File"
+        },
+        {
+          "Offset": -3,
+          "Op": "PUSH",
+          "Type": "string",
+          "Name": "Variable Name"
+        }
+      ]
+    },
+    {
+      "name": "MSGSEEK",
+      "ord": 422,
+      "Comments": []
+    },
+    {
+      "name": "MTGBAS",
+      "ord": 424,
+      "Comments": []
+    },
+    {
+      "name": "MTGCHN",
+      "ord": 425,
+      "Comments": []
+    },
+    {
+      "name": "MTGSTG",
+      "ord": 426,
+      "Comments": []
+    },
+    {
+      "name": "NAMACLS",
+      "ord": 427,
+      "Comments": []
+    },
+    {
+      "name": "NCDATE",
+      "ord": 428,
+      "Signature": "char *ascdat=ncdate(int date);",
+      "Comments": [
+        "Encode date into 'MM/DD/YY' format"
+      ]
+    },
+    {
+      "name": "NCEDAT",
+      "ord": 429,
+      "Signature": "char *ascdat(int date);",
+      "Comments": [
+        "Converts date from int format YYYYYYYMMMMDDDDD to 'DD-MMM-YY'"
+      ]
+    },
+    {
+      "name": "NCTIME",
+      "ord": 430,
+      "Signature": "char *asctim=nctime(int time);",
+      "Comments": [
+        "Encode the time into 'HH:MM:SS'",
+        "Input is int returned from time()"
+      ]
+    },
+    {
+      "name": "NDEDCRD",
+      "ord": 431,
+      "Signature": "int enuf=ndedcrd(char *userid, long amount, int real, int asmuch);",
+      "Comments": [
+        "Deduct credits from an offline account"
+      ]
+    },
+    {
+      "name": "NKYREC",
+      "ord": 432,
+      "Comments": []
+    },
+    {
+      "name": "NLINIU",
+      "ord": 433,
+      "Comments": []
+    },
+    {
+      "name": "NMODS",
+      "ord": 434,
+      "Signature": "int nmods;",
+      "Comments": [
+        "Number of modules currently online"
+      ]
+    },
+    {
+      "name": "NOW",
+      "ord": 435,
+      "Signature": "int time=now()",
+      "Comments": [
+        "Returns the time of day it is bitwise HHHHHMMMMMMSSSSS coding",
+        "HHHHH * 2048 representing 0 through 23",
+        "MMMMMM * 32 representing 0 through 59",
+        "SSSSS representing the even numbers 0 though 58",
+        "Use nctime() to parse"
+      ]
+    },
+    {
+      "name": "NSEXPLOTO",
+      "ord": 436,
+      "Comments": []
+    },
+    {
+      "name": "NTERMS",
+      "ord": 437,
+      "Signature": "int nterms;",
+      "Comments": [
+        "Total number of channels defined"
+      ]
+    },
+    {
+      "name": "NTFYSOPR",
+      "ord": 438,
+      "Comments": []
+    },
+    {
+      "name": "NUMBYTS",
+      "ord": 439,
+      "Comments": []
+    },
+    {
+      "name": "NUMFILS",
+      "ord": 440,
+      "Comments": []
+    },
+    {
+      "name": "NUMOPT",
+      "ord": 441,
+      "Signature": "int numopt(int msgnum,int floor,int ceiling);",
+      "Comments": [
+        "Retrieves a numeric option from MCV file"
+      ],
+      "SignatureFormat": "numopt({0}, {1}, {2})",
+      "PrecedingInstructions": [
+        {
+          "Offset": -1,
+          "Op": "PUSH",
+          "Type": "int",
+          "Operand": 0,
+          "Name": "Message Number"
+        },
+        {
+          "Offset": -2,
+          "Op": "PUSH",
+          "Type": "int",
+          "Operand": 0,
+          "Name": "Floor"
+        },
+        {
+          "Offset": -3,
+          "Op": "PUSH",
+          "Type": "int",
+          "Operand": 0,
+          "Name": "Ceiling"
+        }
+      ]
+    },
+    {
+      "name": "NXTCMD",
+      "ord": 442,
+      "Signature": "char *nxtcmd;",
+      "Comments": [
+        "The global variable 'nxtcmd' in CNCUTL.C keeps track of what has already been interpreted from the user's command - it points to the rest of the command."
+      ]
+    },
+    {
+      "name": "NXTLOF",
+      "ord": 443,
+      "Comments": []
+    },
+    {
+      "name": "OBTBTV",
+      "ord": 444,
+      "Signature": "int obtbtv(char *recptr, char* key, int keynum, int obtopt);",
+      "Comments": [
+        "Acquire a record (if you can) from Btrieve"
+      ]
+    },
+    {
+      "name": "ODD",
+      "ord": 445,
+      "Signature": "char oddparity=odd(char somebyte);",
+      "Comments": [
+        "Compute odd parity of the input"
+      ]
+    },
+    {
+      "name": "ODEDCRD",
+      "ord": 446,
+      "Signature": "int enuf=odedcrd(int unum, long amount, int real, int asmuch);",
+      "Comments": [
+        "Deduct credits from an online account"
+      ]
+    },
+    {
+      "name": "OMDBTV",
+      "ord": 447,
+      "Comments": []
+    },
+    {
+      "name": "ONBBS",
+      "ord": 448,
+      "Signature": "int onbbs(char *uid, int invisb);",
+      "Comments": [
+        "Is a userid ANYWHERE on the BBS? (even logging in)",
+        "0 == use INVISB flag in decision",
+        "1 == ignore INVISB flag"
+      ]
+    },
+    {
+      "name": "ONSYS",
+      "ord": 449,
+      "Signature": "int ison=onsys(char *usrid);",
+      "Comments": [
+        "Determines if a user is online",
+        "1 == user is online & logged in"
+      ]
+    },
+    {
+      "name": "ONSYSN",
+      "ord": 450,
+      "Signature": "int onsysn(char *uid,int invis);",
+      "Comments": [
+        "Checks uid to see if they're on the system"
+      ]
+    },
+    {
+      "name": "OPEN",
+      "ord": 451,
+      "Comments": []
+    },
+    {
+      "name": "OPFILE",
+      "ord": 452,
+      "Comments": []
+    },
+    {
+      "name": "OPINF",
+      "ord": 453,
+      "Comments": []
+    },
+    {
+      "name": "OPNANS",
+      "ord": 454,
+      "Comments": []
+    },
+    {
+      "name": "OPNBTV",
+      "ord": 455,
+      "Signature": "BTVFILE *bbptr=opnbtv(char *filnae, int reclen);",
+      "Comments": [
+        "Opens a Btrieve file for I/O"
+      ]
+    },
+    {
+      "name": "OPNMSG",
+      "ord": 456,
+      "Signature": "FILE *mbkprt=opnmsg(char *fileName)",
+      "Comments": [
+        "Opens the specified CNF file (.MCV in runtime form)",
+        "Prior PUSH contains file name reference"
+      ]
+    },
+    {
+      "name": "OTHKEY",
+      "ord": 457,
+      "Comments": []
+    },
+    {
+      "name": "OTHUAP",
+      "ord": 458,
+      "Signature": "struct usracc *othuaP;",
+      "Comments": [
+        "Pointer to structure for that user in the 'usracc' structure (set by onsys() or instat())"
+      ]
+    },
+    {
+      "name": "OTHUSN",
+      "ord": 459,
+      "Signature": "int othusn;",
+      "Comments": [
+        "User Number of the other user (set by onsys() or instat())"
+      ]
+    },
+    {
+      "name": "OTHUSP",
+      "ord": 460,
+      "Signature": "struct user *othusp;",
+      "Comments": [
+        "Pointer to structure for that user in the user[] array (set by onsys() or instat())"
+      ]
+    },
+    {
+      "name": "OTSTCRD",
+      "ord": 461,
+      "Signature": "int enuf=otstcrd(int unum, long amount, int real);",
+      "Comments": [
+        "Test if the user has enough credits",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "OUTBSZ",
+      "ord": 462,
+      "Signature": "int outbsz;",
+      "Comments": [
+        "Output buffer size per channel"
+      ]
+    },
+    {
+      "name": "OUTPRF",
+      "ord": 463,
+      "Signature": "outprf (unum);",
+      "Comments": [
+        "Send prfbuf to a channel & clear"
+      ]
+    },
+    {
+      "name": "PACCIN",
+      "ord": 464,
+      "Comments": []
+    },
+    {
+      "name": "PACCIT",
+      "ord": 465,
+      "Comments": []
+    },
+    {
+      "name": "PADFLD",
+      "ord": 466,
+      "Comments": []
+    },
+    {
+      "name": "PARSIN",
+      "ord": 467,
+      "Signature": "void parsin();",
+      "Comments": [
+        "Parses the input line (null terminating each word)"
+      ]
+    },
+    {
+      "name": "PFNLVL",
+      "ord": 468,
+      "Signature": "int pfnlvl;",
+      "Comments": [
+        "'Profanity Level' of the Input (from configuration)"
+      ]
+    },
+    {
+      "name": "PLTILE",
+      "ord": 469,
+      "Comments": []
+    },
+    {
+      "name": "POWPRF",
+      "ord": 470,
+      "Comments": []
+    },
+    {
+      "name": "PRAT",
+      "ord": 471,
+      "Comments": []
+    },
+    {
+      "name": "PRCRTK",
+      "ord": 472,
+      "Comments": []
+    },
+    {
+      "name": "PREPFF",
+      "ord": 473,
+      "Comments": []
+    },
+    {
+      "name": "PRF",
+      "ord": 474,
+      "Signature": "prf(string); ",
+      "Comments": [
+        "Like printf(), except the converted text goes into a buffer"
+      ]
+    },
+    {
+      "name": "PRFBUF",
+      "ord": 475,
+      "Signature": "char *prfbuf;",
+      "Comments": [
+        "Output buffer of prd() and prdmsg()"
+      ]
+    },
+    {
+      "name": "PRFMSG",
+      "ord": 476,
+      "Signature": "prfmsg(msgnum,p1,p2, ..• ,pn);",
+      "Comments": [
+        "Like prf(), but the control string comes from an .MCV file",
+        "Preceding PUSH holds the Message # from the .MCV file"
+      ]
+    },
+    {
+      "name": "PRFPTR",
+      "ord": 477,
+      "Signature": "char *prfptr;",
+      "Comments": [
+        "Pointer to the current position in prfbuf"
+      ]
+    },
+    {
+      "name": "PRFSPD",
+      "ord": 478,
+      "Comments": []
+    },
+    {
+      "name": "PRINTFAT",
+      "ord": 479,
+      "Comments": []
+    },
+    {
+      "name": "PROFAN",
+      "ord": 480,
+      "Comments": []
+    },
+    {
+      "name": "PROFF",
+      "ord": 481,
+      "Comments": []
+    },
+    {
+      "name": "PSMATM",
+      "ord": 482,
+      "Comments": []
+    },
+    {
+      "name": "PUTENV",
+      "ord": 483,
+      "Comments": []
+    },
+    {
+      "name": "QNPBTV",
+      "ord": 484,
+      "Signature": "int qnpbtv (int getopt);",
+      "Comments": [
+        "Query Next/Previous Btrieve utility"
+      ]
+    },
+    {
+      "name": "QRYBTV",
+      "ord": 485,
+      "Signature": "int is=qrybtv(char *key, int keynum, int qryopt);",
+      "Comments": [
+        "Query whether a record exists",
+        "1 == exists, 0 == doesn't exist"
+      ]
+    },
+    {
+      "name": "RAND",
+      "ord": 486,
+      "Signature": "int rand (void);",
+      "Comments": [
+        "Returns a pseudo-random integral number in the range between 0 and RAND_MAX."
+      ]
+    },
+    {
+      "name": "RAWMSG",
+      "ord": 487,
+      "Signature": "char *bufadr=rawmsg(int msgnum);",
+      "Comments": [
+        "Read value of CNF option"
+      ]
+    },
+    {
+      "name": "RDEDCRD",
+      "ord": 488,
+      "Signature": "int enuf=dedcrd(long amount, int asmuch);",
+      "Comments": [
+        "Deduct real credits from online acct",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "RDFILE",
+      "ord": 489,
+      "Comments": []
+    },
+    {
+      "name": "REALLOC",
+      "ord": 490,
+      "Comments": []
+    },
+    {
+      "name": "REDOLOCKS",
+      "ord": 491,
+      "Comments": []
+    },
+    {
+      "name": "REGISTER_MODULE",
+      "ord": 492,
+      "Signature": "statecode=register_module(ptrmodule);",
+      "Comments": [
+        "Registers the Module with the MajorBBS system"
+      ]
+    },
+    {
+      "name": "REGISTER_STASCN",
+      "ord": 493,
+      "Comments": []
+    },
+    {
+      "name": "REGISTER_TEXTVAR",
+      "ord": 494,
+      "Signature": "int register_textvar(char *name,char *(*varrou)());",
+      "Comments": [
+        "Registers a Text Variable for use"
+      ]
+    },
+    {
+      "name": "REGSCN",
+      "ord": 495,
+      "Comments": []
+    },
+    {
+      "name": "RENAME",
+      "ord": 496,
+      "Signature": "int rename(const char *oldname, const char *newname );",
+      "Comments": [
+        "Changes the name of the file or directory specified by oldname to newname"
+      ]
+    },
+    {
+      "name": "REPMEM",
+      "ord": 497,
+      "Signature": "void repmem(void *destination, char *pattern, int nbyt);",
+      "Comments": [
+        "Replicate a pattern in memory"
+      ]
+    },
+    {
+      "name": "REWIND",
+      "ord": 498,
+      "Comments": []
+    },
+    {
+      "name": "RMDIR",
+      "ord": 499,
+      "Comments": []
+    },
+    {
+      "name": "RMVKEY",
+      "ord": 500,
+      "Comments": []
+    },
+    {
+      "name": "RMVWHT",
+      "ord": 501,
+      "Signature": "rmvwht(char *string);",
+      "Comments": [
+        "Remove all whitespace characters"
+      ]
+    },
+    {
+      "name": "RSETOP",
+      "ord": 502,
+      "Comments": []
+    },
+    {
+      "name": "RSMODE",
+      "ord": 503,
+      "Signature": "int rsmode;",
+      "Comments": [
+        "Reset-mode code for channels"
+      ]
+    },
+    {
+      "name": "RSMODES",
+      "ord": 504,
+      "Signature": "int *rsmodes;",
+      "Comments": [
+        "Reset-mode array by channel number"
+      ]
+    },
+    {
+      "name": "RSTBTV",
+      "ord": 505,
+      "Signature": "void rstbtv (void);",
+      "Comments": [
+        "Restores the last Btrieve data block for use"
+      ]
+    },
+    {
+      "name": "RSTCHN",
+      "ord": 506,
+      "Signature": "void rstchn();",
+      "Comments": [
+        "Completely reset a modem channel"
+      ]
+    },
+    {
+      "name": "RSTCUR",
+      "ord": 507,
+      "Comments": []
+    },
+    {
+      "name": "RSTLAN",
+      "ord": 508,
+      "Comments": []
+    },
+    {
+      "name": "RSTLOC",
+      "ord": 509,
+      "Comments": []
+    },
+    {
+      "name": "RSTMBK",
+      "ord": 510,
+      "Signature": "rstmbk();",
+      "Comments": [
+        "Restore previous MCV file block ptr from before last setmbk() call"
+      ]
+    },
+    {
+      "name": "RSTRIN",
+      "ord": 511,
+      "Signature": "void rstrin();",
+      "Comments": [
+        "Restore parsed input line (under effects of parsin()"
+      ]
+    },
+    {
+      "name": "RSTRXF",
+      "ord": 512,
+      "Signature": "void rstrxf();",
+      "Comments": [
+        "Restores screen-length to usracc setting"
+      ]
+    },
+    {
+      "name": "RSTWIN",
+      "ord": 513,
+      "Comments": []
+    },
+    {
+      "name": "RSTX25",
+      "ord": 514,
+      "Comments": []
+    },
+    {
+      "name": "RTIHDLR",
+      "ord": 515,
+      "Signature": "rtihdlr(void (*rouptr)(void));",
+      "Comments": [
+        "Register a real-time routine which requires it be executed more than once per second",
+        "Executes at 18hz"
+      ]
+    },
+    {
+      "name": "RTKICK",
+      "ord": 516,
+      "Signature": "rtkick(int time, void *rouptr());",
+      "Comments": [
+        "'Kick Off' routine after time delay"
+      ]
+    },
+    {
+      "name": "RTSTCRD",
+      "ord": 517,
+      "Signature": "int enuf=rtstcrd(long amount);",
+      "Comments": [
+        "Test if the user has enough real credits",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "SAFPSW",
+      "ord": 519,
+      "Comments": []
+    },
+    {
+      "name": "SAMEAS",
+      "ord": 520,
+      "Signature": "int match=sameas(char *stgl, char* stg2);",
+      "Comments": [
+        "Case-ignoring string match",
+        "Returns 1 if match, 0 otherwise"
+      ]
+    },
+    {
+      "name": "SAMEIN",
+      "ord": 521,
+      "Signature": "int found=samein(char *subs, char *string);",
+      "Comments": [
+        "Searches the string for any accurance of the substring",
+        "Returns 1 if it finds any"
+      ]
+    },
+    {
+      "name": "SAMETO",
+      "ord": 522,
+      "Signature": "int match=sameto(char *shorts, char *longs);",
+      "Comments": [
+        "Case-ignoring substring match"
+      ]
+    },
+    {
+      "name": "SAMPOK",
+      "ord": 524,
+      "Comments": []
+    },
+    {
+      "name": "SAYCRD",
+      "ord": 525,
+      "Comments": []
+    },
+    {
+      "name": "SCBLANK",
+      "ord": 526,
+      "Comments": []
+    },
+    {
+      "name": "SCN2AUX",
+      "ord": 527,
+      "Comments": []
+    },
+    {
+      "name": "SCN2MAI",
+      "ord": 528,
+      "Comments": []
+    },
+    {
+      "name": "SCNCOLOR",
+      "ord": 529,
+      "Comments": []
+    },
+    {
+      "name": "SCNGOAWAY",
+      "ord": 530,
+      "Comments": []
+    },
+    {
+      "name": "SCNIDS",
+      "ord": 531,
+      "Comments": []
+    },
+    {
+      "name": "SEGREAD",
+      "ord": 532,
+      "Comments": []
+    },
+    {
+      "name": "SELNUM",
+      "ord": 533,
+      "Comments": []
+    },
+    {
+      "name": "SETBTV",
+      "ord": 534,
+      "Signature": "void setbtv(BTVFILE *bbprt);",
+      "Comments": [
+        "Used to set the Btrieve file for all subsequent database functions"
+      ]
+    },
+    {
+      "name": "SETCNF",
+      "ord": 535,
+      "Comments": []
+    },
+    {
+      "name": "SETCRIT",
+      "ord": 536,
+      "Signature": "void setcrit();",
+      "Comments": [
+        "Sets the DOS critical error handler to a routine that pops up a window"
+      ]
+    },
+    {
+      "name": "SETDATE",
+      "ord": 537,
+      "Comments": []
+    },
+    {
+      "name": "SETDTD",
+      "ord": 538,
+      "Signature": "int ok=setdtd(char *fname, int time, int date);",
+      "Comments": [
+        "Sets the date and time on a file"
+      ]
+    },
+    {
+      "name": "SETFSD",
+      "ord": 539,
+      "Comments": []
+    },
+    {
+      "name": "SETFTU",
+      "ord": 540,
+      "Comments": []
+    },
+    {
+      "name": "SETJMP",
+      "ord": 541,
+      "Comments": []
+    },
+    {
+      "name": "SETKEY",
+      "ord": 542,
+      "Comments": []
+    },
+    {
+      "name": "SETMBK",
+      "ord": 543,
+      "Signature": "FILE *setmbk(mbkptr);",
+      "Comments": [
+        "Sets the 'current' MCV file block pointer"
+      ]
+    },
+    {
+      "name": "SETMEM",
+      "ord": 544,
+      "Signature": "void setmem(char *destination, unsigned nbytes, char value);",
+      "Comments": [
+        "Set a block of memory to a value"
+      ]
+    },
+    {
+      "name": "SETTIME",
+      "ord": 545,
+      "Comments": []
+    },
+    {
+      "name": "SETTND",
+      "ord": 546,
+      "Signature": "int ok=settnd(char *fname, long gmt70);",
+      "Comments": [
+        "Sets the date and time for a file"
+      ]
+    },
+    {
+      "name": "SETVBUF",
+      "ord": 547,
+      "Comments": []
+    },
+    {
+      "name": "SETWIN",
+      "ord": 548,
+      "Comments": []
+    },
+    {
+      "name": "SHOCHL",
+      "ord": 549,
+      "Signature": "void shochl(char *legend,char sing,int attr);",
+      "Comments": [
+        "Show legend for channel with any attribute"
+      ]
+    },
+    {
+      "name": "SHOCST",
+      "ord": 550,
+      "Signature": "void shocst(char *summary, char *detail, p1, p1,...,pn);",
+      "Comments": [
+        "Displays a message in the Audit Trail",
+        "(summary max length = 32, detail max length = 64)"
+      ]
+    },
+    {
+      "name": "SHWCRD",
+      "ord": 551,
+      "Comments": []
+    },
+    {
+      "name": "SHWUSR",
+      "ord": 552,
+      "Comments": []
+    },
+    {
+      "name": "SKPWHT",
+      "ord": 553,
+      "Signature": "char *skpwht(char *string);",
+      "Comments": [
+        "Skip past whitespace, returns pointer to the first NULL or non-whitespace character in the string"
+      ]
+    },
+    {
+      "name": "SKPWRD",
+      "ord": 554,
+      "Signature" : "char *skpwrd(char *cp);", 
+      "Comments": [ "Skip past non-white spaces, returns first NULL or whitespace character in the string"]
+    },
+    {
+      "name": "SND2AL",
+      "ord": 555,
+      "Comments": []
+    },
+    {
+      "name": "SND2CH",
+      "ord": 556,
+      "Signature": "void snd2ch(int chan,char *text);",
+      "Comments": [
+        "Sends text to the specified channel"
+      ]
+    },
+    {
+      "name": "SOPEN",
+      "ord": 557,
+      "Comments": []
+    },
+    {
+      "name": "SORTSTGS",
+      "ord": 558,
+      "Signature": "sortstgs(char *strings[], int nstrings);",
+      "Comments": [
+        "Sorts a bunch of strings by re-arranging an array of pointers"
+      ]
+    },
+    {
+      "name": "SPR",
+      "ord": 559,
+      "Signature": "char *sprstg=spr(char *ctlstg, TYPE p1, TYPE p2,...,pn);",
+      "Comments": [
+        "sprintf-like string formatter utility",
+        "Main differentiator is that spr() supports long integer and floating point conversions"
+      ]
+    },
+    {
+      "name": "SPRINTF",
+      "ord": 560,
+      "Signature": "int sprintf(char *str, const char *format, ... );",
+      "Comments": [
+        "sprintf() function in C++ to handle string formatting"
+      ]
+    },
+    {
+      "name": "SRAND",
+      "ord": 561,
+      "Signature": "void srand (unsigned int seed);",
+      "Comments": [
+        "The pseudo-random number generator is initialized using the argument passed as seed."
+      ]
+    },
+    {
+      "name": "SSCANF",
+      "ord": 562,
+      "Signature": "int sscanf(const char *s, const char *format, ...);",
+      "Comments": [
+        "Reads data from s and stores them accounting to parameter format into the locations given by the additional arguments"
+      ]
+    },
+    {
+      "name": "SSTATR",
+      "ord": 563,
+      "Comments": []
+    },
+    {
+      "name": "STANSI",
+      "ord": 564,
+      "Signature": "void stansi();",
+      "Comments": [
+        "Set ANSI handling to useracc setting"
+      ]
+    },
+    {
+      "name": "STATUS",
+      "ord": 565,
+      "Signature": "int status;",
+      "Comments": [
+        "Raw status from btusts, where appropriate"
+      ]
+    },
+    {
+      "name": "STGOPT",
+      "ord": 566,
+      "Signature": "char *string=stgopt(int msgnum);",
+      "Comments": [
+        "Gets a string from an MCV file"
+      ],
+      "SignatureFormat": "char *string=stgopt({0});",
+      "PrecedingInstructions": [
+        {
+          "Offset": -1,
+          "Op": "PUSH",
+          "Type": "int",
+          "Operand": 0,
+          "Name": "Message Number"
+        }
+      ]
+    },
+    {
+      "name": "STIME",
+      "ord": 567,
+      "Comments": []
+    },
+    {
+      "name": "STOP_POLLING",
+      "ord": 568,
+      "Comments": []
+    },
+    {
+      "name": "STPBTV",
+      "ord": 569,
+      "Signature": "int stpbtv (void *recptr, int stpopt);",
+      "Comments": [
+        "'Step' based Btrieve operation"
+      ]
+    },
+    {
+      "name": "STRANSLEN",
+      "ord": 570,
+      "Comments": []
+    },
+    {
+      "name": "STRCAT",
+      "ord": 571,
+      "Signature": "char *strcat(char *destination, const char *source );",
+      "Comments": [
+        "Concatenates two strings"
+      ]
+    },
+    {
+      "name": "STRCHR",
+      "ord": 572,
+      "Signature": "char * strchr ( const char * str, int character );",
+      "Comments": [
+        "Returns a pointer to the first occuence of character in the C string str"
+      ]
+    },
+    {
+      "name": "STRCMP",
+      "ord": 573,
+      "Signature": "int strcmp ( const char * str1, const char * str2 );",
+      "Comments": [
+        "Compares the C string str1 to the C string str2"
+      ]
+    },
+    {
+      "name": "STRCPY",
+      "ord": 574,
+      "Signature": "char* strcpy(char* destination, const char* source );",
+      "Comments": [
+        "Copies the C string pointed by source into the array pointed by destination, including the terminating null character"
+      ]
+    },
+    {
+      "name": "STRDUP",
+      "ord": 575,
+      "Comments": []
+    },
+    {
+      "name": "STRICMP",
+      "ord": 576,
+      "Signature": "int stricmp(const char *string1, const char *string2);",
+      "Comments": [
+        "Compares strings without case sensitivity",
+        "0 == same"
+      ]
+    },
+    {
+      "name": "STRIPB",
+      "ord": 577,
+      "Comments": []
+    },
+    {
+      "name": "STRLEN",
+      "ord": 578,
+      "Signature": "size_t strlen(const char* str);",
+      "Comments": [
+        "Returns the length of the C string str."
+      ]
+    },
+    {
+      "name": "STRLWR",
+      "ord": 579,
+      "Signature": "char *lower=strlwr(char *string);",
+      "Comments": [
+        "Converts all uppercase letters in the string to lowercase"
+      ]
+    },
+    {
+      "name": "STRNCAT",
+      "ord": 580,
+      "Signature": "char *strncat(char *destination, const char *source, size_t num );",
+      "Comments": [
+        "Appends the first num characters of source to destination, plus a terminating null-character."
+      ]
+    },
+    {
+      "name": "STRNCMP",
+      "ord": 581,
+      "Comments": []
+    },
+    {
+      "name": "STRNCPY",
+      "ord": 582,
+      "Signature": "char *strncpy(char *destination, const char *source, size_t num);",
+      "Comments": [
+        "Copioes characters from a string"
+      ]
+    },
+    {
+      "name": "STRPLN",
+      "ord": 583,
+      "Comments": []
+    },
+    {
+      "name": "STRSTR",
+      "ord": 584,
+      "Signature": "char * strstr(char *str1, const char *str2 );",
+      "Comments": [
+        "Returns a pointer to the first occurence of str2 in str1, or a null pointer if str2 is not part of str1"
+      ]
+    },
+    {
+      "name": "STRTOK",
+      "ord": 585,
+      "Signature": "char *strtok(char *str, const char *delimiters );",
+      "Comments": [
+        "Splits the specified string into tokens based on the delimiters"
+      ]
+    },
+    {
+      "name": "STRTOL",
+      "ord": 586,
+      "Comments": []
+    },
+    {
+      "name": "STRUPR",
+      "ord": 587,
+      "Signature": "char *upper=strlwr(char *string);",
+      "Comments": [
+        "Converts all lowercase letters in 'string' to uppercase"
+      ]
+    },
+    {
+      "name": "STTBTV",
+      "ord": 588,
+      "Signature": "void sttbtv (int len);",
+      "Comments": []
+    },
+    {
+      "name": "STZCPY",
+      "ord": 589,
+      "Signature": "stzcpy(char *dest, char *source, int nbytes);",
+      "Comments": [
+        "Copies a string with a limit"
+      ]
+    },
+    {
+      "name": "SUBVERS",
+      "ord": 590,
+      "Comments": []
+    },
+    {
+      "name": "SUPCHC",
+      "ord": 591,
+      "Comments": []
+    },
+    {
+      "name": "SUPMB",
+      "ord": 592,
+      "Comments": []
+    },
+    {
+      "name": "SV",
+      "ord": 593,
+      "Signature": "struct sysvbl sv;",
+      "Comments": [
+        "System-Variable Btrieve Record Layout Struct (1 of 3)"
+      ]
+    },
+    {
+      "name": "SV2",
+      "ord": 594,
+      "Signature": "struct sysvb2 sv2;",
+      "Comments": [
+        "System-Variable Btrieve Record Layout Struct (2 of 3)"
+      ]
+    },
+    {
+      "name": "SWTCLS",
+      "ord": 595,
+      "Comments": []
+    },
+    {
+      "name": "SYSSTG",
+      "ord": 596,
+      "Comments": []
+    },
+    {
+      "name": "TAGTHS",
+      "ord": 597,
+      "Comments": []
+    },
+    {
+      "name": "TELL",
+      "ord": 598,
+      "Comments": []
+    },
+    {
+      "name": "TIME",
+      "ord": 599,
+      "Signature": "time_t time (time_t* timer);",
+      "Comments": [
+        "Get the current calendar time as a value of type time_t."
+      ]
+    },
+    {
+      "name": "TJOINROU",
+      "ord": 600,
+      "Comments": []
+    },
+    {
+      "name": "TODAY",
+      "ord": 601,
+      "Signature": "int date=today();",
+      "Comments": [
+        "Find out today's date coded as YYYYYYYMMMMDDDDD",
+        "(YYYYYYY-1980) * 512 representing 1980 through 2170",
+        "(MMMM*32) representing 1 through 12",
+        "DDDDD representing 1 through 31"
+      ]
+    },
+    {
+      "name": "TOKOPT",
+      "ord": 602,
+      "Signature": "int index=tokopt(int msgnum, char *token1, chat *token2,....,NULL);",
+      "Comments": [
+        "Checks a type E CNF option for one of several possible values",
+        "0 == not found, >= 1 == token number that was found"
+      ]
+    },
+    {
+      "name": "TOLOWER",
+      "ord": 603,
+      "Signature": "int tolower (int c);",
+      "Comments": [
+        "Converts a uppercase letter to lowercase"
+      ]
+    },
+    {
+      "name": "TOUPPER",
+      "ord": 604,
+      "Signature": "int toupper (int c);",
+      "Comments": [
+        "Converts a lowercase letter to uppercase"
+      ]
+    },
+    {
+      "name": "TPWIPE",
+      "ord": 605,
+      "Comments": []
+    },
+    {
+      "name": "TSHMSG",
+      "ord": 606,
+      "Comments": []
+    },
+    {
+      "name": "TSTCRD",
+      "ord": 607,
+      "Signature": "int enuf=tstcrd(long amount);",
+      "Comments": [
+        "Test if the user has enough credits",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "TZSET",
+      "ord": 608,
+      "Comments": []
+    },
+    {
+      "name": "UIDKEY",
+      "ord": 609,
+      "Comments": []
+    },
+    {
+      "name": "UIDXRF",
+      "ord": 610,
+      "Signature": "struct uidxrf;",
+      "Comments": [
+        "User-id cross reference structure"
+      ]
+    },
+    {
+      "name": "UINSYS",
+      "ord": 611,
+      "Signature": "int ison=uinsys(char *usrid);",
+      "Comments": [
+        "Determine if a user is online",
+        "1 == online anywhere in the system"
+      ]
+    },
+    {
+      "name": "UISUSN",
+      "ord": 612,
+      "Signature": "int uisusn;",
+      "Comments": [
+        "Global Variable set when uinsys() returns 1"
+      ]
+    },
+    {
+      "name": "ULTOA",
+      "ord": 613,
+      "Comments": []
+    },
+    {
+      "name": "UNFREZ",
+      "ord": 614,
+      "Comments": []
+    },
+    {
+      "name": "UNGETC",
+      "ord": 615,
+      "Signature": "int ungetc(int character,FILE *stream );",
+      "Comments": [
+        "Ungets character from stream and decreases the internal file position by 1"
+      ]
+    },
+    {
+      "name": "UNIXTODOS",
+      "ord": 616,
+      "Comments": []
+    },
+    {
+      "name": "UNLINK",
+      "ord": 617,
+      "Comments": []
+    },
+    {
+      "name": "UNPAD",
+      "ord": 618,
+      "Signature": "char *bufptr=unpad(char *string);",
+      "Comments": [
+        "Remove trailing blanks from input string"
+      ]
+    },
+    {
+      "name": "UPDACC",
+      "ord": 619,
+      "Comments": []
+    },
+    {
+      "name": "UPDBCKGND",
+      "ord": 620,
+      "Comments": []
+    },
+    {
+      "name": "UPDBTV",
+      "ord": 621,
+      "Signature": "void updbtv(char *recptr);",
+      "Comments": [
+        "Update the Btrieve current record"
+      ]
+    },
+    {
+      "name": "UPVBTV",
+      "ord": 622,
+      "Signature": "void upvbtv(char *recptr, int length);",
+      "Comments": [
+        "Update variable length Btrieve record"
+      ]
+    },
+    {
+      "name": "USAPTR",
+      "ord": 624,
+      "Signature": "struct usracc *usaptr;",
+      "Comments": [
+        "Points to that channel's 'usracc' struct"
+      ]
+    },
+    {
+      "name": "USER",
+      "ord": 625,
+      "Signature": "struct user;",
+      "Comments": [
+        "Contains information about the current user account (class, state, baud, etc.)"
+      ]
+    },
+    {
+      "name": "USRACC",
+      "ord": 626,
+      "Comments": []
+    },
+    {
+      "name": "USRIDX",
+      "ord": 627,
+      "Signature": "int usridx(int chan);",
+      "Comments": [
+        "Find 'usernum' given visible channel number"
+      ]
+    },
+    {
+      "name": "USRNUM",
+      "ord": 628,
+      "Signature": "int usrnum;",
+      "Comments": [
+        "Property with the User Number (Channel) of the user currently being serviced"
+      ]
+    },
+    {
+      "name": "USRPTR",
+      "ord": 629,
+      "Signature": "struct user *usrptr;",
+      "Comments": [
+        "Points to that channels 'user' struct"
+      ]
+    },
+    {
+      "name": "USRSON",
+      "ord": 630,
+      "Comments": []
+    },
+    {
+      "name": "VALDPC",
+      "ord": 631,
+      "Comments": []
+    },
+    {
+      "name": "VALIDIG",
+      "ord": 632,
+      "Comments": []
+    },
+    {
+      "name": "VALIDYN",
+      "ord": 633,
+      "Comments": []
+    },
+    {
+      "name": "VALPSW",
+      "ord": 634,
+      "Comments": []
+    },
+    {
+      "name": "VALUPC",
+      "ord": 635,
+      "Comments": []
+    },
+    {
+      "name": "VDAOFF",
+      "ord": 636,
+      "Signature": "char *vdaoff(int unum);",
+      "Comments": [
+        "Compute volatile data pointer for another user"
+      ]
+    },
+    {
+      "name": "VDAPTR",
+      "ord": 637,
+      "Signature": "char *vdaptr;",
+      "Comments": [
+        "Points to the Volatile Data Area",
+        "This is memory allocated for a channel and is used by the routines of a module"
+      ]
+    },
+    {
+      "name": "VDAREA",
+      "ord": 638,
+      "Comments": []
+    },
+    {
+      "name": "VDASIZ",
+      "ord": 639,
+      "Signature": "int vdasiz;",
+      "Comments": [
+        "Maximum size requirement of volatile data"
+      ]
+    },
+    {
+      "name": "VDATMP",
+      "ord": 640,
+      "Signature": "char *vdatmp;",
+      "Comments": [
+        "Points to the ad-hoc Volatile Data Area"
+      ]
+    },
+    {
+      "name": "VFYADN",
+      "ord": 641,
+      "Comments": []
+    },
+    {
+      "name": "VIDALC",
+      "ord": 642,
+      "Comments": []
+    },
+    {
+      "name": "VSPRINTF",
+      "ord": 643,
+      "Signature": "int vsprintf(char *s, const char *format, va_list arg);",
+      "Comments": [
+        "Writes formatted data from variable argument list to string"
+      ]
+    },
+    {
+      "name": "VSSCANF",
+      "ord": 644,
+      "Comments": []
+    },
+    {
+      "name": "WTWAIT",
+      "ord": 645,
+      "Comments": []
+    },
+    {
+      "name": "XLTCTLS",
+      "ord": 646,
+      "Signature": "void xltctls(char *txtbuf);",
+      "Comments": [
+        "Translate ASCII control characters"
+      ]
+    },
+    {
+      "name": "XLTMNU",
+      "ord": 647,
+      "Comments": []
+    },
+    {
+      "name": "XLTTXV",
+      "ord": 648,
+      "Signature": "char *xlttxv(char *buffer,int size);",
+      "Comments": [
+        "Translate buffer (possible tvars)"
+      ]
+    },
+    {
+      "name": "XYRTRM",
+      "ord": 649,
+      "Comments": []
+    },
+    {
+      "name": "YNOPT",
+      "ord": 650,
+      "Signature": "int ynopt(int msgnum);",
+      "SignatureFormat": "int ynopt({0});",
+      "Comments": [
+        "Retrieves a yes/no option from an MCV file, flag == 1 if value started with 'Y'"
+      ],
+      "PrecedingInstructions": [
+        {
+          "Offset": -1,
+          "Op": "PUSH",
+          "Type": "int",
+          "Name": "Message Number"
+        }
+      ]
+    },
+    {
+      "name": "ZAFILID",
+      "ord": 651,
+      "Comments": []
+    },
+    {
+      "name": "ZONKHL",
+      "ord": 652,
+      "Comments": []
+    },
+    {
+      "name": "_DGROUP",
+      "ord": 653,
+      "Comments": []
+    },
+    {
+      "name": "F_LDIV",
+      "ord": 654,
+      "Comments": [
+        "Performs Long division"
+      ]
+    },
+    {
+      "name": "F_LMOD",
+      "ord": 655,
+      "Comments": []
+    },
+    {
+      "name": "F_LUDIV",
+      "ord": 656,
+      "Comments": []
+    },
+    {
+      "name": "F_LUMOD",
+      "ord": 657,
+      "Comments": []
+    },
+    {
+      "name": "F_LXLSH",
+      "ord": 658,
+      "Comments": [
+        "Performs Long Shift Left"
+      ]
+    },
+    {
+      "name": "F_LXMUL",
+      "ord": 659,
+      "Comments": [
+        "Performs Long Multiplication"
+      ]
+    },
+    {
+      "name": "F_LXRSH",
+      "ord": 660,
+      "Comments": []
+    },
+    {
+      "name": "F_LXURSH",
+      "ord": 661,
+      "Comments": []
+    },
+    {
+      "name": "F_PADD",
+      "ord": 662,
+      "Comments": []
+    },
+    {
+      "name": "F_PCMP",
+      "ord": 663,
+      "Comments": []
+    },
+    {
+      "name": "F_PSUB",
+      "ord": 664,
+      "Comments": []
+    },
+    {
+      "name": "F_SCOPY",
+      "ord": 665,
+      "Comments": []
+    },
+    {
+      "name": "LDIV",
+      "ord": 666,
+      "Comments": []
+    },
+    {
+      "name": "LMOD",
+      "ord": 667,
+      "Comments": []
+    },
+    {
+      "name": "LUDIV",
+      "ord": 668,
+      "Comments": []
+    },
+    {
+      "name": "LUMOD",
+      "ord": 669,
+      "Comment": ""
+    },
+    {
+      "name": "LXLSH",
+      "ord": 670,
+      "Comments": []
+    },
+    {
+      "name": "LXMUL",
+      "ord": 671,
+      "Comments": []
+    },
+    {
+      "name": "LXRSH",
+      "ord": 672,
+      "Comments": []
+    },
+    {
+      "name": "LXURSH",
+      "ord": 673,
+      "Comments": []
+    },
+    {
+      "name": "N_LDIV",
+      "ord": 674,
+      "Comments": []
+    },
+    {
+      "name": "N_LMOD",
+      "ord": 675,
+      "Comments": []
+    },
+    {
+      "name": "N_LUDIV",
+      "ord": 676,
+      "Comments": []
+    },
+    {
+      "name": "N_LUMOD",
+      "ord": 677,
+      "Comments": []
+    },
+    {
+      "name": "N_LXLSH",
+      "ord": 678,
+      "Comments": []
+    },
+    {
+      "name": "N_LXMUL",
+      "ord": 679,
+      "Comments": []
+    },
+    {
+      "name": "N_LXRSH",
+      "ord": 680,
+      "Comments": []
+    },
+    {
+      "name": "N_LXURSH",
+      "ord": 681,
+      "Comments": []
+    },
+    {
+      "name": "N_PADD",
+      "ord": 682,
+      "Comments": []
+    },
+    {
+      "name": "N_PCMP",
+      "ord": 683,
+      "Comments": []
+    },
+    {
+      "name": "N_PSUB",
+      "ord": 684,
+      "Comments": []
+    },
+    {
+      "name": "PADD",
+      "ord": 685,
+      "Comments": []
+    },
+    {
+      "name": "PCMP",
+      "ord": 686,
+      "Comments": []
+    },
+    {
+      "name": "PSUB",
+      "ord": 687,
+      "Comments": []
+    },
+    {
+      "name": "SCOPY",
+      "ord": 688,
+      "Comments": []
+    },
+    {
+      "name": "SPMHALLOC",
+      "ord": 689,
+      "Comments": []
+    },
+    {
+      "name": "SPMHEXPAND",
+      "ord": 690,
+      "Comments": []
+    },
+    {
+      "name": "SPMHFREE",
+      "ord": 691,
+      "Comments": []
+    },
+    {
+      "name": "SPMHINIT",
+      "ord": 692,
+      "Comments": []
+    },
+    {
+      "name": "SPMHMOVE",
+      "ord": 693,
+      "Comments": []
+    },
+    {
+      "name": "FND1ST",
+      "ord": 694,
+      "Signature": "int yes=fndlst(struct fndblk &fb, filespec, char attr);",
+      "Comments": [
+        "Any files in this filespec?",
+        "1 == 1 or more, 0 = none"
+      ]
+    },
+    {
+      "name": "FNDNXT",
+      "ord": 695,
+      "Signature": "int yes=fndnxt(struct fndblk &fb);",
+      "Comments": [
+        "Any more files in this filespec?",
+        "1 == yes, 0 == no more"
+      ]
+    },
+    {
+      "name": "FTFPSP",
+      "ord": 696,
+      "Comments": []
+    },
+    {
+      "name": "DLKEYS",
+      "ord": 697,
+      "Comments": []
+    },
+    {
+      "name": "LVCHAT",
+      "ord": 698,
+      "Comments": []
+    },
+    {
+      "name": "ENTCHT",
+      "ord": 699,
+      "Comments": []
+    },
+    {
+      "name": "RMTSYS",
+      "ord": 700,
+      "Comments": []
+    },
+    {
+      "name": "PRINTF",
+      "ord": 701,
+      "Comments": []
+    },
+    {
+      "name": "MTRUNI",
+      "ord": 702,
+      "Comments": []
+    },
+    {
+      "name": "MTRINT",
+      "ord": 703,
+      "Comments": []
+    },
+    {
+      "name": "MTRBUF",
+      "ord": 704,
+      "Comments": []
+    },
+    {
+      "name": "GRPNUM",
+      "ord": 705,
+      "Signature": "int *grpnum;",
+      "Comments": [
+        "Array of group numbers, by channel number"
+      ]
+    },
+    {
+      "name": "MXBAUD",
+      "ord": 706,
+      "Comments": []
+    },
+    {
+      "name": "GRTYPE",
+      "ord": 707,
+      "Comments": []
+    },
+    {
+      "name": "MTRETV",
+      "ord": 708,
+      "Comments": []
+    },
+    {
+      "name": "WHOMON",
+      "ord": 709,
+      "Comments": []
+    },
+    {
+      "name": "FTFTCK",
+      "ord": 710,
+      "Comments": []
+    },
+    {
+      "name": "FTSCOPE",
+      "ord": 711,
+      "Comments": []
+    },
+    {
+      "name": "STPANS",
+      "ord": 712,
+      "Signature": "char *stpans(char *str);",
+      "Comments": []
+    },
+    {
+      "name": "UACOFF",
+      "ord": 713,
+      "Signature": "struct usracc *uaptr=uacoff(unum);",
+      "Comments": [
+        "Gets the online user account info"
+      ]
+    },
+    {
+      "name": "HICHP1",
+      "ord": 714,
+      "Signature": "int hichp1;",
+      "Comments": [
+        "Highest Channel numberin use, plus 1"
+      ]
+    },
+    {
+      "name": "CHANTY",
+      "ord": 715,
+      "Comments": []
+    },
+    {
+      "name": "CHANTN",
+      "ord": 716,
+      "Comments": []
+    },
+    {
+      "name": "NUMCAT",
+      "ord": 717,
+      "Signature": "int numcat;",
+      "Comments": [
+        "Number of cancat'd commands so far"
+      ]
+    },
+    {
+      "name": "SYSKEY",
+      "ord": 718,
+      "Comments": []
+    },
+    {
+      "name": "CHGTIME",
+      "ord": 719,
+      "Signature": "char *chgtime;",
+      "Comments": [
+        "Minimum connect time to be charged"
+      ]
+    },
+    {
+      "name": "MMUATR",
+      "ord": 720,
+      "Signature": "char *mmuatr;",
+      "Comments": [
+        "Default attribute for main menu selections"
+      ]
+    },
+    {
+      "name": "ANSDIM",
+      "ord": 721,
+      "Signature": "char *ansdim;",
+      "Comments": [
+        "Dimmed attribute for main menu selections"
+      ]
+    },
+    {
+      "name": "VISPSW",
+      "ord": 722,
+      "Signature": "int vispsw;",
+      "Comments": [
+        "Make passwords visible in detail displays?"
+      ]
+    },
+    {
+      "name": "MAXCAT",
+      "ord": 724,
+      "Signature": "int maxcat;",
+      "Comments": [
+        "Maximum number of concat'd commands"
+      ]
+    },
+    {
+      "name": "SVRATE",
+      "ord": 725,
+      "Signature": "int svrate;",
+      "Comments": [
+        "How many seconds between saving sysvbls?"
+      ]
+    },
+    {
+      "name": "DFTINJ",
+      "ord": 726,
+      "Signature": "void dftinj(void);",
+      "Comments": []
+    },
+    {
+      "name": "NOALEN",
+      "ord": 727,
+      "Comments": []
+    },
+    {
+      "name": "SKPANS",
+      "ord": 728,
+      "Comments": []
+    },
+    {
+      "name": "INSDBZ",
+      "ord": 729,
+      "Comments": []
+    },
+    {
+      "name": "MNUDNL",
+      "ord": 730,
+      "Comments": []
+    },
+    {
+      "name": "CHMOD",
+      "ord": 731,
+      "Comments": []
+    },
+    {
+      "name": "STARTV",
+      "ord": 732,
+      "Comments": []
+    },
+    {
+      "name": "NGLOBS",
+      "ord": 733,
+      "Comments": []
+    },
+    {
+      "name": "GLOBS",
+      "ord": 734,
+      "Comments": []
+    },
+    {
+      "name": "HDLCON",
+      "ord": 735,
+      "Comments": []
+    },
+    {
+      "name": "BCC286_EXE",
+      "ord": 736,
+      "Comments": []
+    },
+    {
+      "name": "_8087",
+      "ord": 737,
+      "Comments": []
+    },
+    {
+      "name": "FSTAT",
+      "ord": 738,
+      "Comments": []
+    },
+    {
+      "name": "OLDINEDIT",
+      "ord": 739,
+      "Comments": []
+    },
+    {
+      "name": "STAHDL",
+      "ord": 740,
+      "Comments": []
+    },
+    {
+      "name": "BB",
+      "ord": 741,
+      "Comments": []
+    },
+    {
+      "name": "GDEDCRD",
+      "ord": 742,
+      "Signature": "int enuf=gdedcrd(char *userid, long amount, int real, int asmuch);",
+      "Comments": [
+        "Deduct credits from any user's account",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "NTSTCRD",
+      "ord": 743,
+      "Signature": "int enuf=ntstcrd(char *userid, long amount, int real);",
+      "Comments": [
+        "Test if the offline user has enough credits",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "LTSTCRD",
+      "ord": 744,
+      "Signature": "int enuf=ltstcrd(struct usracc *uptr, long amount, int real);",
+      "Comments": [
+        "Tests if the user account structure has enough credits",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "GTSTCRD",
+      "ord": 745,
+      "Signature": "int enuf=gtstcrd(char *userid, long amount, int real);",
+      "Comments": [
+        "Tests if any user has enough credits",
+        "1 == enough, 0 == not enough"
+      ]
+    },
+    {
+      "name": "UHSKEY",
+      "ord": 746,
+      "Signature": "int uhskey(char *uid,char *lock);",
+      "Comments": [
+        "Does the user have this key?",
+        "1 == yes, 0 == no"
+      ]
+    },
+    {
+      "name": "UHSMKEY",
+      "ord": 747,
+      "Comments": []
+    },
+    {
+      "name": "HDLC25",
+      "ord": 748,
+      "Signature": "void (*hdlc25)();",
+      "Comments": [
+        "Handle incoming X.25 call string (margv)"
+      ]
+    },
+    {
+      "name": "HDLNRG",
+      "ord": 749,
+      "Signature": "void (*hdlnrg)();",
+      "Comments": [
+        "Handle non-RING strings during AWAITC"
+      ]
+    },
+    {
+      "name": "NCHANS",
+      "ord": 750,
+      "Comments": []
+    },
+    {
+      "name": "GOMVEC",
+      "ord": 752,
+      "Comments": []
+    },
+    {
+      "name": "TXTVARS",
+      "ord": 753,
+      "Signature": "structure txtvar { char name[TVRSIZ], char *(*varrou)() } *txtvars;",
+      "Comments": [
+        "Text Variable Structure"
+      ]
+    },
+    {
+      "name": "STRNICMP",
+      "ord": 754,
+      "Comments": []
+    },
+    {
+      "name": "REGISTER_PSEUDOK",
+      "ord": 755,
+      "Signature": "void register_pseudok(char *prefix, int (*rouptr)(int unum, char* lock));",
+      "Comments": [
+        "Registers a pseudo-key routine"
+      ]
+    },
+    {
+      "name": "SCNPSK",
+      "ord": 756,
+      "Comments": []
+    },
+    {
+      "name": "GENBB",
+      "ord": 757,
+      "Comments": []
+    },
+    {
+      "name": "DELGEN",
+      "ord": 758,
+      "Comments": []
+    },
+    {
+      "name": "OKBDAY",
+      "ord": 759,
+      "Comments": []
+    },
+    {
+      "name": "NLINGO",
+      "ord": 760,
+      "Signature": "int nlingo;",
+      "Comments": [
+        "Number of languages defined, always at least 1"
+      ]
+    },
+    {
+      "name": "CLINGO",
+      "ord": 761,
+      "Signature": "int clingo;",
+      "Comments": [
+        "Language index for the current user"
+      ]
+    },
+    {
+      "name": "LANGUAGES",
+      "ord": 762,
+      "Signature": "struct lingo **languages;",
+      "Comments": [
+        "Dynamic array of pointers to lingo structures"
+      ]
+    },
+    {
+      "name": "LNGFND",
+      "ord": 763,
+      "Comments": []
+    },
+    {
+      "name": "CHGSPK",
+      "ord": 764,
+      "Comments": []
+    },
+    {
+      "name": "CHGPRT",
+      "ord": 765,
+      "Comments": []
+    },
+    {
+      "name": "ALG1ST",
+      "ord": 766,
+      "Comments": []
+    },
+    {
+      "name": "ALGNXT",
+      "ord": 767,
+      "Comments": []
+    },
+    {
+      "name": "TFSTATE",
+      "ord": 768,
+      "Signature": "int tfstate;",
+      "Comments": [
+        "tfsrdl() state code and return value",
+        "0 == tfsrdl() done scanning file(s)",
+        "1 == tfsopn() has been called, tfsrdl() calls will begin",
+        "3 == tfsrdl() has a line for you",
+        "4 == tfsrdl() is done with a file"
+      ]
+    },
+    {
+      "name": "TFSBUF",
+      "ord": 769,
+      "Signature": "char tfsbuf[MAXTFS]",
+      "Comments": [
+        "After tfsrdl() returns TFSLIN, the line goes here"
+      ]
+    },
+    {
+      "name": "TFSPST",
+      "ord": 770,
+      "Signature": "char *tfspst;",
+      "Comments": [
+        "When tfspfx() returns 1, this is spkwht(what follows it)"
+      ]
+    },
+    {
+      "name": "TFSFB",
+      "ord": 771,
+      "Signature": "struct fndblk tfsfb;",
+      "Comments": [
+        "fndblk structure from current file"
+      ]
+    },
+    {
+      "name": "TFSFP",
+      "ord": 772,
+      "Signature": "FILE *tfsfp;",
+      "Comments": [
+        "File pointer while tfsrdl() returns TFSLIN"
+      ]
+    },
+    {
+      "name": "TFSOPN",
+      "ord": 773,
+      "Signature": "int nfiles=tfsopn(char *filespec);",
+      "Comments": [
+        "Prepare to scan 1 or more text files",
+        "TFS prefix == 'Text File Scanner'"
+      ]
+    },
+    {
+      "name": "TFSRDL",
+      "ord": 774,
+      "Signature": "int tfs=tfsrdl()",
+      "Comments": [
+        "Read the next line from the file(s) opened with tfsopn()"
+      ]
+    },
+    {
+      "name": "TFSPFX",
+      "ord": 775,
+      "Signature": "int found=tfspfx(char *prefix);",
+      "Comments": [
+        "Is the current line of a file opened with tfsopn prefixed with the specified string",
+        "1 == yes, 2 == no"
+      ]
+    },
+    {
+      "name": "TFSDPR",
+      "ord": 776,
+      "Signature": "void tfsdrp()",
+      "Comments": [
+        "Strip the previx off tfsbuf and prepare for sub-prefixes (dpr stands for 'deeper')"
+      ]
+    },
+    {
+      "name": "HDLRNG",
+      "ord": 777,
+      "Signature": "void (*hdlrng)();",
+      "Comments": [
+        "Handle RING (non X-25) during AWAITC, HARING"
+      ]
+    },
+    {
+      "name": "HDLCNC",
+      "ord": 778,
+      "Signature": "int (*hdlcnc)();",
+      "Comments": [
+        "Hand non-RING whatever during HARING"
+      ]
+    },
+    {
+      "name": "PRFBUFFERS",
+      "ord": 779,
+      "Comments": []
+    },
+    {
+      "name": "PRFPOINTERS",
+      "ord": 780,
+      "Comments": []
+    },
+    {
+      "name": "LINUSE",
+      "ord": 781,
+      "Comments": []
+    },
+    {
+      "name": "INIMLT",
+      "ord": 782,
+      "Comments": []
+    },
+    {
+      "name": "CLRMLT",
+      "ord": 783,
+      "Signature": "void clrmlt();",
+      "Comments": [
+        "Clear the prf buffer indep of outprf",
+        "Multilingual version of clrprf()"
+      ]
+    },
+    {
+      "name": "CKLONL",
+      "ord": 784,
+      "Comments": []
+    },
+    {
+      "name": "OUTMLT",
+      "ord": 785,
+      "Signature": "outmlt (unum);",
+      "Comments": [
+        "Send prfbuf to a channel & clear",
+        "Multilingual version of outprf()"
+      ]
+    },
+    {
+      "name": "PRFMLT",
+      "ord": 786,
+      "Signature": "prfmlt(msgnum,p1,p2, ..• ,pn);",
+      "Comments": [
+        "Like pmlt(), but the control string comes from an .MCV file",
+        "Preceding PUSH holds the Message # from the .MCV file",
+        "Multilingual version of prfmsg()"
+      ]
+    },
+    {
+      "name": "PMLT",
+      "ord": 787,
+      "Signature": "pmlt(char *string); ",
+      "Comments": [
+        "Like printf(), except the converted text goes into a buffer",
+        "Multilingual version of prf()"
+      ]
+    },
+    {
+      "name": "MLTFLG",
+      "ord": 788,
+      "Comments": []
+    },
+    {
+      "name": "GETGEN",
+      "ord": 789,
+      "Comments": []
+    },
+    {
+      "name": "SETGEN",
+      "ord": 790,
+      "Comments": []
+    },
+    {
+      "name": "GENBUF",
+      "ord": 791,
+      "Comments": []
+    },
+    {
+      "name": "CNCLNG",
+      "ord": 792,
+      "Signature": "int ilingo=cnclng();",
+      "Comments": [
+        "Expect a language name of language pick from a numbered list",
+        "-1 == invalid name"
+      ]
+    },
+    {
+      "name": "MAXCAND",
+      "ord": 793,
+      "Comments": []
+    },
+    {
+      "name": "LNGLIST",
+      "ord": 794,
+      "Comments": []
+    },
+    {
+      "name": "DSPMLT",
+      "ord": 795,
+      "Comments": []
+    },
+    {
+      "name": "BADLANG",
+      "ord": 796,
+      "Comments": []
+    },
+    {
+      "name": "POSLNG",
+      "ord": 797,
+      "Comments": []
+    },
+    {
+      "name": "AUSTIM",
+      "ord": 798,
+      "Comments": []
+    },
+    {
+      "name": "NUMCAND",
+      "ord": 799,
+      "Comments": []
+    },
+    {
+      "name": "FSTCAND",
+      "ord": 800,
+      "Comments": []
+    },
+    {
+      "name": "AUSWAIT",
+      "ord": 801,
+      "Signature": "unsigned auswait;",
+      "Comments": [
+        "Master timeout, 1/16 of second units"
+      ]
+    },
+    {
+      "name": "NUMAUS",
+      "ord": 802,
+      "Comments": []
+    },
+    {
+      "name": "LNGFOOT",
+      "ord": 803,
+      "Comments": []
+    },
+    {
+      "name": "INIAUS",
+      "ord": 804,
+      "Comments": []
+    },
+    {
+      "name": "REGAUTSNS",
+      "ord": 805,
+      "Comments": []
+    },
+    {
+      "name": "BGNAUS",
+      "ord": 806,
+      "Comments": []
+    },
+    {
+      "name": "PRCAUS",
+      "ord": 807,
+      "Comments": []
+    },
+    {
+      "name": "SETBYPROT",
+      "ord": 808,
+      "Comments": []
+    },
+    {
+      "name": "CNTCAND",
+      "ord": 809,
+      "Comments": []
+    },
+    {
+      "name": "LNGPOSN",
+      "ord": 810,
+      "Comments": []
+    },
+    {
+      "name": "ECHSEC",
+      "ord": 811,
+      "Signature": "void echsec(char c, int width);",
+      "Comments": [
+        "Echo secretly (password masking)"
+      ]
+    },
+    {
+      "name": "SECCHR",
+      "ord": 812,
+      "Comments": []
+    },
+    {
+      "name": "SAMEND",
+      "ord": 813,
+      "Signature": "int match=samend(char *longs,char *ends);",
+      "Comments": [
+        "Compares ending of strings, checking if the first string ends with the second string (ignoring case)"
+      ]
+    },
+    {
+      "name": "FGETSTG",
+      "ord": 814,
+      "Signature": "int got=fgetstg(char *buffer, int size, FILE *fp);",
+      "Comments": [
+        "Read a NULL-terminated string from a file"
+      ]
+    },
+    {
+      "name": "GETDFT",
+      "ord": 815,
+      "Comments": []
+    },
+    {
+      "name": "UIDARR",
+      "ord": 816,
+      "Comments": []
+    },
+    {
+      "name": "PMCARE",
+      "ord": 817,
+      "Comments": []
+    },
+    {
+      "name": "PMVALU",
+      "ord": 818,
+      "Comments": []
+    },
+    {
+      "name": "HDLPMU",
+      "ord": 819,
+      "Comments": []
+    },
+    {
+      "name": "ISPVIS",
+      "ord": 820,
+      "Comments": []
+    },
+    {
+      "name": "FTHEAD",
+      "ord": 821,
+      "Comments": []
+    },
+    {
+      "name": "FPRLOCK",
+      "ord": 822,
+      "Comments": []
+    },
+    {
+      "name": "ARCDSC",
+      "ord": 823,
+      "Comments": []
+    },
+    {
+      "name": "LINGYN",
+      "ord": 824,
+      "Signature": "char yesno=lingyn(char firstc);",
+      "Comments": [
+        "Translates a user's yes/no in 'Y'/'N'"
+      ]
+    },
+    {
+      "name": "EXTPTR",
+      "ord": 825,
+      "Comments": []
+    },
+    {
+      "name": "OTHEXP",
+      "ord": 826,
+      "Signature": "struct extusr *othexpi;",
+      "Comments": [
+        "Global Pointer to extendable in-memory structure for that user (set by onsys() or instat())"
+      ]
+    },
+    {
+      "name": "EXTOFF",
+      "ord": 827,
+      "Signature": "struct extusr *exptr=extoff(unum);",
+      "Comments": [
+        "Gets the extended User Account Information"
+      ]
+    },
+    {
+      "name": "KPAK",
+      "ord": 828,
+      "Comments": []
+    },
+    {
+      "name": "KSEC",
+      "ord": 829,
+      "Comments": []
+    },
+    {
+      "name": "KCHAR",
+      "ord": 830,
+      "Comments": []
+    },
+    {
+      "name": "ECHTYP",
+      "ord": 831,
+      "Signature": "char echtyp[NGROUPS];",
+      "Comments": [
+        "Array of Echo Options: ",
+        "0 == No Echo at all of user keystrokes",
+        "1 == echo comes from users's PAD",
+        "2 == Echo comes from the BBS thru X.25 net"
+      ]
+    },
+    {
+      "name": "ALCTILE",
+      "ord": 832,
+      "Signature": "void *bigregion=alctile(unsigned qty, unsigned sizblock);",
+      "Comments": [
+        "Allocate a very large memory region"
+      ]
+    },
+    {
+      "name": "PTRTILE",
+      "ord": 833,
+      "Signature": "void *block=ptrtile(void *bigregion, unsigned unum);",
+      "Comments": [
+        "Dereference an alctile() region"
+      ]
+    },
+    {
+      "name": "MKTEMP",
+      "ord": 834,
+      "Comments": []
+    },
+    {
+      "name": "CHDIR",
+      "ord": 835,
+      "Comments": []
+    },
+    {
+      "name": "GETCURDIR",
+      "ord": 836,
+      "Comments": []
+    },
+    {
+      "name": "MEMCHR",
+      "ord": 837,
+      "Comments": []
+    },
+    {
+      "name": "STPCPY",
+      "ord": 838,
+      "Comments": []
+    },
+    {
+      "name": "STRNSET",
+      "ord": 839,
+      "Comments": []
+    },
+    {
+      "name": "STRSET",
+      "ord": 840,
+      "Comments": []
+    },
+    {
+      "name": "CREAT",
+      "ord": 841,
+      "Comments": []
+    },
+    {
+      "name": "FCLOSEALL",
+      "ord": 842,
+      "Comments": []
+    },
+    {
+      "name": "FREOPEN",
+      "ord": 843,
+      "Comments": []
+    },
+    {
+      "name": "_FSOPEN",
+      "ord": 844,
+      "Comments": []
+    },
+    {
+      "name": "MEMCCPY",
+      "ord": 845,
+      "Comments": []
+    },
+    {
+      "name": "MEMICMP",
+      "ord": 846,
+      "Comments": []
+    },
+    {
+      "name": "MOVEDATA",
+      "ord": 847,
+      "Comments": []
+    },
+    {
+      "name": "DUP",
+      "ord": 848,
+      "Comments": []
+    },
+    {
+      "name": "DUP2",
+      "ord": 859,
+      "Comments": []
+    },
+    {
+      "name": "ACCESS",
+      "ord": 850,
+      "Comments": []
+    },
+    {
+      "name": "PFNPTR",
+      "ord": 860,
+      "Comments": []
+    },
+    {
+      "name": "NTVARS",
+      "ord": 861,
+      "Signature": "int ntvars;",
+      "Comments": [
+        "Number of text variables in memory"
+      ]
+    },
+    {
+      "name": "HRTVAL",
+      "ord": 862,
+      "Signature": "unsigned long tix64k=hrtval();",
+      "Comments": [
+        "Read the free-running 65khz timer (not a typo)"
+      ]
+    },
+    {
+      "name": "GOODPTR",
+      "ord": 863,
+      "Comments": []
+    },
+    {
+      "name": "GOODSTG",
+      "ord": 864,
+      "Comments": []
+    },
+    {
+      "name": "LISTINGQ",
+      "ord": 865,
+      "Comments": []
+    },
+    {
+      "name": "READ",
+      "ord": 866,
+      "Comments": []
+    },
+    {
+      "name": "WRITE",
+      "ord": 867,
+      "Signature": "ostream& write (const char* s, streamsize n);",
+      "Comments": [
+        "Inserts the first n characters of the array pointed by s into the stream."
+      ]
+    },
+    {
+      "name": "DISASTER",
+      "ord": 868,
+      "Comments": []
+    },
+    {
+      "name": "RIPDFD",
+      "ord": 869,
+      "Comments": []
+    },
+    {
+      "name": "RIPIDX",
+      "ord": 870,
+      "Comments": []
+    },
+    {
+      "name": "AUTSCNS",
+      "ord": 871,
+      "Comments": []
+    },
+    {
+      "name": "LGRFNT",
+      "ord": 872,
+      "Comments": []
+    },
+    {
+      "name": "LGRSTY",
+      "ord": 873,
+      "Comments": []
+    },
+    {
+      "name": "SMRFNT",
+      "ord": 874,
+      "Comments": []
+    },
+    {
+      "name": "SMRSTY",
+      "ord": 875,
+      "Comments": []
+    },
+    {
+      "name": "FSDRHD",
+      "ord": 878,
+      "Comments": []
+    },
+    {
+      "name": "ALCBLOK",
+      "ord": 879,
+      "Signature": "void *bigregion=alcblok(qty,sizblock);",
+      "Comments": [
+        "Allocate a very large memory region, qty by sizblock bytes"
+      ]
+    },
+    {
+      "name": "PTRBLOK",
+      "ord": 880,
+      "Signature": "void *block=ptrblok(bigregion,unum);",
+      "Comments": [
+        "Dereference an alcblok()'d region"
+      ]
+    },
+    {
+      "name": "FLDPTR",
+      "ord": 881,
+      "Comments": []
+    },
+    {
+      "name": "SHOFLD",
+      "ord": 882,
+      "Comments": []
+    },
+    {
+      "name": "STRRCHR",
+      "ord": 883,
+      "Comments": []
+    },
+    {
+      "name": "FSPUSH@",
+      "ord": 884,
+      "Comments": []
+    },
+    {
+      "name": "COMMAS",
+      "ord": 886,
+      "Comments": []
+    },
+    {
+      "name": "INITASK",
+      "ord": 887,
+      "Comments": []
+    },
+    {
+      "name": "MFYTASK",
+      "ord": 888,
+      "Comments": []
+    },
+    {
+      "name": "SNDRST",
+      "ord": 889,
+      "Comments": []
+    },
+    {
+      "name": "DETFLG",
+      "ord": 890,
+      "Comments": []
+    },
+    {
+      "name": "RIPMB",
+      "ord": 891,
+      "Comments": []
+    },
+    {
+      "name": "TFSABT",
+      "ord": 892,
+      "Signature": "void tfsabt();",
+      "Comments": [
+        "Aborts text file scanning"
+      ]
+    },
+    {
+      "name": "FNROOT",
+      "ord": 893,
+      "Signature": "char *root=fnroot(char *filenam);",
+      "Comments": [
+        "Returns the 1-8 character file name from the specified file"
+      ]
+    },
+    {
+      "name": "FNWEXT",
+      "ord": 894,
+      "Signature": "char *fnam=fnwext(char *filnam);",
+      "Comments": [
+        "Returns the file name with extension"
+      ]
+    },
+    {
+      "name": "RSVNAM",
+      "ord": 895,
+      "Signature": "int rsvd=rsvnam(char *filnam);",
+      "Comments": [
+        "Checks if a file name is reserved",
+        "1 == Reserved, 0 == OK"
+      ]
+    },
+    {
+      "name": "GETFTIME",
+      "ord": 896,
+      "Comments": []
+    },
+    {
+      "name": "SETFTIME",
+      "ord": 897,
+      "Comments": []
+    },
+    {
+      "name": "CLSIZE",
+      "ord": 898,
+      "Signature": "unsigned clbyts=clsize(int drive);",
+      "Comments": [
+        "Returns the size of the clusters on the disk"
+      ]
+    },
+    {
+      "name": "DRVNUM",
+      "ord": 899,
+      "Signature": "int drive=drvnum(char *path);",
+      "Comments": [
+        "Determine drive number from the path",
+        "0 == Current, 1 == A:, 2 == B:, 3 == C:, etc."
+      ]
+    },
+    {
+      "name": "CLFIT",
+      "ord": 900,
+      "Signautre": "long realsiz=clfit(long siz, unsigned clbyts);",
+      "Comments": [
+        "Total space used by a file based on cluster size"
+      ]
+    },
+    {
+      "name": "NUMBYTP",
+      "ord": 901,
+      "Comments": []
+    },
+    {
+      "name": "HDEDCRD",
+      "ord": 902,
+      "Comments": []
+    },
+    {
+      "name": "PTHOPT",
+      "ord": 903,
+      "Comments": []
+    },
+    {
+      "name": "RLENBTV",
+      "ord": 904,
+      "Signature": "int rlenbtv (void);",
+      "Comments": []
+    },
+    {
+      "name": "STZCAT",
+      "ord": 905,
+      "Signature": "char *stzcat(char *dst,char *src,int num);",
+      "Comments": []
+    },
+    {
+      "name": "AINSCB",
+      "ord": 906,
+      "Comments": []
+    },
+    {
+      "name": "AINBEG",
+      "ord": 907,
+      "Comments": []
+    },
+    {
+      "name": "AINCHR",
+      "ord": 908,
+      "Comments": []
+    },
+    {
+      "name": "VERSION",
+      "ord": 909,
+      "Signature": "char version[];",
+      "Comments": [
+        "Main version code of The MajorBBS, in form X.YY"
+      ]
+    },
+    {
+      "name": "SELENG",
+      "ord": 910,
+      "Comments": []
+    },
+    {
+      "name": "SYSLOD",
+      "ord": 911,
+      "Comments": []
+    },
+    {
+      "name": "KYSBUF",
+      "ord": 912,
+      "Comments": []
+    },
+    {
+      "name": "ANPBTVL",
+      "ord": 913,
+      "Signature": "int anpbtv (void *recptr, int anpopt);",
+      "Comments": []
+    },
+    {
+      "name": "SV3",
+      "ord": 914,
+      "Signature": "struct sysvb3 sv3;",
+      "Comments": [
+        "System-Variable Btrieve Record Layout Struct (3 of 3)"
+      ]
+    },
+    {
+      "name": "FTGDN1",
+      "ord": 915,
+      "Comments": []
+    },
+    {
+      "name": "ALWAIT",
+      "ord": 916,
+      "Comments": []
+    },
+    {
+      "name": "__BASE",
+      "ord": 917,
+      "Comments": []
+    },
+    {
+      "name": "__TOP",
+      "ord": 918,
+      "Comments": []
+    },
+    {
+      "name": "__HINCR",
+      "ord": 919,
+      "Comments": []
+    },
+    {
+      "name": "VALEXI",
+      "ord": 920,
+      "Comments": []
+    },
+    {
+      "name": "AGENTS",
+      "ord": 921,
+      "Comments": []
+    },
+    {
+      "name": "MSYSID",
+      "ord": 922,
+      "Comments": []
+    },
+    {
+      "name": "RQDPTR",
+      "ord": 923,
+      "Comments": []
+    },
+    {
+      "name": "MRQSIZ",
+      "ord": 924,
+      "Comments": []
+    },
+    {
+      "name": "MRQPTR",
+      "ord": 925,
+      "Comments": []
+    },
+    {
+      "name": "GREQID",
+      "ord": 926,
+      "Comments": []
+    },
+    {
+      "name": "RSPTMP",
+      "ord": 927,
+      "Comments": []
+    },
+    {
+      "name": "NAGENTS",
+      "ord": 928,
+      "Comments": []
+    },
+    {
+      "name": "GDPBB",
+      "ord": 929,
+      "Comments": []
+    },
+    {
+      "name": "REGISTER_AGENT",
+      "ord": 930,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_CONNECT",
+      "ord": 931,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_DISCONNECT",
+      "ord": 932,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_CLEANUP",
+      "ord": 933,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_DELACCT",
+      "ord": 934,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_SHUTDOWN",
+      "ord": 935,
+      "Comments": []
+    },
+    {
+      "name": "CURCSU",
+      "ord": 936,
+      "Comments": []
+    },
+    {
+      "name": "CURREQ",
+      "ord": 937,
+      "Comments": []
+    },
+    {
+      "name": "RSP2READ",
+      "ord": 938,
+      "Comments": []
+    },
+    {
+      "name": "OK2WRITE",
+      "ord": 939,
+      "Comments": []
+    },
+    {
+      "name": "RSP2WRITE",
+      "ord": 940,
+      "Comments": []
+    },
+    {
+      "name": "STDCHK",
+      "ord": 941,
+      "Comments": []
+    },
+    {
+      "name": "REJECTREQ",
+      "ord": 942,
+      "Comments": []
+    },
+    {
+      "name": "SENDDPK",
+      "ord": 943,
+      "Comments": []
+    },
+    {
+      "name": "QROOM",
+      "ord": 944,
+      "Comments": []
+    },
+    {
+      "name": "DCLMRQ",
+      "ord": 945,
+      "Comments": []
+    },
+    {
+      "name": "MRQOFF",
+      "ord": 946,
+      "Comments": []
+    },
+    {
+      "name": "CYCLEME",
+      "ord": 947,
+      "Comments": []
+    },
+    {
+      "name": "READGDP",
+      "ord": 948,
+      "Comments": []
+    },
+    {
+      "name": "WRITEGDP",
+      "ord": 949,
+      "Comments": []
+    },
+    {
+      "name": "NEWARR",
+      "ord": 950,
+      "Comments": []
+    },
+    {
+      "name": "ADD2ARR",
+      "ord": 951,
+      "Comments": []
+    },
+    {
+      "name": "ARRBAS",
+      "ord": 952,
+      "Comments": []
+    },
+    {
+      "name": "NINARR",
+      "ord": 953,
+      "Comments": []
+    },
+    {
+      "name": "ARRELEM",
+      "ord": 954,
+      "Comments": []
+    },
+    {
+      "name": "SAMPKY",
+      "ord": 955,
+      "Comments": []
+    },
+    {
+      "name": "SAMPLN",
+      "ord": 956,
+      "Signature": "int sampln;",
+      "Comments": [
+        "Number of 'free sample' channels"
+      ]
+    },
+    {
+      "name": "R2RPRF",
+      "ord": 957,
+      "Comments": []
+    },
+    {
+      "name": "R2WPRF",
+      "ord": 958,
+      "Comments": []
+    },
+    {
+      "name": "STLCPY",
+      "ord": 959,
+      "Comments": []
+    },
+    {
+      "name": "STP4CS",
+      "ord": 960,
+      "Comments": []
+    },
+    {
+      "name": "SAMEPATU",
+      "ord": 961,
+      "Comments": []
+    },
+    {
+      "name": "SGNUSZ",
+      "ord": 962,
+      "Comments": []
+    },
+    {
+      "name": "FULALW",
+      "ord": 963,
+      "Comments": []
+    },
+    {
+      "name": "NAMDFT",
+      "ord": 964,
+      "Comments": []
+    },
+    {
+      "name": "SETPFN",
+      "ord": 965,
+      "Comments": []
+    },
+    {
+      "name": "VALUID",
+      "ord": 966,
+      "Comments": []
+    },
+    {
+      "name": "B2CCPY",
+      "ord": 967,
+      "Comments": []
+    },
+    {
+      "name": "C2BCPY",
+      "ord": 968,
+      "Comments": []
+    },
+    {
+      "name": "MORSUP",
+      "ord": 969,
+      "Comments": []
+    },
+    {
+      "name": "ABOSUP",
+      "ord": 970,
+      "Comments": []
+    },
+    {
+      "name": "ENDSUP",
+      "ord": 971,
+      "Comments": []
+    },
+    {
+      "name": "GCSPLON",
+      "ord": 972,
+      "Comments": []
+    },
+    {
+      "name": "CNVD2S",
+      "ord": 973,
+      "Comments": []
+    },
+    {
+      "name": "CNVS2D",
+      "ord": 974,
+      "Comments": []
+    },
+    {
+      "name": "CSBUMP",
+      "ord": 975,
+      "Comments": []
+    },
+    {
+      "name": "SUPDFTS",
+      "ord": 976,
+      "Comments": []
+    },
+    {
+      "name": "FORREAL",
+      "ord": 977,
+      "Comments": []
+    },
+    {
+      "name": "GCS2CS",
+      "ord": 978,
+      "Comments": []
+    },
+    {
+      "name": "XITMOD",
+      "ord": 979,
+      "Comments": []
+    },
+    {
+      "name": "DFTANS",
+      "ord": 980,
+      "Comments": []
+    },
+    {
+      "name": "R2RGDP",
+      "ord": 981,
+      "Comments": []
+    },
+    {
+      "name": "MMAPPID",
+      "ord": 983,
+      "Comments": []
+    },
+    {
+      "name": "SUPAPPID",
+      "ord": 984,
+      "Comments": []
+    },
+    {
+      "name": "RNOSID",
+      "ord": 985,
+      "Comments": []
+    },
+    {
+      "name": "MENUPG",
+      "ord": 989,
+      "Comments": []
+    },
+    {
+      "name": "SAVEPAGE",
+      "ord": 990,
+      "Comments": []
+    },
+    {
+      "name": "UNPACK",
+      "ord": 991,
+      "Comments": []
+    },
+    {
+      "name": "REPACK",
+      "ord": 992,
+      "Comments": []
+    },
+    {
+      "name": "UIDXST",
+      "ord": 993,
+      "Comments": []
+    },
+    {
+      "name": "BXABTV",
+      "ord": 994,
+      "Comments": []
+    },
+    {
+      "name": "EXABTV",
+      "ord": 995,
+      "Comments": []
+    },
+    {
+      "name": "GETBTVL",
+      "ord": 996,
+      "Comments": []
+    },
+    {
+      "name": "OBTBTVL",
+      "ord": 997,
+      "Comments": []
+    },
+    {
+      "name": "ANPBTVLK",
+      "ord": 998,
+      "Comments": []
+    },
+    {
+      "name": "GABBTVL",
+      "ord": 999,
+      "Signature": "void gabbtv (void *recptr, long abspos, int keynum);",
+      "Comments": [
+        "Gets a Btrieve record from a file position"
+      ]
+    },
+    {
+      "name": "SWBUFS",
+      "ord": 1000,
+      "Comments": []
+    },
+    {
+      "name": "HOBUFS",
+      "ord": 1001,
+      "Comments": []
+    },
+    {
+      "name": "DMBUFS",
+      "ord": 1002,
+      "Comments": []
+    },
+    {
+      "name": "MVIAD",
+      "ord": 1003,
+      "Comments": []
+    },
+    {
+      "name": "HVIAD",
+      "ord": 1004,
+      "Comments": []
+    },
+    {
+      "name": "HDLRST",
+      "ord": 1005,
+      "Signature": "void (*hdlrst)();",
+      "Comments": [
+        "Handle Channel Reset"
+      ]
+    },
+    {
+      "name": "BBSFVC",
+      "ord": 1006,
+      "Signature": "int bbsfvc(char *chtype);",
+      "Comments": [
+        "Find a vacant GCDI channel",
+        "-1 == none available"
+      ]
+    },
+    {
+      "name": "BBSDSC",
+      "ord": 1008,
+      "Signature": "void bbsdsc(int unum);",
+      "Comments": [
+        "Disconnect an interactive user"
+      ]
+    },
+    {
+      "name": "MXMSSZ",
+      "ord": 1009,
+      "Comments": []
+    },
+    {
+      "name": "DOS_CLOSE",
+      "ord": 1010,
+      "Comments": []
+    },
+    {
+      "name": "DOS_OPEN",
+      "ord": 1011,
+      "Comments": []
+    },
+    {
+      "name": "SETMODE",
+      "ord": 1012,
+      "Comments": []
+    },
+    {
+      "name": "FTIME",
+      "ord": 1013,
+      "Comments": []
+    },
+    {
+      "name": "SCANCH",
+      "ord": 1014,
+      "Comments": []
+    },
+    {
+      "name": "GLOBALGO",
+      "ord": 1015,
+      "Comments": []
+    },
+    {
+      "name": "PRFASC",
+      "ord": 1016,
+      "Comments": []
+    },
+    {
+      "name": "DFTUID",
+      "ord": 1017,
+      "Comments": []
+    },
+    {
+      "name": "LNGSWT",
+      "ord": 1020,
+      "Comments": []
+    },
+    {
+      "name": "MONAME",
+      "ord": 1021,
+      "Comments": []
+    },
+    {
+      "name": "NCUDNT",
+      "ord": 1022,
+      "Comments": []
+    },
+    {
+      "name": "CHKUID",
+      "ord": 1023,
+      "Signature": "int (*chkuid)(char *userid);",
+      "Comments": [
+        "Vector for approving User-ID",
+        "0 == User OK",
+        "1 == User logged on already",
+        "2 == Doesn't have SAMPKY key",
+        "3 == User suspended",
+        "4 == User-ID not on file",
+        "5 == app-specific rejection"
+      ]
+    },
+    {
+      "name": "RELOG",
+      "ord": 1024,
+      "Comments": []
+    },
+    {
+      "name": "DECUSR",
+      "ord": 1025,
+      "Comments": []
+    },
+    {
+      "name": "DECUSN",
+      "ord": 1026,
+      "Comments": []
+    },
+    {
+      "name": "DECUSP",
+      "ord": 1027,
+      "Comments": []
+    },
+    {
+      "name": "DECUAP",
+      "ord": 1028,
+      "Comments": []
+    },
+    {
+      "name": "DECCST",
+      "ord": 1029,
+      "Comments": []
+    },
+    {
+      "name": "DECDFT",
+      "ord": 1030,
+      "Comments": []
+    },
+    {
+      "name": "DECLOG",
+      "ord": 1031,
+      "Comments": []
+    },
+    {
+      "name": "DECSUP",
+      "ord": 1032,
+      "Comments": []
+    },
+    {
+      "name": "DECTDY",
+      "ord": 1033,
+      "Comments": []
+    },
+    {
+      "name": "DECCAL",
+      "ord": 1034,
+      "Comments": []
+    },
+    {
+      "name": "DEC15S",
+      "ord": 1035,
+      "Comments": []
+    },
+    {
+      "name": "DECCRD",
+      "ord": 1036,
+      "Comments": []
+    },
+    {
+      "name": "LONAUD",
+      "ord": 1037,
+      "Signature": "int lonaud;",
+      "Comments": [
+        "Make an audit trail entry for each logon?"
+      ]
+    },
+    {
+      "name": "LONCDI",
+      "ord": 1038,
+      "Signature": "void (*loncdi)();",
+      "Comments": [
+        "Handle login audit trail msg on GCDI channel"
+      ]
+    },
+    {
+      "name": "FNEXT",
+      "ord": 1039,
+      "Comments": []
+    },
+    {
+      "name": "UL2AS",
+      "ord": 1040,
+      "Comments": []
+    },
+    {
+      "name": "STRSTP",
+      "ord": 1041,
+      "Signature": "char *strstp(char *str,char ch);",
+      "Comments": []
+    },
+    {
+      "name": "MEMSTP",
+      "ord": 1042,
+      "Signature": "int memstp(char *block,int nbytes,char byt);",
+      "Comments": []
+    },
+    {
+      "name": "MKDOSN",
+      "ord": 1043,
+      "Comments": []
+    },
+    {
+      "name": "UNTAG",
+      "ord": 1044,
+      "Comments": []
+    },
+    {
+      "name": "NUMFTG",
+      "ord": 1045,
+      "Comments": []
+    },
+    {
+      "name": "RMVTAG",
+      "ord": 1046,
+      "Comments": []
+    },
+    {
+      "name": "SYSCYC",
+      "ord": 1048,
+      "Signature": "void (*syscyc)(void);",
+      "Comments": [
+        "System-cycle vector (tail is prctask())"
+      ]
+    },
+    {
+      "name": "CHNCYC",
+      "ord": 1049,
+      "Signature": "void (*chncyc)(void);",
+      "Comments": [
+        "Channel-cycle vector (tail is dwopr())"
+      ]
+    },
+    {
+      "name": "LSTUNM",
+      "ord": 1050,
+      "Signature": "int lstunm;",
+      "Comments": [
+        "Last user-number returned by btuscn()"
+      ]
+    },
+    {
+      "name": "NEWUNM",
+      "ord": 1051,
+      "Signature": "int newunm;",
+      "Comments": [
+        "New user-number just returned by btuscn()"
+      ]
+    },
+    {
+      "name": "FIRSTWD",
+      "ord": 1052,
+      "Comments": []
+    },
+    {
+      "name": "NEXTWD",
+      "ord": 1053,
+      "Comments": []
+    },
+    {
+      "name": "RCDBAUD",
+      "ord": 1054,
+      "Signature": "void rcdbaud(long baud);",
+      "Comments": [
+        "Record the channel baud rate"
+      ]
+    },
+    {
+      "name": "SHOMAL",
+      "ord": 1055,
+      "Comments": []
+    },
+    {
+      "name": "GRTSUB",
+      "ord": 1056,
+      "Signature": "char *grtsub[];",
+      "Comments": [
+        "Array of GCDI channel type names"
+      ]
+    },
+    {
+      "name": "NUMCDI",
+      "ord": 1057,
+      "Signature": "int numcdi(char *chtype);",
+      "Comments": [
+        "Counts the hnumber of GCDI channels",
+        "*chtype corresponding to MDF 'Channel Type', null == all GCDI types"
+      ]
+    },
+    {
+      "name": "HDLRLG",
+      "ord": 1058,
+      "Signature": "void (*hdlrlg)();",
+      "Comments": [
+        "Handle relogging on a new user"
+      ]
+    },
+    {
+      "name": "LNGTCK",
+      "ord": 1059,
+      "Comments": []
+    },
+    {
+      "name": "HDLZAP",
+      "ord": 1060,
+      "Signature": "void (*hdlzap)();",
+      "Comments": [
+        "Handle zapping an idle channel"
+      ]
+    },
+    {
+      "name": "TFCCHG",
+      "ord": 1061,
+      "Comments": []
+    },
+    {
+      "name": "SYSTEM",
+      "ord": 1062,
+      "Comments": []
+    },
+    {
+      "name": "SPAWNL",
+      "ord": 1063,
+      "Comments": []
+    },
+    {
+      "name": "ERRNO",
+      "ord": 1064,
+      "Comments": []
+    },
+    {
+      "name": "NUMONL",
+      "ord": 1065,
+      "Comments": []
+    },
+    {
+      "name": "FSDCHI",
+      "ord": 1066,
+      "Comments": []
+    },
+    {
+      "name": "HDLGPR",
+      "ord": 1067,
+      "Comments": []
+    },
+    {
+      "name": "ACTDET",
+      "ord": 1068,
+      "Signature": "int actdet;",
+      "Comments": [
+        "Activity detected in this channel cycle"
+      ]
+    },
+    {
+      "name": "STRRPL",
+      "ord": 1069,
+      "Signature": "char *strrpl(char *str,char och,char nch);",
+      "Comments": []
+    },
+    {
+      "name": "DELDIR",
+      "ord": 1070,
+      "Comments": []
+    },
+    {
+      "name": "CNTDIRS",
+      "ord": 1071,
+      "Comments": []
+    },
+    {
+      "name": "NUMDIRS",
+      "ord": 1072,
+      "Comments": []
+    },
+    {
+      "name": "DELDIRERR",
+      "ord": 1073,
+      "Comments": []
+    },
+    {
+      "name": "OUTATA",
+      "ord": 1074,
+      "Signature": "int outata;",
+      "Comments": [
+        "Output ATA to modems when Answering?"
+      ]
+    },
+    {
+      "name": "HDLSMP",
+      "ord": 1075,
+      "Signature": "int (*hdlsmp)();",
+      "Comments": [
+        "Handle sample vs. paying channel determin"
+      ]
+    },
+    {
+      "name": "CHKACC",
+      "ord": 1076,
+      "Signature": "int (*chkacc)(void);",
+      "Comments": [
+        "Handle final accounting of logon"
+      ]
+    },
+    {
+      "name": "CHKPSW",
+      "ord": 1077,
+      "Signature": "int (*chkpsw)(char *psword);",
+      "Comments": [
+        "Vector for approving password"
+      ]
+    },
+    {
+      "name": "CNCBGW",
+      "ord": 1078,
+      "Comments": []
+    },
+    {
+      "name": "NINGRP",
+      "ord": 1079,
+      "Comments": []
+    },
+    {
+      "name": "BEG_PHASE",
+      "ord": 1080,
+      "Comments": []
+    },
+    {
+      "name": "END_PHASE",
+      "ord": 1081,
+      "Comments": []
+    },
+    {
+      "name": "RPTPHS",
+      "ord": 1082,
+      "Comments": []
+    },
+    {
+      "name": "PSTPHS",
+      "ord": 1083,
+      "Comments": []
+    },
+    {
+      "name": "UNIQFN",
+      "ord": 1084,
+      "Comments": []
+    },
+    {
+      "name": "SDLLINFO",
+      "ord": 1085,
+      "Comments": []
+    },
+    {
+      "name": "SHOSTACK",
+      "ord": 1086,
+      "Comments": []
+    },
+    {
+      "name": "SFTRAK",
+      "ord": 1087,
+      "Signature": "char *sftrak;",
+      "Comments": [
+        "Source file tracking"
+      ]
+    },
+    {
+      "name": "SLTRAK",
+      "ord": 1088,
+      "Signature": "int sltrak;",
+      "Comments": [
+        "Source line tracking"
+      ]
+    },
+    {
+      "name": "MXBAUDL",
+      "ord": 1089,
+      "Signature": "unsigned mxbaud[];",
+      "Comments": [
+        "Array of maximum baud rates, by chan group"
+      ]
+    },
+    {
+      "name": "TFSPTH",
+      "ord": 1090,
+      "Comments": []
+    },
+    {
+      "name": "MDMATZ",
+      "ord": 1091,
+      "Comments": []
+    },
+    {
+      "name": "MDMBSY",
+      "ord": 1092,
+      "Comments": []
+    },
+    {
+      "name": "MDMNAN",
+      "ord": 1093,
+      "Comments": []
+    },
+    {
+      "name": "KEYSBB",
+      "ord": 1094,
+      "Comments": []
+    },
+    {
+      "name": "GLOBGO",
+      "ord": 1095,
+      "Comments": []
+    },
+    {
+      "name": "MEMDBGRPT",
+      "ord": 1096,
+      "Comments": []
+    },
+    {
+      "name": "CKSUM8",
+      "ord": 1097,
+      "Comments": []
+    },
+    {
+      "name": "CKSUM16",
+      "ord": 1098,
+      "Comments": []
+    },
+    {
+      "name": "MEMDBG",
+      "ord": 1099,
+      "Comments": []
+    },
+    {
+      "name": "AABBTVL",
+      "ord": 1100,
+      "Comments": []
+    },
+    {
+      "name": "STPBTVL",
+      "ord": 1101,
+      "Comments": []
+    },
+    {
+      "name": "UNLBTV",
+      "ord": 1102,
+      "Comments": []
+    },
+    {
+      "name": "WSLBTV",
+      "ord": 1103,
+      "Comments": []
+    },
+    {
+      "name": "ISWRITE",
+      "ord": 1104,
+      "Comments": []
+    },
+    {
+      "name": "CRC16",
+      "ord": 1105,
+      "Comments": []
+    },
+    {
+      "name": "CRC32",
+      "ord": 1106,
+      "Comments": []
+    },
+    {
+      "name": "ASUPQ",
+      "ord": 1107,
+      "Comments": []
+    },
+    {
+      "name": "SUPHDR",
+      "ord": 1108,
+      "Comments": []
+    },
+    {
+      "name": "SUPEND",
+      "ord": 1109,
+      "Comments": []
+    },
+    {
+      "name": "SUPFRM",
+      "ord": 1110,
+      "Comments": []
+    },
+    {
+      "name": "SAVUSR",
+      "ord": 1111,
+      "Comments": []
+    },
+    {
+      "name": "B2CCVT",
+      "ord": 1112,
+      "Comments": []
+    },
+    {
+      "name": "C2BCVT",
+      "ord": 1113,
+      "Comments": []
+    },
+    {
+      "name": "PAGEROU",
+      "ord": 1114,
+      "Comments": []
+    },
+    {
+      "name": "CSPAGEROU",
+      "ord": 1115,
+      "Comments": []
+    },
+    {
+      "name": "GLBKEY",
+      "ord": 1116,
+      "Comments": []
+    },
+    {
+      "name": "GPAGINT",
+      "ord": 1117,
+      "Comments": []
+    },
+    {
+      "name": "PAGESET",
+      "ord": 1118,
+      "Comments": []
+    },
+    {
+      "name": "NRECCL",
+      "ord": 1119,
+      "Comments": []
+    },
+    {
+      "name": "SYSREC",
+      "ord": 1120,
+      "Comments": []
+    },
+    {
+      "name": "RECENTS",
+      "ord": 1121,
+      "Comments": []
+    },
+    {
+      "name": "LANGCHG",
+      "ord": 1122,
+      "Comments": []
+    },
+    {
+      "name": "FULLPATH",
+      "ord": 1123,
+      "Comments": []
+    },
+    {
+      "name": "NORMSPEC",
+      "ord": 1124,
+      "Comments": []
+    },
+    {
+      "name": "FPUTS",
+      "ord": 1125,
+      "Comments": []
+    },
+    {
+      "name": "GMKDIR",
+      "ord": 1126,
+      "Comments": []
+    },
+    {
+      "name": "FILNPART",
+      "ord": 1127,
+      "Comments": []
+    },
+    {
+      "name": "PATHPART",
+      "ord": 1128,
+      "Comments": []
+    },
+    {
+      "name": "STDMCHK",
+      "ord": 1129,
+      "Comments": []
+    },
+    {
+      "name": "INCUSR",
+      "ord": 1130,
+      "Comments": []
+    },
+    {
+      "name": "AXSCHG",
+      "ord": 1131,
+      "Comments": []
+    },
+    {
+      "name": "CENTURY",
+      "ord": 1132,
+      "Comments": []
+    },
+    {
+      "name": "V2DDAT",
+      "ord": 1133,
+      "Comments": []
+    },
+    {
+      "name": "V2DTIM",
+      "ord": 1134,
+      "Comments": []
+    },
+    {
+      "name": "V2SDAT",
+      "ord": 1135,
+      "Comments": []
+    },
+    {
+      "name": "V2STIM",
+      "ord": 1136,
+      "Comments": []
+    },
+    {
+      "name": "D2VDAT",
+      "ord": 1137,
+      "Comments": []
+    },
+    {
+      "name": "S2VDAT",
+      "ord": 1138,
+      "Comments": []
+    },
+    {
+      "name": "INFSD",
+      "ord": 1139,
+      "Comments": []
+    },
+    {
+      "name": "PSMATMS",
+      "ord": 1140,
+      "Comments": []
+    },
+    {
+      "name": "SPAGESET",
+      "ord": 1141,
+      "Comments": []
+    },
+    {
+      "name": "STLCAT",
+      "ord": 1142,
+      "Comments": []
+    },
+    {
+      "name": "REFLOW",
+      "ord": 1143,
+      "Comments": []
+    },
+    {
+      "name": "NAMTMP",
+      "ord": 1144,
+      "Comments": []
+    },
+    {
+      "name": "ITEMIDXD",
+      "ord": 1145,
+      "Comments": []
+    },
+    {
+      "name": "ITEMIDX",
+      "ord": 1146,
+      "Comments": []
+    },
+    {
+      "name": "ITEMCNTD",
+      "ord": 1147,
+      "Comments": []
+    },
+    {
+      "name": "ITEMCNT",
+      "ord": 1148,
+      "Comments": []
+    },
+    {
+      "name": "DOVECS",
+      "ord": 1149,
+      "Comments": []
+    },
+    {
+      "name": "CONHDL",
+      "ord": 1150,
+      "Comments": []
+    },
+    {
+      "name": "DSCHDL",
+      "ord": 1151,
+      "Comments": []
+    },
+    {
+      "name": "MCUHDL",
+      "ord": 1152,
+      "Comments": []
+    },
+    {
+      "name": "DLAHDL",
+      "ord": 1153,
+      "Comments": []
+    },
+    {
+      "name": "FINHDL",
+      "ord": 1154,
+      "Comments": []
+    },
+    {
+      "name": "FFINHDL",
+      "ord": 1155,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_FINALSHUTDOWN",
+      "ord": 1156,
+      "Comments": []
+    },
+    {
+      "name": "TMPNAM",
+      "ord": 1157,
+      "Comments": []
+    },
+    {
+      "name": "CSVCRR",
+      "ord": 1158,
+      "Signature": "int csvcrr;",
+      "Comments": [
+        "C/S credit consumption rate per minute"
+      ]
+    },
+    {
+      "name": "FIXPTH",
+      "ord": 1159,
+      "Comments": []
+    },
+    {
+      "name": "UDWRAP",
+      "ord": 1160,
+      "Comments": []
+    },
+    {
+      "name": "SHORTM",
+      "ord": 1161,
+      "Comments": []
+    },
+    {
+      "name": "PFCEIL",
+      "ord": 1162,
+      "Comments": []
+    },
+    {
+      "name": "S2AAHDL",
+      "ord": 1163,
+      "Comments": []
+    },
+    {
+      "name": "S2CSHDL",
+      "ord": 1164,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_SWT2AA",
+      "ord": 1165,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_SWT2CS",
+      "ord": 1166,
+      "Comments": []
+    },
+    {
+      "name": "NEWPOOL",
+      "ord": 1167,
+      "Comments": []
+    },
+    {
+      "name": "RSVAREA",
+      "ord": 1168,
+      "Comments": []
+    },
+    {
+      "name": "UNRAREA",
+      "ord": 1169,
+      "Comments": []
+    },
+    {
+      "name": "HOOK_ANNOUNCE",
+      "ord": 1170,
+      "Comments": []
+    },
+    {
+      "name": "ADDANNOM",
+      "ord": 1171,
+      "Comments": []
+    },
+    {
+      "name": "ADDANNO",
+      "ord": 1172,
+      "Comments": []
+    },
+    {
+      "name": "ANNOHDL",
+      "ord": 1173,
+      "Comments": []
+    },
+    {
+      "name": "DCLANNO",
+      "ord": 1174,
+      "Comments": []
+    },
+    {
+      "name": "ANNOMEM",
+      "ord": 1175,
+      "Comments": []
+    },
+    {
+      "name": "ABSDTDY",
+      "ord": 1176,
+      "Comments": []
+    },
+    {
+      "name": "ISMYREQ",
+      "ord": 1177,
+      "Comments": []
+    },
+    {
+      "name": "GNUMDB",
+      "ord": 1178,
+      "Comments": []
+    },
+    {
+      "name": "CURMBK",
+      "ord": 1179,
+      "Comments": []
+    },
+    {
+      "name": "BBSCON",
+      "ord": 1180,
+      "Signature": "int bbscon(int unum);",
+      "Comments": [
+        "Somebody wants to connect to the BBS",
+        "0 == channel busy/inappropriate",
+        "1 == ok"
+      ]
+    },
+    {
+      "name": "EDTPFN",
+      "ord": 1181,
+      "Comments": []
+    },
+    {
+      "name": "HANGUPS",
+      "ord": 1182,
+      "Comments": []
+    },
+    {
+      "name": "MSTSCAN",
+      "ord": 1183,
+      "Comments": []
+    },
+    {
+      "name": "SNUMDB",
+      "ord": 1184,
+      "Comments": []
+    },
+    {
+      "name": "INFSDHUP",
+      "ord": 1185,
+      "Comments": []
+    },
+    {
+      "name": "FOPAVL",
+      "ord": 1186,
+      "Comments": []
+    },
+    {
+      "name": "ACNMB",
+      "ord": 1187,
+      "Comments": []
+    },
+    {
+      "name": "SETBBYE",
+      "ord": 1188,
+      "Comments": []
+    },
+    {
+      "name": "SCNMDF",
+      "ord": 1189,
+      "Comments": []
+    },
+    {
+      "name": "MDFODMD",
+      "ord": 1190,
+      "Comments": []
+    },
+    {
+      "name": "BGNEDT",
+      "ord": 1191,
+      "Comments": []
+    },
+    {
+      "name": "EDTIMR",
+      "ord": 1192,
+      "Comments": []
+    },
+    {
+      "name": "ISFXVAL",
+      "ord": 1193,
+      "Comments": []
+    },
+    {
+      "name": "LSFXVAL",
+      "ord": 1194,
+      "Comments": []
+    },
+    {
+      "name": "RSPTIM",
+      "ord": 1195,
+      "Comments": []
+    },
+    {
+      "name": "VALLON",
+      "ord": 1196,
+      "Signature": "BOOL (*vallon)(void);",
+      "Comments": [
+        "Vector for final logon validation"
+      ]
+    },
+    {
+      "name": "BYENDL",
+      "ord": 1197,
+      "Comments": []
+    },
+    {
+      "name": "STRINS",
+      "ord": 1198,
+      "Comments": []
+    },
+    {
+      "name": "USRFLAGS",
+      "ord": 1199,
+      "Comments": []
+    },
+    {
+      "name": "OPNBTVL",
+      "ord": 1200,
+      "Comments": []
+    },
+    {
+      "name": "NMALLOC",
+      "ord": 1201,
+      "Comments": []
+    },
+    {
+      "name": "NMSKIP",
+      "ord": 1202,
+      "Comments": []
+    },
+    {
+      "name": "NMSCTR",
+      "ord": 1203,
+      "Comments": []
+    },
+    {
+      "name": "NMSPEC",
+      "ord": 1204,
+      "Comments": []
+    },
+    {
+      "name": "NMBUST",
+      "ord": 1205,
+      "Comments": []
+    },
+    {
+      "name": "NMLINR",
+      "ord": 1206,
+      "Comments": []
+    },
+    {
+      "name": "NMFREE",
+      "ord": 1207,
+      "Comments": []
+    },
+    {
+      "name": "LSTALCPHS",
+      "ord": 1208,
+      "Comments": []
+    },
+    {
+      "name": "LSTALCSIZ",
+      "ord": 1209,
+      "Comments": []
+    },
+    {
+      "name": "GOODCPTR",
+      "ord": 1210,
+      "Comments": []
+    },
+    {
+      "name": "ALCDBG",
+      "ord": 1211,
+      "Comments": []
+    },
+    {
+      "name": "ASTMODE",
+      "ord": 1212,
+      "Comments": []
+    },
+    {
+      "name": "GALASTFAIL",
+      "ord": 1213,
+      "Comments": []
+    },
+    {
+      "name": "ASTRPTFIL",
+      "ord": 1214,
+      "Comments": []
+    },
+    {
+      "name": "BTVUPTR",
+      "ord": 1215,
+      "Comments": []
+    },
+    {
+      "name": "BTVERRPTR",
+      "ord": 1216,
+      "Comments": []
+    },
+    {
+      "name": "LOCALECONVENTION",
+      "ord": 1217,
+      "Comments": []
+    },
+    {
+      "name": "CRCTAB",
+      "ord": 1300,
+      "Comments": []
+    },
+    {
+      "name": "CR3TAB",
+      "ord": 1301,
+      "Comments": []
+    },
+    {
+      "name": "CATRPT",
+      "ord": 1302,
+      "Comments": []
+    },
+    {
+      "name": "PLSTAK",
+      "ord": 1303,
+      "Comments": []
+    },
+    {
+      "name": "CATBPSAV",
+      "ord": 1304,
+      "Comments": []
+    },
+    {
+      "name": "CATACT",
+      "ord": 1305,
+      "Comments": []
+    },
+    {
+      "name": "INEDIT",
+      "ord": 1306,
+      "Comments": []
+    },
+    {
+      "name": "AREAPTR",
+      "ord": 1307,
+      "Comments": []
+    },
+    {
+      "name": "GLBKEYI",
+      "ord": 1308,
+      "Comments": []
+    },
+    {
+      "name": "GOODBLK",
+      "ord": 1309,
+      "Comments": []
+    },
+    {
+      "name": "SAPSUP",
+      "ord": 1310,
+      "Comments": []
+    },
+    {
+      "name": "SAPPRP",
+      "ord": 1311,
+      "Comments": []
+    },
+    {
+      "name": "SAPREP",
+      "ord": 1312,
+      "Comments": []
+    },
+    {
+      "name": "ISERRF",
+      "ord": 1313,
+      "Signature": "BOOL (*iserrf)(int chan);",
+      "Comments": [
+        "Determines if the channel is 'error free'"
+      ]
+    },
+    {
+      "name": "GPIROU",
+      "ord": 1314,
+      "Comments": []
+    },
+    {
+      "name": "LOKNAM",
+      "ord": 1315,
+      "Comments": []
+    },
+    {
+      "name": "LOW_HASKEY",
+      "ord": 1316,
+      "Comments": []
+    },
+    {
+      "name": "CLISRV",
+      "ord": 1317,
+      "Comments": []
+    },
+    {
+      "name": "IMDROP",
+      "ord": 1318,
+      "Comments": []
+    },
+    {
+      "name": "LOCK",
+      "ord": 1319,
+      "Comments": []
+    },
+    {
+      "name": "UNLOCK",
+      "ord": 1320,
+      "Comments": []
+    },
+    {
+      "name": "LOCALTIME",
+      "ord": 1321,
+      "Comments": []
+    },
+    {
+      "name": "CHSIZE",
+      "ord": 1322,
+      "Comments": []
+    },
+    {
+      "name": "REMOVE",
+      "ord": 1323,
+      "Comments": []
+    }
+  ]
+}
