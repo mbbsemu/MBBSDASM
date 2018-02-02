@@ -38,7 +38,7 @@ Normal will output the disassembled x86 code segments labeled with SEGMENT:OFFSE
 * Resolve External References
 * String Reference Resolution (best guess)
 * Identify and Label Conditional/Unconditional Jumps as well as Call's
-```
+```asm
 000019CBh:0002.13CBh push ds  ; Conditional jump from 0002:13B6
 000019CCh:0002.13CCh push 0xa0a3  ; Possible String reference from SEG 5 -> "NONE"
 000019CFh:0002.13CFh push ds
@@ -55,7 +55,7 @@ Normal will output the disassembled x86 code segments labeled with SEGMENT:OFFSE
 000019EDh:0002.13EDh jz 0x1404
 ```
 
-#### MBBS Analysis Mode (-analysis MBBS)
+#### MBBS Analysis Mode (-analysis)
 MBBS Analysis mode enables **MBBSDASM** to provide additional detailed analysis of Major BBS Modules/DLL's with information provided from the Major BBS 6.25 Software Development Kit as well as GALACTICOMM's Developer's Guide for The Major BBS 6.2 [[link](http://software.bbsdocumentary.com/IBM/WINDOWS/MAJORBBS/devguide.pdf)]
 
 Additional disassembly analysis includes:
