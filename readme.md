@@ -38,7 +38,7 @@ Normal will output the disassembled x86 code segments labeled with SEGMENT:OFFSE
 * Resolve External References
 * String Reference Resolution (best guess)
 * Identify and Label Conditional/Unconditional Jumps as well as Call's
-```
+```asm
 000019CBh:0002.13CBh push ds  ; Conditional jump from 0002:13B6
 000019CCh:0002.13CCh push 0xa0a3  ; Possible String reference from SEG 5 -> "NONE"
 000019CFh:0002.13CFh push ds
