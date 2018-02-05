@@ -2,10 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using MBBSDASM.Analysis;
 using MBBSDASM.Artifacts;
 using MBBSDASM.Enums;
-
+using SharpDisasm.Udis86;
 
 namespace MBBSDASM
 {
@@ -17,7 +16,7 @@ namespace MBBSDASM
         static void Main(string[] args)
         {
             Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine("MBBSDASM v1.0");
+            Console.WriteLine("MBBSDASM v1.1");
             Console.WriteLine("GitHub: http://www.github.com/enusbaum/mbbsdasm/");
             Console.WriteLine("------------------------------------------------------");
 
@@ -59,17 +58,12 @@ namespace MBBSDASM
                             Console.WriteLine("-MINIMAL -- Minimal Disassembler Output");
                             Console.WriteLine("-ANALYSIS -- Additional Analysis on Imported Functions (if available)");
                             return;
-                        default:
-                            break;
                     }
                 }
 
-                //Read File into Memory
-                if (string.IsNullOrEmpty(sInputFile))
-                {
-                    Console.WriteLine("Error: Please specify an input file");
-                    return;
-                }
+                //Verify Input File is Valid
+                if (string.IsNullOrEmpty(sInputFile) || !File.Exists(sInputFile))
+                    throw new Exception("Error: Please specify a valid input file");
 
                 //Warn of Analysis not being available with minimal output
                 if (bMinimal && bAnalysis)
@@ -79,7 +73,7 @@ namespace MBBSDASM
 
                 //Read the entire file to memory
                 var inputFile = new NEFile(sInputFile);
-
+                
                 //Decompile Each Segment
                 foreach (var s in inputFile.SegmentTable)
                 {
@@ -109,7 +103,7 @@ namespace MBBSDASM
                     if (bAnalysis)
                     {
                         Console.WriteLine($"{DateTime.Now} Performing Imported Function Analysis");
-                        new Analyzer().Analyze(inputFile);
+                        Analysis.Analyzer.Analyze(inputFile);
                     }
                 }
 
@@ -117,6 +111,7 @@ namespace MBBSDASM
                 var output = new StringBuilder();
                 
                 output.AppendLine($"; Disassembly of {inputFile.Path}{inputFile.FileName}");
+                output.AppendLine($"; Description: {inputFile.NonResidentNameTable[0].Name}");
                 output.AppendLine(";");
                 output.AppendLine(";-------------------------------------------");
                 output.AppendLine("; Segment Information");
@@ -156,8 +151,22 @@ namespace MBBSDASM
                     output.AppendLine($"; Start of Code for Segment {s.Ordinal}");
                     output.AppendLine("; FILE_OFFSET:SEG_NUM.SEG_OFFSET");
                     output.AppendLine(";-------------------------------------------");
+
+                    //Allows us to line up all the comments in a segment along the same column
+                    var maxDecodeLength = s.DisassemblyLines.Max(x => x.Disassembly.ToString().Length) + 21;
+                    
                     foreach (var d in s.DisassemblyLines)
                     {
+                        if (d.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ienter || d.Comments.Any(x=> x.StartsWith("Referenced by CALL")))
+                        {
+                            d.Comments.Insert(0, "/--- Begin Procedure");
+                        }
+                        
+                        if (d.Disassembly.Mnemonic == ud_mnemonic_code.UD_Iretf || d.Disassembly.Mnemonic == ud_mnemonic_code.UD_Iret)
+                        {
+                            d.Comments.Insert(0, "\\--- End Procedure");
+                        }
+
                         var sOutputLine = $"{d.Disassembly.Offset + s.Offset:X8}h:{s.Ordinal:0000}.{d.Disassembly.Offset:X4}h {d.Disassembly}";
                         if (d.Comments != null && d.Comments.Count > 0)
                         {
@@ -167,7 +176,7 @@ namespace MBBSDASM
                             {
                                 if (!newLine)
                                 {  
-                                    sOutputLine += $"  ; {c}";
+                                    sOutputLine += $"{new string(' ', maxDecodeLength - sOutputLine.Length)}; {c}";
                                     
                                     //Set variables to help us keep the following comments lined up with the first one
                                     firstCommentIndex = sOutputLine.IndexOf(';');

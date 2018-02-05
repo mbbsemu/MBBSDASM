@@ -10,5 +10,6 @@ namespace MBBSDASM.Analysis.Artifacts
         public string SignatureFormat { get; set; }
         public List<string> Comments { get; set; }
         public List<Instruction> PrecedingInstructions { get; set; }
+        public List<ReturnValue> ReturnValues { get; set; }
     }
 }

@@ -96,19 +96,37 @@ namespace MBBSDASM.Dasm
                              break;
                          case EnumRecordsFlag.INTERNALREF | EnumRecordsFlag.ADDITIVE:
                          case EnumRecordsFlag.INTERNALREF:
-                             disAsm.Comments.Add(
-                                 disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall
-                                     ? $"call {relocationRecord.TargetTypeValueTuple.Item2:X4}.{relocationRecord.TargetTypeValueTuple.Item4:X4}"
-                                     : $"SEG ADDR of Segment {relocationRecord.TargetTypeValueTuple.Item2:X4}h");
+                             if (disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall)
+                             {
+                                 //Add the Call Reference to the current line comment
+                                 disAsm.Comments.Add(
+                                     $"call {relocationRecord.TargetTypeValueTuple.Item2:X4}.{relocationRecord.TargetTypeValueTuple.Item4:X4}h");
+
+                                 file.SegmentTable
+                                     .FirstOrDefault(x => x.Ordinal == relocationRecord.TargetTypeValueTuple.Item2)
+                                     ?.DisassemblyLines
+                                     .FirstOrDefault(y =>
+                                         y.Disassembly.Offset == relocationRecord.TargetTypeValueTuple.Item4)?.Comments
+                                     .Add(
+                                         $"Referenced by CALL at address: {segment.Ordinal:0000}.{disAsm.Disassembly.Offset:X4}h");
+                             }
+                             else
+                             {
+                                 disAsm.Comments.Add(
+                                     $"SEG ADDR of Segment {relocationRecord.TargetTypeValueTuple.Item2:X4}h");
+                             }
+
                              break;
                          case EnumRecordsFlag.IMPORTNAME:
-                             var length = file.FileContent[file.Header.ImportedNamesTableOffset + relocationRecord.TargetTypeValueTuple.Item3];
+                             var length =
+                                 file.FileContent[
+                                     file.Header.ImportedNamesTableOffset +
+                                     relocationRecord.TargetTypeValueTuple.Item3];
+                             
                              disAsm.Comments.Add(
-                                 $"CALL {Encoding.ASCII.GetString(file.FileContent,file.Header.ImportedNamesTableOffset + relocationRecord.TargetTypeValueTuple.Item3 + 1, length)}");
+                                 $"CALL {Encoding.ASCII.GetString(file.FileContent, file.Header.ImportedNamesTableOffset + relocationRecord.TargetTypeValueTuple.Item3 + 1, length)}");
                              break;
                          case EnumRecordsFlag.TARGET_MASK:
-                             break;
-                         default:
                              break;
                      }
                  }
@@ -129,22 +147,28 @@ namespace MBBSDASM.Dasm
              {
                  if (!segment.Flags.Contains(EnumSegmentFlags.Code) || segment.DisassemblyLines == null || segment.DisassemblyLines.Count == 0)
                      continue;
-                 
+
                  foreach (var disassemblyLine in segment.DisassemblyLines)
                  {
                      //mov opcode
                      if (disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Imov)
                      {
                          //mov dx, ####
-                         if (disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_DX && disassemblyLine.Disassembly.Operands.Length == 2 &&
+                         if (disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_DX &&
+                             disassemblyLine.Disassembly.Operands.Length == 2 &&
                              disassemblyLine.Disassembly.Operands[1].LvalUWord > 0)
                          {
-                             var stringReference = FindString(file.SegmentTable, disassemblyLine.Disassembly.Operands[1].LvalUWord);
+                             var stringReference = FindString(file.SegmentTable,
+                                 disassemblyLine.Disassembly.Operands[1].LvalUWord);
                              if (stringReference == null)
                                  continue;
 
-                             disassemblyLine.Comments.Add(
-                                 $"Possible String reference from SEG {stringReference.Item1} -> \"{stringReference.Item2}\"");
+                             foreach (var sr in stringReference)
+                             {
+                                 disassemblyLine.Comments.Add(
+                                     $"Possible String reference from SEG {sr.Item1} -> \"{sr.Item2}\"");
+                             }
+
                              continue;
                          }
 
@@ -154,11 +178,16 @@ namespace MBBSDASM.Dasm
                              disassemblyLine.Disassembly.Operands[1].LvalUWord > 0)
                          {
                              flagNext = false;
-                             var stringReference = FindString(file.SegmentTable, disassemblyLine.Disassembly.Operands[1].LvalUWord);
+                             var stringReference = FindString(file.SegmentTable,
+                                 disassemblyLine.Disassembly.Operands[1].LvalUWord);
                              if (stringReference == null)
                                  continue;
-                             disassemblyLine.Comments.Add(
-                                 $"Possible String reference from SEG {stringReference.Item1} -> \"{stringReference.Item2}\"");
+                             foreach (var sr in stringReference)
+                             {
+                                 disassemblyLine.Comments.Add(
+                                     $"Possible String reference from SEG {sr.Item1} -> \"{sr.Item2}\"");
+                             }
+
                              continue;
                          }
 
@@ -177,12 +206,16 @@ namespace MBBSDASM.Dasm
                          disassemblyLine.Disassembly.Operands[0].LvalUWord > 0)
                      {
                          flagNext = false;
-                         var stringReference = FindString(file.SegmentTable, disassemblyLine.Disassembly.Operands[0].LvalUWord);
+                         var stringReference = FindString(file.SegmentTable,
+                             disassemblyLine.Disassembly.Operands[0].LvalUWord);
                          if (stringReference == null)
                              continue;
 
-                         disassemblyLine.Comments.Add(
-                             $"Possible String reference from SEG {stringReference.Item1} -> \"{stringReference.Item2}\"");
+                         foreach (var sr in stringReference)
+                         {
+                             disassemblyLine.Comments.Add(
+                                 $"Possible String reference from SEG {sr.Item1} -> \"{sr.Item2}\"");
+                         }
 
                          continue;
                      }
@@ -251,7 +284,7 @@ namespace MBBSDASM.Dasm
                      }
 
                      segment.DisassemblyLines.FirstOrDefault(x => x.Disassembly.Offset == target)?.Comments.Add(
-                         $"{(disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ijmp ? "Unconditional" : "Conditional")} jump from {segment.Ordinal:0000}:{disassemblyLine.Disassembly.Offset:X4}");
+                         $"{(disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ijmp ? "Unconditional" : "Conditional")} jump from {segment.Ordinal:0000}:{disassemblyLine.Disassembly.Offset:X4}h");
                  }
              }
          }
@@ -277,7 +310,7 @@ namespace MBBSDASM.Dasm
                      ulong target = (ushort)(BitConverter.ToUInt16(j.Disassembly.Bytes, 1)+j.Disassembly.Offset+3);
                  
                      segment.DisassemblyLines.FirstOrDefault(x =>
-                         x.Disassembly.Offset == target)?.Comments.Add($"Referenced by CALL at address: {segment.Ordinal:0000}.{j.Disassembly.Offset:X4}");
+                         x.Disassembly.Offset == target)?.Comments.Add($"Referenced by CALL at address: {segment.Ordinal:0000}.{j.Disassembly.Offset:X4}h");
                  }
              }
          }
@@ -291,11 +324,12 @@ namespace MBBSDASM.Dasm
          /// <param name="segments"></param>
          /// <param name="offset"></param>
          /// <returns></returns>
-         private static Tuple<ushort, string> FindString(IEnumerable<Segment> segments, ushort offset)
+         private static List<Tuple<ushort, string>> FindString(IEnumerable<Segment> segments, ushort offset)
          {   
              //Filter down potential segments
              var dataSegs = segments.Where(x => x.Flags.Contains(EnumSegmentFlags.Data) && x.Length >= offset && x.Length > 0);
 
+             var output = new List<Tuple<ushort, string>>();
              foreach (var s in dataSegs)
              {
                  //Character preceding a string should always be a null character
@@ -320,9 +354,10 @@ namespace MBBSDASM.Dasm
                  if(!string.IsNullOrEmpty(StringRegEx.Replace(potentialString, string.Empty)))
                      continue;
                      
-                 return new Tuple<ushort, string>(s.Ordinal, potentialString);
+                 output.Add(new Tuple<ushort, string>(s.Ordinal, potentialString));
              }
-             return null;
+
+             return output;
          }
 
          /// <summary>

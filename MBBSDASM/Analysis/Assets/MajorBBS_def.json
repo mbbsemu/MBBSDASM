@@ -1,5 +1,5 @@
 ﻿{
-  "Name" : "MAJORBBS",
+  "Name": "MAJORBBS",
   "Exports": [
     {
       "name": "READ",
@@ -384,7 +384,11 @@
     {
       "name": "ANSION",
       "ord": 71,
-      "Comments": []
+      "Signature": "void ansion(int on);",
+      "Comments": [
+        "Enable/Disable ANSI graphics",
+        "1 == Process ANSI graphics sequences, 0 == Ignore"
+      ]
     },
     {
       "name": "ANSSTG",
@@ -394,7 +398,10 @@
     {
       "name": "APPLYEM",
       "ord": 73,
-      "Comments": []
+      "Signature": "void applyem(char *filename);",
+      "Comments": [
+        "Sets the CNF options in the specified file"
+      ]
     },
     {
       "name": "ASKTBL",
@@ -409,14 +416,17 @@
     {
       "name": "ATOI",
       "ord": 76,
-      "Comments": []
+      "Signature": "int atoi (const char *str);",
+      "Comments": [
+        "Converts a string to an integer"
+      ]
     },
     {
       "name": "ATOL",
       "ord": 77,
       "Signature": "long int atol(const char *str);",
       "Comments": [
-        "Concerts string to a long integer"
+        "Converts string to a long integer"
       ]
     },
     {
@@ -427,7 +437,10 @@
     {
       "name": "AUXCRT",
       "ord": 79,
-      "Comments": []
+      "Signature": "char *scnstt=auxcrt();",
+      "Comments": [
+        "Gets Auxiliary CRT address"
+      ]
     },
     {
       "name": "AUXHDL",
@@ -468,7 +481,10 @@
     {
       "name": "BELPER",
       "ord": 86,
-      "Comments": []
+      "Signature": "void belper(int pitch)",
+      "Comments": [
+        "Beep the operator console"
+      ]
     },
     {
       "name": "BGNCNC",
@@ -623,7 +639,10 @@
     {
       "name": "CLREOL",
       "ord": 111,
-      "Comments": []
+      "Signature": "void clreol();",
+      "Comments": [
+        "Clear to end of line (in window)"
+      ]
     },
     {
       "name": "CLRINP",
@@ -861,17 +880,27 @@
     {
       "name": "CURCURX",
       "ord": 147,
-      "Comments": []
+      "Signature": "int curcurx();",
+      "Comments": [
+        "Gets the current cursor X coordinate"
+      ]
     },
     {
       "name": "CURCURY",
       "ord": 148,
-      "Comments": []
+      "Signature": "int curcury();",
+      "Comments": [
+        "Gets the current cursor Y coordinate"
+      ]
     },
     {
       "name": "CURSACT",
       "ord": 149,
-      "Comments": []
+      "Signature": "void cursact(int moveit);",
+      "Comments": [
+        "Enable moving of blinking cursor",
+        "1 = move blinking cursor, 0 = still"
+      ]
     },
     {
       "name": "CURSIZ",
@@ -1081,8 +1110,10 @@
     {
       "name": "ECHONU",
       "ord": 182,
-      "Signature" : "void echonu(int usrnum);",
-      "Comments": [ "Turns on echo utility for the specified user"]
+      "Signature": "void echonu(int usrnum);",
+      "Comments": [
+        "Turns on echo utility for the specified user"
+      ]
     },
     {
       "name": "EDTCHC",
@@ -1867,8 +1898,10 @@
     {
       "name": "GENRDN",
       "ord": 315,
-      "Signature" : "int genrdn(int min,int max);",
-      "Comments": [ "Generates a random number between min and max"]
+      "Signature": "int genrdn(int min,int max);",
+      "Comments": [
+        "Generates a random number between min and max"
+      ]
     },
     {
       "name": "GETASC",
@@ -2393,7 +2426,10 @@
     {
       "name": "LOCATE",
       "ord": 392,
-      "Comments": []
+      "Signature": "void locate(int x, int y);",
+      "Comments": [
+        "Move cursor to specified X,Y"
+      ]
     },
     {
       "name": "LONGJMP",
@@ -2754,6 +2790,14 @@
           "Operand": 0,
           "Name": "Ceiling"
         }
+      ],
+      "ReturnValues": [
+        {
+          "Offset": 2,
+          "Op": "MOV",
+          "Type": "int",
+          "Name": "Loaded Variable"
+        }
       ]
     },
     {
@@ -3095,9 +3139,18 @@
     {
       "name": "REGISTER_MODULE",
       "ord": 492,
-      "Signature": "statecode=register_module(ptrmodule);",
+      "Signature": "int register_module(struct module *mod);",
       "Comments": [
         "Registers the Module with the MajorBBS system"
+      ],
+      "ReturnValues": [
+        {
+          "Offset": 2,
+          "Op": "MOV",
+          "Type": "int",
+          "Name": "statecode",
+          "Comment": "Value of usrptr->state whenever user will in 'in' this module"
+        }
       ]
     },
     {
@@ -3481,8 +3534,10 @@
     {
       "name": "SKPWRD",
       "ord": 554,
-      "Signature" : "char *skpwrd(char *cp);", 
-      "Comments": [ "Skip past non-white spaces, returns first NULL or whitespace character in the string"]
+      "Signature": "char *skpwrd(char *cp);",
+      "Comments": [
+        "Skip past non-white spaces, returns first NULL or whitespace character in the string"
+      ]
     },
     {
       "name": "SND2AL",
@@ -4139,6 +4194,14 @@
           "Type": "int",
           "Name": "Message Number"
         }
+      ],
+      "ReturnValues": [
+        {
+          "Offset": 2,
+          "Op": "MOV",
+          "Type": "int",
+          "Name": "Loaded Variable"
+        }
       ]
     },
     {
@@ -4160,47 +4223,72 @@
       "name": "F_LDIV",
       "ord": 654,
       "Comments": [
-        "Performs Long division"
+        "Long Division (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 / arg2"
       ]
     },
     {
       "name": "F_LMOD",
       "ord": 655,
-      "Comments": []
+      "Comments": [
+        "Modulo (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 % arg2"
+      ]
     },
     {
       "name": "F_LUDIV",
       "ord": 656,
-      "Comments": []
+      "Comments": [
+        "Long Division, non-significant (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 / arg2"
+      ]
     },
     {
       "name": "F_LUMOD",
       "ord": 657,
-      "Comments": []
+      "Comments": [
+        "Modulo, non-significant (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 % arg2"
+      ]
     },
     {
       "name": "F_LXLSH",
       "ord": 658,
       "Comments": [
-        "Performs Long Shift Left"
+        "Long Shift Left (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
       ]
     },
     {
       "name": "F_LXMUL",
       "ord": 659,
       "Comments": [
-        "Performs Long Multiplication"
+        "Long Multiplication (Borland C++ Implicit Function)",
+        "Output: DX:AX = DX:AX * CX:BX"
       ]
     },
     {
       "name": "F_LXRSH",
       "ord": 660,
-      "Comments": []
+      "Comments": [
+        "Long Shift Right (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "F_LXURSH",
       "ord": 661,
-      "Comments": []
+      "Comments": [
+        "Long Shift Right, non-significant (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "F_PADD",
@@ -4220,87 +4308,152 @@
     {
       "name": "F_SCOPY",
       "ord": 665,
-      "Comments": []
+      "Comments": [
+        "Copies Struct into another Struct (Borland C++ Implicit Function)",
+        "Aguments: Two Far Pointers, 1st == Source, 2nd == Destination"
+      ]
     },
     {
       "name": "LDIV",
       "ord": 666,
-      "Comments": []
+      "Comments": [
+        "Long Division (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 / arg2"
+      ]
     },
     {
       "name": "LMOD",
       "ord": 667,
-      "Comments": []
+      "Comments": [
+        "Modulo (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 % arg2"
+      ]
     },
     {
       "name": "LUDIV",
       "ord": 668,
-      "Comments": []
+      "Comments": [
+        "Long Division, non-significant (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 / arg2"
+      ]
     },
     {
       "name": "LUMOD",
       "ord": 669,
-      "Comment": ""
+      "Comments": [
+        "Modulo, non-significant (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 % arg2"
+      ]
     },
     {
       "name": "LXLSH",
       "ord": 670,
-      "Comments": []
+      "Comments": [
+        "Long Shift Left (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "LXMUL",
       "ord": 671,
-      "Comments": []
+      "Comments": [
+        "Long Multiplication (Borland C++ Implicit Function)",
+        "Output: DX:AX = DX:AX * CX:BX"
+      ]
     },
     {
       "name": "LXRSH",
       "ord": 672,
-      "Comments": []
+      "Comments": [
+        "Long Shift Right (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "LXURSH",
       "ord": 673,
-      "Comments": []
+      "Comments": [
+        "Long Shift Right, non-significant (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "N_LDIV",
       "ord": 674,
-      "Comments": []
+      "Comments": [
+        "Long Division (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 / arg2"
+      ]
     },
     {
       "name": "N_LMOD",
       "ord": 675,
-      "Comments": []
+      "Comments": [
+        "Modulo (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 % arg2"
+      ]
     },
     {
       "name": "N_LUDIV",
       "ord": 676,
-      "Comments": []
+      "Comments": [
+        "Long Division, non-significant (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 / arg2"
+      ]
     },
     {
       "name": "N_LUMOD",
       "ord": 677,
-      "Comments": []
+      "Comments": [
+        "Modulo, non-significant (Borland C++ Implicit Function)",
+        "Input: Two long values on stack",
+        "Output: DX:AX = arg1 % arg2"
+      ]
     },
     {
       "name": "N_LXLSH",
       "ord": 678,
-      "Comments": []
+      "Comments": [
+        "Long Shift Left (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "N_LXMUL",
       "ord": 679,
-      "Comments": []
+      "Comments": [
+        "Long Multiplication (Borland C++ Implicit Function)",
+        "Output: DX:AX = DX:AX * CX:BX"
+      ]
     },
     {
       "name": "N_LXRSH",
       "ord": 680,
-      "Comments": []
+      "Comments": [
+        "Long Shift Right (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "N_LXURSH",
       "ord": 681,
-      "Comments": []
+      "Comments": [
+        "Long Shift Right, non-significant (Borland C++ Implicit Function)",
+        "DX:AX == Long Value",
+        "CL == How many to move"
+      ]
     },
     {
       "name": "N_PADD",
@@ -4335,7 +4488,10 @@
     {
       "name": "SCOPY",
       "ord": 688,
-      "Comments": []
+      "Comments": [
+        "Copies Struct into another Struct (Borland C++ Implicit Function)",
+        "Aguments: Two Far Pointers, 1st == Source, 2nd == Destination"
+      ]
     },
     {
       "name": "SPMHALLOC",
@@ -5437,9 +5593,12 @@
       "Comments": []
     },
     {
-      "name": "FSPUSH@",
+      "name": "F_SPUSH",
       "ord": 884,
-      "Comments": []
+      "Comments": [
+        "Store Struct on storage (Borland C++ Implicit Function)",
+        "Arguments: DX:AX - Far Pointers to the struct, CX - size in bytes"
+      ]
     },
     {
       "name": "COMMAS",
