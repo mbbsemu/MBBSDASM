@@ -3635,6 +3635,15 @@
           "Operand": 0,
           "Name": "Message Number"
         }
+      ],
+      "ReturnValues": [
+        {
+          "Offset": 3,
+          "Op": "MOV",
+          "Type": "string",
+          "Name": "stringOption",
+          "Comment": "AX holds pointer, DX holds size in return from function"
+        }
       ]
     },
     {
