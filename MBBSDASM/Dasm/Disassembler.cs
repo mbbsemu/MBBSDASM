@@ -151,7 +151,11 @@ namespace MBBSDASM.Dasm
                  foreach (var disassemblyLine in segment.DisassemblyLines)
                  {
                      //mov opcode
-                     if (disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Imov)
+                     if (disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Imov &&
+                         //Filter out any mov's with relative register math, mostly false positives
+                         !disassemblyLine.Disassembly.ToString().Contains("-") &&
+                         !disassemblyLine.Disassembly.ToString().Contains("+") &&
+                         !disassemblyLine.Disassembly.ToString().Contains(":"))
                      {
                          //mov dx, ####
                          if (disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_DX &&
@@ -180,8 +184,10 @@ namespace MBBSDASM.Dasm
                              flagNext = false;
                              var stringReference = FindString(file.SegmentTable,
                                  disassemblyLine.Disassembly.Operands[1].LvalUWord);
+                             
                              if (stringReference == null)
                                  continue;
+                             
                              foreach (var sr in stringReference)
                              {
                                  disassemblyLine.Comments.Add(
