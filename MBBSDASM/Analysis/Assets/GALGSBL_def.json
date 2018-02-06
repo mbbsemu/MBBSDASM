@@ -4,11 +4,13 @@
     {
       "name": "_BTUBSE",
       "ord": 1,
+      "Signature" : "int btubse(int chan,char bschar);",
       "Comments": []
     },
     {
       "name": "_BTUBSZ",
       "ord": 2,
+      "Signature" : "int btubsz(int chan,int isiz,int osiz);",
       "Comments": []
     },
     {
@@ -31,7 +33,7 @@
     {
       "name": "_BTUCLC",
       "ord": 5,
-      "Signature": "int err=btuclc(int chan);",
+      "Signature": "int btuclc(int chan);",
       "Comments": [
         "Clear command output buffer"
       ]
@@ -39,121 +41,147 @@
     {
       "name": "_BTUCLI",
       "ord": 6,
+      "Signature" : "int btucli(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUCLO",
       "ord": 7,
+      "Signature" : "int btuclo(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUCLS",
       "ord": 8,
+      "Signature" : "int btucls(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUCMD",
       "ord": 9,
+      "Signature" : "int btucmd(int chan,char *cmdstg);",
       "Comments": []
     },
     {
       "name": "_BTUDEF",
       "ord": 10,
+      "Signature" : "int btudef(int schan,int sport,int n);",
       "Comments": []
     },
     {
       "name": "_BTECH",
       "ord": 11,
-      "Comments": []
+      "Signature" : "int btuech(int chan,int onoff);",
+      "Comments": [
+        "Possible type in Module Definition for BTUECH()"
+      ]
     },
     {
       "name": "_BTUEND",
       "ord": 12,
+      "Signature" : "void btuend(void);",
       "Comments": []
     },
     {
       "name": "_BTUERP",
       "ord": 13,
+      "Signature" : "int btuerp(int chan,int onoff);",
       "Comments": []
     },
     {
       "name": "_BTUFFO",
       "ord": 14,
+      "Signature" : "int btuffo(int chan,int onoff);",
       "Comments": []
     },
     {
       "name": "_BTUHCR",
       "ord": 15,
+      "Signature" : "int btuhcr(int chan,char hardcr);",
       "Comments": []
     },
     {
       "name": "_BTUHDR",
       "ord": 16,
+      "Signature" : "int btuhdr(int sapchn,int bufsiz,void *buffer);",
       "Comments": []
     },
     {
       "name": "_BTUHPK",
       "ord": 17,
+      "Signature" : "int btuhpk(int chan,int far (*hpkrou)(int chan,char c));",
       "Comments": []
     },
     {
       "name": "_BTUHWH",
       "ord": 18,
+      "Signature" : "int btuhwh(int chan,int inpcut);",
       "Comments": []
     },
     {
       "name": "_BTUIBW",
       "ord": 19,
+      "Signature" : "int btuibw(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUICT",
       "ord": 20,
+      "Signature" : "int btuict(int chan,char *rdbptr);",
       "Comments": []
     },
     {
       "name": "_BTUINJ",
       "ord": 21,
+      "Signature" : "int btuinj(int chan,int status);",
       "Comments": []
     },
     {
       "name": "_BTUINP",
       "ord": 22,
+      "Signature" : "void chiinp(int chan,char c);",
       "Comments": []
     },
     {
       "name": "_BTUIRP",
       "ord": 23,
+      "Singnature" : "int btuirp(int comno);",
       "Comments": []
     },
     {
       "name": "_BTUITZ",
       "ord": 24,
+      "Signature" : "int btuitz(void *region);",
       "Comments": []
     },
     {
       "name": "_BTULFD",
       "ord": 25,
+      "Signature" : "int btulfd(int chan,char lfchar);",
       "Comments": []
     },
     {
       "name": "_BTULOK",
       "ord": 26,
+      "Signature" : "int btulok(int chan,int onoff);",
       "Comments": []
     },
     {
       "name": "_BTULSZ",
       "ord": 27,
+      "Signature" : "long btulsz(int nchan,int isiz,int osiz);",
       "Comments": []
     },
     {
       "name": "_BTUMDS",
       "ord": 28,
+      "Signature" : "int btumds(void);",
       "Comments": []
     },
     {
       "name": "_BTUMDS2",
       "ord": 29,
+      "Signature" : "int btumds2(void);",
       "Comments": []
     },
     {
@@ -170,41 +198,49 @@
     {
       "name": "_BTUMKS",
       "ord": 31,
+      "Signature" : "void btumks(char kyschr);",
       "Comments": []
     },
     {
       "name": "_BTMKS2",
       "ord": 32,
+      "Signature" : "void btumks2(char kyschr);",
       "Comments": []
     },
     {
       "name": "_BTUMON",
       "ord": 33,
+      "Signature" : "int btumon(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUMON2",
       "ord": 34,
+      "Signature" : "int btumon2(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUMXS",
       "ord": 35,
+      "Signature" : "int btumxs(unsigned bdrate);",
       "Comments": []
     },
     {
       "name": "_BTUOBA",
       "ord": 36,
+      "Signature" : "int btuoba(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUOES",
       "ord": 37,
+      "Signature" : "int btuoes(int chan,int onoff);",
       "Comments": []
     },
     {
       "name": "_BTUOLK",
       "ord": 38,
+      "Signature" : "int btuolk(int chan,int onoff);",
       "Comments": []
     },
     {
@@ -219,67 +255,79 @@
     {
       "name": "_BTUPMT",
       "ord": 40,
+      "Signature" : "int btupmt(int chan,char pmchar);",
       "Comments": []
     },
     {
       "name": "_BTURST",
       "ord": 41,
+      "Signature" : "int bturst(int chan);",
       "Comments": []
     },
     {
       "name": "_BTURTI",
       "ord": 42,
+      "Signature" : "int bturti(int n,void (*rtirou)(void));",
       "Comments": []
     },
     {
       "name": "_BTUSCN",
       "ord": 43,
+      "Signature" : "int btuscn(void);",
       "Comments": []
     },
     {
       "name": "_BTUSCR",
       "ord": 44,
+      "Signature" : "int btuscr(int chan,char softcr);",
       "Comments": []
     },
     {
       "name": "_BTUSDF",
       "ord": 45,
+      "Signature" : "int btusdf(int schan,int nchan,int chtype,...);",
       "Comments": []
     },
     {
       "name": "_BTUSET",
       "ord": 46,
+      "Signature" : "long btuset(int chan,int stid,long newval);",
       "Comments": []
     },
     {
       "name": "_BTUSIZ",
       "ord": 47,
+      "Signature" : "unsigned btusiz(int nchan,int isiz,int osiz);",
       "Comments": []
     },
     {
       "name": "_BTUSTS",
       "ord": 48,
+      "Signature" : "int btusts(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUTRG",
       "ord": 49,
+      "Signature" : "int btutrg(int chan,int nbyt);",
       "Comments": []
     },
     {
       "name": "_BTUTRM",
       "ord": 50,
+      "Signature" : "int btutrm(int chan,char crchar);",
       "Comments": []
     },
     {
       "name": "_BTUTRS",
       "ord": 51,
+      "Signature" : "int btutrs(int chan,int onoff);",
       "Comments": []
     },
     {
       "name": "_BTUTRU",
       "ord": 52,
-      "Signature": "int err=btupbc(int chan, char trunch);",
+      "Signature": "int btutru(int chan,char trunch);",
       "Comments": [
         "Sets output-abort character",
         "Truncates current output block"
@@ -288,6 +336,7 @@
     {
       "name": "_BTUTSW",
       "ord": 53,
+      "Signature" : "int btutsw(int chan,int width);",
       "Comments": []
     },
     {
@@ -301,62 +350,76 @@
     {
       "name": "_BTUUDF",
       "ord": 54,
+      "Signature" : "int btuudf(int schan,int n);",
       "Comments": []
     },
     {
       "name": "_BTUX29",
       "ord": 55,
+      "Signature" : "int btux29(int chan,int nbyt,char *data);",
       "Comments": []
     },
     {
       "name": "_BTUXCT",
       "ord": 56,
+      "Signature" : "int btuxct(int chan,int nbyt,char *datstg);",
       "Comments": []
     },
     {
       "name": "_BTUXLT",
       "ord": 57,
+      "Signature" : "void btuxlt(char oldchr,char newchr);",
       "Comments": []
     },
     {
       "name": "_BTUXMN",
       "ord": 58,
+      "Signature" : "int btuxmn(int chan,char *datstg);",
       "Comments": []
     },
     {
       "name": "_BTUXMT",
       "ord": 59,
+      "Signature" : "int btuxmt(int chan,char *datstg);",
       "Comments": []
     },
     {
       "name": "_BTUXNF",
       "ord": 60,
+      "Signature" : "int btuxnf(int chan,int xon,int xoff,...);",
       "Comments": []
     },
     {
       "name": "_CHIINJ",
       "ord": 61,
+      "Signature" : "void chiinj(int chan,int s);",
       "Comments": []
     },
     {
       "name": "_CHIINP",
       "ord": 62,
+      "Signature" : "void chiinp(int chan,char c);",
       "Comments": []
     },
     {
       "name": "_CHIOUS",
       "ord": 63,
+      "Signature" : "void chious(int chan,char *stg);",
       "Comments": []
     },
     {
       "name": "_CHIOUT",
       "ord": 64,
+      "Signature" : "void chiout(int chan,char c);",
       "Comments": []
     },
     {
       "name": "_TICKER",
       "ord": 65,
-      "Comments": []
+      "Signature" : "volatile unsigned ticker;",
+      "Comments": [
+        "Increments once per second"
+      ]
     },
     {
       "name": "_BTRHRT",
@@ -398,6 +461,7 @@
     {
       "name": "_BTUBRT",
       "ord": 70,
+      "Signature" : "int btubrt(int chan,unsigned bdrate);",
       "Comments": []
     },
     {
@@ -416,12 +480,18 @@
     {
       "name": "_BTUDTR",
       "ord": 73,
-      "Comments": []
+      "Signature" : "int btudtr;",
+      "Comments": [
+        "Set 1 1 to disable DTR-dropping during reset"
+      ]
     },
     {
       "name": "_X25UDT",
       "ord": 74,
-      "Comments": []
+      "Signature" : "int x25udt;",
+      "Comments": [
+        "Set to 1 to capture User Data Field"
+      ]
     },
     {
       "name": "_X25HEAP",
@@ -431,22 +501,34 @@
     {
       "name": "_X25IGN",
       "ord": 76,
-      "Comments": []
+      "Signature" : "int x25ign;",
+      "Comments": [
+        "Count of received packets ignored by GSBL"
+      ]
     },
     {
       "name": "_LANREV",
       "ord": 77,
-      "Comments": []
+      "Signature" : "char lanrev[2];",
+      "Comments": [
+        "SPX revision number"
+      ]
     },
     {
       "name": "_LANSOP",
       "ord": 78,
-      "Comments": []
+      "Signature" : "int lansop;",
+      "Comments": [
+        "Socket actually opened by btusdf() call"
+      ]
     },
     {
       "name": "_LANSCA",
       "ord": 79,
-      "Comments": []
+      "Signature" : "int lansca;",
+      "Comments": [
+        "SPX connections available"
+      ]
     },
     {
       "name": "_PLORTI",
@@ -464,96 +546,119 @@
     {
       "name": "_ICTACT",
       "ord": 82,
-      "Comments": []
+      "Signature" : "int ictact;",
+      "Comments": [
+        "After btuict() or btuica(): # of bytes available"
+      ]
     },
     {
       "name": "_BTUEBA",
       "ord": 83,
+      "Signature" : "int btueba(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUHIT",
       "ord": 84,
+      "Signature" : "int btuhit(int comint);",
       "Comments": []
     },
     {
       "name": "_BTUITM",
       "ord": 85,
+      "Signature" : "int btuitm(void *region);",
       "Comments": []
     },
     {
       "name": "_BTUCPC",
       "ord": 86,
+      "Signature" : "int btucpc(int chan,char clrpch);",
       "Comments": []
     },
     {
       "name": "_BTUICA",
       "ord": 87,
+      "Signature" : "int btuica(int chan,char *rdbptr,int max);",
       "Comments": []
     },
     {
       "name": "_BTUPFL",
       "ord": 88,
+      "Signature" : "int btupfl(void (*pflrou)(int type,unsigned off,unsigned sel));",
       "Comments": []
     },
     {
       "name": "_PPFLREAL",
       "ord": 89,
+      "Signature" : "extern long far *ppflreal;",
       "Comments": []
     },
     {
       "name": "_PFLGSLB",
       "ord": 90,
-      "Comments": []
+      "Signature" : "extern long pflgsbl;",
+      "Comments": [
+        "Possible type of PFGSBL in Module Definition"
+      ]
     },
     {
       "name": "_PFLRNG3",
       "ord": 91,
+      "Signature" : "extern long pflrng3;",
       "Comments": []
     },
     {
       "name": "_PFLPLAP",
       "ord": 92,
+      "Signature" : "extern long pflplap;",
       "Comments": []
     },
     {
       "name": "_PFN",
       "ord": 93,
+      "Signature" : "extern char pfn;",
       "Comments": []
     },
     {
       "name": "_BTUUSP",
       "ord": 94,
+      "Signature" : "int btuusp(int chan,int onoff);",
       "Comments": []
     },
     {
       "name": "_BTUREP",
       "ord": 95,
+      "Signature" : "long bturep(int chan,int stid);",
       "Comments": []
     },
     {
       "name": "_PFLMYS3",
       "ord": 96,
+      "Signature" : "extern long pflmys3;",
       "Comments": []
     },
     {
       "name": "_BTUCDI",
       "ord": 97,
+      "Signature" : "struct datstm far *btucdi(int chan,struct datstm far *outsnk);",
       "Comments": []
     },
     {
       "name": "_BTUOPL",
       "ord": 98,
+      "Signature" : "int btuopl(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUPCC",
       "ord": 99,
+      "Signature" : "int btupcc(int chan,int mode);",
       "Comments": []
     },
     {
       "name": "_BTUBBR",
       "ord": 56,
+      "Signature" : "int btubbr(int chan,long bdrate);",
       "Comments": []
     }
   ]
