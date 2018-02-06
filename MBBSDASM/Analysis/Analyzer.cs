@@ -130,7 +130,9 @@ namespace MBBSDASM.Analysis
                                 break;
                             
                             i.Comments.Add($"Return value saved to 0x{i.Disassembly.Operands[0].LvalUWord:X}h");
-                           
+                            
+                            if(!string.IsNullOrEmpty(rv.Comment))
+                                i.Comments.Add(rv.Comment);
                             //Add this to our tracked variables, we'll go back through and re-label all instances after this analysis pass
                             trackedVariables.Add(new TrackedVariable() { Comment = rv.Comment, Segment = segment.Ordinal, Offset = i.Disassembly.Offset, Address = i.Disassembly.Operands[0].LvalUWord});
                         }
