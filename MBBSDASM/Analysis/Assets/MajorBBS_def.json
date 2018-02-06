@@ -7471,6 +7471,121 @@
       "name": "REMOVE",
       "ord": 1323,
       "Comments": []
+    },
+    {
+      "name": "OESROU",
+      "ord": "1324",
+      "Comments": []
+    },
+    {
+      "name": "VTMSNDOK",
+      "ord": "1325",
+      "Comments": []
+    },
+    {
+      "name": "VTMSEND",
+      "ord": "1326",
+      "Comments": []
+    },
+    {
+      "name": "SETPFN",
+      "ord": "1327",
+      "Comments": []
+    },
+    {
+      "name": "WCMATCH",
+      "ord": "1328",
+      "Comments": []
+    },
+    {
+      "name": "SAWCCRS",
+      "ord": "1329",
+      "Comments": []
+    },
+    {
+      "name": "ZAPTBL",
+      "ord": "1330",
+      "Comments": []
+    },
+    {
+      "name": "SAWCLAN",
+      "ord": "1331",
+      "Comments": []
+    },
+    {
+      "name": "SYSLOAD",
+      "ord": "1332",
+      "Comments": []
+    },
+    {
+      "name": "MAXPOL",
+      "ord": "1333",
+      "Comments": []
+    },
+    {
+      "name": "MAXSPD",
+      "ord": "1334",
+      "Comments": []
+    },
+    {
+      "name": "OSVERSN",
+      "ord": "1335",
+      "Comments": []
+    },
+    {
+      "name": "CURDLLS",
+      "ord": "1336",
+      "Comments": []
+    },
+    {
+      "name": "BTRSET",
+      "ord": "1337",
+      "Comments": []
+    },
+    {
+      "name": "MULTSK",
+      "ord": "1338",
+      "Comments": []
+    },
+    {
+      "name": "MULMTH",
+      "ord": "1339",
+      "Comments": []
+    },
+    {
+      "name": "SHOCHLHOOK",
+      "ord": "1340",
+      "Comments": []
+    },
+    {
+      "name": "HASAXS",
+      "ord": "1341",
+      "Comments": []
+    },
+    {
+      "name": "TRAVAI",
+      "ord": "1342",
+      "Comments": []
+    },
+    {
+      "name": "PHAVAI",
+      "ord": "1343",
+      "Comments": []
+    },
+    {
+      "name": "MTRLNG",
+      "ord": "1344",
+      "Comments": []
+    },
+    {
+      "name": "SWTCLSHOOK",
+      "ord": "1345",
+      "Comments": []
+    },
+    {
+      "name": "RSYFADHOOK",
+      "ord": "1346",
+      "Comments": []
     }
   ]
 }
