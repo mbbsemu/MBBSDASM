@@ -19,6 +19,7 @@ namespace MBBSDASM.Artifacts
         public readonly byte[] FileContent;
         
         //Artifacts of the NE Header
+        public MZHeader OldHeader;
         public NEHeader Header;
         public List<Segment> SegmentTable;
         public List<ResourceRecord> ResourceTable;
@@ -39,11 +40,13 @@ namespace MBBSDASM.Artifacts
 
         private void Load()
         {
-            var data = new Span<byte>(FileContent);
-
-            //Validate Old-style header
-            if (data.Length < 148 || data[0] != 'M' && data[1] != 'Z')
-                throw new Exception("Invalid Old-Style Header");           
+            var data = new Span<byte>(FileContent);    
+            
+            OldHeader = new MZHeader(FileContent);
+            
+            //Verify old DOS header is correct
+            if(OldHeader.Signature != 23177)
+                throw new Exception("Invaid Header");
             
             //Locate Windows Header
             ushort windowsHeaderOffset;
