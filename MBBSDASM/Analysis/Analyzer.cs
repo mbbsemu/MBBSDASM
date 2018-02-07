@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -7,8 +8,10 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using MBBSDASM.Analysis.Artifacts;
 using MBBSDASM.Artifacts;
+using MBBSDASM.Dasm;
 using MBBSDASM.Enums;
 using Newtonsoft.Json;
+using SharpDisasm.Udis86;
 
 namespace MBBSDASM.Analysis
 {
@@ -17,14 +20,14 @@ namespace MBBSDASM.Analysis
     /// </summary>
     public static class Analyzer
     {
-        private static readonly List<ModuleDefinition> _moduleDefinitions;
+        private static readonly List<ModuleDefinition> ModuleDefinitions;
 
         /// <summary>
         ///     Default Constructor
         /// </summary>
         static Analyzer()
         {
-            _moduleDefinitions = new List<ModuleDefinition>();
+            ModuleDefinitions = new List<ModuleDefinition>();
 
             //Load Definitions
             var assembly = typeof(Analyzer).GetTypeInfo().Assembly;
@@ -32,24 +35,38 @@ namespace MBBSDASM.Analysis
             {
                 using (var reader = new StreamReader(assembly.GetManifestResourceStream(def)))
                 {
-                    _moduleDefinitions.Add(JsonConvert.DeserializeObject<ModuleDefinition>(reader.ReadToEnd()));
+                    ModuleDefinitions.Add(JsonConvert.DeserializeObject<ModuleDefinition>(reader.ReadToEnd()));
                 }
             }
 
             //Coverage Tracking
-            foreach (var m in _moduleDefinitions)
+            foreach (var m in ModuleDefinitions)
             {
                 var covered = m.Exports.Count(x => !string.IsNullOrEmpty(x.Signature));
                 var total = m.Exports.Count;
             }
-    }
-        
-        /// <summary>
-        ///     Analysis Routine for the MBBS Analyzer
-        /// </summary>
-        /// <param name="file"></param>
+        }
+
         public static void Analyze(NEFile file)
         {
+            ImportedFunctionIdentification(file);
+            ForLoopIdentification(file);
+        }
+
+        /// <summary>
+        ///     Identification Routine for MBBS/WG Imported Functions
+        /// </summary>s
+        /// <param name="file"></param>
+        private static void ImportedFunctionIdentification(NEFile file)
+        {
+            Console.WriteLine($"{DateTime.Now} Identifying Imported Functions");
+            
+            if (!file.ImportedNameTable.Any(nt => ModuleDefinitions.Select(md => md.Name).Contains(nt.Name)))
+            {
+                Console.WriteLine($"{DateTime.Now} No known Module Definitions found in target file, skipping Imported Function Identification");
+                return;
+            }
+
             var trackedVariables = new List<TrackedVariable>();
             
             //Identify Functions and Label them with the module defition file
@@ -59,11 +76,10 @@ namespace MBBSDASM.Analysis
                 foreach (var disassemblyLine in segment.DisassemblyLines.Where(x=> x.Comments.Count > 0))
                 {
                     var currentModule =
-                        _moduleDefinitions.FirstOrDefault(x => disassemblyLine.Comments.Any(y => y.Contains(x.Name)));
+                        ModuleDefinitions.FirstOrDefault(x => disassemblyLine.Comments.Any(y => y.Contains(x.Name)));
 
                     if (currentModule == null)
                         continue;
-                    
                     
                     var comment = disassemblyLine.Comments.First(x => x.Contains($"{currentModule.Name}.Ord"));
                     var ord = ushort.Parse(comment.Substring(comment.IndexOf('(') + 1, 4), NumberStyles.HexNumber);
@@ -152,6 +168,67 @@ namespace MBBSDASM.Analysis
                         disassemblyLine.Comments.Add($"Reference to variable created at {v.Segment:0000}.{v.Offset:X4}h");
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        ///     This method scans the disassembly for signatures of C++ FOR loops
+        ///     and labels them appropriatley
+        /// </summary>
+        /// <param name="file"></param>
+        private static void ForLoopIdentification(NEFile file)
+        {
+            /*
+            *    Borland C++ compiled i++/i-- FOR loops look like:
+            *    inc word [var]
+            *    cmp word [var], condition
+            *    conditional jump to beginning of for
+            *
+            *    So we'll search for this basic pattern
+            */
+
+            Console.WriteLine($"{DateTime.Now} Identifying FOR Loops");
+
+            //Scan the code segments
+            foreach (var segment in file.SegmentTable.Where(x =>
+                x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0))
+            {
+                //Function Definition Identification Pass
+                foreach (var disassemblyLine in segment.DisassemblyLines.Where(x =>
+                    x.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icmp))
+                {
+
+
+                    if (MnemonicGroupings.IncrementDecrementGroup.Contains(segment.DisassemblyLines
+                            .First(x => x.Ordinal == disassemblyLine.Ordinal - 1).Disassembly
+                            .Mnemonic)
+                        && MnemonicGroupings.JumpGroup.Contains(segment.DisassemblyLines
+                            .First(x => x.Ordinal == disassemblyLine.Ordinal + 1).Disassembly
+                            .Mnemonic))
+                    {
+
+                        if (MnemonicGroupings.IncrementGroup.Contains(segment.DisassemblyLines
+                            .First(x => x.Ordinal == disassemblyLine.Ordinal - 1).Disassembly
+                            .Mnemonic))
+                        {
+                            segment.DisassemblyLines
+                                .First(x => x.Ordinal == disassemblyLine.Ordinal - 1).Comments
+                                .Add("[FOR] Increment Value");
+                        }
+                        else
+                        {
+                            segment.DisassemblyLines
+                                .First(x => x.Ordinal == disassemblyLine.Ordinal - 1).Comments
+                                .Add("[FOR] Decrement Value");
+                        }
+
+                        disassemblyLine.Comments.Add("[FOR] Evaluate Break Condition");
+                        segment.DisassemblyLines
+                            .First(x => x.Ordinal == disassemblyLine.Ordinal + 1).Comments
+                            .Add("[FOR] Branch based on evaluation");
+                    }
+                }
+
             }
         }
     }

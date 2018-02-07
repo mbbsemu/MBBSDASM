@@ -253,16 +253,6 @@ namespace MBBSDASM.Dasm
              var jumpNearOps2ndByte = new[]
                  {0x80, 0x81, 0x82, 0x83, 0x84, 0x5, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F};
 
-             var jumpMnemonics = new[]
-             {
-                 ud_mnemonic_code.UD_Ijmp, ud_mnemonic_code.UD_Ija, ud_mnemonic_code.UD_Ijae, ud_mnemonic_code.UD_Ijb,
-                 ud_mnemonic_code.UD_Ijbe, ud_mnemonic_code.UD_Ijcxz,
-                 ud_mnemonic_code.UD_Ijecxz, ud_mnemonic_code.UD_Ijg, ud_mnemonic_code.UD_Ijge, ud_mnemonic_code.UD_Ijl,
-                 ud_mnemonic_code.UD_Ijle, ud_mnemonic_code.UD_Ijno, ud_mnemonic_code.UD_Ijnp, ud_mnemonic_code.UD_Ijns,
-                 ud_mnemonic_code.UD_Ijnz, ud_mnemonic_code.UD_Ijo, ud_mnemonic_code.UD_Ijp, ud_mnemonic_code.UD_Ijs,
-                 ud_mnemonic_code.UD_Ijz
-             };
-             
              foreach (var segment in file.SegmentTable)
              {
                  if (!segment.Flags.Contains(EnumSegmentFlags.Code) || segment.DisassemblyLines == null ||
@@ -270,7 +260,7 @@ namespace MBBSDASM.Dasm
                      continue;
 
                  //Only op+operand <= 3 bytes, skip jmp word ptr because we won't be able to label those
-                 foreach (var disassemblyLine in segment.DisassemblyLines.Where(x => jumpMnemonics.Contains(x.Disassembly.Mnemonic) && x.Disassembly.Bytes.Length <= 3))
+                 foreach (var disassemblyLine in segment.DisassemblyLines.Where(x => MnemonicGroupings.JumpGroup.Contains(x.Disassembly.Mnemonic) && x.Disassembly.Bytes.Length <= 3))
                  {
                      ulong target = 0;
 

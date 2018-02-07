@@ -16,7 +16,7 @@ namespace MBBSDASM
         static void Main(string[] args)
         {
             Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine("MBBSDASM v1.1");
+            Console.WriteLine("MBBSDASM v1.2");
             Console.WriteLine("GitHub: http://www.github.com/enusbaum/mbbsdasm/");
             Console.WriteLine("------------------------------------------------------");
 
@@ -102,7 +102,7 @@ namespace MBBSDASM
                     //Apply Selected Analysis
                     if (bAnalysis)
                     {
-                        Console.WriteLine($"{DateTime.Now} Performing Imported Function Analysis");
+                        Console.WriteLine($"{DateTime.Now} Performing Additional Analysis");
                         Analysis.Analyzer.Analyze(inputFile);
                     }
                 }
