@@ -1,8 +1,13 @@
 # Changelog
 
 ## v1.2
-* Added Worldgroup 1.0/2.0 Support
+* Added Worldgroup 1.0/2.0 for DOS Support
 * Enhanced String Reference resolution (fewer false positives)
+* Additional Module Definiton Auto-Documentation
+	* **MAJORBBS** : 460 functions documented of 1233
+	* **GALGSBL** : 97 functions documented of 101
+* Support of parsing MZ DOS Header
+* Minor code refactoring
 
 ## v1.1
 * Added initial support for variable tracking

@@ -120,11 +120,11 @@ namespace MBBSDASM.Dasm
                          case EnumRecordsFlag.IMPORTNAME:
                              var length =
                                  file.FileContent[
-                                     file.Header.ImportedNamesTableOffset +
+                                     file.WindowsHeader.ImportedNamesTableOffset +
                                      relocationRecord.TargetTypeValueTuple.Item3];
                              
                              disAsm.Comments.Add(
-                                 $"CALL {Encoding.ASCII.GetString(file.FileContent, file.Header.ImportedNamesTableOffset + relocationRecord.TargetTypeValueTuple.Item3 + 1, length)}");
+                                 $"CALL {Encoding.ASCII.GetString(file.FileContent, file.WindowsHeader.ImportedNamesTableOffset + relocationRecord.TargetTypeValueTuple.Item3 + 1, length)}");
                              break;
                          case EnumRecordsFlag.TARGET_MASK:
                              break;

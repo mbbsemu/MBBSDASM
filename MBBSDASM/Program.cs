@@ -115,7 +115,7 @@ namespace MBBSDASM
                 output.AppendLine(";");
                 output.AppendLine(";-------------------------------------------");
                 output.AppendLine("; Segment Information");
-                output.AppendLine($"; Number of Code/Data Segments = {inputFile.Header.SegmentTableEntries}");
+                output.AppendLine($"; Number of Code/Data Segments = {inputFile.WindowsHeader.SegmentTableEntries}");
                 output.AppendLine(";-------------------------------------------");
                 foreach (var s in inputFile.SegmentTable)
                 {

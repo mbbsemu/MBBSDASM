@@ -19,8 +19,8 @@ namespace MBBSDASM.Artifacts
         public readonly byte[] FileContent;
         
         //Artifacts of the NE Header
-        public MZHeader OldHeader;
-        public NEHeader Header;
+        public MZHeader DOSHeader;
+        public NEHeader WindowsHeader;
         public List<Segment> SegmentTable;
         public List<ResourceRecord> ResourceTable;
         public List<ResidentName> ResidentNameTable;
@@ -42,10 +42,10 @@ namespace MBBSDASM.Artifacts
         {
             var data = new Span<byte>(FileContent);    
             
-            OldHeader = new MZHeader(FileContent);
+            DOSHeader = new MZHeader(FileContent);
             
             //Verify old DOS header is correct
-            if(OldHeader.Signature != 23177)
+            if(DOSHeader.Signature != 23117)
                 throw new Exception("Invaid Header");
             
             //Locate Windows Header
@@ -60,27 +60,27 @@ namespace MBBSDASM.Artifacts
             }
 
             //Load Windows Header
-            Header = new NEHeader(data.Slice(windowsHeaderOffset, 0x3F).ToArray()) { FileOffset = windowsHeaderOffset };
+            WindowsHeader = new NEHeader(data.Slice(windowsHeaderOffset, 0x3F).ToArray()) { FileOffset = windowsHeaderOffset };
             
             //Adjust Offsets According to Spec (Offset from beginning of Windows Header, not file)
-            Header.SegmentTableOffset += windowsHeaderOffset;
-            Header.ResourceTableOffset += windowsHeaderOffset;
-            Header.ResidentNameTableOffset += windowsHeaderOffset;
-            Header.ModleReferenceTableOffset += windowsHeaderOffset;
-            Header.ImportedNamesTableOffset += windowsHeaderOffset;
-            Header.EntryTableOffset += windowsHeaderOffset;
+            WindowsHeader.SegmentTableOffset += windowsHeaderOffset;
+            WindowsHeader.ResourceTableOffset += windowsHeaderOffset;
+            WindowsHeader.ResidentNameTableOffset += windowsHeaderOffset;
+            WindowsHeader.ModleReferenceTableOffset += windowsHeaderOffset;
+            WindowsHeader.ImportedNamesTableOffset += windowsHeaderOffset;
+            WindowsHeader.EntryTableOffset += windowsHeaderOffset;
 
             //Load Segment Table
-            SegmentTable = new List<Segment>(Header.SegmentTableEntries);
-            for (var i = 0; i < Header.SegmentTableEntries; i++)
+            SegmentTable = new List<Segment>(WindowsHeader.SegmentTableEntries);
+            for (var i = 0; i < WindowsHeader.SegmentTableEntries; i++)
             {
                 //Load Segment Header (8 bytes per record)
                 var segment =
-                    new Segment(data.Slice(Header.SegmentTableOffset + (i * 8), 8).ToArray())
+                    new Segment(data.Slice(WindowsHeader.SegmentTableOffset + (i * 8), 8).ToArray())
                     {
                         Ordinal = (ushort) (i + 1)
                     };
-                segment.Offset <<= Header.LogicalSectorAlignmentShift;
+                segment.Offset <<= WindowsHeader.LogicalSectorAlignmentShift;
                 
                 //Attach Segment Data
                 segment.Data = data.Slice((int)segment.Offset, segment.Length).ToArray();
@@ -108,10 +108,10 @@ namespace MBBSDASM.Artifacts
             
             //Load Resident Name Table
             ResidentNameTable = new List<ResidentName>();
-            for (var i = 0; i < Header.ModleReferenceTableOffset; i +=2)
+            for (var i = 0; i < WindowsHeader.ModleReferenceTableOffset; i +=2)
             {
                 var residentName = new ResidentName();
-                var residentNameLength = data[Header.ResidentNameTableOffset + i];
+                var residentNameLength = data[WindowsHeader.ResidentNameTableOffset + i];
                 
                 //End of Names
                 if (residentNameLength == 0)
@@ -119,22 +119,22 @@ namespace MBBSDASM.Artifacts
                 
                 i++;
                 residentName.Name =
-                    Encoding.ASCII.GetString(data.Slice(Header.ResidentNameTableOffset + i, residentNameLength)
+                    Encoding.ASCII.GetString(data.Slice(WindowsHeader.ResidentNameTableOffset + i, residentNameLength)
                         .ToArray());
                 i += residentNameLength;
-                residentName.IndexIntoEntryTable = BitConverter.ToUInt16(FileContent, Header.ResidentNameTableOffset + i);
+                residentName.IndexIntoEntryTable = BitConverter.ToUInt16(FileContent, WindowsHeader.ResidentNameTableOffset + i);
                 ResidentNameTable.Add(residentName);
             }
 
             //Load Module & Imported Name Reference Tables
-            ModuleReferenceTable = new List<ModuleReference>(Header.ModuleReferenceTableEntries);
+            ModuleReferenceTable = new List<ModuleReference>(WindowsHeader.ModuleReferenceTableEntries);
             ImportedNameTable = new List<ImportedName>();
-            for (var i = 0; i < Header.ModuleReferenceTableEntries; i++)
+            for (var i = 0; i < WindowsHeader.ModuleReferenceTableEntries; i++)
             {
                 var nameOffset =
-                    BitConverter.ToUInt16(FileContent, Header.ModleReferenceTableOffset + i * 2);
+                    BitConverter.ToUInt16(FileContent, WindowsHeader.ModleReferenceTableOffset + i * 2);
 
-                nameOffset += Header.ImportedNamesTableOffset;
+                nameOffset += WindowsHeader.ImportedNamesTableOffset;
                 
                 var module = new ModuleReference();
                 var importedName = new ImportedName() { Offset = nameOffset};
@@ -150,18 +150,18 @@ namespace MBBSDASM.Artifacts
             }
             
             //Load Entry Table
-            EntryTable = new List<Entry>(data[Header.EntryTableOffset]);
+            EntryTable = new List<Entry>(data[WindowsHeader.EntryTableOffset]);
             
             //Value of 0 denotes no segment data
-            if (data[Header.EntryTableOffset] > 0)
+            if (data[WindowsHeader.EntryTableOffset] > 0)
             {
                 var entryByteOffset = 0;
                 ushort entryOrdinal = 1;
-                while (Header.EntryTableOffset + entryByteOffset  < Header.NonResidentNameTableOffset)
+                while (WindowsHeader.EntryTableOffset + entryByteOffset  < WindowsHeader.NonResidentNameTableOffset)
                 {
                     //0xFF is moveable (6 bytes), anything else is fixed as it becomes the segment number
-                    var entryCount = data[Header.EntryTableOffset + entryByteOffset]; 
-                    var entrySegment = data[Header.EntryTableOffset + entryByteOffset + 1];
+                    var entryCount = data[WindowsHeader.EntryTableOffset + entryByteOffset]; 
+                    var entrySegment = data[WindowsHeader.EntryTableOffset + entryByteOffset + 1];
 
                     if (entryCount == 1  && entrySegment == 0)
                     {
@@ -177,19 +177,19 @@ namespace MBBSDASM.Artifacts
                         var entry = new Entry { SegmentNumber = entrySegment};
                         if (entrySize == 3)
                         {
-                            entry.Flag = data[Header.EntryTableOffset + entryByteOffset + 2 + entrySize * i];
+                            entry.Flag = data[WindowsHeader.EntryTableOffset + entryByteOffset + 2 + entrySize * i];
                             entry.Offset = BitConverter.ToUInt16(FileContent,
-                                Header.EntryTableOffset + entryByteOffset + 3 + entrySize * i);
+                                WindowsHeader.EntryTableOffset + entryByteOffset + 3 + entrySize * i);
                             entry.SegmentNumber = entrySegment;
                             entry.Ordinal = entryOrdinal;   //First Entry is the Resident Name table is the module name, so we shift the ordinals by 1 to line up
                         }
                         else
                         {
-                            entry.Flag = data[Header.EntryTableOffset + entryByteOffset + 2 + entrySize * i];
-                            entry.SegmentNumber = data[Header.EntryTableOffset + entryByteOffset + 5 + (entrySize * i)];
+                            entry.Flag = data[WindowsHeader.EntryTableOffset + entryByteOffset + 2 + entrySize * i];
+                            entry.SegmentNumber = data[WindowsHeader.EntryTableOffset + entryByteOffset + 5 + (entrySize * i)];
                             entry.Offset =
                                 BitConverter.ToUInt16(FileContent,
-                                    Header.EntryTableOffset + entryByteOffset + 6 + entrySize * i);
+                                    WindowsHeader.EntryTableOffset + entryByteOffset + 6 + entrySize * i);
                         }
                         entryOrdinal++;
                         EntryTable.Add(entry);
@@ -201,7 +201,7 @@ namespace MBBSDASM.Artifacts
             
             //Load Non-Resident Name Table
             NonResidentNameTable = new List<NonResidentName>();
-            for (var i = (int)Header.NonResidentNameTableOffset; i < (Header.NonResidentNameTableOffset + Header.NonResidentNameTableLength); i += 2)
+            for (var i = (int)WindowsHeader.NonResidentNameTableOffset; i < (WindowsHeader.NonResidentNameTableOffset + WindowsHeader.NonResidentNameTableLength); i += 2)
             {
                 var nameLength = data[i];
                 i++;
