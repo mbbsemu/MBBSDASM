@@ -172,7 +172,7 @@ namespace MBBSDASM.Analysis
         }
 
         /// <summary>
-        ///     This method scans the disassembly for signatures of C++ FOR loops
+        ///     This method scans the disassembly for signatures of Turbo C++ FOR loops
         ///     and labels them appropriatley
         /// </summary>
         /// <param name="file"></param>
