@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using SharpDisasm;
+using MBBSDASM.Artifacts;
+using Instruction = SharpDisasm.Instruction;
 
 namespace MBBSDASM.Dasm
 {
@@ -8,9 +9,13 @@ namespace MBBSDASM.Dasm
     ///     additional Metadata
     /// </summary>
     public class DisassemblyLine
-    {
+    {   
         public int Ordinal { get; set; }
         public Instruction Disassembly { get; set; }
         public List<string> Comments { get; set; }
+        public ExportedFunctionRecord ExportedFunction { get; set; }
+        public List<BranchRecord> BranchToRecords { get; set; }
+        public List<BranchRecord> BranchFromRecords { get; set; }
+        public List<StringReferenceRecord> StringReferenceRecords { get; set; }
     }
 }

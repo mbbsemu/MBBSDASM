@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using MBBSDASM.Artifacts;
@@ -37,7 +38,15 @@ namespace MBBSDASM.Dasm
              var ordinal = 0;
              foreach (var disassembly in disassembler.Disassemble())
              {
-                 output.Add(new DisassemblyLine {Disassembly = disassembly, Comments = new List<string>(), Ordinal = ordinal});
+                 output.Add(new DisassemblyLine
+                 {
+                     Disassembly = disassembly,
+                     Comments = new List<string>(),
+                     Ordinal = ordinal,
+                     BranchFromRecords = new List<BranchRecord>(),
+                     BranchToRecords = new List<BranchRecord>(),
+                     StringReferenceRecords = new List<StringReferenceRecord>()
+                 });
                  ordinal++;
              }
 
@@ -54,14 +63,18 @@ namespace MBBSDASM.Dasm
              {
                  var seg = file.SegmentTable.First(x => x.Ordinal == entry.SegmentNumber);
 
-                 var fnName = file.NonResidentNameTable.FirstOrDefault(x => x.IndexIntoEntryTable == entry.Ordinal)?.Name;
+                 var fnName = file.NonResidentNameTable.FirstOrDefault(x => x.IndexIntoEntryTable == entry.Ordinal)
+                     ?.Name;
 
                  if (string.IsNullOrEmpty(fnName))
                      fnName = file.ResidentNameTable.FirstOrDefault(x => x.IndexIntoEntryTable == entry.Ordinal)?.Name;
-                         
-                 seg.DisassemblyLines.FirstOrDefault(x => x.Disassembly.Offset == entry.Offset)?.Comments.AddRange(new[] {
-                     "<-- Entry Point", $"Exported Function: {fnName}"
-                 });
+
+                 seg.DisassemblyLines.Where(x => x.Disassembly.Offset == entry.Offset)
+                     .FirstOrDefault(x =>
+                     {
+                         x.ExportedFunction = new ExportedFunctionRecord() { Name = fnName};
+                         return true;
+                     });
 
              }
          }
@@ -91,40 +104,59 @@ namespace MBBSDASM.Dasm
                      {
                          case EnumRecordsFlag.IMPORTORDINAL | EnumRecordsFlag.ADDITIVE:
                          case EnumRecordsFlag.IMPORTORDINAL:
-                             disAsm.Comments.Add(
-                                 $"{(disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall ? "call" : "SEG ADDR of")} {file.ImportedNameTable.First(x => x.Ordinal == relocationRecord.TargetTypeValueTuple.Item2).Name}.Ord({relocationRecord.TargetTypeValueTuple.Item3:X4}h)");
+                             //disAsm.Comments.Add(
+                             //    $"{(disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall ? "call" : "SEG ADDR of")} {file.ImportedNameTable.First(x => x.Ordinal == relocationRecord.TargetTypeValueTuple.Item2).Name}.Ord({relocationRecord.TargetTypeValueTuple.Item3:X4}h)");
+                             disAsm.BranchToRecords.Add(new BranchRecord
+                             {
+                                 IsRelocation = true,
+                                 BranchType =
+                                     disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall
+                                         ? EnumBranchType.CallImport
+                                         : EnumBranchType.SegAddrImport,
+                                 Segment = relocationRecord.TargetTypeValueTuple.Item2,
+                                 Offset = relocationRecord.TargetTypeValueTuple.Item3
+                             });
                              break;
                          case EnumRecordsFlag.INTERNALREF | EnumRecordsFlag.ADDITIVE:
                          case EnumRecordsFlag.INTERNALREF:
                              if (disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall)
                              {
-                                 //Add the Call Reference to the current line comment
-                                 disAsm.Comments.Add(
-                                     $"call {relocationRecord.TargetTypeValueTuple.Item2:X4}.{relocationRecord.TargetTypeValueTuple.Item4:X4}h");
-
+                                //Set Target
                                  file.SegmentTable
                                      .FirstOrDefault(x => x.Ordinal == relocationRecord.TargetTypeValueTuple.Item2)
                                      ?.DisassemblyLines
                                      .FirstOrDefault(y =>
-                                         y.Disassembly.Offset == relocationRecord.TargetTypeValueTuple.Item4)?.Comments
-                                     .Add(
-                                         $"Referenced by CALL at address: {segment.Ordinal:0000}.{disAsm.Disassembly.Offset:X4}h");
+                                         y.Disassembly.Offset == relocationRecord.TargetTypeValueTuple.Item4)
+                                     ?.BranchFromRecords
+                                     .Add(new BranchRecord() { Segment = segment.Ordinal, Offset = disAsm.Disassembly.Offset, IsRelocation = true, BranchType = EnumBranchType.Call});
+                                 
+                                 //Set Origin
+                                 disAsm.BranchToRecords.Add(new BranchRecord()
+                                 {
+                                     Segment = relocationRecord.TargetTypeValueTuple.Item2,
+                                     Offset = relocationRecord.TargetTypeValueTuple.Item4,
+                                     BranchType = EnumBranchType.Call,
+                                     IsRelocation = true
+                                 });
                              }
                              else
                              {
-                                 disAsm.Comments.Add(
-                                     $"SEG ADDR of Segment {relocationRecord.TargetTypeValueTuple.Item2:X4}h");
+                                 disAsm.BranchToRecords.Add(new BranchRecord()
+                                 {
+                                     IsRelocation = true,
+                                     BranchType = EnumBranchType.SegAddr,
+                                     Segment = relocationRecord.TargetTypeValueTuple.Item2
+                                 });
                              }
 
                              break;
                          case EnumRecordsFlag.IMPORTNAME:
-                             var length =
-                                 file.FileContent[
-                                     file.WindowsHeader.ImportedNamesTableOffset +
-                                     relocationRecord.TargetTypeValueTuple.Item3];
-                             
-                             disAsm.Comments.Add(
-                                 $"CALL {Encoding.ASCII.GetString(file.FileContent, file.WindowsHeader.ImportedNamesTableOffset + relocationRecord.TargetTypeValueTuple.Item3 + 1, length)}");
+                             disAsm.BranchToRecords.Add(new BranchRecord
+                             {
+                                 IsRelocation = true,
+                                 BranchType = EnumBranchType.CallImport,
+                                 Segment = relocationRecord.TargetTypeValueTuple.Item3
+                             });
                              break;
                          case EnumRecordsFlag.TARGET_MASK:
                              break;
@@ -168,10 +200,7 @@ namespace MBBSDASM.Dasm
                                  continue;
 
                              foreach (var sr in stringReference)
-                             {
-                                 disassemblyLine.Comments.Add(
-                                     $"Possible String reference from SEG {sr.Item1} -> \"{sr.Item2}\"");
-                             }
+                                 disassemblyLine.StringReferenceRecords.Add(new StringReferenceRecord { Segment = sr.Item1, Value = sr.Item2});
 
                              continue;
                          }
@@ -189,10 +218,7 @@ namespace MBBSDASM.Dasm
                                  continue;
                              
                              foreach (var sr in stringReference)
-                             {
-                                 disassemblyLine.Comments.Add(
-                                     $"Possible String reference from SEG {sr.Item1} -> \"{sr.Item2}\"");
-                             }
+                                 disassemblyLine.StringReferenceRecords.Add(new StringReferenceRecord { Segment = sr.Item1, Value = sr.Item2});
 
                              continue;
                          }
@@ -218,10 +244,7 @@ namespace MBBSDASM.Dasm
                              continue;
 
                          foreach (var sr in stringReference)
-                         {
-                             disassemblyLine.Comments.Add(
-                                 $"Possible String reference from SEG {sr.Item1} -> \"{sr.Item2}\"");
-                         }
+                             disassemblyLine.StringReferenceRecords.Add(new StringReferenceRecord { Segment = sr.Item1, Value = sr.Item2});
 
                          continue;
                      }
@@ -279,8 +302,30 @@ namespace MBBSDASM.Dasm
                              disassemblyLine.Disassembly.Bytes[0] == 0xE9 ? 1 : 2), disassemblyLine.Disassembly.Offset, disassemblyLine.Disassembly.Bytes.Length);
                      }
 
-                     segment.DisassemblyLines.FirstOrDefault(x => x.Disassembly.Offset == target)?.Comments.Add(
-                         $"{(disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ijmp ? "Unconditional" : "Conditional")} jump from {segment.Ordinal:0000}:{disassemblyLine.Disassembly.Offset:X4}h");
+                     //Set Target
+                     segment.DisassemblyLines.FirstOrDefault(x => x.Disassembly.Offset == target)?.BranchFromRecords
+                         .Add(new BranchRecord
+                         {
+                             Segment = segment.Ordinal,
+                             Offset = disassemblyLine.Disassembly.Offset,
+                             BranchType =
+                                 disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ijmp
+                                     ? EnumBranchType.Unconditional
+                                     : EnumBranchType.Conditional,
+                             IsRelocation = false
+                         });
+
+                     //Set Origin
+                     disassemblyLine.BranchToRecords.Add(new BranchRecord
+                     {
+                         Segment = segment.Ordinal,
+                         Offset = target,
+                         BranchType =
+                             disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ijmp
+                                 ? EnumBranchType.Unconditional
+                                 : EnumBranchType.Conditional,
+                         IsRelocation = false
+                     });
                  }
              }
          }
@@ -303,10 +348,26 @@ namespace MBBSDASM.Dasm
                      x.Disassembly.Bytes[0] == 0xE8 && x.Disassembly.Bytes.Length <= 3))
                  {
 
-                     ulong target = (ushort)(BitConverter.ToUInt16(j.Disassembly.Bytes, 1)+j.Disassembly.Offset+3);
-                 
+                     ulong target = (ushort) (BitConverter.ToUInt16(j.Disassembly.Bytes, 1) + j.Disassembly.Offset + 3);
+
+                     //Set Target
                      segment.DisassemblyLines.FirstOrDefault(x =>
-                         x.Disassembly.Offset == target)?.Comments.Add($"Referenced by CALL at address: {segment.Ordinal:0000}.{j.Disassembly.Offset:X4}h");
+                         x.Disassembly.Offset == target)?.BranchFromRecords.Add(new BranchRecord()
+                     {
+                         Segment = segment.Ordinal,
+                         Offset = j.Disassembly.Offset,
+                         BranchType = EnumBranchType.Call,
+                         IsRelocation = false
+                     });
+
+                     //Set Origin
+                     j.BranchToRecords.Add(new BranchRecord()
+                     {
+                         Segment = segment.Ordinal,
+                         Offset = target,
+                         BranchType = EnumBranchType.Call,
+                         IsRelocation = false
+                     });
                  }
              }
          }

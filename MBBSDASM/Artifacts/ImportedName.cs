@@ -7,6 +7,7 @@
     {
         public ushort Ordinal { get; set; }
         public ushort Offset { get; set; }
+        public ushort FileOffset { get; set; }
         public string Name { get; set; }
     }
 }

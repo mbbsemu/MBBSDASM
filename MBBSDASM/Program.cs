@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using MBBSDASM.Artifacts;
 using MBBSDASM.Enums;
@@ -155,18 +157,50 @@ namespace MBBSDASM
                     //Allows us to line up all the comments in a segment along the same column
                     var maxDecodeLength = s.DisassemblyLines.Max(x => x.Disassembly.ToString().Length) + 21;
                     
+                    //Write each line of the disassembly to the output stream
                     foreach (var d in s.DisassemblyLines)
                     {
-                        if (d.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ienter || d.Comments.Any(x=> x.StartsWith("Referenced by CALL")))
+                        //Label Entrypoints/Exported Functions
+                        if (d.ExportedFunction != null)
                         {
-                            d.Comments.Insert(0, "/--- Begin Procedure");
-                        }
-                        
-                        if (d.Disassembly.Mnemonic == ud_mnemonic_code.UD_Iretf || d.Disassembly.Mnemonic == ud_mnemonic_code.UD_Iret)
-                        {
-                            d.Comments.Insert(0, "\\--- End Procedure");
+                            d.Comments.Add($"Exported Function: {d.ExportedFunction.Name}");
                         }
 
+                        //Label Branch Targets
+                        foreach (var b in d.BranchFromRecords)
+                        {
+                            switch (b.BranchType)
+                            {
+                                case EnumBranchType.Call:
+                                    d.Comments.Add(
+                                        $"Referenced by CALL at address: {b.Segment:0000}.{b.Offset:X4}h {(b.IsRelocation ? "(Relocation)" : string.Empty)}");
+                                    break;
+                                case EnumBranchType.Conditional:
+                                case EnumBranchType.Unconditional:
+                                    d.Comments.Add($"{(b.BranchType == EnumBranchType.Conditional ? "Conditional" : "Unconditional")} jump from {b.Segment:0000}:{b.Offset:X4}h");
+                                    break;
+                            }
+                        }
+                        
+                        //Label Branch Origins (Relocation)
+                        foreach (var b in d.BranchToRecords.Where(x => x.IsRelocation && x.BranchType == EnumBranchType.Call))
+                            d.Comments.Add($"CALL {b.Segment:0000}.{b.Offset:X4}h (Relocation)");
+                        
+                        //Label Refereces by SEG ADDR (Internal)
+                        foreach(var b in d.BranchToRecords.Where(x=> x.IsRelocation && x.BranchType == EnumBranchType.SegAddr))
+                            d.Comments.Add($"SEG ADDR of Segment {b.Segment}");
+
+                        //Label String References
+                        foreach(var sr in d.StringReferenceRecords)
+                            d.Comments.Add($"Possible String reference from SEG {sr.Segment} -> \"{sr.Value}\"");
+                        
+                        //Only label Imports if Analysis is off, because Analysis does much more in-depth labeling
+                        if (!bAnalysis)
+                        {
+                            foreach(var b in d.BranchToRecords.Where(x=> x.IsRelocation && (x.BranchType == EnumBranchType.CallImport || x.BranchType == EnumBranchType.SegAddrImport)))
+                                d.Comments.Add($"{(b.BranchType == EnumBranchType.CallImport ? "call" : "SEG ADDR of" )} {inputFile.ImportedNameTable.First(x => x.Ordinal == b.Segment).Name}.Ord({b.Offset:X4}h)");
+                        }
+                        
                         var sOutputLine = $"{d.Disassembly.Offset + s.Offset:X8}h:{s.Ordinal:0000}.{d.Disassembly.Offset:X4}h {d.Disassembly}";
                         if (d.Comments != null && d.Comments.Count > 0)
                         {
@@ -183,7 +217,7 @@ namespace MBBSDASM
                                     newLine = true;
                                     continue;
                                 }
-                                sOutputLine +=   $"\r\n{new string(' ', firstCommentIndex) }; {c}";                                
+                                sOutputLine += $"\r\n{new string(' ', firstCommentIndex) }; {c}";                                
                             }
                         }
                         output.AppendLine(sOutputLine);

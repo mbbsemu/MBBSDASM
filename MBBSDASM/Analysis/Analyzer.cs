@@ -73,24 +73,26 @@ namespace MBBSDASM.Analysis
             foreach (var segment in file.SegmentTable.Where(x=> x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0))
             {
                 //Function Definition Identification Pass
-                foreach (var disassemblyLine in segment.DisassemblyLines.Where(x=> x.Comments.Count > 0))
+                foreach (var disassemblyLine in segment.DisassemblyLines.Where(x=> x.BranchToRecords.Any(y=> y.BranchType == EnumBranchType.CallImport)))
                 {
+
+                    var currentImport =
+                        disassemblyLine.BranchToRecords.First(z => z.BranchType == EnumBranchType.CallImport);
+                    
                     var currentModule =
-                        ModuleDefinitions.FirstOrDefault(x => disassemblyLine.Comments.Any(y => y.Contains(x.Name)));
+                        ModuleDefinitions.FirstOrDefault(x =>
+                            x.Name == file.ImportedNameTable.FirstOrDefault(y =>
+                                y.Ordinal == currentImport.Segment)?.Name);
 
                     if (currentModule == null)
                         continue;
-                    
-                    var comment = disassemblyLine.Comments.First(x => x.Contains($"{currentModule.Name}.Ord"));
-                    var ord = ushort.Parse(comment.Substring(comment.IndexOf('(') + 1, 4), NumberStyles.HexNumber);
+
+                    var ord = currentImport.Offset;
                     var definition = currentModule.Exports.FirstOrDefault(x => x.Ord == ord);
 
                     //Didn't have a definition for it?
                     if (definition == null)
                         continue;
-
-                    //Since we have the ACTUAL name, delete the original comment
-                    disassemblyLine.Comments.Remove(disassemblyLine.Comments.First(x => x.Contains($"{currentModule.Name}.Ord")));
 
                     //We'll replace the old external reference with ordinal with the actual function name/sig
                     disassemblyLine.Comments.Add(!string.IsNullOrEmpty(definition.Signature)
@@ -181,7 +183,7 @@ namespace MBBSDASM.Analysis
             /*
             *    Borland C++ compiled i++/i-- FOR loops look like:
             *    inc word [var]
-            *    cmp word [var], condition
+            *    cmp word [var], condition (unconditional jump here from before beginning of for loop logic)
             *    conditional jump to beginning of for
             *
             *    So we'll search for this basic pattern
@@ -195,16 +197,18 @@ namespace MBBSDASM.Analysis
             {
                 //Function Definition Identification Pass
                 foreach (var disassemblyLine in segment.DisassemblyLines.Where(x =>
-                    x.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icmp))
+                    x.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icmp &&
+                    x.BranchFromRecords.Any(y => y.BranchType == EnumBranchType.Unconditional)))
                 {
 
 
                     if (MnemonicGroupings.IncrementDecrementGroup.Contains(segment.DisassemblyLines
-                            .First(x => x.Ordinal == disassemblyLine.Ordinal - 1).Disassembly
-                            .Mnemonic)
-                        && MnemonicGroupings.JumpGroup.Contains(segment.DisassemblyLines
-                            .First(x => x.Ordinal == disassemblyLine.Ordinal + 1).Disassembly
-                            .Mnemonic))
+                            .First(x => x.Ordinal == disassemblyLine.Ordinal - 1).Disassembly.Mnemonic)
+                        && segment.DisassemblyLines
+                            .First(x => x.Ordinal == disassemblyLine.Ordinal + 1).BranchToRecords.Count > 0
+                        && segment.DisassemblyLines
+                            .First(x => x.Ordinal == disassemblyLine.Ordinal + 1).BranchToRecords.First(x => x.BranchType == EnumBranchType.Conditional)
+                            .Offset < disassemblyLine.Disassembly.Offset)
                     {
 
                         if (MnemonicGroupings.IncrementGroup.Contains(segment.DisassemblyLines

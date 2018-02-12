@@ -1,4 +1,7 @@
 # Changelog
+## v1.3
+* Enhanced FOR loop recognition
+* Refactored Disassembled Branch Tracking/Labeling
 
 ## v1.2
 * Added Worldgroup 1.0/2.0 for DOS Support

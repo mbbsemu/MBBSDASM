@@ -134,12 +134,11 @@ namespace MBBSDASM.Artifacts
                 var nameOffset =
                     BitConverter.ToUInt16(FileContent, WindowsHeader.ModleReferenceTableOffset + i * 2);
 
-                nameOffset += WindowsHeader.ImportedNamesTableOffset;
-                
+                var fileOffset = (ushort)(nameOffset + WindowsHeader.ImportedNamesTableOffset);
                 var module = new ModuleReference();
-                var importedName = new ImportedName() { Offset = nameOffset};
+                var importedName = new ImportedName() { Offset = nameOffset, FileOffset = fileOffset};
 
-                var name = Encoding.ASCII.GetString(data.Slice(nameOffset + 1, data[nameOffset]).ToArray());
+                var name = Encoding.ASCII.GetString(data.Slice(fileOffset + 1, data[fileOffset]).ToArray());
 
                 module.Name = name;
                 importedName.Name = name;
