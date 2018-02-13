@@ -5,6 +5,9 @@
 * Enhanced Strings Extraction/Tracking/Labeling
 	* Increased performance and accuracy of string reference lookup
 	* Added -STRINGS command line to output all strings extracted from DATA segments to Disassembly output
+* Additional Module Definiton Auto-Documentation
+	* **MAJORBBS** : 594 functions documented of 1233 defined
+	* **GALGSBL** : 97 functions documented of 101 defined
 * Minor code refactoring
 	
 ## v1.2
