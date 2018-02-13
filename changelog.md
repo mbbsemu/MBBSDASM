@@ -2,7 +2,11 @@
 ## v1.3
 * Enhanced FOR loop recognition
 * Refactored Disassembled Branch Tracking/Labeling
-
+* Enhanced Strings Extraction/Tracking/Labeling
+	* Increased performance and accuracy of string reference lookup
+	* Added -STRINGS command line to output all strings extracted from DATA segments to Disassembly output
+* Minor code refactoring
+	
 ## v1.2
 * Added Worldgroup 1.0/2.0 for DOS Support
 * Added initial FOR loop recognition

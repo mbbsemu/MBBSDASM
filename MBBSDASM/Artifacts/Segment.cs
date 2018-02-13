@@ -63,6 +63,8 @@ namespace MBBSDASM.Artifacts
 
         public List<DisassemblyLine> DisassemblyLines { get; set; }
         
+        public List<StringRecord> StringRecords { get; set; }
+        
         public Segment() {}
         
         public Segment(byte[] segmentHeader)

@@ -50,6 +50,7 @@ namespace MBBSDASM.Analysis
         public static void Analyze(NEFile file)
         {
             ImportedFunctionIdentification(file);
+            SubroutineIdentification(file);
             ForLoopIdentification(file);
         }
 
@@ -227,12 +228,67 @@ namespace MBBSDASM.Analysis
                         }
 
                         disassemblyLine.Comments.Add("[FOR] Evaluate Break Condition");
+                        
+                        //Label beginning of FOR logic by labeling source of unconditional jump
+                        segment.DisassemblyLines
+                            .First(x => x.Disassembly.Offset == disassemblyLine.BranchFromRecords
+                                            .First(y => y.BranchType == EnumBranchType.Unconditional).Offset).Comments
+                            .Add("[FOR] Beginning of FOR logic");
+                        
                         segment.DisassemblyLines
                             .First(x => x.Ordinal == disassemblyLine.Ordinal + 1).Comments
                             .Add("[FOR] Branch based on evaluation");
                     }
                 }
 
+            }
+        }
+
+        /// <summary>
+        ///     This method scans the disassembled code and identifies subroutines, labeling them
+        ///     appropriatley. This also allows for much more precise variable/argument tracking
+        ///     if we properly know the scope of the routine.
+        /// </summary>
+        /// <param name="file"></param>
+        private static void SubroutineIdentification(NEFile file)
+        {
+            Console.WriteLine($"{DateTime.Now} Identifying Subroutines");
+            
+            
+            //Scan the code segments
+            foreach (var segment in file.SegmentTable.Where(x =>
+                x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0))
+            {
+                ushort subroutineId = 0;
+                var bInSubroutine = false;
+                for (var i = 0; i < segment.DisassemblyLines.Count; i++)
+                {
+                    if (bInSubroutine)
+                        segment.DisassemblyLines[i].SubroutineID = subroutineId;
+
+                    if (segment.DisassemblyLines[i].Disassembly.Mnemonic == ud_mnemonic_code.UD_Ienter || 
+                        segment.DisassemblyLines[i].BranchFromRecords.Any(x => x.BranchType == EnumBranchType.Call) ||
+                        segment.DisassemblyLines[i].ExportedFunction != null ||
+                        //Previous instruction was the end of a subroutine, we must be starting one that's not
+                        //referenced anywhere in the code
+                        (i > 0 &&
+                        (segment.DisassemblyLines[i - 1].Disassembly.Mnemonic == ud_mnemonic_code.UD_Iretf ||
+                        segment.DisassemblyLines[i - 1].Disassembly.Mnemonic == ud_mnemonic_code.UD_Iret)))
+                    {
+                        subroutineId++;
+                        bInSubroutine = true;
+                        segment.DisassemblyLines[i].SubroutineID = subroutineId;
+                        segment.DisassemblyLines[i].Comments.Insert(0, $"/---- BEGIN SUBROUTINE {subroutineId}");
+                        continue;
+                    }
+
+                    if (bInSubroutine && (segment.DisassemblyLines[i].Disassembly.Mnemonic == ud_mnemonic_code.UD_Iret ||
+                        segment.DisassemblyLines[i].Disassembly.Mnemonic == ud_mnemonic_code.UD_Iretf))
+                    {
+                        bInSubroutine = false;
+                        segment.DisassemblyLines[i].Comments.Insert(0, $"\\---- END SUBROUTINE {subroutineId}");
+                    }
+                }
             }
         }
     }

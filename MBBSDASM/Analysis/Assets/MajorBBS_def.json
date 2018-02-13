@@ -1032,7 +1032,10 @@
     {
       "name": "DIGALW",
       "ord": 169,
-      "Comments": []
+      "Signature" : "int digalw;",
+      "Comments": [
+        "Digits allowed in User-IDs?"
+      ]
     },
     {
       "name": "DINSBTV",
@@ -1133,12 +1136,18 @@
     {
       "name": "EMLSDROU",
       "ord": 186,
-      "Comments": []
+      "Signature" : "void (*emlsdrou)();",
+      "Comments": [
+        "Send Email to Sysop/ New User routine"
+      ]
     },
     {
       "name": "EMUBEL",
       "ord": 187,
-      "Comments": []
+      "Signature" : "int emubel;",
+      "Comments": [
+        "Emulation bell period"
+      ]
     },
     {
       "name": "EMUCHN",
@@ -1580,12 +1589,18 @@
     {
       "name": "FSDPAN",
       "ord": 255,
-      "Comments": []
+      "Signature" : "void fsdpan(char *answer, char *name, char *value);",
+      "Comments": [
+        "Put answer into answer string (Full-Screen Data Entry)"
+      ]
     },
     {
       "name": "FSDPPC",
       "ord": 256,
-      "Comments": []
+      "Signature" : "int fsdppc(char *templt, int ascn);",
+      "Comments": [
+        "Preprocess field information, in prep for fsdent() (Full-Screen Data Entry)"
+      ]
     },
     {
       "name": "FSDPRC",
@@ -1654,222 +1669,356 @@
     {
       "name": "FTFABT",
       "ord": 268,
-      "Comments": []
+      "Signature" : "void ftfabt(char *why);",
+      "Comments": [
+        "(File Transfer) Abort transfer session (hi level)"
+      ]
     },
     {
       "name": "FTFAHD",
       "ord": 269,
-      "Comments": []
+      "Signature" : "void ftfahd(int nstate, int ticks);",
+      "Comments": [
+        "(File Transfer) transit to a new sub-state & quickly time out"
+      ]
     },
     {
       "name": "FTFBUF",
       "ord": 270,
-      "Comments": []
+      "Signature" : "char *ftfbuf;",
+      "Comments": [
+        "(File Transfer) Very Short-Term Buffer"
+      ]
     },
     {
       "name": "FTFCAN",
       "ord": 271,
-      "Comments": []
+      "Signature" : "void ftfcan(void);",
+      "Comments": [
+        "(File Transfer) Cancel file transfer, send ^X's to the other party"
+      ]
     },
     {
       "name": "FTFCLI",
       "ord": 272,
-      "Comments": []
+      "Signature" : "void ftfcli(void);",
+      "Comments": [
+        "(File Transfer) Clear input buffer"
+      ]
     },
     {
       "name": "FTFCLO",
       "ord": 273,
-      "Comments": []
+      "Signature" : "void ftfclo(void);",
+      "Comments": [
+        "(File Transfer) Clear output buffer"
+      ]
     },
     {
       "name": "FTFNEW",
       "ord": 274,
-      "Comments": []
+      "Signature" : "void ftfnew(int nstate);",
+      "Comments": [
+        "(File Transfer) Transition to a new sub-state of the transfer session"
+      ]
     },
     {
       "name": "FTFNWP",
       "ord": 275,
-      "Comments": []
+      "Signature" : "void ftfnwp(void);",
+      "Comments": [
+        "(File Transfer) New Packet Received"
+      ]
     },
     {
       "name": "FTFOBA",
       "ord": 276,
-      "Comments": []
+      "Singnature" : "int ftfoba(void);",
+      "Comments": [
+        "(File Transfer) Output buffer bytes available, how many?"
+      ]
     },
     {
       "name": "FTFOUS",
       "ord": 277,
-      "Comments": []
+      "Signature" : "void ftfous(char *string);",
+      "Comments": [
+        "(File Transfer) Transmit ASCII string (used during ASCII sessions)"
+      ]
     },
     {
       "name": "FTFOUT",
       "ord": 278,
-      "Comments": []
+      "Signature" : "void ftfout(char *data, int nbytes);",
+      "Comments": [
+        "(File Transfer) Transmit binary bytes (used during non-ASCII sessions)"
+      ]
     },
     {
       "name": "FTFRCA",
       "ord": 279,
-      "Comments": []
+      "Signature" : "void ftfrca(void);",
+      "Comments": [
+        "(File Transfer) Make sure ftfrcl() gets called"
+      ]
     },
     {
       "name": "FTFRCL",
       "ord": 280,
-      "Comments": []
+      "Signature" : "void ftfrcl(int ok);",
+      "Comments": [
+        "(File Transfer) Close file after receiving"
+      ]
     },
     {
       "name": "FTFREX",
       "ord": 281,
-      "Comments": []
+      "Signature" : "int ftfrex(void);",
+      "Comments": [
+        "(File Transfer) Check if file to be received exists already"
+      ]
     },
     {
       "name": "FTFROP",
       "ord": 282,
-      "Comments": []
+      "Signature" : "int ftfrop(int append, int ascii, int resume);",
+      "Comments": [
+        "(File Transfer) Open file for reception and writing"
+      ]
     },
     {
       "name": "FTFRRD",
       "ord": 283,
-      "Comments": []
+      "Signature" : "int ftfrrd(char *datbuf, int nbytes);",
+      "Comments": [
+        "(File Transfer) Read bytes from file before receiving & overwriting them"
+      ]
     },
     {
       "name": "FTFRSK",
       "ord": 284,
-      "Comments": []
+      "Signature" : "void ftfrsk(long pos);",
+      "Comments": [
+        "(File Transfer) Seek a position in the file for receiving & writing to"
+      ]
     },
     {
       "name": "FTFRSQ",
       "ord": 285,
-      "Comments": []
+      "Signature" : "void ftfrsq(char *reason);",
+      "Comments": [
+        "(File Transfer) Report that a file will be gracfully skipped"
+      ]
     },
     {
       "name": "FTFRWB",
       "ord": 286,
-      "Comments": []
+      "Signature" : "int ftfrwb(char ch);",
+      "Comments": [
+        "(File Transfer) Write 1 received byte into file"
+      ]
     },
     {
       "name": "FTFRWR",
       "ord": 287,
-      "Comments": []
+      "Signature" : "int ftfrwr(char *data, int nbytes);",
+      "Comments": [
+        "(File Transfer) Write received bytes into file"
+      ]
     },
     {
       "name": "FTFSCB",
       "ord": 288,
-      "Comments": []
+      "Signature" : "struct ftfscb {...};",
+      "Comments": [
+        "(File Transfer) Contains fields for external use"
+      ]
     },
     {
       "name": "FTFSRT",
       "ord": 289,
-      "Comments": []
+      "Signature" : "void ftfsrt(void);",
+      "Comments": [
+        "(File Transfer) Start a(nother) transmitable file"
+      ]
     },
     {
       "name": "FTFSTF",
       "ord": 290,
-      "Comments": []
+      "Signature" : "void ftfstf(void);",
+      "Comments": [
+        "(File Transfer) Start file counters from scratch"
+      ]
     },
     {
       "name": "FTFXCA",
       "ord": 291,
-      "Comments": []
+      "Signature" : "void ftfxca(void);",
+      "Comments": [
+        "(File Transfer) Make sure ftfxcl() gets called"
+      ]
     },
     {
       "name": "FTFXCL",
       "ord": 292,
-      "Comments": []
+      "Signature" : "void ftfxcl(int ok);",
+      "Comments": [
+        "(File Transfer) Close file after transmitting"
+      ]
     },
     {
       "name": "FTFXLK",
       "ord": 293,
-      "Comments": []
+      "Signature" : "void ftfxlk(int on);",
+      "Comments": [
+        "(File Tranfer) Lock output"
+      ]
     },
     {
       "name": "FTFXOP",
       "ord": 294,
-      "Comments": []
+      "Signature" : "int ftfxop(void);",
+      "Comments": [
+        "(File Transfer) Open file for reading and transmitting"
+      ]
     },
     {
       "name": "FTFXRB",
       "ord": 295,
-      "Comments": []
+      "Signature" : "int ftfxrb(void);",
+      "Comments": [
+        "(File Transfer) Read 1 byte from file for transmitting"
+      ]
     },
     {
       "name": "FTFXRD",
       "ord": 296,
-      "Comments": []
+      "Signature" : "int ftfxrd(char *datbuf, int nbytes);",
+      "Comments": [
+        "(File Transfer) Read bytes from file for transmitting"
+      ]
     },
     {
       "name": "FTFXRL",
       "ord": 297,
-      "Comments": []
+      "Signature" : "int ftfxrl(char *datbuf, int nbytes);",
+      "Comments": [
+        "(File Transfer) Read a line from an ASCII file for transmitting"
+      ]
     },
     {
       "name": "FTFXSK",
       "ord": 298,
-      "Comments": []
+      "Signature" : "void ftfxsk(long pos);",
+      "Comments": [
+        "Seek a position in the file for transmission"
+      ]
     },
     {
       "name": "FTFXSQ",
       "ord": 299,
-      "Comments": []
+      "Signature" : "void ftfxsq(char *reason);",
+      "Comments": [
+        "(File Transfer) Report that a file will be gracfully skipped"
+      ]
     },
     {
       "name": "FTFZAD",
       "ord": 300,
-      "Comments": []
+      "Signature" : "int ftfzad(char c);",
+      "Comments": [
+        "(File Transfer) Check for automatic ZMODEM download"
+      ]
     },
     {
       "name": "FTGDNL",
       "ord": 301,
-      "Comments": []
+      "Signature" : "void ftgdnl(char *prot, void (*retrou)(void));",
+      "Comments": [
+        "(File Transfer) Download all tagged files (or untag, etc.)"
+      ]
     },
     {
       "name": "FTGNEW",
       "ord": 302,
-      "Comments": []
+      "Signature" : "int ftgnew(void);",
+      "Comments": [
+        "(File Transfer) Issue a new tagspec pointer"
+      ]
     },
     {
       "name": "FTGNUM",
       "ord": 303,
-      "Comments": []
+      "Signature" : "int ftgnum(void);",
+      "Comments": [
+        "(File Transfer) Number of tagged files for this user"
+      ]
     },
     {
       "name": "FTGPTR",
       "ord": 304,
-      "Comments": []
+      "Signature" : "struct ftg *ftgptr;",
+      "Comments": [
+        "(File Transfer) Global Tagspec Pointer"
+      ]
     },
     {
       "name": "FTGSBM",
       "ord": 305,
-      "Comments": []
+      "Signature" : "int ftgsbm(char *prot)",
+      "Comments": [
+        "(File Transfer) Submit a tagspec for download"
+      ]
     },
     {
       "name": "FTGSHO",
       "ord": 306,
-      "Comments": []
+      "Signature" : "void ftgsho(void);",
+      "Comments": [
+        "(File Transfer) List out the tagged files (caller calls outprf())"
+      ]
     },
     {
       "name": "FTGUSR",
       "ord": 307,
-      "Comments": []
+      "Signature" : "struct ftg *ftgusr;",
+      "Comments": [
+        "(File Transfer) Global ptr to user's ftg array"
+      ]
     },
     {
       "name": "FTPLOG",
       "ord": 308,
-      "Comments": []
+      "Signature": "void ftplog(struct ftfpsp *ftp);",
+      "Comments": [
+        "(File Transfer) Log in a new protocol specification",
+        "Put it after all others"
+      ]
     },
     {
       "name": "FTPLOGH",
       "ord": 309,
-      "Comments": []
+      "Signature" : "void ftplogh(struct ftfpsp *ftp);",
+      "Comments": [
+        "(File Transfer) Log in a new protocol specification",
+        "Put it BEFORE all others"
+      ]
     },
     {
       "name": "FTUPTR",
       "ord": 310,
-      "Comments": []
+      "Signature" : "struct ftuser *ftuptr;",
+      "Comments": [
+        "(File Transfer) FILEXFER.C stuff for current user"
+      ]
     },
     {
       "name": "FUPKIL",
       "ord": 311,
-      "Comments": []
+      "Signature" : "void fupkil(void);",
+      "Comments": [
+        "(File Transfer) Prep for kill from remote sysop"
+      ]
     },
     {
       "name": "FWRITE",
@@ -2853,7 +3002,7 @@
     {
       "name": "NTFYSOPR",
       "ord": 438,
-      "Signature" : "void (*ntfysopr)();",
+      "Signature" : "void (*ntfysopr)(char *audrec);",
       "Comments": [
         "Notify Remote Sysop Routine"
       ]
@@ -2861,7 +3010,7 @@
     {
       "name": "NUMBYTS",
       "ord": 439,
-      "Signature" : "extern long numbyts;",
+      "Signature" : "long numbyts;",
       "Comments": [
         "Global variable output by cntdir() and cntdirs()"
       ]
@@ -2869,7 +3018,7 @@
     {
       "name": "NUMFILS",
       "ord": 440,
-      "Signature" : "extern long numfils;",
+      "Signature" : "long numfils;",
       "Comments": [
         "Global variable output by cntdir() and cntdirs()"
       ]
@@ -3737,7 +3886,7 @@
     {
       "name": "SHWCRD",
       "ord": 551,
-      "Signature" : "extern int shwcrd;",
+      "Signature" : "int shwcrd;",
       "Comments": [
         "Show credits to people online", "1 == show, 0 == hide"
       ]
@@ -4097,7 +4246,10 @@
     {
       "name": "TJOINROU",
       "ord": 600,
-      "Comments": []
+      "Signature" : "void (*tjoinrou)();",
+      "Comments": [
+        "Teleconference 'join from other' rouptr"
+      ]
     },
     {
       "name": "TODAY",
@@ -4346,7 +4498,10 @@
     {
       "name": "VDAREA",
       "ord": 638,
-      "Comments": []
+      "Signature" : "char *vdarea;",
+      "Comments": [
+        "Pointer to first vda element (bkwd. comp.)"
+      ]
     },
     {
       "name": "VDASIZ",
@@ -4831,7 +4986,10 @@
     {
       "name": "MXBAUD",
       "ord": 706,
-      "Comments": []
+      "Signature" : "unsigned mxbaud[];",
+      "Comments": [
+        "Array of maximum baud rated, by channel group"
+      ]
     },
     {
       "name": "GRTYPE",
@@ -5372,7 +5530,10 @@
     {
       "name": "GENBUF",
       "ord": 791,
-      "Comments": []
+      "Signature" : "struct bbsgen genbuf;",
+      "Comments": [
+        "FOr reading Main Exec records from BBSGEN.DAT"
+      ]
     },
     {
       "name": "CNCLNG",
@@ -6257,17 +6418,26 @@
     {
       "name": "SGNUSZ",
       "ord": 962,
-      "Comments": []
+      "Signature" : "int sgnusz",
+      "Comments": [
+        "Maximum size of User-IDs for new signups"
+      ]
     },
     {
       "name": "FULALW",
       "ord": 963,
-      "Comments": []
+      "Signature" : "int fulalw;",
+      "Comments": [
+        "Full names allowed as User-IDs?"
+      ]
     },
     {
       "name": "NAMDFT",
       "ord": 964,
-      "Comments": []
+      "Signature" : "int namdft;",
+      "Comments": [
+        "How do you handle user-ids?"
+      ]
     },
     {
       "name": "SETPFN",
@@ -7060,12 +7230,18 @@
     {
       "name": "PAGEROU",
       "ord": 1114,
-      "Comments": []
+      "Signature" : "int (*pagerou)();",
+      "Comments": [
+        "Teleconference page routine"
+      ]
     },
     {
       "name": "CSPAGEROU",
       "ord": 1115,
-      "Comments": []
+      "Signature" : "int (*cspagerou)();",
+      "Comments": [
+        "c/s page routine"
+      ]
     },
     {
       "name": "GLBKEY",
@@ -7075,22 +7251,34 @@
     {
       "name": "GPAGINT",
       "ord": 1117,
-      "Comments": []
+      "Signature" : "int gpagint;",
+      "Comments": [
+        "Global page interval, used if gpirou==NULL"
+      ]
     },
     {
       "name": "PAGESET",
       "ord": 1118,
-      "Comments": []
+      "Signature" : "int (*pageset)();",
+      "Comments": [
+        "page setting routine"
+      ]
     },
     {
       "name": "NRECCL",
       "ord": 1119,
-      "Comments": []
+      "Signature" : "int nreccl",
+      "Comments": [
+        "Number of recent calls to record"
+      ]
     },
     {
       "name": "SYSREC",
       "ord": 1120,
-      "Comments": []
+      "Signature" : "int sysrec;",
+      "Comments": [
+        "Include MASTERs in /RECENT list?"
+      ]
     },
     {
       "name": "RECENTS",
@@ -7334,7 +7522,7 @@
     {
       "name": "UDWRAP",
       "ord": 1160,
-      "Signature" : "extern int udwrap;",
+      "Signature" : "int udwrap;",
       "Comments": [
         "Determines if cursor up/down array wraps at limits"
       ]
@@ -7482,7 +7670,7 @@
     {
       "name": "CURMBK",
       "ord": 1179,
-      "Signature" : "extern FILE *curmbk;",
+      "Signature" : "FILE *curmbk;",
       "Comments": [
         "Template setmkb() pointer"
       ]
@@ -7536,7 +7724,7 @@
     {
       "name": "FOPAVL",
       "ord": 1186,
-      "Signature" : "extern int fopavl;",
+      "Signature" : "int fopavl;",
       "Comments": [
         "The number of fopen()'s left according to Borland's table"
       ]
@@ -7654,7 +7842,7 @@
     {
       "name": "NMALLOC",
       "ord": 1201,
-      "Signature" : "extern unsigned long nmalloc;",
+      "Signature" : "unsigned long nmalloc;",
       "Comments": [
         "Returns the count of malloc()'s"
       ]
@@ -7815,7 +8003,10 @@
     {
       "name": "GPIROU",
       "ord": 1314,
-      "Comments": []
+      "Signature" : "int (*gpirou)(int usn);",
+      "Comments": [
+        "Global page interval routine"
+      ]
     },
     {
       "name": "LOKNAM",
@@ -7942,17 +8133,26 @@
     {
       "name": "BTRSET",
       "ord": "1337",
-      "Comments": []
+      "Signature" : "char btrset[80];",
+      "Comments": [
+        "Parameters we're passing to Btrieve"
+      ]
     },
     {
       "name": "MULTSK",
       "ord": "1338",
-      "Comments": []
+      "Signature" : "int multsk;",
+      "Comments": [
+        "Is a multitasker being used?"
+      ]
     },
     {
       "name": "MULMTH",
       "ord": "1339",
-      "Comments": []
+      "Signature" : "int mulmth;",
+      "Comments": [
+        "If multitasking, what method is used?"
+      ]
     },
     {
       "name": "SHOCHLHOOK",

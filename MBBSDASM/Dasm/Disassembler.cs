@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using MBBSDASM.Artifacts;
@@ -32,6 +31,7 @@ namespace MBBSDASM.Dasm
                  return new List<DisassemblyLine>();
              
              var output = new List<DisassemblyLine>();
+
              var disassembler = new SharpDisasm.Disassembler(segment.Data, ArchitectureMode.x86_16, 0, true);  
              
              //Perform Raw Disassembly
@@ -44,8 +44,7 @@ namespace MBBSDASM.Dasm
                      Comments = new List<string>(),
                      Ordinal = ordinal,
                      BranchFromRecords = new List<BranchRecord>(),
-                     BranchToRecords = new List<BranchRecord>(),
-                     StringReferenceRecords = new List<StringReferenceRecord>()
+                     BranchToRecords = new List<BranchRecord>()
                  });
                  ordinal++;
              }
@@ -91,11 +90,11 @@ namespace MBBSDASM.Dasm
                  if (!segment.Flags.Contains(EnumSegmentFlags.Code) &&
                      !segment.Flags.Contains(EnumSegmentFlags.HasRelocationInfo))
                      continue;
-
+                 
                  foreach (var relocationRecord in segment.RelocationRecords)
                  {
                      var disAsm =
-                         segment.DisassemblyLines.FirstOrDefault(x => x.Disassembly.Offset == relocationRecord.Offset - (ulong) 1);
+                         segment.DisassemblyLines.FirstOrDefault(x => x.Disassembly.Offset == relocationRecord.Offset - 1UL);
 
                      if (disAsm == null)
                          continue;
@@ -104,8 +103,6 @@ namespace MBBSDASM.Dasm
                      {
                          case EnumRecordsFlag.IMPORTORDINAL | EnumRecordsFlag.ADDITIVE:
                          case EnumRecordsFlag.IMPORTORDINAL:
-                             //disAsm.Comments.Add(
-                             //    $"{(disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall ? "call" : "SEG ADDR of")} {file.ImportedNameTable.First(x => x.Ordinal == relocationRecord.TargetTypeValueTuple.Item2).Name}.Ord({relocationRecord.TargetTypeValueTuple.Item3:X4}h)");
                              disAsm.BranchToRecords.Add(new BranchRecord
                              {
                                  IsRelocation = true,
@@ -174,7 +171,7 @@ namespace MBBSDASM.Dasm
          public static void ResolveStringReferences(NEFile file)
          {
              var flagNext = false;
-             
+             var dataSegmentToUse = 0;
              foreach (var segment in file.SegmentTable)
              {
                  if (!segment.Flags.Contains(EnumSegmentFlags.Code) || segment.DisassemblyLines == null || segment.DisassemblyLines.Count == 0)
@@ -182,6 +179,7 @@ namespace MBBSDASM.Dasm
 
                  foreach (var disassemblyLine in segment.DisassemblyLines)
                  {
+                     
                      //mov opcode
                      if (disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Imov &&
                          //Filter out any mov's with relative register math, mostly false positives
@@ -189,72 +187,72 @@ namespace MBBSDASM.Dasm
                          !disassemblyLine.Disassembly.ToString().Contains("+") &&
                          !disassemblyLine.Disassembly.ToString().Contains(":"))
                      {
-                         //mov dx, ####
-                         if (disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_DX &&
-                             disassemblyLine.Disassembly.Operands.Length == 2 &&
-                             disassemblyLine.Disassembly.Operands[1].LvalUWord > 0)
+                         //MOV ax, SEG ADDR sets the current Data Segment to use
+                         if (disassemblyLine.BranchToRecords.Any(x =>
+                             x.IsRelocation && x.BranchType == EnumBranchType.SegAddr))
+                             dataSegmentToUse = disassemblyLine.BranchToRecords[0].Segment;
+
+
+                         if (dataSegmentToUse > 0)
                          {
-                             var stringReference = FindString(file.SegmentTable,
-                                 disassemblyLine.Disassembly.Operands[1].LvalUWord);
-                             if (stringReference == null)
+                             //mov dx, ####
+                             if (disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_DX &&
+                                 disassemblyLine.Disassembly.Operands.Length == 2 &&
+                                 disassemblyLine.Disassembly.Operands[1].LvalUWord > 0)
+                             {
+                                 disassemblyLine.StringReference = file.SegmentTable
+                                     .First(x => x.Ordinal == dataSegmentToUse).StringRecords.FirstOrDefault(y =>
+                                         y.Offset == disassemblyLine.Disassembly.Operands[1].LvalUWord);
+
                                  continue;
+                             }
 
-                             foreach (var sr in stringReference)
-                                 disassemblyLine.StringReferenceRecords.Add(new StringReferenceRecord { Segment = sr.Item1, Value = sr.Item2});
+                             //mov ax, ####
+                             if (flagNext && disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_AX &&
+                                 disassemblyLine.Disassembly.Operands.Length == 2 &&
+                                 disassemblyLine.Disassembly.Operands[1].LvalUWord > 0)
+                             {
+                                 flagNext = false;
 
-                             continue;
+                                 disassemblyLine.StringReference = file.SegmentTable
+                                     .First(x => x.Ordinal == dataSegmentToUse).StringRecords.FirstOrDefault(y =>
+                                         y.Offset == disassemblyLine.Disassembly.Operands[1].LvalUWord);
+
+                                 continue;
+                             }
+
+                             //mov dx, ds is usually followed by a mov ax, #### which is a string reference
+                             if (disassemblyLine.Disassembly.Operands.Length == 2 &&
+                                 disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_DX &&
+                                 disassemblyLine.Disassembly.Operands[1].Base == ud_type.UD_R_DS)
+                             {
+                                 flagNext = true;
+                                 continue;
+                             }
                          }
+                     }
 
-                         //mov ax, ####
-                         if (flagNext && disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_AX &&
-                             disassemblyLine.Disassembly.Operands.Length == 2 &&
-                             disassemblyLine.Disassembly.Operands[1].LvalUWord > 0)
+                     if (dataSegmentToUse >= 0)
+                     {
+                         //push #### following a push ds
+                         if (flagNext && disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ipush &&
+                             disassemblyLine.Disassembly.Operands[0].LvalUWord > 0)
                          {
                              flagNext = false;
-                             var stringReference = FindString(file.SegmentTable,
-                                 disassemblyLine.Disassembly.Operands[1].LvalUWord);
-                             
-                             if (stringReference == null)
-                                 continue;
-                             
-                             foreach (var sr in stringReference)
-                                 disassemblyLine.StringReferenceRecords.Add(new StringReferenceRecord { Segment = sr.Item1, Value = sr.Item2});
 
+                             disassemblyLine.StringReference = file.SegmentTable
+                                 .First(x => x.Ordinal == dataSegmentToUse).StringRecords.FirstOrDefault(y =>
+                                     y.Offset == disassemblyLine.Disassembly.Operands[0].LvalUWord);
                              continue;
                          }
 
-                         //mov dx, ds is usually followed by a mov ax, #### which is a string reference
-                         if (disassemblyLine.Disassembly.Operands.Length == 2 &&
-                             disassemblyLine.Disassembly.Operands[0].Base == ud_type.UD_R_DX &&
-                             disassemblyLine.Disassembly.Operands[1].Base == ud_type.UD_R_DS)
+                         //push ds followed by a push ####
+                         if (disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ipush &&
+                             disassemblyLine.Disassembly.Operands.Any(x => x.Base == ud_type.UD_R_DS))
                          {
                              flagNext = true;
                              continue;
                          }
-                     }
-
-                     //push #### following a push ds
-                     if (flagNext && disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ipush &&
-                         disassemblyLine.Disassembly.Operands[0].LvalUWord > 0)
-                     {
-                         flagNext = false;
-                         var stringReference = FindString(file.SegmentTable,
-                             disassemblyLine.Disassembly.Operands[0].LvalUWord);
-                         if (stringReference == null)
-                             continue;
-
-                         foreach (var sr in stringReference)
-                             disassemblyLine.StringReferenceRecords.Add(new StringReferenceRecord { Segment = sr.Item1, Value = sr.Item2});
-
-                         continue;
-                     }
-
-                     //push ds followed by a push ####
-                     if (disassemblyLine.Disassembly.Mnemonic == ud_mnemonic_code.UD_Ipush &&
-                         disassemblyLine.Disassembly.Operands.Any(x => x.Base == ud_type.UD_R_DS))
-                     {
-                         flagNext = true;
-                         continue;
                      }
 
                      flagNext = false;
@@ -276,12 +274,8 @@ namespace MBBSDASM.Dasm
              var jumpNearOps2ndByte = new[]
                  {0x80, 0x81, 0x82, 0x83, 0x84, 0x5, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F};
 
-             foreach (var segment in file.SegmentTable)
+             foreach (var segment in file.SegmentTable.Where(x=> x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0))
              {
-                 if (!segment.Flags.Contains(EnumSegmentFlags.Code) || segment.DisassemblyLines == null ||
-                     segment.DisassemblyLines.Count == 0)
-                     continue;
-
                  //Only op+operand <= 3 bytes, skip jmp word ptr because we won't be able to label those
                  foreach (var disassemblyLine in segment.DisassemblyLines.Where(x => MnemonicGroupings.JumpGroup.Contains(x.Disassembly.Mnemonic) && x.Disassembly.Bytes.Length <= 3))
                  {
@@ -337,12 +331,8 @@ namespace MBBSDASM.Dasm
          /// <param name="file"></param>
          public static void ResolveCallTargets(NEFile file)
          {
-             foreach (var segment in file.SegmentTable)
+             foreach (var segment in file.SegmentTable.Where(x=> x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0 ))
              {
-                 if (!segment.Flags.Contains(EnumSegmentFlags.Code) || segment.DisassemblyLines == null ||
-                     segment.DisassemblyLines.Count == 0)
-                     continue;
-
                  //Only processing 3 byte calls
                  foreach (var j in segment.DisassemblyLines.Where(x =>
                      x.Disassembly.Bytes[0] == 0xE8 && x.Disassembly.Bytes.Length <= 3))
@@ -372,51 +362,41 @@ namespace MBBSDASM.Dasm
              }
          }
 
+
          /// <summary>
-         ///     Searches through the provided segments for the most likely string candidate
-         /// 
-         ///     Read all characters from the offset until the 1st null character or end of the segment (whichever comes first)
-         ///     If the read string passes the RegEx, it's our best guess at the string reference
+         ///     Scans through DATA segments within the specified file extracting NULL terminated strings
          /// </summary>
-         /// <param name="segments"></param>
-         /// <param name="offset"></param>
-         /// <returns></returns>
-         private static List<Tuple<ushort, string>> FindString(IEnumerable<Segment> segments, ushort offset)
-         {   
+         /// <param name="file"></param>
+         public static void ProcessStrings(NEFile file)
+         {
              //Filter down potential segments
-             var dataSegs = segments.Where(x => x.Flags.Contains(EnumSegmentFlags.Data) && x.Length >= offset && x.Length > 0);
-
-             var output = new List<Tuple<ushort, string>>();
-             foreach (var s in dataSegs)
+             foreach(var seg in file.SegmentTable.Where(x => x.Flags.Contains(EnumSegmentFlags.Data)))
              {
-                 //Character preceding a string should always be a null character
-                 //Except when it's CRLF.... because DOS yo....
-                 if (offset > 0 && s.Data[offset - 1] != 0 && s.Data[offset -1] != 10 && s.Data[offset -1] != 13)
-                     continue;
-
-                 if (offset > s.Data.Length - 1)
-                     continue;
-
-                 //Find a Terminating End
-                 var endOffset = offset;
-                 while (s.Data[endOffset] != 0 && endOffset < s.Length)
-                     endOffset++;
-
-                 //0 length string? Keep searching
-                 if (offset == endOffset)
-                     continue;
-
-                 var potentialString = Encoding.ASCII.GetString(s.Data, offset, endOffset - offset);
-                 
-                 if(!string.IsNullOrEmpty(StringRegEx.Replace(potentialString, string.Empty)))
-                     continue;
-                     
-                 output.Add(new Tuple<ushort, string>(s.Ordinal, potentialString));
+                 seg.StringRecords = new List<StringRecord>();
+                 var sbBuffer = new StringBuilder();
+                 for (var i = 0; i < seg.Length; i++)
+                 {
+                     if (seg.Data[i] == 0x0)
+                     {
+                         if (sbBuffer.Length > 0)
+                         {
+                             seg.StringRecords.Add(new StringRecord
+                             {
+                                 Segment = seg.Ordinal,
+                                 Offset = i - sbBuffer.Length,
+                                 Length = sbBuffer.Length,
+                                 Value = sbBuffer.ToString()
+                             });
+                             sbBuffer.Clear();
+                         }
+                         continue;
+                     }
+                     sbBuffer.Append((char)seg.Data[i]);
+                 }
              }
-
-             return output;
          }
 
+         
          /// <summary>
          ///     Calculates Relative Offset for 16bit Operand
          /// </summary>

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using MBBSDASM.Artifacts;
 using MBBSDASM.Enums;
-using SharpDisasm.Udis86;
 
 namespace MBBSDASM
 {
@@ -18,7 +15,7 @@ namespace MBBSDASM
         static void Main(string[] args)
         {
             Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine("MBBSDASM v1.2");
+            Console.WriteLine("MBBSDASM v1.3");
             Console.WriteLine("GitHub: http://www.github.com/enusbaum/mbbsdasm/");
             Console.WriteLine("------------------------------------------------------");
 
@@ -35,7 +32,7 @@ namespace MBBSDASM
                 var sOutputFile = "";
                 var bMinimal = false;
                 var bAnalysis = false;
-
+                var bStrings = false;
                 for (var i = 0; i < args.Length; i++)
                 {
                     switch (args[i].ToUpper())
@@ -54,11 +51,15 @@ namespace MBBSDASM
                         case "-ANALYSIS":
                             bAnalysis = true;
                             break;
+                        case "-STRINGS":
+                            bStrings = true;
+                            break;
                         case "-?":
                             Console.WriteLine("-I <file> -- Input File to Disassemble");
                             Console.WriteLine("-O <file> -- Output File for Disassembly (Default Console)");
                             Console.WriteLine("-MINIMAL -- Minimal Disassembler Output");
                             Console.WriteLine("-ANALYSIS -- Additional Analysis on Imported Functions (if available)");
+                            Console.WriteLine("-STRINGS -- Output all strings found in DATA segments at end of Disassembly");
                             return;
                     }
                 }
@@ -86,6 +87,9 @@ namespace MBBSDASM
                 //Skip Additional Analysis if they selected minimal
                 if (!bMinimal)
                 {
+                    Console.WriteLine($"{DateTime.Now} Extracting Strings from DATA Segments");
+                    Dasm.Disassembler.ProcessStrings(inputFile);
+                    
                     Console.WriteLine($"{DateTime.Now} Applying Relocation Info ");
                     Dasm.Disassembler.ApplyRelocationInfo(inputFile);
 
@@ -109,6 +113,8 @@ namespace MBBSDASM
                     }
                 }
 
+                Console.WriteLine($"{DateTime.Now} Writing Disassembly Output");
+                
                 //Build Final Output
                 var output = new StringBuilder();
                 
@@ -122,7 +128,7 @@ namespace MBBSDASM
                 foreach (var s in inputFile.SegmentTable)
                 {
                     output.AppendLine(
-                        $"; Segment #{s.Ordinal:0000}\tOffset: {s.Offset:00000000}\tSize: {s.Data.Length:X4}h\t Flags: 0x{s.Flag:X4} -> {(s.Flags.Contains(EnumSegmentFlags.Code) ? "CODE" : "DATA")}, {(s.Flags.Contains(EnumSegmentFlags.Fixed) ? "FIXED" : "MOVABLE")}");
+                        $"; Segment #{s.Ordinal:0000}\tOffset: {s.Offset:X8}\tSize: {s.Data.Length:X4}\t Flags: 0x{s.Flag:X4} -> {(s.Flags.Contains(EnumSegmentFlags.Code) ? "CODE" : "DATA")}, {(s.Flags.Contains(EnumSegmentFlags.Fixed) ? "FIXED" : "MOVABLE")}");
                 }
                 
                 output.AppendLine(";-------------------------------------------");
@@ -191,8 +197,8 @@ namespace MBBSDASM
                             d.Comments.Add($"SEG ADDR of Segment {b.Segment}");
 
                         //Label String References
-                        foreach(var sr in d.StringReferenceRecords)
-                            d.Comments.Add($"Possible String reference from SEG {sr.Segment} -> \"{sr.Value}\"");
+                        if(d.StringReference != null)
+                            d.Comments.Add($"Possible String reference from SEG {d.StringReference.Segment} -> \"{d.StringReference.Value}\"");
                         
                         //Only label Imports if Analysis is off, because Analysis does much more in-depth labeling
                         if (!bAnalysis)
@@ -223,6 +229,24 @@ namespace MBBSDASM
                         output.AppendLine(sOutputLine);
                     }
                     output.AppendLine();
+                }
+
+                //Write Strings to Output
+                if (bStrings)
+                {
+                    Console.WriteLine($"{DateTime.Now} Writing Strings Output");
+                    
+                    foreach (var seg in inputFile.SegmentTable.Where(x =>
+                        x.Flags.Contains(EnumSegmentFlags.Data) && x.StringRecords.Count > 0))
+                    {
+                        output.AppendLine(";-------------------------------------------");
+                        output.AppendLine($"; Start of Data for Segment {seg.Ordinal}");
+                        output.AppendLine("; FILE_OFFSET:SEG_NUM.SEG_OFFSET");
+                        output.AppendLine(";-------------------------------------------");
+                        foreach (var str in seg.StringRecords)
+                            output.AppendLine(
+                                $"{str.Offset + str.Offset:X8}h:{seg.Ordinal:0000}.{str.Offset:X4}h '{str.Value}'");
+                    }
                 }
 
                 if (string.IsNullOrEmpty(sOutputFile))
