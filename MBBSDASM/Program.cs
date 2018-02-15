@@ -15,7 +15,7 @@ namespace MBBSDASM
         static void Main(string[] args)
         {
             Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine("MBBSDASM v1.3");
+            Console.WriteLine("MBBSDASM v1.4");
             Console.WriteLine("GitHub: http://www.github.com/enusbaum/mbbsdasm/");
             Console.WriteLine("------------------------------------------------------");
 
