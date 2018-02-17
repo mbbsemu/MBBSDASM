@@ -1,7 +1,7 @@
 # Changelog
 ## v1.4
 * Additional Module Definiton Auto-Documentation
-	* **MAJORBBS** : 1160 functions documented of 1233 defined
+	* **MAJORBBS** : 1217 functions documented of 1233 defined
 	* **GALGSBL** : 97 functions documented of 101 defined
 ## v1.3
 * Enhanced FOR loop recognition

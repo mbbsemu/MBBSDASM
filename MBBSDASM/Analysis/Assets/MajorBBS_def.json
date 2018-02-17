@@ -2,37 +2,37 @@
   "Name": "MAJORBBS",
   "Exports": [
     {
-      "name": "READ",
+      "name": "__READ",
       "ord": 1,
-      "Signature" : "int read(int handle, void *buf, unsigned nbyte);",
+      "Signature" : "int _CType _FARFUNC __read (int fd, void *buf, unsigned int len);",
       "Comments": [
         "read - reads from file"
       ]
     },
     {
-      "name": "SIGNALPTR",
+      "name": "__SIGNALPTR",
       "ord": 2,
       "Signature" : "extern _CatcherPTR (*__SignalPtr)();",
       "Comments": []
     },
     {
-      "name": "WRITE",
+      "name": "__WRITE",
       "ord": 3,
-      "Signature" : "int write(int handle, const void *buf, unsigned nbyte);",
+      "Signature" : "int _CType _FARFUNC __write(int fd, const void *buf, unsigned int len);",
       "Comments": [
         "write - writes to a file"
       ]
     },
     {
-      "name": "EXIT",
+      "name": "_C_EXIT",
       "ord": 4,
-      "Signature": "void exit (int status);",
+      "Signature": "void _c_exit(void);",
       "Comments": [
-        "Terminates the process normally, performing the regular cleanup for terminating programs."
+        "Perform quick exit cleanup without termination."
       ]
     },
     {
-      "name": "CEXIT",
+      "name": "_CEXIT",
       "ord": 5,
       "Signature" : "void _cexit(void);",
       "Comments": [
@@ -40,7 +40,7 @@
       ]
     },
     {
-      "name": "CHECKNULL",
+      "name": "_CHECKNULL",
       "ord": 6,
       "Signature" : "void _checknull( void );",
       "Comments": [
@@ -48,15 +48,15 @@
       ]
     },
     {
-      "name": "CHMOD",
+      "name": "_CHMOD",
       "ord": 7,
-      "Signature" : "int chmod(const char *filename, int permiss);",
+      "Signature" : "int _chmod(const char *filename, int func [,int attrib]);",
       "Comments": [
         "chmod - changes access mode of file"
       ]
     },
     {
-      "name": "CLEANUP",
+      "name": "_CLEANUP",
       "ord": 8,
       "Signature" : "void _cleanup( void );",
       "Comments": [
@@ -64,28 +64,31 @@
       ]
     },
     {
-      "name": "CLOSE",
+      "name": "_CLOSE",
       "ord": 9,
-      "Signature" : "int close(int handle);",
+      "Signature" : "int _RTLENTRYF _EXPFUNC _close (int fd);",
       "Comments": [
-        "close - close a file handle"
+        "close - close a file handle (obsolete)"
       ]
     },
     {
-      "name": "CREAT",
+      "name": "_CREAT",
       "ord": 10,
-      "Signature" : "int creat(const char *filename, int permiss);",
+      "Signature" : "int _CType _FARFUNC _creat (const char *pathP, int attr);",
       "Comments": [
-        "creat - creates a new file or rewrites an existing one"
+        "creat - creates a new file or rewrites an existing one (obsolete)"
       ]
     },
     {
-      "name": "CTYPE",
+      "name": "_CTYPE",
       "ord": 11,
-      "Comments": []
+      "Signature" : "unsigned char __cdecl _ctype[257];",
+      "Comments": [
+        "The old 'C' locale ctype array"
+      ]
     },
     {
-      "name": "DOS_GETFILEATTR",
+      "name": "_DOS_GETFILEATTR",
       "ord": 12,
       "Signature" : "unsigned _dos_getfileattr(const char *filename, unsigned *attrib);",
       "Comments": [
@@ -93,7 +96,7 @@
       ]
     },
     {
-      "name": "DOS_SETFILEATTR",
+      "name": "_DOS_SETFILEATTR",
       "ord": 13,
       "Signature" : "unsigned _dos_setfileattr(const char *filename, unsigned attrib);",
       "Comments": [
@@ -101,7 +104,7 @@
       ]
     },
     {
-      "name": "DOSERROR",
+      "name": "_DOSERROR",
       "ord": 14,
       "Signature" : "int pascal __DOSerror (int dosErr);",
       "Comments": [
@@ -109,49 +112,49 @@
       ]
     },
     {
-      "name": "EXIT",
+      "name": "_EXIT",
       "ord": 15,
-      "Signature" : "void ___exit(int quick, int dontexit, int errcode);",
+      "Signature" : "void _exit(int status);",
       "Comments": [
-        "___exit - perform cleanup and optionally terminate the program"
+        "exit - terminates program"
       ]
     },
     {
-      "name": "EXITBUF",
+      "name": "_EXITBUF",
       "ord": 16,
       "Signature" : "void (*_exitbuf)(void);",
       "Comments": []
     },
     {
-      "name": "EXITFOPEN",
+      "name": "_EXITFOPEN",
       "ord": 17,
       "Signature" : "void (*_exitfopen)(void)",
       "Comments": []
     },
     {
-      "name": "EXITOPEN",
+      "name": "_EXITOPEN",
       "ord": 18,
       "Signature" : "void (*_exitopen)(void)",
       "Comments": []
     },
     {
-      "name": "__FGETC",
+      "name": "_FGETC",
       "ord": 19,
-      "Signature": "int fgetc(FILE *stream );",
+      "Signature": "int _fgetc(FILE *stream);",
       "Comments": [
         "Gets a character from the stream"
       ]
     },
     {
-      "name": "FPUTC",
+      "name": "_FPUTC",
       "ord": 20,
-      "Signature" : "int fputc(int character,FILE *stream );",
+      "Signature" : "int _fputc(int ch, FILE *stream);",
       "Comments": [
-        "<cstdio>"
+        "_fputc - puts a character on a stream"
       ]
     },
     {
-      "name": "__FPUTN",
+      "name": "_FPUTN",
       "ord": 21,
       "Signature" : "size_t  pascal __fputn(const void *ptr, register size_t n, FILE *fp);",
       "Comments": [
@@ -159,13 +162,13 @@
       ]
     },
     {
-      "name": "__GETFP",
+      "name": "_GETFP",
       "ord": 22,
       "Signature" : "FILE  * pascal near __getfp  (void);",
       "Comments": []
     },
     {
-      "name": "IOERROR",
+      "name": "_IOERROR",
       "ord": 24,
       "Signature" : "int pascal __IOerror (int dosErr);",
       "Comments": [
@@ -173,7 +176,7 @@
       ]
     },
     {
-      "name": "ISDST",
+      "name": "_ISDST",
       "ord": 25,
       "Signature" : " int  pascal __isDST (unsigned hour,  unsigned yday, unsigned month, unsigned year);",
       "Comments": [
@@ -181,7 +184,7 @@
       ]
     },
     {
-      "name": "LONGTOA",
+      "name": "_LONGTOA",
       "ord": 26,
       "Signature" : "char *pascal __longtoa (long value, char *strP, int radix, char maybeSigned, char hexStyle);",
       "Comments": [
@@ -189,13 +192,13 @@
       ]
     },
     {
-      "name": "__MKNAME",
+      "name": "_MKNAME",
       "ord": 27,
       "Signature" : "char * pascal near __mkname(char *__s, char *__pfx, unsigned __num);",
       "Comments": []
     },
     {
-      "name": "MMODEL",
+      "name": "_MMODEL",
       "ord": 28,
       "Signature" : "__MMODEL dw MMODEL",
       "Comments": [
@@ -203,7 +206,7 @@
       ]
     },
     {
-      "name": "NFGETC",
+      "name": "_NFGETC",
       "ord": 29,
       "Signature" : "asm __Nfgetc    label near",
       "Comments": [
@@ -211,7 +214,7 @@
       ]
     },
     {
-      "name": "NUNGETC",
+      "name": "_NUNGETC",
       "ord": 30,
       "Signature" : "asm __Nungetch  label near",
       "Comments": [
@@ -219,26 +222,31 @@
       ]
     },
     {
-      "name": "OPEN",
+      "name": "_OPEN",
       "ord": 31,
-      "Signature" : "int open(const char *pathname, int access [,unsigned permiss]);",
+      "Signature" : "int _CType _FARFUNC _open(const char *filename, int oflag);",
       "Comments": [
-        "open - opens a file for reading or writing"
+        "open - opens a file for reading or writing (obsolete)"
       ]
     },
     {
       "name": "__OPENFP",
       "ord": 32,
       "Signature" : "FILE  * pascal near __openfp(FILE *__fp, const char *__fname, const char *__type, int __shflag);",
-      "Comments": []
+      "Comments": [
+        "opens a file"
+      ]
     },
     {
-      "name": "READ",
+      "name": "_READ",
       "ord": 33,
-      "Comments": []
+      "Signature" : "int _read(int handle, void *buf, unsigned nbyte);",
+      "Comments": [
+        "read - reads from file"
+      ]
     },
     {
-      "name": "REALCVT",
+      "name": "_REALCVT",
       "ord": 34,
       "Signature" : " void _realcvt (double *valueP, int ndec, char *strP, char formCh, char altFormat);",
       "Comments": [
@@ -246,13 +254,13 @@
       ]
     },
     {
-      "name": "RESTOREZERO",
+      "name": "_RESTOREZERO",
       "ord": 35,
       "Signature" : "void _restorezero(void);",
       "Comments": []
     },
     {
-      "name": "SCANNER",
+      "name": "_SCANNER",
       "ord": 36,
       "Signature" : "int  _scanner ( int   (*Get)(void *srceP), void  (*UnGet) (int ch, void *srceP), void   *srceP, const char   *formP, va_list varPP )",
       "Comments": [
@@ -260,7 +268,7 @@
       ]
     },
     {
-      "name": "SCANPOP",
+      "name": "_SCANPOP",
       "ord": 37,
       "Signature" : "void _scanpop(void);",
       "Comments": [
@@ -268,7 +276,7 @@
       ]
     },
     {
-      "name": "SCANRSLT",
+      "name": "_SCANRSLT",
       "ord": 38,
       "Signature" : "void _scanrslt(void far *rsltP, int rsltType);",
       "Comments": [
@@ -276,7 +284,7 @@
       ]
     },
     {
-      "name": "SCANTOL",
+      "name": "_SCANTOL",
       "ord": 40,
       "Signature" : "long _scanttol(int (*Get)(void *srceP), void (*UnGet)(int ch, void *srceP), void *srceP, int radix, int width, int *countP, int *statusP )",
       "Comments": [
@@ -284,13 +292,13 @@
       ]
     },
     {
-      "name": "SETUPIO",
+      "name": "_SETUPIO",
       "ord": 41,
       "Signature" : "void near _setupio(void);",
       "Comments": []
     },
     {
-      "name": "STPCPY",
+      "name": "_STPCPY",
       "ord": 42,
       "Signature" : "char *stpcpy(char *destin, const char *source)",
       "Comments": [
@@ -298,7 +306,7 @@
       ]
     },
     {
-      "name": "STREAMS",
+      "name": "_STREAMS",
       "ord": 43,
       "Signature" : "FILE _streams[_NFILE_]",
       "Comments": [
@@ -306,19 +314,19 @@
       ]
     },
     {
-      "name": "TERMINATE",
+      "name": "_TERMINATE",
       "ord": 44,
       "Signature" : "void Terminate (void);",
       "Comments": []
     },
     {
-      "name": "__TMPNAM",
+      "name": "_TMPNAM",
       "ord": 45,
       "Signature" : "char  * pascal near __tmpnam (char *__s, unsigned *__numP);",
       "Comments": []
     },
     {
-      "name": "UTOA",
+      "name": "_UTOA",
       "ord": 46,
       "Signature" : "char *__utoa(unsigned value, char *buf);",
       "Comments": [
@@ -326,7 +334,7 @@
       ]
     },
     {
-      "name": "__VPRINTER",
+      "name": "_VPRINTER",
       "ord": 47,
       "Signature" : "int __vprinter (putnF  *putter, void   *outP, const _TCHAR *formP, int __use_nsize, size_t __nsize, va_list *argP)",
       "Comments": [
@@ -334,15 +342,15 @@
       ]
     },
     {
-      "name": "WRITE",
+      "name": "_WRITE",
       "ord": 48,
-      "Signature" : "int write(int handle, const void *buf, unsigned nbyte);",
+      "Signature" : "int _CType _FARFUNC _write(int fd, const void *buf, unsigned len);",
       "Comments": [
-        "write - writes to a file"
+        "write - writes to a file (untranslated) (obsolete)"
       ]
     },
     {
-      "name": "XFCLOSE",
+      "name": "_XFCLOSE",
       "ord": 49,
       "Signature" : "void _xfclose(void);",
       "Comments": [
@@ -350,7 +358,7 @@
       ]
     },
     {
-      "name": "XFFLUSH",
+      "name": "_XFFLUSH",
       "ord": 50,
       "Signature" : "void _xfflush(void);",
       "Comments": [
@@ -1933,22 +1941,34 @@
     {
       "name": "FSDSAN",
       "ord": 262,
-      "Comments": []
+      "Signature" : "int fsdsan(int fldi, char *value);",
+      "Comments": [
+        "Set answer to new value (Full Screen Data Entry)"
+      ]
     },
     {
       "name": "FSDSCB",
       "ord": 263,
-      "Comments": []
+      "Signature" : "void inifsdscb(void);",
+      "Comments": [
+        "Allocate fsd user array, if not done so already (Full Screen Data Entry)"
+      ]
     },
     {
       "name": "FSDUSR",
       "ord": 264,
-      "Comments": []
+      "Signature" : "struct fsdbbs *fsdusr;",
+      "Comments": [
+        "Array of stuff for current user"
+      ]
     },
     {
       "name": "FSDXAN",
       "ord": 265,
-      "Comments": []
+      "Signature" : "char *fsdxan(char *answer, char *name)",
+      "Comments": [
+        "no-preparation- extract answer from answer string (Full Screen Data Entry)"
+      ]
     },
     {
       "name": "FSEEK",
@@ -3121,7 +3141,10 @@
     {
       "name": "MEMMOVE",
       "ord": 410,
-      "Comments": []
+      "Signature" : "void memmove(void *dst, const void *scr, unsigned len);",
+      "Comments": [
+        "memmove - move a block of bytes"
+      ]
     },
     {
       "name": "MEMSET",
@@ -3142,7 +3165,10 @@
     {
       "name": "MKDIR",
       "ord": 413,
-      "Comments": []
+      "Signature" : "int mkdir(const char *pathname);",
+      "Comments": [
+        "mkdir - creates a directory"
+      ]
     },
     {
       "name": "MMUCRR",
@@ -3731,7 +3757,10 @@
     {
       "name": "PUTENV",
       "ord": 483,
-      "Comments": []
+      "Signature" : "int putenv(const char *envvar);",
+      "Comments": [
+        "putenv - adds string to current environment"
+      ]
     },
     {
       "name": "QNPBTV",
@@ -3859,12 +3888,18 @@
     {
       "name": "REWIND",
       "ord": 498,
-      "Comments": []
+      "Signature" : "void rewind (FILE *fp);",
+      "Comments": [
+        "rewind - repositions a stream"
+      ]
     },
     {
       "name": "RMDIR",
       "ord": 499,
-      "Comments": []
+      "Signature" : "int rmdir(const char *pathname);",
+      "Comments": [
+        "rmdir - removes directory"
+      ]
     },
     {
       "name": "RMVKEY",
@@ -4136,7 +4171,10 @@
     {
       "name": "SETDATE",
       "ord": 537,
-      "Comments": []
+      "Signature" : "void setdate(struct date *dateblk);",
+      "Comments": [
+        "setdate - sets MS-DOS date"
+      ]
     },
     {
       "name": "SETDTD",
@@ -4149,7 +4187,10 @@
     {
       "name": "SETFSD",
       "ord": 539,
-      "Comments": []
+      "Signature" : "void setfsd(int chan)",
+      "Comments": [
+        "Set fsd context, acc to channel 0..nterms-1"
+      ]
     },
     {
       "name": "SETFTU",
@@ -4162,7 +4203,10 @@
     {
       "name": "SETJMP",
       "ord": 541,
-      "Comments": []
+      "Signature" : "int setjmp(jmp_buf jmpb);",
+      "Comments": [
+        "setjmp - nonlocal goto"
+      ]
     },
     {
       "name": "SETKEY",
@@ -4191,7 +4235,10 @@
     {
       "name": "SETTIME",
       "ord": 545,
-      "Comments": []
+      "Signature" : "int _setTime(LCID locale, LPWIN32TIME Time)",
+      "Comments": [
+        "_setTime - set the time type"
+      ]
     },
     {
       "name": "SETTND",
@@ -4204,7 +4251,11 @@
     {
       "name": "SETVBUF",
       "ord": 547,
-      "Comments": []
+      "Signature": "int setvbuf(FILE *stream, char *buf, int type, size_t size);",
+      "Comments": [
+        "setbuf - assigns buffering to a stream",
+        "In setvbuf, if buf is NULL, a buffer will be allocated using malloc; the buffer will use size as the amount allocated. The size parameter specifies the buffer size and must be greater than zero."
+      ]
     },
     {
       "name": "SETWIN",
@@ -4280,7 +4331,10 @@
     {
       "name": "SOPEN",
       "ord": 557,
-      "Comments": []
+      "Signature" : "int sopen(const char *pathname, int access, int shflag[, unsigned permiss] );",
+      "Comments": [
+        "sopen - opens a file for file sharing"
+      ]
     },
     {
       "name": "SORTSTGS",
@@ -4375,7 +4429,10 @@
     {
       "name": "STIME",
       "ord": 567,
-      "Comments": []
+      "Signature" : "int stime(long *tp);",
+      "Comments": [
+        "stime - sets time"
+      ]
     },
     {
       "name": "STOP_POLLING",
@@ -4396,7 +4453,10 @@
     {
       "name": "STRANSLEN",
       "ord": 570,
-      "Comments": []
+      "Signature" : "int stranslen(char *anstg);",
+      "Comments": [
+        "find length of answer string (incl final '\\0\\0')"
+      ]
     },
     {
       "name": "STRCAT",
@@ -4433,7 +4493,10 @@
     {
       "name": "STRDUP",
       "ord": 575,
-      "Comments": []
+      "Signature" : "char *strdup(const char *str);",
+      "Comments": [
+        "strdup - copies a string into a newly-created location"
+      ]
     },
     {
       "name": "STRICMP",
@@ -4477,14 +4540,17 @@
     {
       "name": "STRNCMP",
       "ord": 581,
-      "Comments": []
+      "Signature" : "int strncmp(const char *str1, const char *str2, size_t maxlen);",
+      "Comments": [
+        "strncmp - compare one string to another"
+      ]
     },
     {
       "name": "STRNCPY",
       "ord": 582,
       "Signature": "char *strncpy(char *destination, const char *source, size_t num);",
       "Comments": [
-        "Copioes characters from a string"
+        "Copies characters from a string"
       ]
     },
     {
@@ -4512,7 +4578,10 @@
     {
       "name": "STRTOL",
       "ord": 586,
-      "Comments": []
+      "Signature" : "long strtol(const char *strP, char **suffixPP, int radix);",
+      "Comments": [
+        "strtol - convert a string to a long integer"
+      ]
     },
     {
       "name": "STRUPR",
@@ -4539,7 +4608,10 @@
     {
       "name": "SUBVERS",
       "ord": 590,
-      "Comments": []
+      "Signature" : "char subvers[SBVSIZ];",
+      "Comments": [
+        "Sub-version info, ext ed rls letters"
+      ]
     },
     {
       "name": "SUPCHC",
@@ -4550,7 +4622,10 @@
     {
       "name": "SUPMB",
       "ord": 592,
-      "Comments": []
+      "Signature" : "FILE *supmb;",
+      "Comments": [
+        "Signup named-message file pointer"
+      ]
     },
     {
       "name": "SV",
@@ -4571,7 +4646,10 @@
     {
       "name": "SWTCLS",
       "ord": 595,
-      "Comments": []
+      "Signature" : "void swtcls(struct usracc *uacc, int makprm, char *clsnam, int dest, int days);",
+      "Comments": [
+        "Switch user to another class"
+      ]
     },
     {
       "name": "SYSSTG",
@@ -4584,12 +4662,18 @@
     {
       "name": "TAGTHS",
       "ord": 597,
-      "Comments": []
+      "Signature" : "char * tagths(int (*tshndl)(int tshcod));",
+      "Comments": [
+        "Return tagspec of othusn/othusp if handler is same"
+      ]
     },
     {
       "name": "TELL",
       "ord": 598,
-      "Comments": []
+      "Signature" : "long tell(int handle);",
+      "Comments": [
+        "tell gets the current position of the file pointer associated with handle and expresses it as the number of bytes from the beginning of the file."
+      ]
     },
     {
       "name": "TIME",
@@ -4646,12 +4730,18 @@
     {
       "name": "TPWIPE",
       "ord": 605,
-      "Comments": []
+      "Signature" : "void tpwipe(char *templt, int fldi, int preitems, int postitems);",
+      "Comments": [
+        "Wipe out supporting text surrounding field in template"
+      ]
     },
     {
       "name": "TSHMSG",
       "ord": 606,
-      "Comments": []
+      "Signature" : "char tshmsg[TSHLEN+1];",
+      "Comments": [
+        "Universal global Tagspec Handler message"
+      ]
     },
     {
       "name": "TSTCRD",
@@ -4665,7 +4755,10 @@
     {
       "name": "TZSET",
       "ord": 608,
-      "Comments": []
+      "Signature" : "void tzset(void);",
+      "Comments": [
+        "sets local timezone info base on the 'TZ' environment string"
+      ]
     },
     {
       "name": "UIDKEY",
@@ -4723,12 +4816,18 @@
     {
       "name": "UNIXTODOS",
       "ord": 616,
-      "Comments": []
+      "Signature" : "void unixtodos(long time, struct date *d, struct time *t);",
+      "Comments": [
+        "unixtodos - converts from UNIX-format time"
+      ]
     },
     {
       "name": "UNLINK",
       "ord": 617,
-      "Comments": []
+      "Signature" : "int unlink(const char *filename);",
+      "Comments": [
+        "unlink - deletes a file"
+      ]
     },
     {
       "name": "UNPAD",
@@ -4923,7 +5022,10 @@
     {
       "name": "VSSCANF",
       "ord": 644,
-      "Comments": []
+      "Signature" : "int vsscanf(const char *string,const char *format, va_list argp);",
+      "Comments": [
+        "vsscanf - gets formatted input from a string"
+      ]
     },
     {
       "name": "WTWAIT",
@@ -5083,7 +5185,9 @@
     {
       "name": "F_PADD",
       "ord": 662,
-      "Comments": []
+      "Comments": [
+        "Long Pointer addition (Borland C++ Implicit Function)"
+      ]
     },
     {
       "name": "F_PCMP",
@@ -5095,7 +5199,9 @@
     {
       "name": "F_PSUB",
       "ord": 664,
-      "Comments": []
+      "Comments": [
+        "Long Pointer subtraction (Borland C++ Implicit Function)"
+      ]
     },
     {
       "name": "F_SCOPY",
@@ -5250,32 +5356,46 @@
     {
       "name": "N_PADD",
       "ord": 682,
-      "Comments": []
+      "Comments": [
+        "Long Pointer addition (Borland C++ Implicit Function)"
+      ]
     },
     {
       "name": "N_PCMP",
       "ord": 683,
-      "Comments": []
+      "Comments": [
+        "Long Pointer comparison (Borland C++ Implicit Function)"
+      ]
     },
     {
       "name": "N_PSUB",
       "ord": 684,
-      "Comments": []
+      "Comments": [
+        "Large Pointer subtraction (Borland C++ Implicit Function)"
+      ]
     },
     {
       "name": "PADD",
       "ord": 685,
-      "Comments": []
+      "Comments": [
+        "Long Pointer addition (Borland C++ Implicit Function)",
+        "Alias for F_PADD"
+      ]
     },
     {
       "name": "PCMP",
       "ord": 686,
-      "Comments": []
+      "Comments": [
+        "Long Pointer comparison (Borland C++ Implicit Function)",
+        "compares two pointers on the stack, sets the condition codes"
+      ]
     },
     {
       "name": "PSUB",
       "ord": 687,
-      "Comments": []
+      "Comments": [
+        "Large Pointer subtraction (Borland C++ Implicit Function)"
+      ]
     },
     {
       "name": "SCOPY",
@@ -5579,12 +5699,18 @@
     {
       "name": "MNUDNL",
       "ord": 730,
-      "Comments": []
+      "Signature" : "int mnudnl;",
+      "Comments": [
+        "User downloading BBSMENU.DAT (or -1)"
+      ]
     },
     {
       "name": "CHMOD",
       "ord": 731,
-      "Comments": []
+      "Signature" : "int chmod(const char *filename, int permiss);",
+      "Comments": [
+        "chmod - changes access mode of file"
+      ]
     },
     {
       "name": "STARTV",
@@ -5626,7 +5752,11 @@
     {
       "name": "_8087",
       "ord": 737,
-      "Comments": []
+      "Signature": "int _RTLENTRY _EXPDATA  _8087 = 3;",
+      "Comments": [
+        "The OS provides an 80387 emulator, so we can pretend that we have a coprocessor.",
+        "This variable is not used by the RTL, and is provided only for compatibility with existing DOS programs."
+      ]
     },
     {
       "name": "FSTAT",
@@ -5639,7 +5769,10 @@
     {
       "name": "OLDINEDIT",
       "ord": 739,
-      "Comments": []
+      "Signature" : "int oldinedit(int usn, int (*exipnt)());",
+      "Comments": [
+        "API for binary compatibility"
+      ]
     },
     {
       "name": "STAHDL",
@@ -6187,7 +6320,10 @@
     {
       "name": "SECCHR",
       "ord": 812,
-      "Comments": []
+      "Signature" : "char secchr;",
+      "Comments": [
+        "Character to echo when typing 'secret' field"
+      ]
     },
     {
       "name": "SAMEND",
@@ -6426,7 +6562,10 @@
     {
       "name": "FCLOSEALL",
       "ord": 842,
-      "Comments": []
+      "Signature" : "int fcloseall(void);",
+      "Comments": [
+        "fcloseall - close open streams"
+      ]
     },
     {
       "name": "FREOPEN",
@@ -6437,10 +6576,12 @@
       ]
     },
     {
-      "name": "FSOPEN",
+      "name": "_FSOPEN",
       "ord": 844,
-      "Signature" : "void open(const char* b, int m, int prot);",
-      "Comments": []
+      "Signature" : "FILE *_fsopen(const char *filename, char *type, int shflag);",
+      "Comments": [
+        "_fsopen  -  open a stream with file sharing"
+      ]
     },
     {
       "name": "MEMCCPY",
@@ -6461,17 +6602,27 @@
     {
       "name": "MOVEDATA",
       "ord": 847,
-      "Comments": []
+      "Signature" : "void movedata(unsigned srcseg, unsigned srcoff, unsigned dstseg, unsigned dstoff, size_t n);",
+      "Comments": [
+        "movedata - copy bytes"
+      ]
     },
     {
       "name": "DUP",
       "ord": 848,
-      "Comments": []
+      "Signature" : "int dup(int handle);",
+      "Comments": [
+        "dup - duplicate a file handle"
+      ]
     },
     {
       "name": "DUP2",
       "ord": 859,
-      "Comments": []
+      "Signature": "int dup2(int oldhandle, int newhandle);",
+      "Comments": [
+        "dup - duplicate a file handle",
+        "dup2 returns a new handle with the value of newhandle."
+      ]
     },
     {
       "name": "ACCESS",
@@ -6528,14 +6679,17 @@
     {
       "name": "READ",
       "ord": 866,
-      "Comments": []
+      "Signature " : "int read(int handle, void *buf, unsigned nbyte);",
+      "Comments": [
+        "read - reads from file"
+      ]
     },
     {
       "name": "WRITE",
       "ord": 867,
-      "Signature": "ostream& write (const char* s, streamsize n);",
+      "Signature": "int write(int handle, const void *buf, unsigned nbyte);",
       "Comments": [
-        "Inserts the first n characters of the array pointed by s into the stream."
+        "write - writes to a file"
       ]
     },
     {
@@ -6767,7 +6921,7 @@
     {
       "name": "CLFIT",
       "ord": 900,
-      "Signautre": "long realsiz=clfit(long siz, unsigned clbyts);",
+      "Signature": "long realsiz=clfit(long siz, unsigned clbyts);",
       "Comments": [
         "Total space used by a file based on cluster size"
       ]
@@ -7517,7 +7671,10 @@
     {
       "name": "FTIME",
       "ord": 1013,
-      "Comments": []
+      "Signature" : "void ftime(struct timeb *TimeStructPtr);",
+      "Comments": [
+        "ftime - Get current time and store it in 'timeb' structure"
+      ]
     },
     {
       "name": "SCANCH",
@@ -7855,17 +8012,26 @@
     {
       "name": "SYSTEM",
       "ord": 1062,
-      "Comments": []
+      "Signature" : "static int near pascal system(char far *ROM, char *Copyright);",
+      "Comments": [
+        "system - displays system information"
+      ]
     },
     {
       "name": "SPAWNL",
       "ord": 1063,
-      "Comments": []
+      "Signature": "int spawnl(int modeF,const char *pathP, const char *arg0, const char *arg1, ..., const char *argn, NULL);",
+      "Comments": [
+        "spawnl - creates and runs child processes"
+      ]
     },
     {
       "name": "ERRNO",
       "ord": 1064,
-      "Comments": []
+      "Signature" : "int *__errno (void);",
+      "Comments": [
+        "__errno - return address of errno value for this thread"
+      ]
     },
     {
       "name": "NUMONL",
@@ -8435,7 +8601,7 @@
     {
       "name": "NAMTMP",
       "ord": 1144,
-      "Struct" : "struct saunam *namtmp;",
+      "Signature" : "struct saunam *namtmp;",
       "Comments": [
         "Temp buffer for agents to store names"
       ]
@@ -8531,7 +8697,10 @@
     {
       "name": "TMPNAM",
       "ord": 1157,
-      "Comments": []
+      "Signature" : "char *tmpnam(char *s);",
+      "Comments": [
+        "tmpnam - builds a unique file name"
+      ]
     },
     {
       "name": "CSVCRR",
@@ -9151,7 +9320,10 @@
     {
       "name": "LOCALTIME",
       "ord": 1321,
-      "Comments": []
+      "Signature" : "struct tm *localtime(long *clock);",
+      "Comments": [
+        "localtime - converts date and time to a structure"
+      ]
     },
     {
       "name": "CHSIZE",
