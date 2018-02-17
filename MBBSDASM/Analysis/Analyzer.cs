@@ -42,7 +42,7 @@ namespace MBBSDASM.Analysis
             //Coverage Tracking
             foreach (var m in ModuleDefinitions)
             {
-                var covered = m.Exports.Count(x => !string.IsNullOrEmpty(x.Signature));
+                var covered = m.Exports.Count(x => !string.IsNullOrEmpty(x.Signature) || x.Comments.Count > 0);
                 var total = m.Exports.Count;
             }
         }

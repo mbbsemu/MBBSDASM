@@ -4,17 +4,24 @@
     {
       "name": "READ",
       "ord": 1,
-      "Comments": []
+      "Signature" : "int read(int handle, void *buf, unsigned nbyte);",
+      "Comments": [
+        "read - reads from file"
+      ]
     },
     {
       "name": "SIGNALPTR",
       "ord": 2,
+      "Signature" : "extern _CatcherPTR (*__SignalPtr)();",
       "Comments": []
     },
     {
       "name": "WRITE",
       "ord": 3,
-      "Comments": []
+      "Signature" : "int write(int handle, const void *buf, unsigned nbyte);",
+      "Comments": [
+        "write - writes to a file"
+      ]
     },
     {
       "name": "EXIT",
@@ -27,32 +34,50 @@
     {
       "name": "CEXIT",
       "ord": 5,
-      "Comments": []
+      "Signature" : "void _cexit(void);",
+      "Comments": [
+        "_cexit  - perform exit cleanup without termination"
+      ]
     },
     {
       "name": "CHECKNULL",
       "ord": 6,
-      "Comments": []
+      "Signature" : "void _checknull( void );",
+      "Comments": [
+        "Check for null pointer usage"
+      ]
     },
     {
       "name": "CHMOD",
       "ord": 7,
-      "Comments": []
+      "Signature" : "int chmod(const char *filename, int permiss);",
+      "Comments": [
+        "chmod - changes access mode of file"
+      ]
     },
     {
       "name": "CLEANUP",
       "ord": 8,
-      "Comments": []
+      "Signature" : "void _cleanup( void );",
+      "Comments": [
+        "Call #pragma exit routines"
+      ]
     },
     {
       "name": "CLOSE",
       "ord": 9,
-      "Comments": []
+      "Signature" : "int close(int handle);",
+      "Comments": [
+        "close - close a file handle"
+      ]
     },
     {
       "name": "CREAT",
       "ord": 10,
-      "Comments": []
+      "Signature" : "int creat(const char *filename, int permiss);",
+      "Comments": [
+        "creat - creates a new file or rewrites an existing one"
+      ]
     },
     {
       "name": "CTYPE",
@@ -62,36 +87,51 @@
     {
       "name": "DOS_GETFILEATTR",
       "ord": 12,
-      "Comments": []
+      "Signature" : "unsigned _dos_getfileattr(const char *filename, unsigned *attrib);",
+      "Comments": [
+        "_dos_getfileattr - get current attributes of file"
+      ]
     },
     {
       "name": "DOS_SETFILEATTR",
       "ord": 13,
-      "Comments": []
+      "Signature" : "unsigned _dos_setfileattr(const char *filename, unsigned attrib);",
+      "Comments": [
+        "_dos_setfileattr - set current attributes of file"
+      ]
     },
     {
       "name": "DOSERROR",
       "ord": 14,
-      "Comments": []
+      "Signature" : "int pascal __DOSerror (int dosErr);",
+      "Comments": [
+        "__DOSerror - set error variables"
+      ]
     },
     {
       "name": "EXIT",
       "ord": 15,
-      "Comments": []
+      "Signature" : "void ___exit(int quick, int dontexit, int errcode);",
+      "Comments": [
+        "___exit - perform cleanup and optionally terminate the program"
+      ]
     },
     {
       "name": "EXITBUF",
       "ord": 16,
+      "Signature" : "void (*_exitbuf)(void);",
       "Comments": []
     },
     {
       "name": "EXITFOPEN",
       "ord": 17,
+      "Signature" : "void (*_exitfopen)(void)",
       "Comments": []
     },
     {
       "name": "EXITOPEN",
       "ord": 18,
+      "Signature" : "void (*_exitopen)(void)",
       "Comments": []
     },
     {
@@ -105,61 +145,91 @@
     {
       "name": "FPUTC",
       "ord": 20,
-      "Comments": []
+      "Signature" : "int fputc(int character,FILE *stream );",
+      "Comments": [
+        "<cstdio>"
+      ]
     },
     {
-      "name": "FPUTN",
+      "name": "__FPUTN",
       "ord": 21,
-      "Comments": []
+      "Signature" : "size_t  pascal __fputn(const void *ptr, register size_t n, FILE *fp);",
+      "Comments": [
+        "__fputn writes n bytes whose address is referenced by ptr to an open stream fp."
+      ]
     },
     {
-      "name": "GETFP",
+      "name": "__GETFP",
       "ord": 22,
+      "Signature" : "FILE  * pascal near __getfp  (void);",
       "Comments": []
     },
     {
       "name": "IOERROR",
       "ord": 24,
-      "Comments": []
+      "Signature" : "int pascal __IOerror (int dosErr);",
+      "Comments": [
+        "__IOerror - set error variables"
+      ]
     },
     {
       "name": "ISDST",
       "ord": 25,
-      "Comments": []
+      "Signature" : " int  pascal __isDST (unsigned hour,  unsigned yday, unsigned month, unsigned year);",
+      "Comments": [
+        "__isDST - determines whether daylight savings is in effect"
+      ]
     },
     {
       "name": "LONGTOA",
       "ord": 26,
-      "Comments": []
+      "Signature" : "char *pascal __longtoa (long value, char *strP, int radix, char maybeSigned, char hexStyle);",
+      "Comments": [
+        "__longtoa - converts a long to a character string"
+      ]
     },
     {
-      "name": "MKNAME",
+      "name": "__MKNAME",
       "ord": 27,
+      "Signature" : "char * pascal near __mkname(char *__s, char *__pfx, unsigned __num);",
       "Comments": []
     },
     {
       "name": "MMODEL",
       "ord": 28,
-      "Comments": []
+      "Signature" : "__MMODEL dw MMODEL",
+      "Comments": [
+        "__MMODEL is used to determine the memory model or the default pointer types at run time."
+      ]
     },
     {
       "name": "NFGETC",
       "ord": 29,
-      "Comments": []
+      "Signature" : "asm __Nfgetc    label near",
+      "Comments": [
+        "Near version of fgetc"
+      ]
     },
     {
       "name": "NUNGETC",
       "ord": 30,
-      "Comments": []
+      "Signature" : "asm __Nungetch  label near",
+      "Comments": [
+        "Near version of ungetch"
+      ]
     },
     {
       "name": "OPEN",
       "ord": 31,
-      "Comments": []
+      "Signature" : "int open(const char *pathname, int access [,unsigned permiss]);",
+      "Comments": [
+        "open - opens a file for reading or writing"
+      ]
     },
     {
-      "name": "OPENFP",
+      "name": "__OPENFP",
       "ord": 32,
+      "Signature" : "FILE  * pascal near __openfp(FILE *__fp, const char *__fname, const char *__type, int __shflag);",
       "Comments": []
     },
     {
@@ -170,82 +240,122 @@
     {
       "name": "REALCVT",
       "ord": 34,
-      "Comments": []
+      "Signature" : " void _realcvt (double *valueP, int ndec, char *strP, char formCh, char altFormat);",
+      "Comments": [
+        "_realcvt - converts a double value to an ASCIIZ string"
+      ]
     },
     {
       "name": "RESTOREZERO",
       "ord": 35,
+      "Signature" : "void _restorezero(void);",
       "Comments": []
     },
     {
       "name": "SCANNER",
       "ord": 36,
-      "Comments": []
+      "Signature" : "int  _scanner ( int   (*Get)(void *srceP), void  (*UnGet) (int ch, void *srceP), void   *srceP, const char   *formP, va_list varPP )",
+      "Comments": [
+        "_scanner - reads formatted input"
+      ]
     },
     {
       "name": "SCANPOP",
       "ord": 37,
-      "Comments": []
+      "Signature" : "void _scanpop(void);",
+      "Comments": [
+        "scanpop - Clean stack after conversion error"
+      ]
     },
     {
       "name": "SCANRSLT",
       "ord": 38,
-      "Comments": []
+      "Signature" : "void _scanrslt(void far *rsltP, int rsltType);",
+      "Comments": [
+        "scanrslt - Get conversion result"
+      ]
     },
     {
       "name": "SCANTOL",
       "ord": 40,
-      "Comments": []
+      "Signature" : "long _scanttol(int (*Get)(void *srceP), void (*UnGet)(int ch, void *srceP), void *srceP, int radix, int width, int *countP, int *statusP )",
+      "Comments": [
+        "_scantol - scans a source for an ascii character long"
+      ]
     },
     {
       "name": "SETUPIO",
       "ord": 41,
+      "Signature" : "void near _setupio(void);",
       "Comments": []
     },
     {
       "name": "STPCPY",
       "ord": 42,
-      "Comments": []
+      "Signature" : "char *stpcpy(char *destin, const char *source)",
+      "Comments": [
+        "stpcpy - copies one string to another"
+      ]
     },
     {
       "name": "STREAMS",
       "ord": 43,
-      "Comments": []
+      "Signature" : "FILE _streams[_NFILE_]",
+      "Comments": [
+        "_streams is the array of FILE structures used by the stream handling functions."
+      ]
     },
     {
       "name": "TERMINATE",
       "ord": 44,
+      "Signature" : "void Terminate (void);",
       "Comments": []
     },
     {
-      "name": "TMPNAM",
+      "name": "__TMPNAM",
       "ord": 45,
+      "Signature" : "char  * pascal near __tmpnam (char *__s, unsigned *__numP);",
       "Comments": []
     },
     {
       "name": "UTOA",
       "ord": 46,
-      "Comments": []
+      "Signature" : "char *__utoa(unsigned value, char *buf);",
+      "Comments": [
+        "__utoa - converts an unsigned int to a decimal string"
+      ]
     },
     {
-      "name": "VPRINTER",
+      "name": "__VPRINTER",
       "ord": 47,
-      "Comments": []
+      "Signature" : "int __vprinter (putnF  *putter, void   *outP, const _TCHAR *formP, int __use_nsize, size_t __nsize, va_list *argP)",
+      "Comments": [
+        "Sends formatted output"
+      ]
     },
     {
       "name": "WRITE",
       "ord": 48,
-      "Comments": []
+      "Signature" : "int write(int handle, const void *buf, unsigned nbyte);",
+      "Comments": [
+        "write - writes to a file"
+      ]
     },
     {
       "name": "XFCLOSE",
       "ord": 49,
-      "Comments": []
+      "Signature" : "void _xfclose(void);",
+      "Comments": [
+        "Description called at exit to close open streams"
+      ]
     },
     {
       "name": "XFFLUSH",
       "ord": 50,
-      "Comments": []
+      "Signature" : "void _xfflush(void);",
+      "Comments": [
+        "Description called at exit to flush open streams"
+      ]
     },
     {
       "name": "AABBTV",
@@ -258,6 +368,7 @@
     {
       "name": "ABORT",
       "ord": 52,
+      "Signature" : "void abort(void);",
       "Comments": []
     },
     {
@@ -271,6 +382,7 @@
     {
       "name": "ACCACCT",
       "ord": 54,
+      "Signature" : "void accacct(struct usracc *accptr,int plusor);",
       "Comments": []
     },
     {
@@ -284,7 +396,10 @@
     {
       "name": "ACCTMP",
       "ord": 56,
-      "Comments": []
+      "Signature" : "struct usracc acctmp;",
+      "Comments": [
+        "Temporary user account storage area"
+      ]
     },
     {
       "name": "ACTVSCN",
@@ -424,7 +539,10 @@
     {
       "name": "ATEXIT",
       "ord": 75,
-      "Comments": []
+      "Signature" : "int atexit(atexit_t func);",
+      "Comments": [
+        "atexit - registers termination function"
+      ]
     },
     {
       "name": "ATOI",
@@ -579,6 +697,7 @@
     {
       "name": "CATFIX2",
       "ord": 96,
+      "Signature" : "char *catfix2(void);",
       "Comments": []
     },
     {
@@ -628,7 +747,10 @@
     {
       "name": "CHNEMD",
       "ord": 103,
-      "Comments": []
+      "Signature" : "int chnemd;",
+      "Comments": [
+        "Channel currently being emulated (-1=none)"
+      ]
     },
     {
       "name": "CHOOSE",
@@ -665,12 +787,16 @@
     {
       "name": "CLOCK",
       "ord": 109,
+      "Signature" : "clock_t clock(void);",
       "Comments": []
     },
     {
       "name": "CLOSE",
       "ord": 110,
-      "Comments": []
+      "Signature" : "int close(int handle);",
+      "Comments": [
+        "close - close a file handle"
+      ]
     },
     {
       "name": "CLREOL",
@@ -709,7 +835,10 @@
     {
       "name": "CLSBB",
       "ord": 116,
-      "Comments": []
+      "Signature" : "BTVFILE *clsbb;",
+      "Comments": [
+        "'Class' btrieve block pointer"
+      ]
     },
     {
       "name": "CLSBTV",
@@ -722,6 +851,7 @@
     {
       "name": "CLSHEAD",
       "ord": 118,
+      "Signature" : "struct clstab *clshead;",
       "Comments": []
     },
     {
@@ -735,7 +865,10 @@
     {
       "name": "CLSPTR",
       "ord": 120,
-      "Comments": []
+      "Signature" : "struct clstab *clsptr;",
+      "Comments": [
+        "Handle pointer"
+      ]
     },
     {
       "name": "CNCALL",
@@ -766,7 +899,7 @@
     {
       "name": "CNCINT",
       "ord": 125,
-      "Signautre": "int n=cncint();",
+      "Signature": "int n=cncint();",
       "Comments": [
         "Expect an integer from the user",
         "0 if none"
@@ -875,7 +1008,10 @@
     {
       "name": "CORELEFT",
       "ord": 138,
-      "Comments": []
+      "Signature" : "unsigned coreleft(void);",
+      "Comments": [
+        "coreleft - returns a measure of unused memory"
+      ]
     },
     {
       "name": "CPUTYPE",
@@ -888,7 +1024,10 @@
     {
       "name": "CPYKEY",
       "ord": 140,
-      "Comments": []
+      "Signature" : "void cpykey(char *dest,char *src,int len);",
+      "Comments": [
+        "Format data (src) for Btrieve use (dest)"
+      ]
     },
     {
       "name": "CRDUSR",
@@ -899,12 +1038,18 @@
     {
       "name": "CREATNEW",
       "ord": 142,
-      "Comments": []
+      "Signature" : "int creatnew(char *filename, int attrib);",
+      "Comments": [
+        "creatnew - creates a new file"
+      ]
     },
     {
       "name": "CREATTEMP",
       "ord": 143,
-      "Comments": []
+      "Signature" : "int creattemp(const char *filename, int attrib);",
+      "Comments": [
+        "creattemp - creates a new file"
+      ]
     },
     {
       "name": "CRTBTV",
@@ -915,7 +1060,10 @@
     {
       "name": "CRTCLASS",
       "ord": 145,
-      "Comments": []
+      "Signature" : "int crtclass(struct acclass *cptr);",
+      "Comments": [
+        "Add a class to class table and file"
+      ]
     },
     {
       "name": "CURCURS",
@@ -1018,6 +1166,7 @@
     {
       "name": "DCTIME",
       "ord": 159,
+      "Signature" : "int dctime(char *timstr);",
       "Comments": []
     },
     {
@@ -1032,7 +1181,10 @@
     {
       "name": "DELACCT",
       "ord": 161,
-      "Comments": []
+      "Signature" : "int delacct(char *userid);",
+      "Comments": [
+        "'Delete an account from system' routine"
+      ]
     },
     {
       "name": "DELBTV",
@@ -1111,12 +1263,18 @@
     {
       "name": "DLTCLS",
       "ord": 172,
-      "Comments": []
+      "Signature" : "void dltcls(struct clstab *tabptr);",
+      "Comments": [
+        "Delete an existing class"
+      ]
     },
     {
       "name": "DOSTOUNIX",
       "ord": 173,
-      "Comments": []
+      "Signature" : "long dostounix(struct date *d, struct time *t);",
+      "Comments": [
+        "dostounix - converts date and time to UNIX time format"
+      ]
     },
     {
       "name": "DSAIRP",
@@ -1150,12 +1308,18 @@
     {
       "name": "DSPMSG",
       "ord": 178,
-      "Comments": []
+      "Signature" : "void dspmsg(msgno,parm1,parm2,parm3);",
+      "Comments": [
+        "Display Message based on ANSI flag"
+      ]
     },
     {
       "name": "DTRACK",
       "ord": 179,
-      "Comments": []
+      "Signature" : "unsigned dtrack;",
+      "Comments": [
+        "Number of HOURS since stats were zero'd"
+      ]
     },
     {
       "name": "DUPDBTV",
@@ -1191,7 +1355,10 @@
     {
       "name": "OLDEDTIMR",
       "ord": 184,
-      "Comments": []
+      "Signature" : "void oldedtimr(int (*imradr)());",
+      "Comments": [
+        "API for binary compatibility"
+      ]
     },
     {
       "name": "EDTVAL",
@@ -1247,7 +1414,10 @@
     {
       "name": "EOF",
       "ord": 192,
-      "Comments": []
+      "Signature" : "int eof(int handle);",
+      "Comments": [
+        "eof - detects end-of-file"
+      ]
     },
     {
       "name": "ERRCOD",
@@ -1276,12 +1446,18 @@
     {
       "name": "EXIT",
       "ord": 196,
-      "Comments": []
+      "Signature" : "void ___exit(int quick, int dontexit, int errcode);",
+      "Comments": [
+        "___exit - perform cleanup and optionally terminate the program"
+      ]
     },
     {
       "name": "EXPAND",
       "ord": 197,
-      "Comments": []
+      "Signature" : "void * _expand(void *block, size_t size);",
+      "Comments": [
+        "_expand - grow or shrink a block in place"
+      ]
     },
     {
       "name": "EXPLODE",
@@ -1321,6 +1497,7 @@
     {
       "name": "FARREALLOC",
       "ord": 204,
+      "Signature" : "void far * _farreallocf (void far *block, unsigned long size, unsigned flags);",
       "Comments": []
     },
     {
@@ -1334,12 +1511,18 @@
     {
       "name": "FDOPEN",
       "ord": 206,
-      "Comments": []
+      "Signature" : "FILE *fdopen(int handle, char *type);",
+      "Comments": [
+        "fdopen -  associates a stream with a file handle"
+      ]
     },
     {
       "name": "FFLUSH",
       "ord": 207,
-      "Comments": []
+      "Signature" : "int fflush(FILE *stream);",
+      "Comments": [
+        "fflush - flushes a stream"
+      ]
     },
     {
       "name": "_FGETC",
@@ -1352,7 +1535,10 @@
     {
       "name": "FGETCHAR",
       "ord": 209,
-      "Comments": []
+      "Signature" : "int fgetchar(void);",
+      "Comments": [
+        "fgetchar - gets character from stream"
+      ]
     },
     {
       "name": "FGETS",
@@ -1365,12 +1551,18 @@
     {
       "name": "FILELENGTH",
       "ord": 211,
-      "Comments": []
+      "Signature" : "long filelength(int handle);",
+      "Comments": [
+        "filelength - gets file size in bytes"
+      ]
     },
     {
       "name": "FILEUP",
       "ord": 212,
-      "Comments": []
+      "Signature" : "void fileup(char *fname, char *prot, int (*fuphdl)(int fupcod));",
+      "Comments": [
+        "Begin file upload session"
+      ]
     },
     {
       "name": "FINDMOD",
@@ -1395,7 +1587,10 @@
     {
       "name": "FLDNMI",
       "ord": 216,
-      "Comments": []
+      "Signature" : "char * fldnmi(int fldi);",
+      "Comments": [
+        "Extract field name based on field number"
+      ]
     },
     {
       "name": "FLL1ST",
@@ -1419,7 +1614,10 @@
     {
       "name": "FLUSHALL",
       "ord": 220,
-      "Comments": []
+      "Signature" : "int flushall(void);",
+      "Comments": [
+        "flushall - clears all buffers"
+      ]
     },
     {
       "name": "FMTX3",
@@ -1430,7 +1628,10 @@
     {
       "name": "FNDCLS",
       "ord": 222,
-      "Comments": []
+      "Signature" : "struct clstab *fndcls(char *clsname);",
+      "Comments": [
+        "Find this guy's class in the table"
+      ]
     },
     {
       "name": "FNDKEY",
@@ -1496,7 +1697,10 @@
     {
       "name": "FSCANF",
       "ord": 232,
-      "Comments": []
+      "Signature" : "int fscanf(FILE *stream, const char *format[, argument,...]);",
+      "Comments": [
+        "fscanf - performs formatted input from a stream"
+      ]
     },
     {
       "name": "FSDANS",
@@ -1693,21 +1897,29 @@
     {
       "name": "FSDPRC",
       "ord": 257,
+      "Signature" : "int fsdprc(void)",
       "Comments": []
     },
     {
       "name": "FSDQDP",
       "ord": 258,
-      "Comments": []
+      "Signature" : "void fsdqdp(void);",
+      "Comments": [
+        "low-level initiation of redisplay of entire screen"
+      ]
     },
     {
       "name": "FSDQOE",
       "ord": 259,
-      "Comments": []
+      "Signature" : "void fsdqoe(void);",
+      "Comments": [
+        "Report that the quick output buffer has gone empty"
+      ]
     },
     {
       "name": "FSDRFT",
       "ord": 260,
+      "Signature" : "char *fsdrft(void);",
       "Comments": []
     },
     {
@@ -1821,7 +2033,7 @@
     {
       "name": "FTFOBA",
       "ord": 276,
-      "Singnature" : "int ftfoba(void);",
+      "Signature" : "int ftfoba(void);",
       "Comments": [
         "(File Transfer) Output buffer bytes available, how many?"
       ]
@@ -2171,7 +2383,10 @@
     {
       "name": "GETDATE",
       "ord": 320,
-      "Comments": []
+      "Signature" : "void getdate(struct date *dateblk);",
+      "Comments": [
+        "getdate - gets MS-DOS date"
+      ]
     },
     {
       "name": "GETDTD",
@@ -2213,7 +2428,10 @@
     {
       "name": "GETTIME",
       "ord": 327,
-      "Comments": []
+      "Signature" : "void gettime(struct time *timep);",
+      "Comments": [
+        "gettime - gets MS-DOS time"
+      ]
     },
     {
       "name": "GETTND",
@@ -2417,22 +2635,34 @@
     {
       "name": "INT86",
       "ord": 353,
-      "Comments": []
+      "Signature" : "int int86(int intr_num, union REGS *inregs, union REGS *outregs);",
+      "Comments": [
+        "int86  - general 8086 software interrupt interface"
+      ]
     },
     {
       "name": "INT86X",
       "ord": 354,
-      "Comments": []
+      "Signature" : "int int86x(int intr_num, union REGS *inregs, union REGS *outregs,struct SREGS *segregs);",
+      "Comments": [
+        "int86x  - general 8086 software interrupt interface"
+      ]
     },
     {
       "name": "INTDOS",
       "ord": 355,
-      "Comments": []
+      "Signature" : "int intdos(union REGS * inregs, union REGS * outregs);",
+      "Comments": [
+        " intdos - general MS-DOS interrupt interface"
+      ]
     },
     {
       "name": "INTDOSX",
       "ord": 356,
-      "Comments": []
+      "Signature" : "int intdosx(union REGS *inregs, union REGS *outregs, struct SREGS *segregs);",
+      "Comments": [
+        "intdosx - general MS-DOS interrupt interface"
+      ]
     },
     {
       "name": "INVBTV",
@@ -2445,12 +2675,18 @@
     {
       "name": "IOCTL",
       "ord": 358,
-      "Comments": []
+      "Signature" : "int ioctl(int handle, int cmd [, void *argdx, int argcx]);",
+      "Comments": [
+        "ioctl - controls I/O device"
+      ]
     },
     {
       "name": "ISATTY",
       "ord": 359,
-      "Comments": []
+      "Signature" : "int isatty(int handle);",
+      "Comments": [
+        "isatty - checks for device type"
+      ]
     },
     {
       "name": "ISFILN",
@@ -2626,7 +2862,10 @@
     {
       "name": "LBLHUE",
       "ord": 382,
-      "Comments": []
+      "Signature" : "int lblhue;",
+      "Comments": [
+        "Soft-key labels display attribute code"
+      ]
     },
     {
       "name": "LDEDCRD",
@@ -2745,7 +2984,10 @@
     {
       "name": "LONGJMP",
       "ord": 393,
-      "Comments": []
+      "Signature" : "void longjmp(jmp_buf jmpb, int retval);",
+      "Comments": [
+        "longjmp - performs a nonlocal goto"
+      ]
     },
     {
       "name": "LONSTF",
@@ -2766,12 +3008,18 @@
     {
       "name": "LSEEK",
       "ord": 396,
-      "Comments": []
+      "Signature" : "long lseek(int handle, long ofs, int fromwhere);",
+      "Comments": [
+        "lseek - moves read/write file pointer"
+      ]
     },
     {
       "name": "LTOA",
       "ord": 397,
-      "Comments": []
+      "Signature" : "char *ltoa(long value, char *strP, int radix);",
+      "Comments": [
+        "ltoa  - converts a long to a string"
+      ]
     },
     {
       "name": "MAINHDL",
@@ -4453,7 +4701,10 @@
     {
       "name": "ULTOA",
       "ord": 613,
-      "Comments": []
+      "Signature" : "char *ultoa(unsigned long value, char *strP, int radix);",
+      "Comments": [
+        "ultoa - converts an unsigned long to a string"
+      ]
     },
     {
       "name": "UNFREZ",
@@ -4490,7 +4741,10 @@
     {
       "name": "UPDACC",
       "ord": 619,
-      "Comments": []
+      "Signature" : "void updacc(void);",
+      "Comments": [
+        "Update a user's account utility"
+      ]
     },
     {
       "name": "UPDBCKGND",
@@ -4533,7 +4787,11 @@
     {
       "name": "USRACC",
       "ord": 626,
-      "Comments": []
+      "Signature": "void *usracc;",
+      "Comments": [
+        "Fummy user account table pointer",
+        "DO NOT USE THIS POINTER -- USE UACOFF()"
+      ]
     },
     {
       "name": "USRIDX",
@@ -4563,11 +4821,14 @@
       "name": "USRSON",
       "ord": 630,
       "Signature" : "void usrson(void);",
-      "Comments": []
+      "Comments": [
+        "Display-users-online utility"
+      ]
     },
     {
       "name": "VALDPC",
       "ord": 631,
+      "Signature" : "int valdpc(char *prot);",
       "Comments": []
     },
     {
@@ -4591,7 +4852,10 @@
     {
       "name": "VALUPC",
       "ord": 635,
-      "Comments": []
+      "Signature" : "int valupc(char *prot);",
+      "Comments": [
+        "Is this a valid upload protocol?"
+      ]
     },
     {
       "name": "VDAOFF",
@@ -4637,7 +4901,10 @@
     {
       "name": "VFYADN",
       "ord": 641,
-      "Comments": []
+      "Signature" : "int vfyadn(int fldno, char *answer);",
+      "Comments": [
+        "Factory-issue field verify routine, for ask-done-at-end scheme"
+      ]
     },
     {
       "name": "VIDALC",
@@ -4661,7 +4928,10 @@
     {
       "name": "WTWAIT",
       "ord": 645,
-      "Comments": []
+      "Signature" : "int wtwait(lomin,himin);",
+      "Comments": [
+        "Interpolate between time limits for lo/hi usage"
+      ]
     },
     {
       "name": "XLTCTLS",
@@ -4688,7 +4958,10 @@
     {
       "name": "XYRTRM",
       "ord": 649,
-      "Comments": []
+      "Signature" : "void xyrtrm(char *msg);",
+      "Comments": [
+        "Terminate X/YMODEM receive session gracefully"
+      ]
     },
     {
       "name": "YNOPT",
@@ -4718,7 +4991,10 @@
     {
       "name": "ZAFILID",
       "ord": 651,
-      "Comments": []
+      "Signature" : "int zafilid(char *recbuf);",
+      "Comments": [
+        "Identify File type"
+      ]
     },
     {
       "name": "ZONKHL",
@@ -4729,7 +5005,9 @@
     {
       "name": "_DGROUP",
       "ord": 653,
-      "Comments": []
+      "Comments": [
+        "The DGROUP variable is used to reload DS with DGROUP"
+      ]
     },
     {
       "name": "F_LDIV",
@@ -4810,7 +5088,9 @@
     {
       "name": "F_PCMP",
       "ord": 663,
-      "Comments": []
+      "Comments": [
+        "Long pointer comparison (Borland C++ Implicit Function)"
+      ]
     },
     {
       "name": "F_PSUB",
@@ -5051,7 +5331,10 @@
     {
       "name": "FTFPSP",
       "ord": 696,
-      "Comments": []
+      "Signature" : "struct ftfpsp {...};",
+      "Comments": [
+        "File transfer protocol specifications"
+      ]
     },
     {
       "name": "DLKEYS",
@@ -5074,12 +5357,18 @@
     {
       "name": "RMTSYS",
       "ord": 700,
-      "Comments": []
+      "Signature" : "int rmtsys;",
+      "Comments": [
+        "Remote sysop emulation channel (-1 if no)"
+      ]
     },
     {
       "name": "PRINTF",
       "ord": 701,
-      "Comments": []
+      "Signature" : "int printf(const char *format, ...);",
+      "Comments": [
+        "printf - send formatted output to stdout"
+      ]
     },
     {
       "name": "MTRUNI",
@@ -5308,17 +5597,26 @@
     {
       "name": "NGLOBS",
       "ord": 733,
-      "Comments": []
+      "Signature" : "int nglobs;",
+      "Comments": [
+        "# of global command handlers in operation"
+      ]
     },
     {
       "name": "GLOBS",
       "ord": 734,
-      "Comments": []
+      "Signature" : "int (*globs[GLBMAX])();",
+      "Comments": [
+        "Array of ptrs to glbl cmd hdlr functions"
+      ]
     },
     {
       "name": "HDLCON",
       "ord": 735,
-      "Comments": []
+      "Signature" : "void (*hdlcon)();",
+      "Comments": [
+        "Handle connection with user"
+      ]
     },
     {
       "name": "BCC286_EXE",
@@ -5333,7 +5631,10 @@
     {
       "name": "FSTAT",
       "ord": 738,
-      "Comments": []
+      "Signature" : "int fstat(int handle, struct stat *buff);",
+      "Comments": [
+        "fstat - gets open file information"
+      ]
     },
     {
       "name": "OLDINEDIT",
@@ -5343,12 +5644,18 @@
     {
       "name": "STAHDL",
       "ord": 740,
-      "Comments": []
+      "Signature" : "int stahdl;",
+      "Comments": [
+        "Handle for the graph screen"
+      ]
     },
     {
       "name": "BB",
       "ord": 741,
-      "Comments": []
+      "Signature" : "struct btvblk *bb;",
+      "Comments": [
+        "Current btvu file pointer set"
+      ]
     },
     {
       "name": "GDEDCRD",
@@ -5420,12 +5727,18 @@
     {
       "name": "NCHANS",
       "ord": 750,
-      "Comments": []
+      "Signature" : "int nchans;",
+      "Comments": [
+        "Number of GSBL channels defined, nterms+1?"
+      ]
     },
     {
       "name": "GOMVEC",
       "ord": 752,
-      "Comments": []
+      "Signature" : "int (*gomvec)();",
+      "Comments": [
+        "Vector for cmd stg handling in gomodl()"
+      ]
     },
     {
       "name": "TXTVARS",
@@ -5438,7 +5751,10 @@
     {
       "name": "STRNICMP",
       "ord": 754,
-      "Comments": []
+      "Signature" : "int strnicmp(const char *str1, const char *str2, size_t maxlen);",
+      "Comments": [
+        "strnicmp - compare one string to another without case sensitivity"
+      ]
     },
     {
       "name": "REGISTER_PSEUDOK",
@@ -5457,7 +5773,10 @@
     {
       "name": "GENBB",
       "ord": 757,
-      "Comments": []
+      "Signature" : "BTVFILE *genbb;",
+      "Comments": [
+        "Generic user data file btrieve file ptr"
+      ]
     },
     {
       "name": "DELGEN",
@@ -5498,27 +5817,42 @@
     {
       "name": "LNGFND",
       "ord": 763,
-      "Comments": []
+      "Signature" : "int lngfnd(char *lngnam);",
+      "Comments": [
+        "Find a language by name, -1=can't"
+      ]
     },
     {
       "name": "CHGSPK",
       "ord": 764,
-      "Comments": []
+      "Signature" : "int chgspk(int lgo,char *spoken);",
+      "Comments": [
+        "Alternate spoken language? (-1=no)"
+      ]
     },
     {
       "name": "CHGPRT",
       "ord": 765,
-      "Comments": []
+      "Signature" : "int chgprt(int lgo,char *protoc);",
+      "Comments": [
+        "Alternate protocol? (-1=no)"
+      ]
     },
     {
       "name": "ALG1ST",
       "ord": 766,
-      "Comments": []
+      "Signature" : "void alg1st(int lgo);",
+      "Comments": [
+        "Prepare to seek alternate languages"
+      ]
     },
     {
       "name": "ALGNXT",
       "ord": 767,
-      "Comments": []
+      "Signature" : "int algnxt(void);",
+      "Comments": [
+        "Seek alternate languages"
+      ]
     },
     {
       "name": "TFSTATE",
@@ -5719,7 +6053,10 @@
     {
       "name": "MAXCAND",
       "ord": 793,
-      "Comments": []
+      "Signature" : "char maxcand;",
+      "Comments": [
+        "best candidate  -- cntcand() ret val"
+      ]
     },
     {
       "name": "LNGLIST",
@@ -5730,32 +6067,50 @@
     {
       "name": "DSPMLT",
       "ord": 795,
-      "Comments": []
+      "Signature" : "int dspmlt(msgno,parm1,parm2,parm3);",
+      "Comments": [
+        "Display Message based on ANSI flag"
+      ]
     },
     {
       "name": "BADLANG",
       "ord": 796,
-      "Comments": []
+      "Signature" : "int badlang;",
+      "Comments": [
+        "To flag undefined languages in .MCVs"
+      ]
     },
     {
       "name": "POSLNG",
       "ord": 797,
-      "Comments": []
+      "Signature" : "char *poslng;",
+      "Comments": [
+        "Possible languages autosensed"
+      ]
     },
     {
       "name": "AUSTIM",
       "ord": 798,
-      "Comments": []
+      "Signature" : "unsigned *austim;",
+      "Comments": [
+        "Array[nterms] of the time of bgnaus()"
+      ]
     },
     {
       "name": "NUMCAND",
       "ord": 799,
-      "Comments": []
+      "Signature" : "int numcand;",
+      "Comments": [
+        "# of candidates -- cntcand() ret val"
+      ]
     },
     {
       "name": "FSTCAND",
       "ord": 800,
-      "Comments": []
+      "Signature" : "int fstcand;",
+      "Comments": [
+        "first candidate -- cntcand() ret val"
+      ]
     },
     {
       "name": "AUSWAIT",
@@ -5859,7 +6214,10 @@
     {
       "name": "UIDARR",
       "ord": 816,
-      "Comments": []
+      "Signature" : "struct uidisp *uidarr;",
+      "Comments": [
+        "Users screen info array"
+      ]
     },
     {
       "name": "PMCARE",
@@ -5896,7 +6254,10 @@
     {
       "name": "FTHEAD",
       "ord": 821,
-      "Comments": []
+      "Signature" : "struct ftfpsp *fthead;",
+      "Comments": [
+        "Address of 1st entry in prot list"
+      ]
     },
     {
       "name": "FPRLOCK",
@@ -5909,7 +6270,10 @@
     {
       "name": "ARCDSC",
       "ord": 823,
-      "Comments": []
+      "Signature" : "char *arcdsc[];",
+      "Comments": [
+        "Array of file descriptions, indexed by file id"
+      ]
     },
     {
       "name": "LINGYN",
@@ -5922,7 +6286,10 @@
     {
       "name": "EXTPTR",
       "ord": 825,
-      "Comments": []
+      "Signature" : "struct extusr *extptr;",
+      "Comments": [
+        "Global pointer to extra info about cur usr"
+      ]
     },
     {
       "name": "OTHEXP",
@@ -5994,22 +6361,35 @@
     {
       "name": "MKTEMP",
       "ord": 834,
-      "Comments": []
+      "Signature": "char *mktemp(char *template);",
+      "Comments": [
+        "mktemp - makes a unique file name"
+      ]
     },
     {
       "name": "CHDIR",
       "ord": 835,
-      "Comments": []
+      "Signature" : "int chdir(const char *path);",
+      "Comments": [
+        "chdir - changes working directory"
+      ]
     },
     {
       "name": "GETCURDIR",
       "ord": 836,
-      "Comments": []
+      "Signature": "int getcurdir(int drive, char *direc);",
+      "Comments": [
+        "getcurdir - gets current directory for specified drive",
+        "drive contains a drive number (0 = default, 1 = A, etc.)"
+      ]
     },
     {
       "name": "MEMCHR",
       "ord": 837,
-      "Comments": []
+      "Signature" : "void *memchr(const void *s, int val, size_t n);",
+      "Comments": [
+        "memchr - search for a character"
+      ]
     },
     {
       "name": "STPCPY",
@@ -6022,17 +6402,26 @@
     {
       "name": "STRNSET",
       "ord": 839,
-      "Comments": []
+      "Signature" : "char *strnset(char *str, int ch, size_t n);",
+      "Comments": [
+        "strnset - sets all characters in a string to a given character"
+      ]
     },
     {
       "name": "STRSET",
       "ord": 840,
-      "Comments": []
+      "Signature" : "char *strset(char *str, int ch);",
+      "Comments": [
+        "strset - sets all characters in a string to a given character"
+      ]
     },
     {
       "name": "CREAT",
       "ord": 841,
-      "Comments": []
+      "Signature" : "int creat(const char *filename, int permiss);",
+      "Comments": [
+        "creat - creates a new file or rewrites an existing one"
+      ]
     },
     {
       "name": "FCLOSEALL",
@@ -6050,17 +6439,24 @@
     {
       "name": "FSOPEN",
       "ord": 844,
+      "Signature" : "void open(const char* b, int m, int prot);",
       "Comments": []
     },
     {
       "name": "MEMCCPY",
       "ord": 845,
-      "Comments": []
+      "Signature" : "void *memccpy(void *dst, const void *src, int val, size_t n);",
+      "Comments": [
+        "memccpy - copy bytes from src to dst"
+      ]
     },
     {
       "name": "MEMICMP",
       "ord": 846,
-      "Comments": []
+      "Signature" : "int memicmp(const void *s1, const void *s2, size_t n);",
+      "Comments": [
+        "memicmp - compares two memory areas"
+      ]
     },
     {
       "name": "MOVEDATA",
@@ -6080,7 +6476,10 @@
     {
       "name": "ACCESS",
       "ord": 850,
-      "Comments": []
+      "Signature" : "int access(const char *filename, int amode);",
+      "Comments": [
+        "access - determines accessibility of a file"
+      ]
     },
     {
       "name": "PFNPTR",
@@ -6150,37 +6549,58 @@
     {
       "name": "RIPDFD",
       "ord": 869,
-      "Comments": []
+      "Signature" : "int ripdfd;",
+      "Comments": [
+        "Any RIP language defined on this svr?"
+      ]
     },
     {
       "name": "RIPIDX",
       "ord": 870,
-      "Comments": []
+      "Signature" : "int ripidx;",
+      "Comments": [
+        "Index into languages[] of 1st /RIP lang"
+      ]
     },
     {
       "name": "AUTSCNS",
       "ord": 871,
-      "Comments": []
+      "Signature" : "char ***autscns;",
+      "Comments": [
+        "RIP_BUTTON cmd stgs, 1..MAXSEL, for all possible #'s of displayed buttons"
+      ]
     },
     {
       "name": "LGRFNT",
       "ord": 872,
-      "Comments": []
+      "Signature" : "char *lgrfnt[];",
+      "Comments": [
+        "Enabled/dimmed large button font styles"
+      ]
     },
     {
       "name": "LGRSTY",
       "ord": 873,
-      "Comments": []
+      "Signature" : "char *lgrsty[];",
+      "Comments": [
+        "Enabled/dimmed large button styles"
+      ]
     },
     {
       "name": "SMRFNT",
       "ord": 874,
-      "Comments": []
+      "Signature" : "*char smrfnt[];",
+      "Comments": [
+        "Enabled/dimmed small button font styles"
+      ]
     },
     {
       "name": "SMRSTY",
       "ord": 875,
-      "Comments": []
+      "Signature" : "char *smrsty[];",
+      "Comments": [
+        "Enabled/dimmed small button styles"
+      ]
     },
     {
       "name": "FSDRHD",
@@ -6207,17 +6627,26 @@
     {
       "name": "FLDPTR",
       "ord": 881,
-      "Comments": []
+      "Signature" : "struct fsdfld *fldptr;",
+      "Comments": [
+        "Global pointer to field info"
+      ]
     },
     {
       "name": "SHOFLD",
       "ord": 882,
-      "Comments": []
+      "Signature" : "void shofld(int attr, int justfy);",
+      "Comments": [
+        "Show this field (goto it, attr, contents) (ANSI only)"
+      ]
     },
     {
       "name": "STRRCHR",
       "ord": 883,
-      "Comments": []
+      "Signature" : "char *strrchr(const char *str, int c);",
+      "Comments": [
+        "strrchr - scans a string for the last occurrence of a given character"
+      ]
     },
     {
       "name": "F_SPUSH",
@@ -6248,7 +6677,10 @@
     {
       "name": "SNDRST",
       "ord": 889,
-      "Comments": []
+      "Signature" : "int sndrst;",
+      "Comments": [
+        "Send RIP_RESET_WINDOWS after sw to non-RIP?"
+      ]
     },
     {
       "name": "DETFLG",
@@ -6261,7 +6693,10 @@
     {
       "name": "RIPMB",
       "ord": 891,
-      "Comments": []
+      "Signature" : "FILE *ripmb;",
+      "Comments": [
+        "BBSRIP.MSG"
+      ]
     },
     {
       "name": "TFSABT",
@@ -6299,12 +6734,18 @@
     {
       "name": "GETFTIME",
       "ord": 896,
-      "Comments": []
+      "Signature" : "int getftime(int handle, struct ftime *ftimep);",
+      "Comments": [
+        "getftime - gets file date and time"
+      ]
     },
     {
       "name": "SETFTIME",
       "ord": 897,
-      "Comments": []
+      "Signature" : "int setftime(int handle, struct ftime *ftimep);",
+      "Comments": [
+        "setftime - gets file date and time"
+      ]
     },
     {
       "name": "CLSIZE",
@@ -6340,7 +6781,10 @@
     {
       "name": "HDEDCRD",
       "ord": 902,
-      "Comments": []
+      "Signature" : "long hdedcrd(struct usracc *uptr,long amt,int real,int asmuch);",
+      "Comments": [
+        "Deduct credits, return num. deducted"
+      ]
     },
     {
       "name": "PTHOPT",
@@ -6363,17 +6807,24 @@
     {
       "name": "AINSCB",
       "ord": 906,
+      "Signature" : "struct ainscb *ainscb;",
       "Comments": []
     },
     {
       "name": "AINBEG",
       "ord": 907,
-      "Comments": []
+      "Signature" : "void ainbeg(void);",
+      "Comments": [
+        "Initialize ANSI-getchc() conversion session"
+      ]
     },
     {
       "name": "AINCHR",
       "ord": 908,
-      "Comments": []
+      "Signature" : "int ainchr(char c);",
+      "Comments": [
+        "Translate ANSI keystrokes into getchc()-style keystrokes"
+      ]
     },
     {
       "name": "VERSION",
@@ -6399,7 +6850,10 @@
     {
       "name": "KYSBUF",
       "ord": 912,
-      "Comments": []
+      "Signature" : "char *kysbuf;",
+      "Comments": [
+        "Pointer to one-shot internal keys buffer"
+      ]
     },
     {
       "name": "ANPBTVL",
@@ -6418,7 +6872,10 @@
     {
       "name": "FTGDN1",
       "ord": 915,
-      "Comments": []
+      "Signature" : "int ftgdn1(char *prot, void (*retrou)())",
+      "Comments": [
+        "ftgsbm() replacement for copies of files already in tag list"
+      ]
     },
     {
       "name": "ALWAIT",
@@ -6431,67 +6888,106 @@
     {
       "name": "__BASE",
       "ord": 917,
-      "Comments": []
+      "Signature" : "unsigned __base;",
+      "Comments": [
+        "First selector of heap"
+      ]
     },
     {
       "name": "__TOP",
       "ord": 918,
-      "Comments": []
+      "Signature" : "unsigned __top;",
+      "Comments": [
+        "Last selector of heap (inclusive)"
+      ]
     },
     {
       "name": "__HINCR",
       "ord": 919,
-      "Comments": []
+      "Signature" : "unsigned __hincr;",
+      "Comments": [
+        "Increment between heap selectors"
+      ]
     },
     {
       "name": "VALEXI",
       "ord": 920,
-      "Comments": []
+      "Signature" : "int valexi;",
+      "Comments": [
+        "Is eximod currently valid? (1 or 0)"
+      ]
     },
     {
       "name": "AGENTS",
       "ord": 921,
-      "Comments": []
+      "Signature" : "struct agent {...} *agents;",
+      "Comments": [
+        "Agent information structure"
+      ]
     },
     {
       "name": "MSYSID",
       "ord": 922,
-      "Comments": []
+      "Signature" : "char msysid[SIDSIZ];",
+      "Comments": [
+        "Master sysid for this system"
+      ]
     },
     {
       "name": "RQDPTR",
       "ord": 923,
-      "Comments": []
+      "Signature" : "struct reqdat {...} *rqdptr;",
+      "Comments": [
+        "Engine's internal per-request data"
+      ]
     },
     {
       "name": "MRQSIZ",
       "ord": 924,
-      "Comments": []
+      "Signature" : "int mrqsiz;",
+      "Comments": [
+        "Size of per-request memory area"
+      ]
     },
     {
       "name": "MRQPTR",
       "ord": 925,
-      "Comments": []
+      "Signature" : "char *mrqptr;",
+      "Comments": [
+        "Pointer to per-request memory for agents"
+      ]
     },
     {
       "name": "GREQID",
       "ord": 926,
-      "Comments": []
+      "Signature" : "int greqid;",
+      "Comments": [
+        "Global copy of request id underway"
+      ]
     },
     {
       "name": "RSPTMP",
       "ord": 927,
-      "Comments": []
+      "Signature" : "char *rsptmp;",
+      "Comments": [
+        "Buffer for agents to store responses"
+      ]
     },
     {
       "name": "NAGENTS",
       "ord": 928,
-      "Comments": []
+      "Signature" : "int nagents;",
+      "Comments": [
+        "Number of agents"
+      ]
     },
     {
       "name": "GDPBB",
       "ord": 929,
-      "Comments": []
+      "Signature" : "BTVFILE *gdpbb;",
+      "Comments": [
+        "Generic dynapak database Btrieve pointer"
+      ]
     },
     {
       "name": "REGISTER_AGENT",
@@ -6694,6 +7190,7 @@
     {
       "name": "SAMEPATU",
       "ord": 961,
+      "Signature" : "BOOL samepatu(char *sau1,char *sau2,BOOL exact);",
       "Comments": []
     },
     {
@@ -6723,7 +7220,10 @@
     {
       "name": "SETPFN",
       "ord": 965,
-      "Comments": []
+      "Signature" : "void (*setpfn)(char *inp);",
+      "Comments": [
+        "Profanity checker routine"
+      ]
     },
     {
       "name": "VALUID",
@@ -6786,6 +7286,7 @@
     {
       "name": "CSBUMP",
       "ord": 975,
+      "Signature" : "int csbump(int logon);",
       "Comments": []
     },
     {
@@ -6851,7 +7352,10 @@
     {
       "name": "MENUPG",
       "ord": 989,
-      "Comments": []
+      "Signature" : "struct mnupag {...} *menupg;",
+      "Comments": [
+        "Menu page data structure (btrieve layout)"
+      ]
     },
     {
       "name": "SAVEPAGE",
@@ -6918,27 +7422,42 @@
     {
       "name": "SWBUFS",
       "ord": 1000,
-      "Comments": []
+      "Signature" : "unsigned swbufs(struct datstm far *dsp);",
+      "Comments": [
+        "snkwin() stub for buffered DataStream"
+      ]
     },
     {
       "name": "HOBUFS",
       "ord": 1001,
-      "Comments": []
+      "Signature" : "void hobufs(struct datstm far *dsp, char byte);",
+      "Comments": [
+        "hrsone() stub for buffered DataStream"
+      ]
     },
     {
       "name": "DMBUFS",
       "ord": 1002,
-      "Comments": []
+      "Signature" : "void dmbufs(struct datstm far *dsp, unsigned nactual);",
+      "Comments": [
+        "didmov() stub for buffered DataStream"
+      ]
     },
     {
       "name": "MVIAD",
       "ord": 1003,
-      "Comments": []
+      "Signature" : "unsigned mviad(struct datstm far *dsp, char far *srcloc, unsigned nwant);",
+      "Comments": [
+        "moveit() stub via didmov() & snkwin()"
+      ]
     },
     {
       "name": "HVIAD",
       "ord": 1004,
-      "Comments": []
+      "Signature" : "void hviad(struct datstm far *dsp, char byte);",
+      "Comments": [
+        "hrsone() stub via didmov() & snkwin()"
+      ]
     },
     {
       "name": "HDLRST",
@@ -6974,17 +7493,26 @@
     {
       "name": "DOS_CLOSE",
       "ord": 1010,
-      "Comments": []
+      "Signature" : "unsigned _dos_close(int handle);",
+      "Comments": [
+        "_dos_close - close a file handle"
+      ]
     },
     {
       "name": "DOS_OPEN",
       "ord": 1011,
-      "Comments": []
+      "Signature" : "unsigned _dos_open(const char *pathname, unsigned oflag, int *handle);",
+      "Comments": [
+        "_dos_open - opens a file for reading or writing"
+      ]
     },
     {
       "name": "SETMODE",
       "ord": 1012,
-      "Comments": []
+      "Signature" : "int setmode(int handle, int mode);",
+      "Comments": [
+        "setmode - sets mode of open file"
+      ]
     },
     {
       "name": "FTIME",
@@ -7024,11 +7552,13 @@
     {
       "name": "MONAME",
       "ord": 1021,
+      "Signature" : "char moname[][4];",
       "Comments": []
     },
     {
       "name": "NCUDNT",
       "ord": 1022,
+      "Signature" : "char *ncudnt(int date,int time);",
       "Comments": []
     },
     {
@@ -7054,62 +7584,96 @@
     {
       "name": "DECUSR",
       "ord": 1025,
-      "Comments": []
+      "Signature" : "void (*decusr)(void);",
+      "Comments": [
+        "decevy() service vector"
+      ]
     },
     {
       "name": "DECUSN",
       "ord": 1026,
-      "Comments": []
+      "Signature" : "int decusn;",
+      "Comments": [
+        "User number"
+      ]
     },
     {
       "name": "DECUSP",
       "ord": 1027,
-      "Comments": []
+      "Signature" : "struct user *decusp;",
+      "Comments": [
+        "User online information (MAJORBBS.H)"
+      ]
     },
     {
       "name": "DECUAP",
       "ord": 1028,
-      "Comments": []
+      "Signature" : "struct usracc *decuap;",
+      "Comments": [
+        "User account information (USRACC.H)"
+      ]
     },
     {
       "name": "DECCST",
       "ord": 1029,
-      "Comments": []
+      "Signature" : "long deccst;",
+      "Comments": [
+        "Cost of online time since last (*decusr)()"
+      ]
     },
     {
       "name": "DECDFT",
       "ord": 1030,
+      "Signature" : "void decdft(void);",
       "Comments": []
     },
     {
       "name": "DECLOG",
       "ord": 1031,
-      "Comments": []
+      "Signature" : "int declog(void);",
+      "Comments": [
+        "Check logon time limit"
+      ]
     },
     {
       "name": "DECSUP",
       "ord": 1032,
-      "Comments": []
+      "Signature" : "int decsup(void);",
+      "Comments": [
+        "Check signup time limit"
+      ]
     },
     {
       "name": "DECTDY",
       "ord": 1033,
-      "Comments": []
+      "Signature" : "int dectdy(void);",
+      "Comments": [
+        "Check today's time limit"
+      ]
     },
     {
       "name": "DECCAL",
       "ord": 1034,
-      "Comments": []
+      "Signature" : "int deccal(void);",
+      "Comments": [
+        "Check per/call time limit"
+      ]
     },
     {
       "name": "DEC15S",
       "ord": 1035,
-      "Comments": []
+      "Signature" : "void dec15s(void);",
+      "Comments": [
+        "Count out 15 sec of statistics"
+      ]
     },
     {
       "name": "DECCRD",
       "ord": 1036,
-      "Comments": []
+      "Signature" : "void deccrd(long surdsc);",
+      "Comments": [
+        "Decrement credits for 15 sec online"
+      ]
     },
     {
       "name": "LONAUD",
@@ -7267,7 +7831,10 @@
     {
       "name": "LNGTCK",
       "ord": 1059,
-      "Comments": []
+      "Signature" : "unsigned long lngtck;",
+      "Comments": [
+        "4-gig second counter"
+      ]
     },
     {
       "name": "HDLZAP",
@@ -7280,7 +7847,10 @@
     {
       "name": "TFCCHG",
       "ord": 1061,
-      "Comments": []
+      "Signature" : "long tfcchg(long nbytes,long credpk);",
+      "Comments": [
+        "Charge user for traffic"
+      ]
     },
     {
       "name": "SYSTEM",
@@ -7306,7 +7876,10 @@
     {
       "name": "FSDCHI",
       "ord": 1066,
-      "Comments": []
+      "Signature" : "char fsdchi(int chan, int c);",
+      "Comments": [
+        "btuchi() character input  handler for FSD"
+      ]
     },
     {
       "name": "HDLGPR",
@@ -7401,22 +7974,34 @@
     {
       "name": "BEG_PHASE",
       "ord": 1080,
-      "Comments": []
+      "Signature" : "void (*beg_phase)(char *name,long num);",
+      "Comments": [
+        "BEG_PHASE() vector"
+      ]
     },
     {
       "name": "END_PHASE",
       "ord": 1081,
-      "Comments": []
+      "Signature" : "void (*end_phase)(char *name,long num);",
+      "Comments": [
+        "END_PHASE() vector"
+      ]
     },
     {
       "name": "RPTPHS",
       "ord": 1082,
-      "Comments": []
+      "Signature" : "void rptphs(FILE *fp);",
+      "Comments": [
+        "Report on the past NUMPHS phases"
+      ]
     },
     {
       "name": "PSTPHS",
       "ord": 1083,
-      "Comments": []
+      "Signature" : "struct phasedbg *pstphs(int index);",
+      "Comments": [
+        "Get information on a past phase"
+      ]
     },
     {
       "name": "UNIQFN",
@@ -7427,11 +8012,13 @@
     {
       "name": "SDLLINFO",
       "ord": 1085,
+      "Signature" : "void sdllinfo(FILE *dst);",
       "Comments": []
     },
     {
       "name": "SHOSTACK",
       "ord": 1086,
+      "Signature" : "void shostack(FILE *dst,char *ptr,int rows,int ibpval);",
       "Comments": []
     },
     {
@@ -7490,12 +8077,18 @@
     {
       "name": "KEYSBB",
       "ord": 1094,
-      "Comments": []
+      "Signature" : "BTVFILE *keysbb;",
+      "Comments": [
+        "Keys database pointer"
+      ]
     },
     {
       "name": "GLOBGO",
       "ord": 1095,
-      "Comments": []
+      "Signature" : "int globgo;",
+      "Comments": [
+        "1=doing a global /go exit chain, 0=not"
+      ]
     },
     {
       "name": "MEMDBGRPT",
@@ -7602,11 +8195,15 @@
     {
       "name": "SUPFRM",
       "ord": 1110,
-      "Comments": []
+      "Signature" : "int supfrm;",
+      "Comments": [
+        "Format output in fixed-length ASCII?"
+      ]
     },
     {
       "name": "SAVUSR",
       "ord": 1111,
+      "Signature" : "void savusr(char *answers0);",
       "Comments": []
     },
     {
@@ -7680,7 +8277,10 @@
     {
       "name": "RECENTS",
       "ord": 1121,
-      "Comments": []
+      "Signature" : "struct recalls *recents;",
+      "Comments": [
+        "Array of most recent callers"
+      ]
     },
     {
       "name": "LANGCHG",
@@ -7693,7 +8293,10 @@
     {
       "name": "FULLPATH",
       "ord": 1123,
-      "Comments": []
+      "Signature" : "char *_fullpath(char *buffer, const char * pathname, size_t maxlen);",
+      "Comments": [
+        "_fullpath - makes new file name"
+      ]
     },
     {
       "name": "NORMSPEC",
@@ -7704,7 +8307,10 @@
     {
       "name": "FPUTS",
       "ord": 1125,
-      "Comments": []
+      "Signature" : "int fputs(const char *string, FILE *stream);",
+      "Comments": [
+        "fputs - puts a string on a stream"
+      ]
     },
     {
       "name": "GMKDIR",
@@ -7747,7 +8353,10 @@
     {
       "name": "CENTURY",
       "ord": 1132,
-      "Comments": []
+      "Signature" : "int century;",
+      "Comments": [
+        "19-23 - ind's century for v2sdat()"
+      ]
     },
     {
       "name": "V2DDAT",
@@ -8366,17 +8975,24 @@
     {
       "name": "BTVUPTR",
       "ord": 1215,
+      "Signature" : "int (*btvuptr)(int funcno,int datbufseg,int keyseg,int keyno,int rlen);",
       "Comments": []
     },
     {
       "name": "BTVERRPTR",
       "ord": 1216,
-      "Comments": []
+      "Signature" : "void (*btverrptr)(char *who)",
+      "Comments": [
+        "Vector for low level Btrieve funcs"
+      ]
     },
     {
       "name": "LOCALECONVENTION",
       "ord": 1217,
-      "Comments": []
+      "Signature" : "struct lconv _localeconvention {... };",
+      "Comments": [
+        "The 'C' locale lconv structure"
+      ]
     },
     {
       "name": "CRCTAB",
@@ -8399,11 +9015,15 @@
     {
       "name": "PLSTAK",
       "ord": 1303,
-      "Comments": []
+      "Signature" : "void plstak(char *filnam, void *sssp, unsigned int bp);",
+      "Comments": [
+        "Phar Lap stack report"
+      ]
     },
     {
       "name": "CATBPSAV",
       "ord": 1304,
+      "Signature" : "void *catbpsav;",
       "Comments": []
     },
     {
@@ -8423,7 +9043,10 @@
     {
       "name": "AREAPTR",
       "ord": 1307,
-      "Comments": []
+      "Signature" : "void *areaptr(int poolhdl, int areahdl);",
+      "Comments": [
+        "Get pointer to a reserved mem area"
+      ]
     },
     {
       "name": "GLBKEYI",
@@ -8442,17 +9065,24 @@
     {
       "name": "SAPSUP",
       "ord": 1310,
-      "Comments": []
+      "Signature" : "int sapsup;",
+      "Comments": [
+        "Server Advertising Protocol supported?"
+      ]
     },
     {
       "name": "SAPPRP",
       "ord": 1311,
+      "Signature" : "void sapprp(void);",
       "Comments": []
     },
     {
       "name": "SAPREP",
       "ord": 1312,
-      "Comments": []
+      "Signature" : "struct sapinf *saprep(int mask);",
+      "Comments": [
+        "Report on one S.A.P. server at a time"
+      ]
     },
     {
       "name": "ISERRF",
@@ -8505,12 +9135,18 @@
     {
       "name": "LOCK",
       "ord": 1319,
-      "Comments": []
+      "Signature" : "int lock(int handle, long ofs, long length);",
+      "Comments": [
+        "lock - sets file sharing locks"
+      ]
     },
     {
       "name": "UNLOCK",
       "ord": 1320,
-      "Comments": []
+      "Signature" : "int unlock(int handle, long ofs, long length);",
+      "Comments": [
+        "unlock - resets file sharing locks"
+      ]
     },
     {
       "name": "LOCALTIME",
@@ -8520,12 +9156,18 @@
     {
       "name": "CHSIZE",
       "ord": 1322,
-      "Comments": []
+      "Signature" : "int chsize(int fildes, long newSize);",
+      "Comments": [
+        "chsize - change file size"
+      ]
     },
     {
       "name": "REMOVE",
       "ord": 1323,
-      "Comments": []
+      "Signature" : "int remove(const char *filename);",
+      "Comments": [
+        "Remove - deletes a file"
+      ]
     },
     {
       "name": "OESROU",
@@ -8578,7 +9220,10 @@
     {
       "name": "ZAPTBL",
       "ord": "1330",
-      "Comments": []
+      "Signature" : "int *zaptbl;",
+      "Comments": [
+        "Array of connect timeout values"
+      ]
     },
     {
       "name": "SAWCLAN",
@@ -8591,7 +9236,10 @@
     {
       "name": "SYSLOAD",
       "ord": "1332",
-      "Comments": []
+      "Signature" : "int sysload[60];",
+      "Comments": [
+        "Lines in use from SUMMARY.C load grph"
+      ]
     },
     {
       "name": "MAXPOL",
