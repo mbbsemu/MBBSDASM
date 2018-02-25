@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using MBBSDASM.Artifacts;
 using MBBSDASM.Enums;
 using SharpDisasm;
@@ -16,9 +17,6 @@ namespace MBBSDASM.Dasm
      /// </summary>
      public static class Disassembler
      {
-         //RegEx for characters on the standard keyboard
-         private static readonly Regex StringRegEx = new Regex(@"[\r\na-zA-Z0-9`!@#$%^&*()_+|\-=\\{}\[\]:"";'<>?,. /]", RegexOptions.Compiled);
-         
          /// <summary>
          ///     Takes the raw binary code segment and feeds it into the x86 disassembler library
          /// </summary>
@@ -43,8 +41,8 @@ namespace MBBSDASM.Dasm
                      Disassembly = disassembly,
                      Comments = new List<string>(),
                      Ordinal = ordinal,
-                     BranchFromRecords = new List<BranchRecord>(),
-                     BranchToRecords = new List<BranchRecord>()
+                     BranchFromRecords = new ConcurrentBag<BranchRecord>(),
+                     BranchToRecords = new ConcurrentBag<BranchRecord>()
                  });
                  ordinal++;
              }
@@ -85,19 +83,19 @@ namespace MBBSDASM.Dasm
          /// <param name="file"></param>
          public static void ApplyRelocationInfo(NEFile file)
          {
-             foreach (var segment in file.SegmentTable)
+             Parallel.ForEach(file.SegmentTable, (segment) =>
              {
                  if (!segment.Flags.Contains(EnumSegmentFlags.Code) &&
                      !segment.Flags.Contains(EnumSegmentFlags.HasRelocationInfo))
-                     continue;
-                 
-                 foreach (var relocationRecord in segment.RelocationRecords)
+                     return;
+                 Parallel.ForEach(segment.RelocationRecords, (relocationRecord) =>
                  {
                      var disAsm =
-                         segment.DisassemblyLines.FirstOrDefault(x => x.Disassembly.Offset == relocationRecord.Offset - 1UL);
+                         segment.DisassemblyLines.FirstOrDefault(x =>
+                             x.Disassembly.Offset == relocationRecord.Offset - 1UL);
 
                      if (disAsm == null)
-                         continue;
+                         return;
 
                      switch (relocationRecord.Flag)
                      {
@@ -118,15 +116,21 @@ namespace MBBSDASM.Dasm
                          case EnumRecordsFlag.INTERNALREF:
                              if (disAsm.Disassembly.Mnemonic == ud_mnemonic_code.UD_Icall)
                              {
-                                //Set Target
+                                 //Set Target
                                  file.SegmentTable
                                      .FirstOrDefault(x => x.Ordinal == relocationRecord.TargetTypeValueTuple.Item2)
                                      ?.DisassemblyLines
                                      .FirstOrDefault(y =>
                                          y.Disassembly.Offset == relocationRecord.TargetTypeValueTuple.Item4)
                                      ?.BranchFromRecords
-                                     .Add(new BranchRecord() { Segment = segment.Ordinal, Offset = disAsm.Disassembly.Offset, IsRelocation = true, BranchType = EnumBranchType.Call});
-                                 
+                                     .Add(new BranchRecord()
+                                     {
+                                         Segment = segment.Ordinal,
+                                         Offset = disAsm.Disassembly.Offset,
+                                         IsRelocation = true,
+                                         BranchType = EnumBranchType.Call
+                                     });
+
                                  //Set Origin
                                  disAsm.BranchToRecords.Add(new BranchRecord()
                                  {
@@ -158,8 +162,8 @@ namespace MBBSDASM.Dasm
                          case EnumRecordsFlag.TARGET_MASK:
                              break;
                      }
-                 }
-             }
+                 });
+             });
          }
 
          /// <summary>
@@ -190,7 +194,7 @@ namespace MBBSDASM.Dasm
                          //MOV ax, SEG ADDR sets the current Data Segment to use
                          if (disassemblyLine.BranchToRecords.Any(x =>
                              x.IsRelocation && x.BranchType == EnumBranchType.SegAddr))
-                             dataSegmentToUse = disassemblyLine.BranchToRecords[0].Segment;
+                             dataSegmentToUse = disassemblyLine.BranchToRecords.First().Segment;
 
 
                          if (dataSegmentToUse > 0)

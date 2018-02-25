@@ -1,9 +1,12 @@
 # Changelog
 ## v1.4
 * Added bytes to Disassembly output
+* Implemented TPL for processing Relocation Records (Thread-Safe)
+	* ~400% speed up depending on target file and machine SMP capability
 * Additional Module Definiton Auto-Documentation
 	* **MAJORBBS** : 1217 functions documented of 1233 defined
 	* **GALGSBL** : 97 functions documented of 101 defined
+	
 ## v1.3
 * Enhanced FOR loop recognition
 * Refactored Disassembled Branch Tracking/Labeling
