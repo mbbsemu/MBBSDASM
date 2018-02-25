@@ -206,8 +206,8 @@ namespace MBBSDASM
                         //Only label Imports if Analysis is off, because Analysis does much more in-depth labeling
                         if (!bAnalysis)
                         {
-                            foreach(var b in d.BranchToRecords.Where(x=> x.IsRelocation && (x.BranchType == EnumBranchType.CallImport || x.BranchType == EnumBranchType.SegAddrImport)))
-                                d.Comments.Add($"{(b.BranchType == EnumBranchType.CallImport ? "call" : "SEG ADDR of" )} {inputFile.ImportedNameTable.First(x => x.Ordinal == b.Segment).Name}.Ord({b.Offset:X4}h)");
+                            foreach(var b in d.BranchToRecords?.Where(x=> x.IsRelocation && (x.BranchType == EnumBranchType.CallImport || x.BranchType == EnumBranchType.SegAddrImport)))
+                                d.Comments.Add($"{(b.BranchType == EnumBranchType.CallImport ? "call" : "SEG ADDR of" )} {inputFile.ImportedNameTable.FirstOrDefault(x => x.Ordinal == b.Segment)?.Name}.Ord({b.Offset:X4}h)");
                         }
                         
                         var sOutputLine = $"{d.Disassembly.Offset + s.Offset:X8}h:{s.Ordinal:0000}.{d.Disassembly.Offset:X4}h {BitConverter.ToString(d.Disassembly.Bytes).Replace("-", string.Empty).PadRight(_MAX_INSTRUCTION_LENGTH, ' ')} {d.Disassembly}";
@@ -240,7 +240,7 @@ namespace MBBSDASM
                     Console.WriteLine($"{DateTime.Now} Writing Strings Output");
                     
                     foreach (var seg in inputFile.SegmentTable.Where(x =>
-                        x.Flags.Contains(EnumSegmentFlags.Data) && x.StringRecords.Count > 0))
+                        x.Flags.Contains(EnumSegmentFlags.Data) && x.StringRecords?.Count > 0))
                     {
                         output.AppendLine(";-------------------------------------------");
                         output.AppendLine($"; Start of Data for Segment {seg.Ordinal}");
