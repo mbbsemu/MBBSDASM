@@ -12,6 +12,8 @@ namespace MBBSDASM
     /// </summary>
     class Program
     {
+        private const int _MAX_INSTRUCTION_LENGTH = 15;
+        
         static void Main(string[] args)
         {
             Console.WriteLine("------------------------------------------------------");
@@ -157,11 +159,11 @@ namespace MBBSDASM
                 {
                     output.AppendLine(";-------------------------------------------");
                     output.AppendLine($"; Start of Code for Segment {s.Ordinal}");
-                    output.AppendLine("; FILE_OFFSET:SEG_NUM.SEG_OFFSET");
+                    output.AppendLine("; FILE_OFFSET:SEG_NUM.SEG_OFFSET BYTES DISASSEMBLY");
                     output.AppendLine(";-------------------------------------------");
 
                     //Allows us to line up all the comments in a segment along the same column
-                    var maxDecodeLength = s.DisassemblyLines.Max(x => x.Disassembly.ToString().Length) + 21;
+                    var maxDecodeLength = s.DisassemblyLines.Max(x => x.Disassembly.ToString().Length + _MAX_INSTRUCTION_LENGTH + 1) + 21;
                     
                     //Write each line of the disassembly to the output stream
                     foreach (var d in s.DisassemblyLines)
@@ -183,7 +185,8 @@ namespace MBBSDASM
                                     break;
                                 case EnumBranchType.Conditional:
                                 case EnumBranchType.Unconditional:
-                                    d.Comments.Add($"{(b.BranchType == EnumBranchType.Conditional ? "Conditional" : "Unconditional")} jump from {b.Segment:0000}:{b.Offset:X4}h");
+                                    d.Comments.Add(
+                                        $"{(b.BranchType == EnumBranchType.Conditional ? "Conditional" : "Unconditional")} jump from {b.Segment:0000}:{b.Offset:X4}h");
                                     break;
                             }
                         }
@@ -207,7 +210,7 @@ namespace MBBSDASM
                                 d.Comments.Add($"{(b.BranchType == EnumBranchType.CallImport ? "call" : "SEG ADDR of" )} {inputFile.ImportedNameTable.First(x => x.Ordinal == b.Segment).Name}.Ord({b.Offset:X4}h)");
                         }
                         
-                        var sOutputLine = $"{d.Disassembly.Offset + s.Offset:X8}h:{s.Ordinal:0000}.{d.Disassembly.Offset:X4}h {d.Disassembly}";
+                        var sOutputLine = $"{d.Disassembly.Offset + s.Offset:X8}h:{s.Ordinal:0000}.{d.Disassembly.Offset:X4}h {BitConverter.ToString(d.Disassembly.Bytes).Replace("-", string.Empty).PadRight(_MAX_INSTRUCTION_LENGTH, ' ')} {d.Disassembly}";
                         if (d.Comments != null && d.Comments.Count > 0)
                         {
                             var newLine = false;

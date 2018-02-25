@@ -1,5 +1,6 @@
 # Changelog
 ## v1.4
+* Added bytes to Disassembly output
 * Additional Module Definiton Auto-Documentation
 	* **MAJORBBS** : 1217 functions documented of 1233 defined
 	* **GALGSBL** : 97 functions documented of 101 defined
