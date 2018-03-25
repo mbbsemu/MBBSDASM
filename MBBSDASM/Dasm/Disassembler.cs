@@ -244,9 +244,24 @@ namespace MBBSDASM.Dasm
                          {
                              flagNext = false;
 
+                             //We always check the data segment defined by relocation first as this
+                             //is right about 80% of the time, and faster
                              disassemblyLine.StringReference = file.SegmentTable
-                                 .First(x => x.Ordinal == dataSegmentToUse).StringRecords.FirstOrDefault(y =>
-                                     y.Offset == disassemblyLine.Disassembly.Operands[0].LvalUWord);
+                                                                   .First(x => x.Ordinal == dataSegmentToUse)
+                                                                   .StringRecords.FirstOrDefault(y =>
+                                                                       y.Offset == disassemblyLine.Disassembly
+                                                                           .Operands[0].LvalUWord) ?? 
+                                                               
+                                                               //Otherwise, search for the offset in any data segment and return
+                                                               //the first one that matches
+                                                               file.SegmentTable
+                                                                   .FirstOrDefault(x =>
+                                                                       x.Flags.Contains(EnumSegmentFlags.Data) &&
+                                                                       x.StringRecords.Any(y =>
+                                                                           y.Offset == disassemblyLine.Disassembly
+                                                                               .Operands[0].LvalUWord))?.StringRecords
+                                                                   .First(z => z.Offset == disassemblyLine.Disassembly
+                                                                                   .Operands[0].LvalUWord);
                              continue;
                          }
 
