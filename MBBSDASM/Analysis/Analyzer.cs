@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using MBBSDASM.Analysis.Artifacts;
 using MBBSDASM.Artifacts;
 using MBBSDASM.Dasm;
@@ -45,6 +42,7 @@ namespace MBBSDASM.Analysis
                 var covered = m.Exports.Count(x => !string.IsNullOrEmpty(x.Signature) || x.Comments.Count > 0);
                 var total = m.Exports.Count;
             }
+            
         }
 
         public static void Analyze(NEFile file)
@@ -52,6 +50,7 @@ namespace MBBSDASM.Analysis
             ImportedFunctionIdentification(file);
             SubroutineIdentification(file);
             ForLoopIdentification(file);
+            GlobalVariableIdentification(file);
         }
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace MBBSDASM.Analysis
                 return;
             }
 
-            var trackedVariables = new List<TrackedVariable>();
+            var trackedVariables = new List<TrackedOption>();
             
             //Identify Functions and Label them with the module defition file
             foreach (var segment in file.SegmentTable.Where(x=> x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0))
@@ -153,7 +152,7 @@ namespace MBBSDASM.Analysis
                             if(!string.IsNullOrEmpty(rv.Comment))
                                 i.Comments.Add(rv.Comment);
                             //Add this to our tracked variables, we'll go back through and re-label all instances after this analysis pass
-                            trackedVariables.Add(new TrackedVariable() { Comment = rv.Comment, Segment = segment.Ordinal, Offset = i.Disassembly.Offset, Address = i.Disassembly.Operands[0].LvalUWord});
+                            trackedVariables.Add(new TrackedOption() { Comment = rv.Comment, Segment = segment.Ordinal, Offset = i.Disassembly.Offset, Address = i.Disassembly.Operands[0].LvalUWord});
                         }
                     }
 
@@ -167,7 +166,6 @@ namespace MBBSDASM.Analysis
                 {
                     foreach (var disassemblyLine in segment.DisassemblyLines.Where(x => x.Disassembly.ToString().Contains($"[0x{v.Address:X}]".ToLower()) && x.Disassembly.Offset != v.Offset))
                     {
-
                         disassemblyLine.Comments.Add($"Reference to variable created at {v.Segment:0000}.{v.Offset:X4}h");
                     }
                 }
@@ -261,6 +259,9 @@ namespace MBBSDASM.Analysis
             {
                 ushort subroutineId = 0;
                 var bInSubroutine = false;
+                var trackedLocalVariables = new List<TrackedVariable>();
+                var bIsLongVariable = false;
+                ushort highBits = 0;
                 for (var i = 0; i < segment.DisassemblyLines.Count; i++)
                 {
                     if (bInSubroutine)
@@ -281,12 +282,164 @@ namespace MBBSDASM.Analysis
                         segment.DisassemblyLines[i].Comments.Insert(0, $"/---- BEGIN SUBROUTINE {subroutineId}");
                         continue;
                     }
+                    
+                    //Setting local variable
+                    if (segment.DisassemblyLines[i].Disassembly.Mnemonic == ud_mnemonic_code.UD_Imov &&
+                        segment.DisassemblyLines[i].Disassembly.ToString().Contains(" [bp-"))
+                    {
+                        //mov word [bp-0x8], 0x1bf
+                        var addressAndValue = segment.DisassemblyLines[i].Disassembly.ToString().Split('-');
+                        
+                        if (addressAndValue.Length != 2)
+                            continue;
+
+                        if (addressAndValue[1].Split(',').Length != 2)
+                            continue;
+                        
+                        var addressString = addressAndValue[1].Split(',')[0].TrimEnd(']');
+                        var address = Convert.ToUInt16(addressString, 16);
+                        var valueString = addressAndValue[1].Split(',')[1].Trim();
+
+                        if (!valueString.StartsWith("0x"))
+                            continue;
+                        
+                        var value = Convert.ToUInt16(valueString, 16);
+                        
+                        //If the next op is also a mov, this MOST LIKELY means we're assigning the high and low 16-bit
+                        //values of a long. We'll skip this one, save the value and move on.
+                        if (!bIsLongVariable && segment.DisassemblyLines[i + 1].Disassembly.Mnemonic ==
+                            ud_mnemonic_code.UD_Imov &&
+                            segment.DisassemblyLines[i].Disassembly.ToString().Contains(" [bp-"))
+                        {
+                            bIsLongVariable = true;
+                            highBits = value;
+                        }
+                        else
+                        {
+                            var setValue = 0;
+
+                            //Concat the high and low byte values if we're setting a long
+                            setValue = bIsLongVariable ? (highBits << 16) | value : value;
+
+                            if (trackedLocalVariables.All(x => x.MemoryAddress != address))
+                            {
+                                trackedLocalVariables.Add(new TrackedVariable()
+                                {
+                                    MemoryAddress = address,
+                                    Name = $"VAR{trackedLocalVariables.Count}",
+                                   Values = new List<int>() 
+                                });
+                            }
+                            
+                            trackedLocalVariables.First(x => x.MemoryAddress == address).Values.Add(setValue);
+
+                            segment.DisassemblyLines[i].Comments
+                                .Add(
+                                    $"{trackedLocalVariables.First(x => x.MemoryAddress == address).Name} = {setValue}{(bIsLongVariable ? " (Long)" : string.Empty)}");
+
+                            bIsLongVariable = false;
+                        }
+                    }
+
 
                     if (bInSubroutine && (segment.DisassemblyLines[i].Disassembly.Mnemonic == ud_mnemonic_code.UD_Iret ||
                         segment.DisassemblyLines[i].Disassembly.Mnemonic == ud_mnemonic_code.UD_Iretf))
                     {
                         bInSubroutine = false;
                         segment.DisassemblyLines[i].Comments.Insert(0, $"\\---- END SUBROUTINE {subroutineId}");
+                        trackedLocalVariables.Clear();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Labels and tracks global variables
+        /// 
+        ///     These variables would be demonstrated in C++ by accessing them via
+        ///     GLOBAL->Variable
+        /// </summary>
+        /// <param name="file"></param>
+        private static void GlobalVariableIdentification(NEFile file)
+        {
+            var trackedGlobalVariables = new List<TrackedVariable>();
+            
+            Console.WriteLine($"{DateTime.Now} Identifying Global Variables");
+
+            //Scan the code segments
+            foreach (var segment in file.SegmentTable.Where(x =>
+                x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0))
+            {
+                foreach (var t in segment.DisassemblyLines.Where(x =>
+                    x.Disassembly.ToString().StartsWith("mov word [es:bx+")))
+                {
+                    //mov word [es:bx+0x8], 0x0
+                    var addressAndValue = t.Disassembly.ToString().Split('+')[1].Split(',');
+
+                    if (addressAndValue.Length != 2)
+                        continue;
+
+                    var addressString = addressAndValue[0].TrimEnd(']');
+                    var address = Convert.ToUInt16(addressString, 16);
+                    var valueString = addressAndValue[1].Trim();
+                    var value = Convert.ToInt16(valueString, 16);
+
+                    //New or existing?
+                    if (trackedGlobalVariables.All(x => x.MemoryAddress != address))
+                    {
+                        trackedGlobalVariables.Add(new TrackedVariable()
+                        {
+                            Name = $"GLOBAL->VAR{trackedGlobalVariables.Count}",
+                            MemoryAddress = address,
+                            Values = new List<int>()
+                        });
+                    }
+
+                    trackedGlobalVariables.First(x => x.MemoryAddress == address).Values.Add(value);
+                }
+            }
+            
+            //Now that we've identified every 'setter' for the global variables, let's go label comparisons and pushes
+            //Scan the code segments
+            foreach (var segment in file.SegmentTable.Where(x =>
+                x.Flags.Contains(EnumSegmentFlags.Code) && x.DisassemblyLines.Count > 0))
+            {
+                foreach (var t in segment.DisassemblyLines.Where(x =>
+                    x.Disassembly.ToString().Contains(" word [es:bx+")))
+                {
+                    //cmp word [es:bx+0x8], 0x0
+                    var addressAndValue = t.Disassembly.ToString().Split('+')[1].Split(',');
+
+                    if (addressAndValue.Length != 2)
+                        continue;
+                    
+                    var addressString = addressAndValue[0].TrimEnd(']');
+                    var address = Convert.ToUInt16(addressString, 16);
+                    var valueString = addressAndValue[1].Trim();
+                    var value = Convert.ToInt16(valueString, 16);
+                    
+                    var trackedVar = trackedGlobalVariables.FirstOrDefault(x => x.MemoryAddress == address);
+
+                    if (trackedVar == null)
+                        continue;
+                    
+                    switch (t.Disassembly.Mnemonic)
+                    {
+                        case ud_mnemonic_code.UD_Icmp:
+                            t.Comments.Add(
+                                trackedVar.isBool
+                                    ? $"Compare {trackedVar.Name} == {(value == 0 ? "false" : "true")}"
+                                    : $"Compare {trackedVar.Name} == {value}");
+                            break;
+                        case ud_mnemonic_code.UD_Ipush:
+                            t.Comments.Add($"Push {trackedVar.Name} to stack");
+                            break;
+                        case ud_mnemonic_code.UD_Imov:
+                            t.Comments.Add(
+                                trackedVar.isBool
+                                    ? $"{trackedVar.Name} = {(value == 0 ? "false" : "true")}"
+                                    : $"{trackedVar.Name} = {value}");
+                            break;
                     }
                 }
             }

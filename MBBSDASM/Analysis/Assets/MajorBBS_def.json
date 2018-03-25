@@ -565,7 +565,8 @@
       "ord": 77,
       "Signature": "long int atol(const char *str);",
       "Comments": [
-        "Converts string to a long integer"
+        "Converts string to a long integer",
+        "DX == High 16 bits, AX == Low 16 bits"
       ]
     },
     {
@@ -4350,7 +4351,8 @@
       "Signature": "char *sprstg=spr(char *ctlstg, TYPE p1, TYPE p2,...,pn);",
       "Comments": [
         "sprintf-like string formatter utility",
-        "Main differentiator is that spr() supports long integer and floating point conversions"
+        "Main differentiator is that spr() supports long integer and floating point conversions",
+        "Return Registers: AX - pointer, DX - length"
       ]
     },
     {
