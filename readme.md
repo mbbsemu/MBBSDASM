@@ -2,15 +2,25 @@
 ![](http://forthebadge.com/images/badges/made-with-c-sharp.svg)
 ![](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)
 
+![MajorBBS Disassembler (MBBSDASM) Preview](./mbbsdasm_ui.png)
+
 **MBBSDASM** is a Disassembler for 16-bit Segmented Executable File Format ("New Executable", or just NE) files. The Disassembler itself is written in C# using .Net Core.
 
-It was created to assist in my own personal education of The MajorBBS (MBBS) Bulletin Board System, which was one of the first multi-line, multi-user BBS systems available at the time of its hayday. MBBS loaded modules that were an early version of DLL's files built with Borland Turbo C++.
+It was created to assist in my own personal education of The MajorBBS (MBBS) Bulletin Board System by GALACTICOMM, which was one of the first multi-line, multi-user commercial BBS systems available at the time of its hayday. MBBS loaded modules that were an early version of DLL's files built with Borland Turbo C++.
 
 For more information on The Major BBS and Worldgroup by GALACTICOMM, check out the Wikipedia article [[here](https://en.wikipedia.org/wiki/The_Major_BBS)].
 
 While **MBBSDASM** targets Major BBS/Worldgroup files for analysis, any 16-bit NE EXE/DLL file is supported and should disassemble without issue. I've tested this with both Solitaire and Calculator from Windows 3.1 to verify.
 
+# Text UI
+
+**MBBSDASM** provides support for a cross-platform Text-Based UI (TUI) thanks to the fantastic Terminal.Gui library! To access the TUI, simply run MBBSDASM with no command line arguments.
+
 # Example Command Line
+
+**MBBSDASM** supports disassembly of MajorBBS/Worldgroup modules via command line as well.
+
+An example command line to disassemble a DLL and perform enhanced MajorBBS/Worldgroup Analysis:
 ```
 -i c:\bbsv6\example.dll -o c:\bbsv6\output.txt -strings -analysis
 ```
@@ -40,7 +50,7 @@ Normal will output the disassembled x86 code segments labeled with SEGMENT:OFFSE
 * Processing Segment Relocation Table Entries
 * Resolve External References
 * String Reference Resolution (best guess)
-* Identify and Label Conditional/Unconditional Jumps as well as Call's
+* Identify and Label Conditional/Unconditional Jumps as well as Function Calls
 ```asm
 00000C68h:0002.0068h 83C408          add sp, 0x8
 00000C6Bh:0002.006Bh 68FF7F          push 0x7fff
@@ -94,6 +104,7 @@ The Enhanced Analysis mode can be extended through pull requests by adding Modul
 	* This would allow disassembly of the MajorBBS/WG EXE files
 * Add support for Worldgroup 3.0+
     * Requires additional support for disassembly of 32-bit PE format EXE/DLL files
+	* The best tool for this is probably IDA Freeware, which disassembles PE files with ease
 
 # Contribute
 I'm always looking for updated/new information on several related topics. If you have any first hand knowledge, documentation or files you can send me related to:
@@ -111,10 +122,10 @@ The project makes use of [SharpDiasm](https://github.com/spazzarama/SharpDisasm)
 
 A big shoutout to the grey beards keeping this archaic software alive and still available 25+ years later, folks I've interacted with related to MBBS/WG over the years (you know who you are), and the people involved with The BBS Documentary [[link](http://www.bbsdocumentary.com/)]
 
-# License
+# License / Copyright
 
 MBBSDASM is Copyright (c) 2017 Eric Nusbaum and is distributed under the 2-clause "Simplified BSD License". 
-
 SharpDisam is Copyright (c) 2015 Justin Stenning and is distributed under the 2-clause "Simplified BSD License". 
+Terminal.Gui is Copyright (c) 2017 Microsoft Corp and is distributed under the MIT License
 
 Portions of the project are ported from Udis86 Copyright (c) 2002-2012, Vivek Thampi <vivek.mt@gmail.com> https://github.com/vmt/udis86 distributed under the 2-clause "Simplified BSD License".

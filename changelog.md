@@ -1,4 +1,18 @@
 # Changelog
+## v1.5
+* Minor Bug Fixes
+* Added Cross-Plaform Text UI Mode
+	* Using Terminal.Gui Library to provide interactive text UI
+	* Accessible by specifying no command line arguments
+* Cleaned up Module Definition Auto-Documentation for **GALGSBL** and **MAJORBBS**
+* More Liberal String Guessing 
+	* Looks for any matching string in **any** DATA Segment at specified offset
+	* While less accurate (multiple candidates), prevents misses from incorrect DATA Segment identification
+* Updated NuGet Packages
+* Added nLog for Console Logging
+* Additional Module Definiton Auto-Documentation
+	* **DOSCALLS** : 10 functions documented of 145 defined
+
 ## v1.4
 * Added bytes to Disassembly output
 * Implemented TPL for processing Relocation Records (Thread-Safe)

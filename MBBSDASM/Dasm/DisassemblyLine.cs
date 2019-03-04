@@ -17,7 +17,7 @@ namespace MBBSDASM.Dasm
         public ExportedFunctionRecord ExportedFunction { get; set; }
         public ConcurrentBag<BranchRecord> BranchToRecords { get; set; }
         public ConcurrentBag<BranchRecord> BranchFromRecords { get; set; }
-        public StringRecord StringReference { get; set; }
+        public List<StringRecord> StringReference { get; set; }
         public ushort SubroutineID { get; set; }
     }
 }

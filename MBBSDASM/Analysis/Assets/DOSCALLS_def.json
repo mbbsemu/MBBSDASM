@@ -1,0 +1,892 @@
+  {
+    "Name": "DOSCALLS",
+    "Comment" :  "Export definitions for DOSCALLS.H which is a C++ OS/2 library for DOS APIs",
+    "Exports": [
+      {
+        "name": "DOSCWAIT",
+        "ord": 2,
+        "Signature": "USHORT rc = DosCwait(USHORT ActionCode, USHORT WaitOption, PRESULTCODES ReturnCodes, PPID ProcessIDWord, PID ProcessID);",
+        "Comments": [
+          "Places the current thread in a wait state until an asynchronous child process ends.",
+          "When the process ends, its process ID and termination code are returned to the caller."
+        ]
+      },
+      {
+        "name": "DOSENTERCRITSEC",
+        "ord": 3,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSEXIT",
+        "ord": 5,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSEXITCRITSEC",
+        "ord": 6,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSEXITLIST",
+        "ord": 7,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETINFOSEG",
+        "ord": 8,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETPRTY",
+        "ord": 9,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSKILLPROCESS",
+        "ord": 10,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSKILLPROCESS",
+        "ord": 11,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSPTRACE",
+        "ord": 12,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSHOLDSIGNAL",
+        "ord": 13,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETSIGHANDLER",
+        "ord": 14,
+        "Signature": "",
+        "Comments": [
+          "Registers signal handler"
+        ]
+      },
+      {
+        "name": "DOSFLAGPROCESS",
+        "ord": 15,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSMAKEPIPE",
+        "ord": 16,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSEMSETWAIT",
+        "ord": 20,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSMUXSEMWAIT",
+        "ord": 22,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCLOSESEM",
+        "ord": 23,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCREATESEM",
+        "ord": 24,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSOPENSEM",
+        "ord": 25,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSRESUMETHREAD",
+        "ord": 26,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSUSPENDTHREAD",
+        "ord": 27,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETDATETIME",
+        "ord": 28,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSTIMERASYNC",
+        "ord": 29,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSTIMERSTART",
+        "ord": 30,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSTIMERSTOP",
+        "ord": 31,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSTIMERSTOP",
+        "ord": 31,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSLEEP",
+        "ord": 32,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETDATETIME",
+        "ord": 33,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSALLOCSEG",
+        "ord": 34,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSALLOCSHRSEG",
+        "ord": 35,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETSHRSEG",
+        "ord": 36,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGIVESEG",
+        "ord": 37,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSREALLOCSEG",
+        "ord": 38,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFREESEG",
+        "ord": 39,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSALLOCHUGE",
+        "ord": 40,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETHUGESHIFT",
+        "ord": 41,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSREALLOCHUGE",
+        "ord": 42,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCREATECSALIAS",
+        "ord": 43,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSLOADMODULE",
+        "ord": 44,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETPROCADDR",
+        "ord": 45,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFREEMODULE",
+        "ord": 46,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETMODHANDLE",
+        "ord": 47,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETMODNAME",
+        "ord": 48,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETMACHINEMODE",
+        "ord": 49,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSBEEP",
+        "ord": 50,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCLIACCESS",
+        "ord": 51,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSDEVCONFIG",
+        "ord": 52,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSDEVIOCTL",
+        "ord": 53,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSBUFRESET",
+        "ord": 56,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCHDIR",
+        "ord": 57,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCHGFILEPTR",
+        "ord": 58,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCLOSE",
+        "ord": 59,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSDELETE",
+        "ord": 60,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSDUPHANDLE",
+        "ord": 61,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFILELOCKS",
+        "ord": 62,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFINDCLOSE",
+        "ord": 63,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFINDFIRST",
+        "ord": 64,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFINDNEXT",
+        "ord": 65,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSMKDIR",
+        "ord": 66,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSMOVE",
+        "ord": 67,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSNEWSIZE",
+        "ord": 68,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSPORTACCESS",
+        "ord": 69,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSOPEN",
+        "ord": 70,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQCURDIR",
+        "ord": 71,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQCURDISK",
+        "ord": 72,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQFHANDSTATE",
+        "ord": 73,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQFILEINFO",
+        "ord": 74,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQFILEMODE",
+        "ord": 75,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQFSINFO",
+        "ord": 76,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQHANDTYPE",
+        "ord": 77,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQVERIFY",
+        "ord": 78,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSRMDIR",
+        "ord": 80,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSELECTDISK",
+        "ord": 81,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETFHANDSTATE",
+        "ord": 82,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETFILEINFO",
+        "ord": 83,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETFILEMODE",
+        "ord": 84,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETMAXFH",
+        "ord": 85,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETVERIFY",
+        "ord": 86,
+        "Signature": "APIRET DosSetVerify (BOOL32 fVerifySetting);",
+        "Comments": [
+          "Sets system read-after-write flag"
+        ]
+      },
+      {
+        "name": "DOSSYSTEMSERVICE",
+        "ord": 88,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETVEC",
+        "ord": 89,
+        "Signature": "USHORT rc = DosSetVec(USHORT VecNum, PFN Routine, PFN PrevAddress);",
+        "Comments": [
+          "Registers handler for hardware exception",
+          "The DosSetVec process is analogous to setting an address in the interrupt vector table when running in 8086 mode."
+        ]
+      },
+      {
+        "name": "DOSSYSTRACE",
+        "ord": 90,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETENV",
+        "ord": 91,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETVERSION",
+        "ord": 92,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETPID",
+        "ord": 94,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSOPEN2",
+        "ord": 95,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSLIBINIT",
+        "ord": 96,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETFSINFO",
+        "ord": 97,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQPATHINFO",
+        "ord": 98,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSDEVIOCTL2",
+        "ord": 99,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETPATHINFO",
+        "ord": 104,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSERROR",
+        "ord": 120,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETSEG",
+        "ord": 121,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSLOCKSEG",
+        "ord": 122,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSUNLOCKSEG",
+        "ord": 123,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSIZESEG",
+        "ord": 126,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSMEMAVAIL",
+        "ord": 127,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSPHYSICALDISK",
+        "ord": 129,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETCP",
+        "ord": 130,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSENDSIGNAL",
+        "ord": 134,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSHUGESHIFT",
+        "ord": 135,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSHUGEINCR",
+        "ord": 136,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSREAD",
+        "ord": 137,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSWRITE",
+        "ord": 138,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSERRCLASS",
+        "ord": 139,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSEMREQUEST",
+        "ord": 140,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSEMCLEAR",
+        "ord": 141,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSEMWAIT",
+        "ord": 142,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSEMSET",
+        "ord": 143,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSEXECPGM",
+        "ord": 144,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCREATETHREAD",
+        "ord": 145,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSUBSET",
+        "ord": 146,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSUBALLOC",
+        "ord": 147,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSUBFREE",
+        "ord": 148,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSREADASYNC",
+        "ord": 149,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSWRITEASYNC",
+        "ord": 150,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSEARCHPATH",
+        "ord": 151,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSCANENV",
+        "ord": 152,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETCP",
+        "ord": 153,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETRESOURCE",
+        "ord": 155,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETPPID",
+        "ord": 156,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCALLBACK",
+        "ord": 157,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSR2STACKREALLOC",
+        "ord": 160,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFSRAMSEMREQUEST",
+        "ord": 161,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFSRAMSEMCLEAR",
+        "ord": 162,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQAPPTYPE",
+        "ord": 163,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSETPROCCP",
+        "ord": 164,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSDYNAMICTRACE",
+        "ord": 165,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQSYSINFO",
+        "ord": 166,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFSATTACH",
+        "ord": 181,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSQFSATTACH",
+        "ord": 182,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFSCTL",
+        "ord": 183,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFINDFIRST2",
+        "ord": 184,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSMKDIR2",
+        "ord": 185,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFILEIO",
+        "ord": 186,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFINDNOTIFYCLOSE",
+        "ord": 187,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFINDNOTIFYFIRST",
+        "ord": 188,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFINDNOTIFYNEXT",
+        "ord": 189,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSEDITNAME",
+        "ord": 191,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSLOGREGISTER",
+        "ord": 195,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSLOGREAD",
+        "ord": 196,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSCOPY",
+        "ord": 201,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFORCEDELETE",
+        "ord": 203,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSENUMATTRIBUTE",
+        "ord": 204,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSSHUTDOWN",
+        "ord": 206,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSGETRESOURCE2",
+        "ord": 207,
+        "Signature": "",
+        "Comments": []
+      },
+      {
+        "name": "DOSFREERESOURCE",
+        "ord": 208,
+        "Signature": "",
+        "Comments": []
+      }
+    ]
+  }

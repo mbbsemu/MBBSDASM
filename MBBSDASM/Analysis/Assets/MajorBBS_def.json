@@ -1,5 +1,6 @@
 ﻿{
   "Name": "MAJORBBS",
+  "Comment":  "Export definitions for MAJORBBS.DEF which is part of the Galacticomm/MajorBBS SDK", 
   "Exports": [
     {
       "name": "__READ",
@@ -2917,7 +2918,7 @@
       "ord": 386,
       "Signature" : "void listing(char *path, void (*whndun)())",
       "Comments": [
-        "List an ASCII file to the users's screen"
+        "List an ASCII file to the users screen"
       ]
     },
     {
@@ -3006,7 +3007,7 @@
       "ord": 393,
       "Signature" : "void longjmp(jmp_buf jmpb, int retval);",
       "Comments": [
-        "longjmp - performs a nonlocal goto"
+        "longjmp - performs a non-local goto"
       ]
     },
     {
@@ -3071,7 +3072,7 @@
       "Signature": "int margc;",
       "Comments": [
         "Number of words in the user input line",
-        "Value initalized by parsin()"
+        "Value initialized by parsin()"
       ]
     },
     {
@@ -3080,7 +3081,7 @@
       "Signature": "char *margn[];",
       "Comments": [
         "An Array of pointers to the ENDS of the words in the user's input line",
-        "Value initalized by parsin()"
+        "Value initialized by parsin()"
       ]
     },
     {
@@ -3089,7 +3090,7 @@
       "Signature": "char *margv[];",
       "Comments": [
         "An array of pointers to the words in user's input line",
-        "Value initalized by parsin()"
+        "Value initialized by parsin()"
       ]
     },
     {
@@ -3656,7 +3657,7 @@
       "ord": 469,
       "Signature" : "int pltile(unsigned long size,int bsel,unsigned stride,unsigned tsize);",
       "Comments": [
-        "Allocate Phar Lap tiled region"
+        "Allocate Phar-Lap tiled region"
       ]
     },
     {
@@ -4063,7 +4064,7 @@
       "ord": 521,
       "Signature": "int found=samein(char *subs, char *string);",
       "Comments": [
-        "Searches the string for any accurance of the substring",
+        "Searches the string for any occurence of the substring",
         "Returns 1 if it finds any"
       ]
     },
@@ -4205,7 +4206,7 @@
       "ord": 541,
       "Signature" : "int setjmp(jmp_buf jmpb);",
       "Comments": [
-        "setjmp - nonlocal goto"
+        "setjmp - non-local goto"
       ]
     },
     {
@@ -4350,7 +4351,7 @@
       "Signature": "char *sprstg=spr(char *ctlstg, TYPE p1, TYPE p2,...,pn);",
       "Comments": [
         "sprintf-like string formatter utility",
-        "Main differentiator is that spr() supports long integer and floating point conversions"
+        "Main differentiation is that spr() supports long integer and floating point conversions"
       ]
     },
     {
@@ -4471,7 +4472,7 @@
       "ord": 572,
       "Signature": "char * strchr ( const char * str, int character );",
       "Comments": [
-        "Returns a pointer to the first occuence of character in the C string str"
+        "Returns a pointer to the first occurence of character in the C string str"
       ]
     },
     {
@@ -5402,7 +5403,7 @@
       "ord": 688,
       "Comments": [
         "Copies Struct into another Struct (Borland C++ Implicit Function)",
-        "Aguments: Two Far Pointers, 1st == Source, 2nd == Destination"
+        "Arguments: Two Far Pointers, 1st == Source, 2nd == Destination"
       ]
     },
     {
@@ -5589,7 +5590,7 @@
       "ord": 714,
       "Signature": "int hichp1;",
       "Comments": [
-        "Highest Channel numberin use, plus 1"
+        "Highest Channel number in use, plus 1"
       ]
     },
     {
@@ -5597,7 +5598,7 @@
       "ord": 715,
       "Signature" : "char chanty[NGROUPS];",
       "Comments": [
-        "Array of btusdf() codes for LAN chan grps"
+        "Array of btusdf() codes for LAN chan groups"
       ]
     },
     {
@@ -5613,7 +5614,7 @@
       "ord": 717,
       "Signature": "int numcat;",
       "Comments": [
-        "Number of cancat'd commands so far"
+        "Number of concat'd commands so far"
       ]
     },
     {
@@ -7352,7 +7353,7 @@
       "ord": 962,
       "Signature" : "int sgnusz",
       "Comments": [
-        "Maximum size of User-IDs for new signups"
+        "Maximum size of User-IDs for new sign-ups"
       ]
     },
     {
@@ -8339,7 +8340,7 @@
       "ord": 1107,
       "Signature" : "char *asupq[NMQSTS];",
       "Comments": [
-        "Pointers to addtn'l signup questions"
+        "Pointers to additional sign-up questions"
       ]
     },
     {
@@ -8347,7 +8348,7 @@
       "ord": 1108,
       "Signature" : "char *suphdr;",
       "Comments": [
-        "Additional signup questions header"
+        "Additional sign-up questions header"
       ]
     },
     {
@@ -8355,7 +8356,7 @@
       "ord": 1109,
       "Signature" : "char *supend;",
       "Comments": [
-        "Closing thanks for additonal signup questions"
+        "Closing thanks for additional sign-up questions"
       ]
     },
     {
@@ -8793,7 +8794,7 @@
       "ord": 1169,
       "Signature" : "void unrarea(int poolhdl, int areahdl);",
       "Comments": [
-        "Unreserve a memory area within a pool"
+        "Un-reserve a memory area within a pool"
       ]
     },
     {
@@ -8833,7 +8834,7 @@
       "ord": 1174,
       "Signature" : "void dclanno(int size);",
       "Comments": [
-        "Module declaration for annoncement per-request"
+        "Module declaration for announcement per-request"
       ]
     },
     {
@@ -8915,7 +8916,7 @@
       "ord": 1185,
       "Signature" : "bool infsdhup;",
       "Comments": [
-        "Determines if we're in the middle of FSD handup handling"
+        "Determines if we're in the middle of FSD hangup handling"
       ]
     },
     {
@@ -9152,7 +9153,7 @@
       "ord": 1216,
       "Signature" : "void (*btverrptr)(char *who)",
       "Comments": [
-        "Vector for low level Btrieve funcs"
+        "Vector for low level Btrieve functions"
       ]
     },
     {
@@ -9290,7 +9291,7 @@
       "ord": 1317,
       "Signature" : "int clisrv;",
       "Comments": [
-        "Denotes supporting client/server logons"
+        "Denotes supporting client/server log-ons"
       ]
     },
     {
@@ -9456,7 +9457,7 @@
       "ord": "1338",
       "Signature" : "int multsk;",
       "Comments": [
-        "Is a multitasker being used?"
+        "Is a multi-tasker being used?"
       ]
     },
     {

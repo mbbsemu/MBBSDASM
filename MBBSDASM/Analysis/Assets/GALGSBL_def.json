@@ -1,17 +1,22 @@
 ﻿{
-  "Name" : "GALGSBL",
+  "Name": "GALGSBL",
+  "Comment":  "Export definitions for the Galacticomm Software Breakout Library (GSBL)", 
   "Exports": [
     {
       "name": "_BTUBSE",
       "ord": 1,
-      "Signature" : "int btubse(int chan,char bschar);",
-      "Comments": []
+      "Signature": "int btubse(int chan,char bschar);",
+      "Comments": [
+        "Set backspace-echo character"
+      ]
     },
     {
       "name": "_BTUBSZ",
       "ord": 2,
-      "Signature" : "int btubsz(int chan,int isiz,int osiz);",
-      "Comments": []
+      "Signature": "int btubsz(int chan,int isiz,int osiz);",
+      "Comments": [
+        "Respecify input and output buffer sizes"
+      ]
     },
     {
       "name": "_BTUCHE",
@@ -41,148 +46,204 @@
     {
       "name": "_BTUCLI",
       "ord": 6,
-      "Signature" : "int btucli(int chan);",
-      "Comments": []
+      "Signature": "int btucli(int chan);",
+      "Comments": [
+        "Cleat data input buffer",
+        "-10 == Channel not defined, -11 == channel number is out of range, 0 == all is well"
+      ]
     },
     {
       "name": "_BTUCLO",
       "ord": 7,
-      "Signature" : "int btuclo(int chan);",
-      "Comments": []
+      "Signature": "int btuclo(int chan);",
+      "Comments": [
+        "Clear data output buffer",
+        "-10 == Channel not defined, -11 == channel number is out of range, 0 == all is well"
+      ]
     },
     {
       "name": "_BTUCLS",
       "ord": 8,
-      "Signature" : "int btucls(int chan);",
-      "Comments": []
+      "Signature": "int btucls(int chan);",
+      "Comments": [
+        "Clear status input buffer",
+        "-10 == Channel not defined, -11 == channel number is out of range, 0 == all is well"
+      ]
     },
     {
       "name": "_BTUCMD",
       "ord": 9,
-      "Signature" : "int btucmd(int chan,char *cmdstg);",
-      "Comments": []
+      "Signature": "int btucmd(int chan,char *cmdstg);",
+      "Comments": [
+        "Command channel",
+        "This routine controls functions of the UART and (if used) the modem on a channel"
+      ]
     },
     {
       "name": "_BTUDEF",
       "ord": 10,
-      "Signature" : "int btudef(int schan,int sport,int n);",
-      "Comments": []
+      "Signature": "int btudef(int schan,int sport,int n);",
+      "Comments": [
+        "Define Channels"
+      ]
     },
     {
       "name": "_BTECH",
       "ord": 11,
-      "Signature" : "int btuech(int chan,int onoff);",
+      "Signature": "int btuech(int chan, int mode);",
       "Comments": [
-        "Possible type in Module Definition for BTUECH()"
+        "Set Echo on/off",
+        "0 == disable echo, 1 == enable echo (echo-plex on X.25 channels), 2 == enable echo (GSBL echo on X.25 channels)"
       ]
     },
     {
       "name": "_BTUEND",
       "ord": 12,
-      "Signature" : "void btuend(void);",
-      "Comments": []
+      "Signature": "void btuend(void);",
+      "Comments": [
+        "Shut down the Software Breakthrough",
+        "Prepare the PC for return to DOS. This routine must be called as part of your exit cleanup procedure."
+      ]
     },
     {
       "name": "_BTUERP",
       "ord": 13,
-      "Signature" : "int btuerp(int chan,int onoff);",
-      "Comments": []
+      "Signature": "int btuerp(int chan,int onoff);",
+      "Comments": [
+        "Pass/Block input bytes with errors",
+        "1 == accept characters with PE/FE/OE errors, setting the high order bit of each (default), 0 == ignore characters with PE/EE/OE errors"
+      ]
     },
     {
       "name": "_BTUFFO",
       "ord": 14,
-      "Signature" : "int btuffo(int chan,int onoff);",
-      "Comments": []
+      "Signature": "int btuffo(int chan,int onoff);",
+      "Comments": [
+        "Enable receiver FIFO on 16550 UART",
+        "1 == enable 16-byte FIFOs, 0 == disable (for exact 16450 compatibility)"
+      ]
     },
     {
       "name": "_BTUHCR",
       "ord": 15,
-      "Signature" : "int btuhcr(int chan,char hardcr);",
-      "Comments": []
+      "Signature": "int btuhcr(int chan,char hardcr);",
+      "Comments": [
+        "Set the hard-CR character (for output wordwrap)"
+      ]
     },
     {
       "name": "_BTUHDR",
       "ord": 16,
-      "Signature" : "int btuhdr(int sapchn,int bufsiz,void *buffer);",
-      "Comments": []
+      "Signature": "int btuhdr(int sapchn,int bufsiz,void *buffer);",
+      "Comments": [
+        "Capture information on  X.25 or LAN channel"
+      ]
     },
     {
       "name": "_BTUHPK",
       "ord": 17,
-      "Signature" : "int btuhpk(int chan,int far (*hpkrou)(int chan,char c));",
-      "Comments": []
+      "Signature": "int btuhpk(int chan,int far (*hpkrou)(int chan,char c));",
+      "Comments": [
+        "Handle keystrokes during screen-pause mode"
+      ]
     },
     {
       "name": "_BTUHWH",
       "ord": 18,
-      "Signature" : "int btuhwh(int chan,int inpcut);",
-      "Comments": []
+      "Signature": "int btuhwh(int chan,int inpcut);",
+      "Comments": [
+        "Enable hardware handshaking using RTS/CTS"
+      ]
     },
     {
       "name": "_BTUIBW",
       "ord": 19,
-      "Signature" : "int btuibw(int chan);",
-      "Comments": []
+      "Signature": "int btuibw(int chan);",
+      "Comments": [
+        "Input Bytes Waiting",
+        "Report the number of bytes received and waiting in the input buffer"
+      ]
     },
     {
       "name": "_BTUICT",
       "ord": 20,
-      "Signature" : "int btuict(int chan,char *rdbptr);",
-      "Comments": []
+      "Signature": "int btuict(int chan,char *rdbptr);",
+      "Comments": [
+        "Input from a channel - by byte count prearranged with btutrg()"
+      ]
     },
     {
       "name": "_BTUINJ",
       "ord": 21,
-      "Signature" : "int btuinj(int chan,int status);",
-      "Comments": []
+      "Signature": "int btuinj(int chan,int status);",
+      "Comments": [
+        "Inject a status code into a channel"
+      ]
     },
     {
       "name": "_BTUINP",
       "ord": 22,
-      "Signature" : "void chiinp(int chan,char c);",
-      "Comments": []
+      "Signature": "void chiinp(int chan,char c);",
+      "Comments": [
+        "Input from a channel (ASCIIZ string)"
+      ]
     },
     {
       "name": "_BTUIRP",
       "ord": 23,
-      "Singnature" : "int btuirp(int comno);",
-      "Comments": []
+      "Singnature": "int btuirp(int comno);",
+      "Comments": [
+        "Define alternate GSBL timing source using COM1/2/3/4"
+      ]
     },
     {
       "name": "_BTUITZ",
       "ord": 24,
-      "Signature" : "int btuitz(void *region);",
-      "Comments": []
+      "Signature": "int btuitz(void *region);",
+      "Comments": [
+        "Initialize the Software Breakthrough",
+        "This routine initializes the Software Breakthrough package"
+      ]
     },
     {
       "name": "_BTULFD",
       "ord": 25,
-      "Signature" : "int btulfd(int chan,char lfchar);",
-      "Comments": []
+      "Signature": "int btulfd(int chan,char lfchar);",
+      "Comments": [
+        "Set linefeed character (what follows every carriage return)"
+      ]
     },
     {
       "name": "_BTULOK",
       "ord": 26,
-      "Signature" : "int btulok(int chan,int onoff);",
-      "Comments": []
+      "Signature": "int btulok(int chan,int onoff);",
+      "Comments": [
+        "Set input lockout on/off"
+      ]
     },
     {
       "name": "_BTULSZ",
       "ord": 27,
-      "Signature" : "long btulsz(int nchan,int isiz,int osiz);",
-      "Comments": []
+      "Signature": "long btulsz(int nchan,int isiz,int osiz);",
+      "Comments": [
+        "Size of dynamic memory needed (long version, used when more than 64K bytes are needed)"
+      ]
     },
     {
       "name": "_BTUMDS",
       "ord": 28,
-      "Signature" : "int btumds(void);",
-      "Comments": []
+      "Signature": "int btumds(void);",
+      "Comments": [
+        "Get next displayed character from the monitored channel (as specified by btumon())"
+      ]
     },
     {
       "name": "_BTUMDS2",
       "ord": 29,
-      "Signature" : "int btumds2(void);",
-      "Comments": []
+      "Signature": "int btumds2(void);",
+      "Comments": [
+        "Get next displayed character from the monitored channel (as specified by btumon2()"
+      ]
     },
     {
       "name": "_BTUMIL",
@@ -198,50 +259,68 @@
     {
       "name": "_BTUMKS",
       "ord": 31,
-      "Signature" : "void btumks(char kyschr);",
-      "Comments": []
+      "Signature": "void btumks(char kyschr);",
+      "Comments": [
+        "Simulate a keystroke on the monitored channel (as specified by btumon())"
+      ]
     },
     {
       "name": "_BTMKS2",
       "ord": 32,
-      "Signature" : "void btumks2(char kyschr);",
-      "Comments": []
+      "Signature": "void btumks2(char kyschr);",
+      "Comments": [
+        "Simulate a keystroke on the monitored channel (as specified by btomon2())"
+      ]
     },
     {
       "name": "_BTUMON",
       "ord": 33,
-      "Signature" : "int btumon(int chan);",
-      "Comments": []
+      "Signature": "int btumon(int chan);",
+      "Comments": [
+        "Start/Stop monitoring a channel"
+      ]
     },
     {
       "name": "_BTUMON2",
       "ord": 34,
-      "Signature" : "int btumon2(int chan);",
-      "Comments": []
+      "Signature": "int btumon2(int chan);",
+      "Comments": [
+        "Start/Stop monitoring a channel",
+        "This function is a clone of btumon(), for emulating a second channel"
+      ]
     },
     {
       "name": "_BTUMXS",
       "ord": 35,
-      "Signature" : "int btumxs(unsigned bdrate);",
-      "Comments": []
+      "Signature": "int btumxs(unsigned bdrate);",
+      "Comments": [
+        "Set maximum data speed"
+      ]
     },
     {
       "name": "_BTUOBA",
       "ord": 36,
-      "Signature" : "int btuoba(int chan);",
-      "Comments": []
+      "Signature": "int btuoba(int chan);",
+      "Comments": [
+        "Output Bytes Available",
+        "Report the amount of space (number of bytes) available in the output buffer"
+      ]
     },
     {
       "name": "_BTUOES",
       "ord": 37,
-      "Signature" : "int btuoes(int chan,int onoff);",
-      "Comments": []
+      "Signature": "int btuoes(int chan,int onoff);",
+      "Comments": [
+        "Enable/Disable Output-Empty status codes"
+      ]
     },
     {
       "name": "_BTUOLK",
       "ord": 38,
-      "Signature" : "int btuolk(int chan,int onoff);",
-      "Comments": []
+      "Signature": "int btuolk(int chan, int onoff);",
+      "Comments": [
+        "Set output pausing on/off"
+      ]
     },
     {
       "name": "_BTUPBC",
@@ -255,74 +334,107 @@
     {
       "name": "_BTUPMT",
       "ord": 40,
-      "Signature" : "int btupmt(int chan,char pmchar);",
-      "Comments": []
+      "Signature": "int btupmt(int chan, char pmchar);",
+      "SignatureFormat": "int btupmt(??,'{0}');",
+      "PrecedingInstructions": [
+        {
+          "Offset": -4,
+          "Op": "PUSH",
+          "Type": "char",
+          "Name": "Prompt Character"
+        }
+      ],
+      "Comments": [
+        "Set prompt character"
+      ]
     },
     {
       "name": "_BTURST",
       "ord": 41,
-      "Signature" : "int bturst(int chan);",
-      "Comments": []
+      "Signature": "int bturst(int chan);",
+      "Comments": [
+        "Reset a channel"
+      ]
     },
     {
       "name": "_BTURTI",
       "ord": 42,
-      "Signature" : "int bturti(int n,void (*rtirou)(void));",
-      "Comments": []
+      "Signature": "int bturti(int n,void (*rtirou)(void));",
+      "Comments": [
+        "Define routine to be called in real-time"
+      ]
     },
     {
       "name": "_BTUSCN",
       "ord": 43,
-      "Signature" : "int btuscn(void);",
-      "Comments": []
+      "Signature": "int btuscn(void);",
+      "Comments": [
+        "Scan for channels in need of service (those with nonzero status)"
+      ]
     },
     {
       "name": "_BTUSCR",
       "ord": 44,
-      "Signature" : "int btuscr(int chan,char softcr);",
-      "Comments": []
+      "Signature": "int btuscr(int chan,char softcr);",
+      "Comments": [
+        "Set the soft-CR character (for output wordwrap)"
+      ]
     },
     {
       "name": "_BTUSDF",
       "ord": 45,
-      "Signature" : "int btusdf(int schan,int nchan,int chtype,...);",
-      "Comments": []
+      "Signature": "int btusdf(int schan,int nchan,int chtype,...);",
+      "Comments": [
+        "Super-define channel groups"
+      ]
     },
     {
       "name": "_BTUSET",
       "ord": 46,
-      "Signature" : "long btuset(int chan,int stid,long newval);",
-      "Comments": []
+      "Signature": "long btuset(int chan,int stid,long newval);",
+      "Comments": [
+        "Set and report channel statistics"
+      ]
     },
     {
       "name": "_BTUSIZ",
       "ord": 47,
-      "Signature" : "unsigned btusiz(int nchan,int isiz,int osiz);",
-      "Comments": []
+      "Signature": "unsigned btusiz(int nchan,int isiz,int osiz);",
+      "Comments": [
+        "Size of dynamic memory needed (only if < 64K)"
+      ]
     },
     {
       "name": "_BTUSTS",
       "ord": 48,
-      "Signature" : "int btusts(int chan);",
-      "Comments": []
+      "Signature": "int btusts(int chan);",
+      "Comments": [
+        "Status of a channel"
+      ]
     },
     {
       "name": "_BTUTRG",
       "ord": 49,
-      "Signature" : "int btutrg(int chan,int nbyt);",
-      "Comments": []
+      "Signature": "int btutrg(int chan,int nbyt);",
+      "Comments": [
+        "Set the input byte trigger quantity (used in conjunction with btuict())"
+      ]
     },
     {
       "name": "_BTUTRM",
       "ord": 50,
-      "Signature" : "int btutrm(int chan,char crchar);",
-      "Comments": []
+      "Signature": "int btutrm(int chan,char crchar);",
+      "Comments": [
+        "Set input line terminator character"
+      ]
     },
     {
       "name": "_BTUTRS",
       "ord": 51,
-      "Signature" : "int btutrs(int chan,int onoff);",
-      "Comments": []
+      "Signature": "int btutrs(int chan,int onoff);",
+      "Comments": [
+        "Generate status 6 when output aborted by user?"
+      ]
     },
     {
       "name": "_BTUTRU",
@@ -336,8 +448,10 @@
     {
       "name": "_BTUTSW",
       "ord": 53,
-      "Signature" : "int btutsw(int chan,int width);",
-      "Comments": []
+      "Signature": "int btutsw(int chan,int width);",
+      "Comments": [
+        "Set terminal screen width, and select output word wrap"
+      ]
     },
     {
       "name": "_BTUTSW",
@@ -350,73 +464,95 @@
     {
       "name": "_BTUUDF",
       "ord": 54,
-      "Signature" : "int btuudf(int schan,int n);",
-      "Comments": []
+      "Signature": "int btuudf(int schan,int n);",
+      "Comments": [
+        "Un-Define channels",
+        "This command undoes the effects of btudef()"
+      ]
     },
     {
       "name": "_BTUX29",
       "ord": 55,
-      "Signature" : "int btux29(int chan,int nbyt,char *data);",
+      "Signature": "int btux29(int chan,int nbyt,char *data);",
       "Comments": []
     },
     {
       "name": "_BTUXCT",
       "ord": 56,
-      "Signature" : "int btuxct(int chan,int nbyt,char *datstg);",
-      "Comments": []
+      "Signature": "int btuxct(int chan,int nbyt,char *datstg);",
+      "Comments": [
+        "Transmit to channel (by byte count)"
+      ]
     },
     {
       "name": "_BTUXLT",
       "ord": 57,
-      "Signature" : "void btuxlt(char oldchr,char newchr);",
-      "Comments": []
+      "Signature": "void btuxlt(char oldchr,char newchr);",
+      "Comments": [
+        "Set input translation table"
+      ]
     },
     {
       "name": "_BTUXMN",
       "ord": 58,
-      "Signature" : "int btuxmn(int chan,char *datstg);",
-      "Comments": []
+      "Signature": "int btuxmn(int chan,char *datstg);",
+      "Comments": [
+        "Transmit ASCII string that btuclo() will not be able to clear",
+        "btubsz() will clear, however"
+      ]
     },
     {
       "name": "_BTUXMT",
       "ord": 59,
-      "Signature" : "int btuxmt(int chan,char *datstg);",
-      "Comments": []
+      "Signature": "int btuxmt(int chan,char *datstg);",
+      "Comments": [
+        "Transmit to channel (ASCIIZ string)"
+      ]
     },
     {
       "name": "_BTUXNF",
       "ord": 60,
-      "Signature" : "int btuxnf(int chan,int xon,int xoff,...);",
-      "Comments": []
+      "Signature": "int btuxnf(int chan,int xon,int xoff,...);",
+      "Comments": [
+        "Set XON/XOFF characters, select page mode"
+      ]
     },
     {
       "name": "_CHIINJ",
       "ord": 61,
-      "Signature" : "void chiinj(int chan,int s);",
-      "Comments": []
+      "Signature": "void chiinj(int chan,int status);",
+      "Comments": [
+        "Status Inject Utility"
+      ]
     },
     {
       "name": "_CHIINP",
       "ord": 62,
-      "Signature" : "void chiinp(int chan,char c);",
-      "Comments": []
+      "Signature": "void chiinp(int chan,char c);",
+      "Comments": [
+        "Character Input Utility"
+      ]
     },
     {
       "name": "_CHIOUS",
       "ord": 63,
-      "Signature" : "void chious(int chan,char *stg);",
-      "Comments": []
+      "Signature": "void chious(int chan,char *stg);",
+      "Comments": [
+        "String Output (via Echo Buffer)"
+      ]
     },
     {
       "name": "_CHIOUT",
       "ord": 64,
-      "Signature" : "void chiout(int chan,char c);",
-      "Comments": []
+      "Signature": "void chiout(int chan,char c);",
+      "Comments": [
+        "Character Output (via Echo Buffer)"
+      ]
     },
     {
       "name": "_TICKER",
       "ord": 65,
-      "Signature" : "volatile unsigned ticker;",
+      "Signature": "volatile unsigned ticker;",
       "Comments": [
         "Increments once per second"
       ]
@@ -426,7 +562,7 @@
       "ord": 66,
       "Signature": "unsigned long btuhrt;",
       "Comments": [
-        "32-bit integer increments at approximatley 65536hz"
+        "32-bit integer increments at approximately 65536hz"
       ]
     },
     {
@@ -461,8 +597,10 @@
     {
       "name": "_BTUBRT",
       "ord": 70,
-      "Signature" : "int btubrt(int chan,unsigned bdrate);",
-      "Comments": []
+      "Signature": "int btubrt(int chan,unsigned bdrate);",
+      "Comments": [
+        "Set channels baud rate"
+      ]
     },
     {
       "name": "_SUSLCK",
@@ -472,7 +610,7 @@
     {
       "name": "_BTURNO",
       "ord": 72,
-      "Signature": "char btruno[];",
+      "Signature": "char bturno[];",
       "Comments": [
         "8 digit + NULL GSBL Registration Number"
       ]
@@ -480,15 +618,15 @@
     {
       "name": "_BTUDTR",
       "ord": 73,
-      "Signature" : "int btudtr;",
+      "Signature": "int btudtr;",
       "Comments": [
-        "Set 1 1 to disable DTR-dropping during reset"
+        "Set 1 to disable DTR-dropping during reset"
       ]
     },
     {
       "name": "_X25UDT",
       "ord": 74,
-      "Signature" : "int x25udt;",
+      "Signature": "int x25udt;",
       "Comments": [
         "Set to 1 to capture User Data Field"
       ]
@@ -501,7 +639,7 @@
     {
       "name": "_X25IGN",
       "ord": 76,
-      "Signature" : "int x25ign;",
+      "Signature": "int x25ign;",
       "Comments": [
         "Count of received packets ignored by GSBL"
       ]
@@ -509,7 +647,7 @@
     {
       "name": "_LANREV",
       "ord": 77,
-      "Signature" : "char lanrev[2];",
+      "Signature": "char lanrev[2];",
       "Comments": [
         "SPX revision number"
       ]
@@ -517,7 +655,7 @@
     {
       "name": "_LANSOP",
       "ord": 78,
-      "Signature" : "int lansop;",
+      "Signature": "int lansop;",
       "Comments": [
         "Socket actually opened by btusdf() call"
       ]
@@ -525,7 +663,7 @@
     {
       "name": "_LANSCA",
       "ord": 79,
-      "Signature" : "int lansca;",
+      "Signature": "int lansca;",
       "Comments": [
         "SPX connections available"
       ]
@@ -546,7 +684,7 @@
     {
       "name": "_ICTACT",
       "ord": 82,
-      "Signature" : "int ictact;",
+      "Signature": "int ictact;",
       "Comments": [
         "After btuict() or btuica(): # of bytes available"
       ]
@@ -554,49 +692,59 @@
     {
       "name": "_BTUEBA",
       "ord": 83,
-      "Signature" : "int btueba(int chan);",
-      "Comments": []
+      "Signature": "int btueba(int chan);",
+      "Comments": [
+        "Echo buffer space available, in bytes"
+      ]
     },
     {
       "name": "_BTUHIT",
       "ord": 84,
-      "Signature" : "int btuhit(int comint);",
-      "Comments": []
+      "Signature": "int btuhit(int comint);",
+      "Comments": [
+        "Hook into a COM port interrupt and use it to invoke channel servicing"
+      ]
     },
     {
       "name": "_BTUITM",
       "ord": 85,
-      "Signature" : "int btuitm(void *region);",
-      "Comments": []
+      "Signature": "int btuitm(void *region);",
+      "Comments": [
+        "Initialize the Software Breakthrough for use in a multi-tasking environment"
+      ]
     },
     {
       "name": "_BTUCPC",
       "ord": 86,
-      "Signature" : "int btucpc(int chan,char clrpch);",
-      "Comments": []
+      "Signature": "int btucpc(int chan,char clrpch);",
+      "Comments": [
+        "Set the clear pause-counter character (puts off screen pauses when in output stream)"
+      ]
     },
     {
       "name": "_BTUICA",
       "ord": 87,
-      "Signature" : "int btuica(int chan,char *rdbptr,int max);",
-      "Comments": []
+      "Signature": "int btuica(int chan,char *rdbptr,int max);",
+      "Comments": [
+        "Input from a channel - reading in whatever bytes are available, up to a limit"
+      ]
     },
     {
       "name": "_BTUPFL",
       "ord": 88,
-      "Signature" : "int btupfl(void (*pflrou)(int type,unsigned off,unsigned sel));",
+      "Signature": "int btupfl(void (*pflrou)(int type,unsigned off,unsigned sel));",
       "Comments": []
     },
     {
       "name": "_PPFLREAL",
       "ord": 89,
-      "Signature" : "extern long far *ppflreal;",
+      "Signature": "extern long far *ppflreal;",
       "Comments": []
     },
     {
       "name": "_PFLGSLB",
       "ord": 90,
-      "Signature" : "extern long pflgsbl;",
+      "Signature": "extern long pflgsbl;",
       "Comments": [
         "Possible type of PFGSBL in Module Definition"
       ]
@@ -604,61 +752,65 @@
     {
       "name": "_PFLRNG3",
       "ord": 91,
-      "Signature" : "extern long pflrng3;",
+      "Signature": "extern long pflrng3;",
       "Comments": []
     },
     {
       "name": "_PFLPLAP",
       "ord": 92,
-      "Signature" : "extern long pflplap;",
+      "Signature": "extern long pflplap;",
       "Comments": []
     },
     {
       "name": "_PFN",
       "ord": 93,
-      "Signature" : "extern char pfn;",
+      "Signature": "extern char pfn;",
       "Comments": []
     },
     {
       "name": "_BTUUSP",
       "ord": 94,
-      "Signature" : "int btuusp(int chan,int onoff);",
-      "Comments": []
+      "Signature": "int btuusp(int chan,int onoff);",
+      "Comments": [
+        "Special UART polling method"
+      ]
     },
     {
       "name": "_BTUREP",
       "ord": 95,
-      "Signature" : "long bturep(int chan,int stid);",
-      "Comments": []
+      "Signature": "long bturep(int chan,int stid);",
+      "Comments": [
+        "Report Channel Statistics"
+      ]
     },
     {
       "name": "_PFLMYS3",
       "ord": 96,
-      "Signature" : "extern long pflmys3;",
+      "Signature": "extern long pflmys3;",
       "Comments": []
     },
     {
       "name": "_BTUCDI",
       "ord": 97,
-      "Signature" : "struct datstm far *btucdi(int chan,struct datstm far *outsnk);",
+      "Signature": "struct datstm far *btucdi(int chan,struct datstm far *outsnk);",
       "Comments": []
     },
     {
       "name": "_BTUOPL",
       "ord": 98,
-      "Signature" : "int btuopl(int chan);",
+      "Signature": "int btuopl(int chan);",
       "Comments": []
     },
     {
       "name": "_BTUPCC",
       "ord": 99,
-      "Signature" : "int btupcc(int chan,int mode);",
+      "Signature": "int btupcc(int chan,int mode);",
       "Comments": []
     },
     {
       "name": "_BTUBBR",
       "ord": 56,
-      "Signature" : "int btubbr(int chan,long bdrate);",
+      "Signature": "int btubbr(int chan,long bdrate);",
       "Comments": []
     }
   ]
