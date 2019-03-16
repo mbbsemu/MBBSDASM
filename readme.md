@@ -106,6 +106,11 @@ The Enhanced Analysis mode can be extended through pull requests by adding Modul
     * Requires additional support for disassembly of 32-bit PE format EXE/DLL files
 	* The best tool for this is probably IDA Freeware, which disassembles PE files with ease
 
+# Using Hex-Rays IDA for Disassembly?
+Check out [MBBSDASM.IDA](https://github.com/enusbaum/MBBSDASM.IDA), which is a collection of IDS/IDT files that allow Hex-Rays IDA to properly identify/comment imports for both MAJORBBS and GALGSBL.
+
+While **MBBSDASM.IDA** lacks some of the advanced analysis features that **MBBSDASM** provides, I know some folks prefer to use Hex-Rays IDA for their disassembly/reverse engineering.
+
 # Contribute
 I'm always looking for updated/new information on several related topics. If you have any first hand knowledge, documentation or files you can send me related to:
 
@@ -125,7 +130,9 @@ A big shoutout to the grey beards keeping this archaic software alive and still 
 # License / Copyright
 
 MBBSDASM is Copyright (c) 2017 Eric Nusbaum and is distributed under the 2-clause "Simplified BSD License". 
+
 SharpDisam is Copyright (c) 2015 Justin Stenning and is distributed under the 2-clause "Simplified BSD License". 
+
 Terminal.Gui is Copyright (c) 2017 Microsoft Corp and is distributed under the MIT License
 
 Portions of the project are ported from Udis86 Copyright (c) 2002-2012, Vivek Thampi <vivek.mt@gmail.com> https://github.com/vmt/udis86 distributed under the 2-clause "Simplified BSD License".
