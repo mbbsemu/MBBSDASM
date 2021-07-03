@@ -9,7 +9,7 @@
     <PackageReference Include="NLog" Version="4.5.11" />
     <PackageReference Include="SharpDisasm" Version="1.1.11" />
     <PackageReference Include="System.Memory" Version="4.5.2" />
-    <PackageReference Include="Terminal.Gui" Version="0.19.0" />
+    <PackageReference Include="Terminal.Gui" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Analysis\Assets\MajorBBS_def.json" />
