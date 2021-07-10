@@ -90,31 +90,32 @@ namespace MBBSDASM.UI.impl
             //Show Disassembly Options
             var analysisCheckBox = new CheckBox(20, 0, "Enhanced MBBS/WG Analysis") {Checked = true};
             var stringsCheckBox = new CheckBox(20, 1, "Process All Strings") { Checked = true };
-            var disassemblyRadioGroup = new RadioGroup(0, 0, new[] {"_Minimal", "_Normal"}) {Selected = 1};
+            var disassemblyRadioGroup = new RadioGroup(0, 0, new NStack.ustring[] {"_Minimal", "_Normal"}, 1);
 
-            var disOptionsDialog = new Dialog("Disassembly Options", 60, 16)
-            {
-                new Label(0, 0, "Input File:"),
-                new TextField(0, 1, 55, _selectedFile),
-                new Label(0, 2, "Output File:"),
-                new TextField(0, 3, 55, _outputFile),
-                new FrameView(new Rect(0, 5, 55, 6), "Disassembly Options")
-                {
-                    disassemblyRadioGroup,
-                    analysisCheckBox,
-                    stringsCheckBox
-                }
-            };
-            disOptionsDialog.AddButton(new Button("OK", true) { Clicked = () =>
+            var okBtn = new Button("OK", true);
+            okBtn.Clicked += () =>
                 {
                     Application.RequestStop();
                     _optionMBBSAnalysis = analysisCheckBox.Checked;
                     _optionStrings = stringsCheckBox.Checked;
-                    _optionMinimal = disassemblyRadioGroup.Selected == 0;
+                    _optionMinimal = disassemblyRadioGroup.SelectedItem == 0;
                     Task.Factory.StartNew(() => DoDisassembly());
-                }
-            });
-            disOptionsDialog.AddButton(new Button("Cancel", true) { Clicked = Application.RequestStop });
+                };
+
+            var cancelBtn = new Button("Cancel", true);
+            cancelBtn.Clicked += () => { Application.RequestStop (); };
+
+            var fv = new FrameView(new Rect(0, 5, 55, 6), "Disassembly Options");
+            fv.Add(disassemblyRadioGroup,analysisCheckBox,stringsCheckBox);
+
+            var disOptionsDialog = new Dialog("Disassembly Options", 60, 16, new Button[]{okBtn,cancelBtn});
+            disOptionsDialog.Add(
+                new Label(0, 0, "Input File:"),
+                new TextField(0, 1, 55, _selectedFile),
+                new Label(0, 2, "Output File:"),
+                new TextField(0, 3, 55, _outputFile),
+                fv
+            );
 
             Application.Run(disOptionsDialog);
         }
@@ -166,12 +167,13 @@ namespace MBBSDASM.UI.impl
                 _progressBar.Fraction = 1f;
             }
 
-            var d = new Dialog($"Disassembly Complete!", 50, 12)
-            {
-                new Label(0, 0, $"Output File: {_outputFile}"),
+            var d = new Dialog($"Disassembly Complete!", 50, 12);
+            d.Add(new Label(0, 0, $"Output File: {_outputFile}"),
                 new Label(0, 1, $"Bytes Written: {new FileInfo(_outputFile).Length}")
-            };
-            d.AddButton(new Button("OK", true) { Clicked = Application.RequestStop });
+            );
+            var okBtn = new Button("OK", true);
+            okBtn.Clicked += () => { Application.RequestStop (); };
+            d.AddButton(okBtn);
             Application.Run(d);
         }
     }

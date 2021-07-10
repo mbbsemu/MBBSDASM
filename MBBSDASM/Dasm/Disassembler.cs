@@ -250,9 +250,14 @@ namespace MBBSDASM.Dasm
                                 disassemblyLine.Disassembly.Operands.Length == 2 &&
                                 disassemblyLine.Disassembly.Operands[1].LvalUWord > 0)
                             {
-                                disassemblyLine.StringReference = file.SegmentTable
-                                    .First(x => x.Ordinal == dataSegmentToUse).StringRecords.Where(y =>
-                                        y.Offset == disassemblyLine.Disassembly.Operands[1].LvalUWord).ToList();
+                                var f = file.SegmentTable
+                                    .First(x => x.Ordinal == dataSegmentToUse);
+                                if (f.StringRecords != null) {
+                                    var filt = f.StringRecords.Where(y =>
+                                        y.Offset == disassemblyLine.Disassembly.Operands[1].LvalUWord);
+                                    if (filt != null)
+                                        disassemblyLine.StringReference = filt.ToList();
+                                }
 
                                 continue;
                             }
