@@ -164,7 +164,9 @@ namespace MBBSDASM.Renderer.impl
                         {
                             if (!newLine)
                             {
-                                sOutputLine += $"{new string(' ', maxDecodeLength - sOutputLine.Length)}; {c}";
+                                var l = maxDecodeLength - sOutputLine.Length;
+                                if (l<0) l = 0;
+                                sOutputLine += $"{new string(' ', l)}; {c}";
 
                                 //Set variables to help us keep the following comments lined up with the first one
                                 firstCommentIndex = sOutputLine.IndexOf(';');
