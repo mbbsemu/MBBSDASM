@@ -118,12 +118,9 @@ namespace MBBSDASM.Analysis
                                     values.Add(i.Disassembly.Operands[0].LvalSDWord);
                                     break;
                                 case "string":
-                                    if (i.Comments.Any(x => x.Contains("reference")))
-                                    {
-                                        var resolvedStringComment = i.Comments.First(x => x.Contains("reference"));
-                                        values.Add(resolvedStringComment.Substring(
-                                            resolvedStringComment.IndexOf('\"')));
-                                    }
+                                    //Only resolve when the string reference is unambiguous
+                                    if (i.StringReference != null && i.StringReference.Count == 1)
+                                        values.Add($"\"{i.StringReference[0].Value}\"");
                                     break;
                                 case "char":
                                     values.Add((char)i.Disassembly.Operands[0].LvalSDWord);

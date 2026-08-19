@@ -28,5 +28,27 @@ namespace MBBSDASM.Tests.Renderer
                 File.Delete(inputFile);
             }
         }
+
+        [Fact]
+        public void RenderDisassembly_IsRepeatable()
+        {
+            //Rendering must not mutate the model: a second render produces identical output
+            var inputFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllBytes(inputFile, MinimalNEFile.Build(new byte[] {0xEB, 0xFE, 0xC3}));
+                var file = new Disassembler(inputFile).Disassemble();
+
+                var renderer = new StringRenderer(file);
+                var first = renderer.RenderDisassembly();
+                var second = renderer.RenderDisassembly();
+
+                Assert.Equal(first, second);
+            }
+            finally
+            {
+                File.Delete(inputFile);
+            }
+        }
     }
 }
