@@ -127,8 +127,8 @@ namespace MBBSDASM.UI.impl
                 var dasm = new Disassembler(_sInputFile);
                 var inputFile = dasm.Disassemble(_bMinimal);
 
-                //Apply Selected Analysis
-                if (_bAnalysis)
+                //Apply Selected Analysis (unavailable with minimal output, as warned above)
+                if (_bAnalysis && !_bMinimal)
                 {
                     _logger.Info($"Performing Additional Analysis");
                     Analysis.MBBS.Analyze(inputFile);

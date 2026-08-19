@@ -223,13 +223,14 @@ namespace MBBSDASM.Dasm
         /// <param name="file"></param>
         private void ResolveStringReferences(NEFile file)
         {
-            var flagNext = false;
-            var dataSegmentToUse = 0;
             foreach (var segment in file.SegmentTable)
             {
                 if (!segment.Flags.Contains(EnumSegmentFlags.Code) || segment.DisassemblyLines == null ||
                     segment.DisassemblyLines.Count == 0)
                     continue;
+
+                var flagNext = false;
+                var dataSegmentToUse = 0;
 
                 foreach (var disassemblyLine in segment.DisassemblyLines)
                 {
@@ -242,9 +243,10 @@ namespace MBBSDASM.Dasm
                         !disassemblyLine.Disassembly.ToString().Contains(":"))
                     {
                         //MOV ax, SEG ADDR sets the current Data Segment to use
-                        if (disassemblyLine.BranchToRecords.Any(x =>
-                            x.IsRelocation && x.BranchType == EnumBranchType.SegAddr))
-                            dataSegmentToUse = disassemblyLine.BranchToRecords.First().Segment;
+                        var segAddrRecord = disassemblyLine.BranchToRecords.FirstOrDefault(x =>
+                            x.IsRelocation && x.BranchType == EnumBranchType.SegAddr);
+                        if (segAddrRecord != null)
+                            dataSegmentToUse = segAddrRecord.Segment;
 
 
                         if (dataSegmentToUse > 0)

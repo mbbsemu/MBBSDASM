@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MBBSDASM.Artifacts;
+using MBBSDASM.Dasm;
 using MBBSDASM.Enums;
 
 namespace MBBSDASM.Renderer.impl
@@ -106,61 +108,69 @@ namespace MBBSDASM.Renderer.impl
                 //Write each line of the disassembly to the output stream
                 foreach (var d in s.DisassemblyLines)
                 {
+                    //Rendering labels are built locally so rendering doesn't mutate the model
+                    var comments = new List<string>(d.Comments ?? Enumerable.Empty<string>());
+
+                    //ConcurrentBag enumeration order varies run to run (records are added from
+                    //parallel relocation analysis), so sort before rendering for deterministic output
+                    var branchFromRecords = SortBranchRecords(d.BranchFromRecords);
+                    var branchToRecords = SortBranchRecords(d.BranchToRecords);
+
                     //Label Entrypoints/Exported Functions
                     if (d.ExportedFunction != null)
                     {
-                        d.Comments.Add($"Exported Function: {d.ExportedFunction.Name}");
+                        comments.Add($"Exported Function: {d.ExportedFunction.Name}");
                     }
 
                     //Label Branch Targets
-                    foreach (var b in d.BranchFromRecords)
+                    foreach (var b in branchFromRecords)
                     {
                         switch (b.BranchType)
                         {
                             case EnumBranchType.Call:
-                                d.Comments.Add(
+                                comments.Add(
                                     $"Referenced by CALL at address: {b.Segment:0000}.{b.Offset:X4}h {(b.IsRelocation ? "(Relocation)" : string.Empty)}");
                                 break;
                             case EnumBranchType.Conditional:
                             case EnumBranchType.Unconditional:
-                                d.Comments.Add(
+                                comments.Add(
                                     $"{(b.BranchType == EnumBranchType.Conditional ? "Conditional" : "Unconditional")} jump from {b.Segment:0000}:{b.Offset:X4}h");
                                 break;
                         }
                     }
 
                     //Label Branch Origins (Relocation)
-                    foreach (var b in d.BranchToRecords.Where(x =>
+                    foreach (var b in branchToRecords.Where(x =>
                         x.IsRelocation && x.BranchType == EnumBranchType.Call))
-                        d.Comments.Add($"CALL {b.Segment:0000}.{b.Offset:X4}h (Relocation)");
+                        comments.Add($"CALL {b.Segment:0000}.{b.Offset:X4}h (Relocation)");
 
                     //Label Refereces by SEG ADDR (Internal)
-                    foreach (var b in d.BranchToRecords.Where(x =>
+                    foreach (var b in branchToRecords.Where(x =>
                         x.IsRelocation && x.BranchType == EnumBranchType.SegAddr))
-                        d.Comments.Add($"SEG ADDR of Segment {b.Segment}");
+                        comments.Add($"SEG ADDR of Segment {b.Segment}");
 
                     //Label String References
                     if (d.StringReference != null)
                         foreach (var sr in d.StringReference)
-                            d.Comments.Add($"Possible String reference from SEG {sr.Segment} -> \"{sr.Value}\"");
+                            comments.Add($"Possible String reference from SEG {sr.Segment} -> \"{sr.Value}\"");
 
                     //Only label Imports if Analysis is off, because Analysis does much more in-depth labeling
                     if (!analysis)
                     {
-                        foreach (var b in d.BranchToRecords?.Where(x =>
+                        foreach (var b in branchToRecords.Where(x =>
                             x.IsRelocation && (x.BranchType == EnumBranchType.CallImport ||
                                                x.BranchType == EnumBranchType.SegAddrImport)))
-                            d.Comments.Add(
+                            comments.Add(
                                 $"{(b.BranchType == EnumBranchType.CallImport ? "call" : "SEG ADDR of")} {_inputFile.ImportedNameTable.FirstOrDefault(x => x.Ordinal == b.Segment)?.Name}.Ord({b.Offset:X4}h)");
                     }
 
                     var sOutputLine =
                         $"{d.Disassembly.Offset + s.Offset:X8}h:{s.Ordinal:0000}.{d.Disassembly.Offset:X4}h {BitConverter.ToString(d.Disassembly.Bytes).Replace("-", string.Empty).PadRight(Constants.MAX_INSTRUCTION_LENGTH, ' ')} {d.Disassembly}";
-                    if (d.Comments != null && d.Comments.Count > 0)
+                    if (comments.Count > 0)
                     {
                         var newLine = false;
                         var firstCommentIndex = 0;
-                        foreach (var c in d.Comments)
+                        foreach (var c in comments)
                         {
                             if (!newLine)
                             {
@@ -209,5 +219,16 @@ namespace MBBSDASM.Renderer.impl
 
             return output.ToString();
         }
+
+        /// <summary>
+        ///     Orders branch records for rendering, since ConcurrentBag enumeration order is not stable
+        /// </summary>
+        private static List<BranchRecord> SortBranchRecords(IEnumerable<BranchRecord> records) =>
+            (records ?? Enumerable.Empty<BranchRecord>())
+            .OrderBy(x => x.Segment)
+            .ThenBy(x => x.Offset)
+            .ThenBy(x => x.BranchType)
+            .ThenBy(x => x.IsRelocation)
+            .ToList();
     }
 }
