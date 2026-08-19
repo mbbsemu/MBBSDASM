@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MBBSDASM.Dasm;
 using MBBSDASM.Renderer.impl;
+using NLog;
 using Terminal.Gui;
 
 namespace MBBSDASM.UI.impl
@@ -24,10 +25,28 @@ namespace MBBSDASM.UI.impl
         private readonly Label _statusLabel;
         internal InteractiveUI()
         {
+            //Console log output would draw over the TUI, so suspend logging for the interactive session
+            LogManager.DisableLogging();
+
+            //The curses driver reports a 0x0 terminal on macOS, blanking the UI and crashing
+            //any view that sizes itself from Driver.Cols - the portable .NET driver works everywhere
+            Application.UseSystemConsole = true;
+
+            //The .NET driver paints straight onto the main screen, so switch to the alternate
+            //screen first - exiting then restores whatever the terminal showed before launch
+            System.Console.Write("\x1b[?1049h");
             Application.Init();
 
             //Define Main Window
-            _mainWindow = new Window(new Rect(0, 1, Application.Top.Frame.Width, Application.Top.Frame.Height - 1), null);
+            //Computed layout instead of absolute Rects: Application.Top.Frame isn't sized until
+            //Application.Run() lays it out, so reading it here crashed on startup (Height was 0)
+            _mainWindow = new Window(null)
+            {
+                X = 0,
+                Y = 1,
+                Width = Dim.Fill(),
+                Height = Dim.Fill()
+            };
             _mainWindow.Add(new Label(0, 0, $"--=[About {Constants.ProgramName}]=--"));
             _mainWindow.Add(new Label(0, 1, $"{Constants.ProgramName} is a x86 16-Bit NE Disassembler with advanced analysis for MajorBBS/Worldgroup modules"));
             _mainWindow.Add(new Label(0, 3, $"--=[Credits]=--"));
@@ -36,10 +55,20 @@ namespace MBBSDASM.UI.impl
             _mainWindow.Add(new Label(0, 6, "Terminal.Gui is Copyright (c) 2017 Microsoft Corp and is distributed under the MIT License"));
             _mainWindow.Add(new Label(0, 8, $"--=[Code]=--"));
             _mainWindow.Add(new Label(0, 9, "http://www.github.com/enusbaum/mbbsdasm"));
-            _progressBar =
-                new ProgressBar(new Rect(1, Application.Top.Frame.Height - 5, Application.Top.Frame.Width - 4, 1));
+            _progressBar = new ProgressBar
+            {
+                X = 1,
+                Y = Pos.AnchorEnd(4),
+                Width = Dim.Fill(3),
+                Height = 1
+            };
             _mainWindow.Add(_progressBar);
-            _statusLabel = new Label(1, Application.Top.Frame.Height - 7, "Ready!");
+            _statusLabel = new Label("Ready!")
+            {
+                X = 1,
+                Y = Pos.AnchorEnd(6),
+                Width = Dim.Fill(3)
+            };
             _mainWindow.Add(_statusLabel);
             Application.Top.Add(_mainWindow);
 
@@ -63,6 +92,12 @@ namespace MBBSDASM.UI.impl
         {
             //Run it
             Application.Run();
+            Application.Shutdown();
+
+            //The .NET console driver doesn't restore the terminal on shutdown, leaving mouse
+            //tracking enabled (every mouse move types escape sequences into the shell) and the
+            //alternate screen active - reset those modes by hand
+            System.Console.Write("\x1b[?1003l\x1b[?1015l\x1b[?1006l\x1b[?1049l\x1b[?1l\x1b[?25h\x1b[0m");
         }
 
         private void OpenFile()
@@ -127,54 +162,59 @@ namespace MBBSDASM.UI.impl
                 if (File.Exists(_outputFile))
                     File.Delete(_outputFile);
 
-                _statusLabel.Text = "Performing Disassembly...";
+                SetProgress("Performing Disassembly...", 0f);
                 var inputFile = dasm.Disassemble(_optionMinimal);
 
                 //Apply Selected Analysis
                 if (_optionMBBSAnalysis)
                 {
-                    _statusLabel.Text = "Performing Additional Analysis...";
+                    SetProgress("Performing Additional Analysis...", 0f);
                     Analysis.MBBS.Analyze(inputFile);
                 }
-                _progressBar.Fraction = .25f;
-
+                SetProgress("Processing Segment Information...", .25f);
 
                 var _stringRenderer = new StringRenderer(inputFile);
 
-                _statusLabel.Text = "Processing Segment Information...";
                 File.AppendAllText(_outputFile, _stringRenderer.RenderSegmentInformation());
-                _progressBar.Fraction = .50f;
+                SetProgress("Processing Entry Table...", .50f);
 
-
-                _statusLabel.Text = "Processing Entry Table...";
                 File.AppendAllText(_outputFile, _stringRenderer.RenderEntryTable());
-                _progressBar.Fraction = .75f;
+                SetProgress("Processing Disassembly...", .75f);
 
- 
-
-                _statusLabel.Text = "Processing Disassembly...";
                 File.AppendAllText(_outputFile, _stringRenderer.RenderDisassembly(_optionMBBSAnalysis));
-                _progressBar.Fraction = .85f;
-
+                SetProgress("Processing Strings...", .85f);
 
                 if (_optionStrings)
-                {
-                    _statusLabel.Text = "Processing Strings...";
                     File.AppendAllText(_outputFile, _stringRenderer.RenderStrings());
-                }
 
-                _statusLabel.Text = "Done!";
-                _progressBar.Fraction = 1f;
+                SetProgress("Done!", 1f);
             }
 
-            var d = new Dialog($"Disassembly Complete!", 50, 12);
-            d.Add(new Label(0, 0, $"Output File: {_outputFile}"),
-                new Label(0, 1, $"Bytes Written: {new FileInfo(_outputFile).Length}")
-            );
-            var okBtn = new Button("OK", true);
-            okBtn.Clicked += () => { Application.RequestStop (); };
-            d.AddButton(okBtn);
-            Application.Run(d);
+            //The completion dialog needs its event loop on the UI thread - running it from this
+            //background thread leaves it unable to receive input, so it can never be dismissed
+            Application.MainLoop.Invoke(() =>
+            {
+                var d = new Dialog($"Disassembly Complete!", 50, 12);
+                d.Add(new Label(0, 0, $"Output File: {_outputFile}"),
+                    new Label(0, 1, $"Bytes Written: {new FileInfo(_outputFile).Length}")
+                );
+                var okBtn = new Button("OK", true);
+                okBtn.Clicked += () => { Application.RequestStop (); };
+                d.AddButton(okBtn);
+                Application.Run(d);
+            });
+        }
+
+        /// <summary>
+        ///     Updates the status label and progress bar on the UI thread
+        /// </summary>
+        private void SetProgress(string status, float fraction)
+        {
+            Application.MainLoop.Invoke(() =>
+            {
+                _statusLabel.Text = status;
+                _progressBar.Fraction = fraction;
+            });
         }
     }
 }
